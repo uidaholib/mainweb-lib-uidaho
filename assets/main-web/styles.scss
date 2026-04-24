@@ -4,5 +4,6 @@
 
 @charset "utf-8";
 
+@use "base";
 /* pull in custom styles to override everything else */
 @use "custom";

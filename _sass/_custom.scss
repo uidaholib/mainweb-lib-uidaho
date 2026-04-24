@@ -1,0 +1,113 @@
+/* 
+    Put your custom SCSS here! 
+    This allows you to override any CollectionBuilder or Bootstrap CSS without modifying the base theme files directly.
+*/
+
+
+/* set link color and decoration */
+
+a {
+  text-decoration-line: underline;
+  text-decoration-color: #008080;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .15s;
+  transition-duration: .2s;
+}
+
+/* skip nav for accessibility, based on https://webaim.org/techniques/skipnav/ */
+#skip-to-content a {
+	padding:6px;
+	position: absolute;
+	top:-45px;
+	left:0px;
+	color:white;
+	border-right:1px solid white;
+	border-bottom:1px solid white;
+	border-bottom-right-radius:8px;
+	background:#BF1722;
+	-webkit-transition: top 1s ease-out;
+    transition: top 1s ease-out;
+    z-index: 100;
+}
+#skip-to-content a:focus {
+	position:absolute;
+	left:0px;
+	top:0px;
+	outline-color:transparent;	
+	-webkit-transition: top .1s ease-in;
+    transition: top .1s ease-in;
+}
+
+// header
+
+/* top bar */
+#top-bar {
+    font-size: 1rem;
+}
+/* banner */
+.lib-logo-lg {
+    max-height: 80px;
+}
+
+/* main nav */
+#main-nav {
+    background: #e8e8e8;
+    ul {
+        //font-size: 18px;
+    }
+    .nav-link {
+        color: #191919;
+        font-weight: bold;
+    }
+}
+.bg-brand-grey {
+    background-color: hsla(0,0%,97%,.85);
+}
+
+#top-navigation-bar {
+    //height: 60px;
+}
+#header-title {
+
+}
+// new page heading
+.page-title {
+    font-size: 3.75rem;
+}
+
+// fix pride gold outlines
+.btn-outline-primary, .btn-outline-pride-gold {
+    color: #191919;
+}
+
+
+.arrow-link:after {
+    margin-left: .625rem;
+    display: inline;
+    background-color: currentColor;
+    position: relative;
+    z-index: 0;
+    height: 1.15em;
+    width: 1.15em;
+    -webkit-mask-size: 1.15em 1.15em;
+    mask-size: 1.15em 1.15em;
+    -webkit-mask-image: url("data:image/svg+xml;base64,PHN2Zw0KICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyINCiAgICB2aWV3Qm94PSIwIDAgMjQgMTciDQogID4NCiAgICA8cGF0aCBzdHlsZT0iZmlsbDojZmZmIiBkPSJNMTUuNiAxNi44TDEzLjkyIDE1LjEyTDE5LjQ0IDkuNkgwVjcuMkgxOS40NEwxMy45MiAxLjY4TDE1LjYgMEwyNCA4LjRMMTUuNiAxNi44WiIgLz4NCiAgPC9zdmc+");
+    mask-image: url("data:image/svg+xml;base64,PHN2Zw0KICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyINCiAgICB2aWV3Qm94PSIwIDAgMjQgMTciDQogID4NCiAgICA8cGF0aCBzdHlsZT0iZmlsbDojZmZmIiBkPSJNMTUuNiAxNi44TDEzLjkyIDE1LjEyTDE5LjQ0IDkuNkgwVjcuMkgxOS40NEwxMy45MiAxLjY4TDE1LjYgMEwyNCA4LjRMMTUuNiAxNi44WiIgLz4NCiAgPC9zdmc+");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-position: center center;
+}
+
+/* footer */
+footer a {
+    color:white !important;
+    font-weight: 300;
+}
+
+#footer-logo {
+    max-height: 150px;
+}

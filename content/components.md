@@ -93,9 +93,9 @@ Check the main [U of I Brand Resource Center](https://www.uidaho.edu/brand), [in
 ### Background
 
 {% for c in colors %}
-<div class="bg-{{ c }} p-4 m-3"><span class="text-white">{{ c }}</span></div>
+<div class="bg-{{ c }} p-4 m-3"><span class="text-white">{{ c }}</span></div>{% endfor %}
 
 ### Border
 
 {% for c in colors %}
-<div class="p-4 border border-5 border-{{ c }} m-3">{{ c }} at border-5</div>
+<div class="p-4 border border-5 border-{{ c }} m-3">{{ c }} at border-5</div>{% endfor %}

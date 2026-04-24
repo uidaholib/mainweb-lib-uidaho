@@ -29,7 +29,7 @@ permalink: /assets/data/site-search.json
         "title": {{ page_title | jsonify }},
         "page": null,
         "tags": {{ p.tags | jsonify }},
-        "content": {{ all_headings | normalize_whitespace | jsonify }}
+        "content": {{ p.description | default: all_headings | normalize_whitespace | jsonify }}
     },
     {%- assign i = i | plus: 1 -%}
     {% for s in sections %}
