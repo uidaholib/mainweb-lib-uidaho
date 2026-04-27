@@ -41,38 +41,10 @@ a {
     transition: top .1s ease-in;
 }
 
-// header
-
-/* top bar */
-#top-bar {
-    font-size: 1rem;
-}
-/* banner */
-.lib-logo-lg {
-    max-height: 80px;
-}
-
-/* main nav */
-#main-nav {
-    background: #e8e8e8;
-    ul {
-        //font-size: 18px;
-    }
-    .nav-link {
-        color: #191919;
-        font-weight: bold;
-    }
-}
 .bg-brand-grey {
     background-color: hsla(0,0%,97%,.85);
 }
 
-#top-navigation-bar {
-    //height: 60px;
-}
-#header-title {
-
-}
 // new page heading
 .page-title {
     font-size: 3.75rem;
@@ -102,40 +74,3 @@ a {
     mask-position: center center;
 }
 
-// ── Mega-nav dropdown ──────────────────────────────────────────
-
-// Search results panel: scrollable, max height
-#nav-search-results {
-    max-height: 60vh;
-    overflow-y: auto;
-
-    li + li {
-        border-top: 1px solid var(--bs-gray-200);
-    }
-}
-
-// Hover state for each result row
-.nav-search-result-link:hover,
-.nav-search-result-link:focus {
-    background-color: var(--bs-gray-100);
-    border-radius: 4px;
-    outline-offset: 2px;
-}
-
-// Keyword highlight in search results (pride gold)
-.nav-search-highlight {
-    background-color: #F1B300;
-    color: #191919;
-    padding: 0 2px;
-    border-radius: 2px;
-}
-
-/* footer */
-footer a {
-    color:white !important;
-    font-weight: 300;
-}
-
-#footer-logo {
-    max-height: 150px;
-}

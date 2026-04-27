@@ -1,12 +1,10 @@
 <header>
     <div class="container px-lg-5">
         <div class="pb-3 border-bottom border-dark" id="top-navigation-bar">
-
-            {{- /* ── Top bar: I logo · Library heading · utility links · menu button ── */ -}}
             <div class="d-flex">
                 <a href="{{ '/' | relative_url }}"
                     class="bg-pride-gold text-black d-flex align-items-center justify-content-center text-decoration-none flex-shrink-0"
-                    style="width:3rem;height:80px"
+                    style="width:3rem;height:90px"
                     aria-label="University of Idaho Library home">
                     <svg xmlns="http://www.w3.org/2000/svg" style="width:26px;height:51px" class="bi w-100" viewBox="0 0 26 51" fill="currentColor" aria-hidden="true" focusable="false">
                         <g clip-path="url(#clip0_2968_58176)">
@@ -17,15 +15,15 @@
                     </svg>
                 </a>
 
-                <div class="ps-3 pt-3 flex-grow-1 align-self-start bg-brand-grey border-bottom shadow-sm">
-                    <div class="d-flex align-items-start">
+                <div class="ps-3 flex-grow-1 align-self-start bg-brand-grey border-bottom shadow-sm">
+                    <div class="d-flex align-items-center" style="height:69px;">
                         <div>
                             <h1 id="header-title" class="mb-0">
                                 <a href="{{ '/' | relative_url }}" class="text-dark text-decoration-none">Library</a>
                             </h1>
                         </div>
                         <div class="ms-auto align-self-center">
-                            <ul class="list-inline text-uppercase fw-bold mb-0">
+                            <ul class="list-inline text-uppercase fw-bold mb-0 d-none d-md-inline-block">
                                 <li class="list-inline-item">
                                     <a class="nav-link" id="topbar-hours" href="{{ '/about/hours.html' | relative_url }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-clock me-1" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
@@ -35,7 +33,7 @@
                                         <span id="timedisp">Hours</span>
                                     </a>
                                 </li>
-                                <li class="list-inline-item d-none d-md-inline-block">
+                                <li class="list-inline-item">
                                     <a class="nav-link" id="topbar-account" href="https://alliance-uidaho.primo.exlibrisgroup.com/discovery/account?vid=01ALLIANCE_UID:UID">Account</a>
                                 </li>
                                 <li class="list-inline-item">
@@ -61,20 +59,19 @@
                 </div>
             </div>
 
-            {{- /* ── Section links bar ── */ -}}
             <div class="d-flex">
-                <div class="bg-clearwater flex-shrink-0" style="width:3rem;" aria-hidden="true"></div>
+                <div class="bg-clearwater flex-shrink-0" style="width:3rem;height:20px" aria-hidden="true"></div>
                 <nav class="ps-3 align-self-center" aria-label="Section navigation">
-                    <ul class="list-inline text-uppercase fw-bold mb-0">
+                    <ul class="list-inline text-uppercase fw-bold mb-0" style="font-size:16px;line-height:1">
                         {% if page.section %}
                         <li class="list-inline-item text-clearwater ms-2">{{ page.section }}</li>
                         <li class="list-inline-item ms-2" aria-hidden="true">|</li>
                         {% endif %}
-                        {% unless page.section == 'Find' %}<li class="list-inline-item ms-2"><a href="{{ '/find/' | relative_url }}">Find</a></li>{% endunless %}
-                        {% unless page.section == 'Services' %}<li class="list-inline-item ms-2"><a href="{{ '/services/' | relative_url }}">Services</a></li>{% endunless %}
-                        {% unless page.section == 'Collections' %}<li class="list-inline-item ms-2"><a href="{{ '/collections/' | relative_url }}">Collections</a></li>{% endunless %}
-                        {% unless page.section == 'About' %}<li class="list-inline-item ms-2"><a href="{{ '/about/' | relative_url }}">About</a></li>{% endunless %}
-                        <li class="list-inline-item ms-2"><a href="{{ '/about/updates.html' | relative_url }}">Updates</a></li>
+                        {% unless page.section == 'Find' %}<li class="list-inline-item ms-2"><a href="{{ '/find/' | relative_url }}" class="text-brand-black">Find</a></li>{% endunless %}
+                        {% unless page.section == 'Services' %}<li class="list-inline-item ms-2"><a href="{{ '/services/' | relative_url }}" class="text-brand-black">Services</a></li>{% endunless %}
+                        {% unless page.section == 'Collections' %}<li class="list-inline-item ms-2"><a href="{{ '/collections/' | relative_url }}" class="text-brand-black">Collections</a></li>{% endunless %}
+                        {% unless page.section == 'About' %}<li class="list-inline-item ms-2"><a href="{{ '/about/' | relative_url }}" class="text-brand-black">About</a></li>{% endunless %}
+                        <li class="list-inline-item ms-2"><a href="{{ '/about/updates.html' | relative_url }}" class="text-brand-black">Updates</a></li>
                     </ul>
                 </nav>
             </div>
@@ -82,14 +79,10 @@
         </div>
     </div>
 
-    {{- /* ════════════════════════════════════════════════════════════
-          Mega-nav dropdown
-          ════════════════════════════════════════════════════════════ */ -}}
     <div class="collapse" id="mainNavMenu">
         <div class="bg-white border-bottom shadow">
             <div class="container px-lg-5 py-4">
-
-                {{- /* ── Search row ── */ -}}
+                <!-- search box -->
                 <div class="row align-items-center mb-4 g-2">
                     <div class="col">
                         <form role="search" id="nav-search-form" action="{{ '/search/' | relative_url }}">
@@ -127,7 +120,7 @@
                     </div>
                 </div>
 
-                {{- /* ── Search results (revealed while typing) ── */ -}}
+                <!-- search results div -->
                 <div id="nav-search-results"
                     class="d-none"
                     role="region"
@@ -136,11 +129,9 @@
                     aria-label="Search results">
                 </div>
 
-                {{- /* ── Five nav columns (hidden while search results show) ── */ -}}
                 <nav id="nav-menu-columns" aria-label="Library site navigation">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4">
 
-                        {{- /* Hours column — teal accent, prominent */ -}}
                         <div class="col">
                             <div class="p-3 rounded h-100 bg-clearwater text-white">
                                 <h2 class="h6 fw-bold text-uppercase border-bottom border-white pb-2 mb-3">
@@ -161,14 +152,13 @@
                             </div>
                         </div>
 
-                        {{- /* Find column */ -}}
                         <div class="col">
                             <h2 class="h6 fw-bold text-uppercase border-bottom border-dark pb-2 mb-3">
                                 <a href="{{ '/find/' | relative_url }}" class="text-dark">Find</a>
                             </h2>
                             <ul class="list-unstyled small mb-0">
                                 <li class="mb-2"><a href="https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?vid=01ALLIANCE_UID:UID">Library Catalog</a></li>
-                                <li class="mb-2"><a href="{{ '/find/databases.html' | relative_url }}">Databases A–Z</a></li>
+                                <li class="mb-2"><a href="{{ '/find/databases.html' | relative_url }}">Databases A - Z</a></li>
                                 <li class="mb-2"><a href="{{ '/find/journals.html' | relative_url }}">Journals &amp; E-Books</a></li>
                                 <li class="mb-2"><a href="{{ '/find/course-reserves.html' | relative_url }}">Course Reserves</a></li>
                                 <li class="mb-2"><a href="{{ '/find/articles.html' | relative_url }}">Articles</a></li>
@@ -176,7 +166,6 @@
                             </ul>
                         </div>
 
-                        {{- /* Services column */ -}}
                         <div class="col">
                             <h2 class="h6 fw-bold text-uppercase border-bottom border-dark pb-2 mb-3">
                                 <a href="{{ '/services/' | relative_url }}" class="text-dark">Services</a>
@@ -191,7 +180,6 @@
                             </ul>
                         </div>
 
-                        {{- /* Collections column */ -}}
                         <div class="col">
                             <h2 class="h6 fw-bold text-uppercase border-bottom border-dark pb-2 mb-3">
                                 <a href="{{ '/collections/' | relative_url }}" class="text-dark">Collections</a>
@@ -206,7 +194,6 @@
                             </ul>
                         </div>
 
-                        {{- /* About column */ -}}
                         <div class="col">
                             <h2 class="h6 fw-bold text-uppercase border-bottom border-dark pb-2 mb-3">
                                 <a href="{{ '/about/' | relative_url }}" class="text-dark">About</a>
@@ -227,251 +214,5 @@
             </div>
         </div>
     </div>
-
-    {{- /* ── Nav JavaScript ── */ -}}
-    <script>
-    (function () {
-        'use strict';
-
-        var mainNavMenu   = document.getElementById('mainNavMenu');
-        var mainMenuBtn   = document.getElementById('mainMenu');
-        var navSearchInput  = document.getElementById('nav-search-input');
-        var navSearchResults = document.getElementById('nav-search-results');
-        var navMenuColumns  = document.getElementById('nav-menu-columns');
-        var navTimedisp   = document.getElementById('nav-timedisp');
-        var timedisp      = document.getElementById('timedisp');
-
-        // ── Helpers ──────────────────────────────────────────────────
-
-        function escapeHtml(str) {
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;');
-        }
-
-        function escapeAttr(str) {
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
-        function escapeRegex(str) {
-            return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        }
-
-        /** Highlight query matches in raw text; returns safe HTML string. */
-        function highlight(text, query) {
-            if (!query || !text) return escapeHtml(text || '');
-            var re = new RegExp(escapeRegex(query), 'gi');
-            var result = '';
-            var lastIndex = 0;
-            var match;
-            while ((match = re.exec(text)) !== null) {
-                result += escapeHtml(text.slice(lastIndex, match.index));
-                result += '<mark class="nav-search-highlight">' + escapeHtml(match[0]) + '</mark>';
-                lastIndex = re.lastIndex;
-                if (match[0].length === 0) { re.lastIndex++; } // guard zero-width match
-            }
-            result += escapeHtml(text.slice(lastIndex));
-            return result;
-        }
-
-        /** Extract a snippet of content around the first match. */
-        function getSnippet(text, query) {
-            if (!text) return '';
-            var lower = text.toLowerCase();
-            var idx = query ? lower.indexOf(query.toLowerCase()) : -1;
-            if (idx === -1) return text.slice(0, 200) + (text.length > 200 ? '…' : '');
-            var start = Math.max(0, idx - 60);
-            var end   = Math.min(text.length, idx + 160);
-            return (start > 0 ? '… ' : '') + text.slice(start, end) + (end < text.length ? ' …' : '');
-        }
-
-        // ── Hours display ─────────────────────────────────────────────
-
-        function syncHours() {
-            if (!navTimedisp || !timedisp) return;
-            var text = timedisp.textContent.trim();
-            if (text && text !== 'Hours') {
-                navTimedisp.textContent = text;
-            }
-        }
-
-        // Copy hours into nav panel when it becomes available
-        if (timedisp && navTimedisp) {
-            var hoursObserver = new MutationObserver(syncHours);
-            hoursObserver.observe(timedisp, { childList: true, subtree: true, characterData: true });
-        }
-
-        // ── Bootstrap collapse events ─────────────────────────────────
-
-        if (mainNavMenu) {
-            // Focus the search input when the menu finishes opening
-            mainNavMenu.addEventListener('shown.bs.collapse', function () {
-                syncHours();
-                if (navSearchInput) navSearchInput.focus();
-            });
-
-            // Clear search and return focus to hamburger when menu closes
-            mainNavMenu.addEventListener('hidden.bs.collapse', function () {
-                if (navSearchInput) navSearchInput.value = '';
-                showColumns();
-                if (mainMenuBtn) mainMenuBtn.focus();
-            });
-        }
-
-        // ── Keyboard: Escape closes the menu ─────────────────────────
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key !== 'Escape') return;
-            if (!mainNavMenu || !mainNavMenu.classList.contains('show')) return;
-            // If focus is inside the search input, Escape clears search first
-            if (document.activeElement === navSearchInput && navSearchInput.value) {
-                navSearchInput.value = '';
-                showColumns();
-                return;
-            }
-            if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
-                var collapseInstance = bootstrap.Collapse.getInstance(mainNavMenu);
-                if (collapseInstance) collapseInstance.hide();
-            }
-        });
-
-        // ── Flexsearch site search ────────────────────────────────────
-
-        var searchIndex       = null;
-        var searchDocs        = {};
-        var searchReady       = false;
-        var searchLoading     = false;
-
-        function initSearch() {
-            if (searchReady || searchLoading) return;
-            searchLoading = true;
-
-            var script    = document.createElement('script');
-            script.src    = '{{ "/assets/main-web/lib/flexsearch.bundle.min.js" | relative_url }}';
-            script.onload = function () {
-                searchIndex = new FlexSearch.Document({
-                    document: {
-                        id: 'id',
-                        index: [
-                            { field: 'title',   tokenize: 'forward', store: true },
-                            { field: 'content', tokenize: 'forward', store: true }
-                        ]
-                    },
-                    cache: true
-                });
-
-                fetch('{{ "/assets/main-web/site-search.json" | relative_url }}')
-                    .then(function (r) { return r.json(); })
-                    .then(function (data) {
-                        Object.keys(data).forEach(function (id) {
-                            searchIndex.add({
-                                id:      id,
-                                title:   data[id].title   || '',
-                                content: data[id].content || ''
-                            });
-                            searchDocs[id] = data[id];
-                        });
-                        searchReady   = true;
-                        searchLoading = false;
-                        // Run pending query if user typed before data loaded
-                        if (navSearchInput && navSearchInput.value.trim()) {
-                            runSearch(navSearchInput.value.trim());
-                        }
-                    })
-                    .catch(function (err) {
-                        console.warn('Library search data could not be loaded.', err);
-                        searchLoading = false;
-                    });
-            };
-            script.onerror = function () {
-                console.warn('FlexSearch library could not be loaded.');
-                searchLoading = false;
-            };
-            document.head.appendChild(script);
-        }
-
-        function runSearch(query) {
-            if (!query) { showColumns(); return; }
-            showResults();
-
-            if (!searchReady) {
-                navSearchResults.innerHTML = '<p class="text-muted px-1 py-2">Loading search…</p>';
-                return;
-            }
-
-            var titleHits   = searchIndex.search(query, { field: 'title',   limit: 8 });
-            var contentHits = searchIndex.search(query, { field: 'content', limit: 8 });
-            var seen = {};
-            var ids  = [];
-            [titleHits, contentHits].forEach(function (groups) {
-                (groups || []).forEach(function (g) {
-                    (g.result || []).forEach(function (id) {
-                        if (!seen[id]) { seen[id] = true; ids.push(id); }
-                    });
-                });
-            });
-
-            if (!ids.length) {
-                navSearchResults.innerHTML =
-                    '<p class="text-muted px-1 py-2">No results found for <strong>' +
-                    escapeHtml(query) + '</strong>.</p>';
-                return;
-            }
-
-            var html = '<ul class="list-unstyled mb-0">';
-            ids.slice(0, 10).forEach(function (id) {
-                var doc = searchDocs[id];
-                if (!doc) return;
-                var snippet = getSnippet(doc.content, query);
-                html += '<li>';
-                html += '<a class="d-block text-dark text-decoration-none px-1 py-2 nav-search-result-link"' +
-                        ' href="' + escapeAttr(doc.url || '#') + '">';
-                html += '<div class="fw-semibold">' + highlight(doc.title || '', query) + '</div>';
-                if (doc.page) {
-                    html += '<div class="small text-muted">' + escapeHtml(doc.page) + '</div>';
-                }
-                if (snippet) {
-                    html += '<div class="small text-muted mt-1">' + highlight(snippet, query) + '</div>';
-                }
-                html += '</a></li>';
-            });
-            html += '</ul>';
-            navSearchResults.innerHTML = html;
-        }
-
-        function showResults() {
-            if (navSearchResults) navSearchResults.classList.remove('d-none');
-            if (navMenuColumns)   navMenuColumns.classList.add('d-none');
-        }
-
-        function showColumns() {
-            if (navSearchResults) {
-                navSearchResults.classList.add('d-none');
-                navSearchResults.innerHTML = '';
-            }
-            if (navMenuColumns) navMenuColumns.classList.remove('d-none');
-        }
-
-        // Lazy-init FlexSearch the first time the menu opens
-        if (mainNavMenu) {
-            mainNavMenu.addEventListener('show.bs.collapse', function () {
-                initSearch();
-            });
-        }
-
-        // Live search as the user types
-        if (navSearchInput) {
-            navSearchInput.addEventListener('input', function () {
-                runSearch(this.value.trim());
-            });
-        }
-
-    }());
-    </script>
 
 </header>
