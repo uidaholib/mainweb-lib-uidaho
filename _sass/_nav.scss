@@ -1,0 +1,44 @@
+
+/* header */ 
+header a {
+    text-decoration: none;
+}
+// set menu icon size
+#mainMenu svg {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+// Search results panel: scrollable, max height
+#nav-search-results {
+    max-height: 60vh;
+    overflow-y: auto;
+
+    li + li {
+        border-top: 1px solid var(--bs-gray-200);
+    }
+}
+// Hover state for each result row
+.nav-search-result-link:hover,
+.nav-search-result-link:focus {
+    background-color: var(--bs-gray-100);
+    border-radius: 4px;
+    outline-offset: 2px;
+}
+// Keyword highlight in search results (pride gold)
+.nav-search-highlight {
+    background-color: #F1B300;
+    color: #191919;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* footer */
+footer a {
+    color:white !important;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+#footer-logo {
+    max-height: 150px;
+}
