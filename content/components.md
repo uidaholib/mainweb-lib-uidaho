@@ -1,14 +1,14 @@
 ---
 title: Library Website Components
 noindex: true
-section: 
+section: Test
 permalink: /components.html
 layout: page
 search: false
 tags: 
 description:
 ---
-{% assign colors = "pride-gold;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black" | split: ";" %}
+{% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black" | split: ";" %}
 
 The Library website follows some basic design guidelines and constraints in order to mirror the main University website and accessibility best practices. 
 
