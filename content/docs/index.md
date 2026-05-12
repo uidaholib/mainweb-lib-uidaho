@@ -7,6 +7,9 @@ layout: page
 search: false
 tags: 
 description:
+section_children:
+    - /docs/components.html
+    - /docs/contributing.html
 ---
 {% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black" | split: ";" %}
 

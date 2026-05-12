@@ -7,6 +7,7 @@ layout: page
 search: false
 tags: 
 description:
+section_parent: /docs/
 ---
 {% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black" | split: ";" %}
 
