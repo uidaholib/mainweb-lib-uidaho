@@ -1,14 +1,14 @@
 ---
 title: Library Website Components
 noindex: true
-section: 
+section: Test
 permalink: /components.html
 layout: page
 search: false
 tags: 
 description:
 ---
-{% assign colors = "pride-gold;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black;brand-white" | split: ";" %}
+{% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black" | split: ";" %}
 
 The Library website follows some basic design guidelines and constraints in order to mirror the main University website and accessibility best practices. 
 
@@ -50,8 +50,8 @@ Phone Numbers:
 - Content: Check that numbers are consistent across site
 - Should read (xxx) xxx-xxxx
 - A phone number may be a link, but doesn’t always have to be - make this decision according to context and use the old website as an example.
-- When a call link, code should be: <a href="tel:+1-208-xxx-xxxx">(208) xxx-xxxx</a>
-- When a text link, code should be: <a href="sms:+1-208-xxx-xxxx">(208) xxx-xxxx</a>
+- When a call link, code should be: `<a href="tel:+1-208-xxx-xxxx">(208) xxx-xxxx</a>`
+- When a text link, code should be: `<a href="sms:+1-208-xxx-xxxx">(208) xxx-xxxx</a>`
 
 Names:
 
@@ -86,7 +86,8 @@ Check the main [U of I Brand Resource Center](https://www.uidaho.edu/brand), [in
 ### Text
 
 {% for c in colors %}
-{{ c }} text.{: .text-{{ c }}}
+{{ c }} text.
+{:.text-{{ c }}}
 
 {% endfor %}
 

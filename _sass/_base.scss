@@ -4,49 +4,8 @@
 */
 
 
-// base variables
-$base-font-size:   1.15rem;
-$text-color:       #111;
-$link-color:      #191919;
+/* bootstrap icons tweaks */
 
-
-body {
-    
-    font-size: $base-font-size;
-    color: $text-color; 
-}
-
-/* set heading and btn sizes relative to base font size following Bootstrap method */
-@if $base-font-size != "" {
-
-    $h1-font-size:                $base-font-size * 2.5 !default;
-    $h2-font-size:                $base-font-size * 2 !default;
-    $h3-font-size:                $base-font-size * 1.75 !default;
-    $h4-font-size:                $base-font-size * 1.5 !default;
-    $h5-font-size:                $base-font-size * 1.25 !default;
-    $h6-font-size:                $base-font-size !default;
-
-    $btn-font-size:               $base-font-size !default;
-    $btn-font-size-sm:            $base-font-size * .875 !default;
-    $btn-font-size-lg:            $base-font-size * 1.25 !default;
-
-    h1, .h1 { font-size:$h1-font-size; }
-    h2, .h2 { font-size:$h2-font-size; }
-    h3, .h3 { font-size:$h3-font-size; }
-    h4, .h4 { font-size:$h4-font-size; }
-    h5, .h5 { font-size:$h5-font-size; }
-    h6, .h6 { font-size:$h6-font-size; }
-
-    .btn { font-size:$btn-font-size; }
-    .btn-lg { font-size:$btn-font-size-lg; }
-    .btn-sm { font-size:$btn-font-size-sm; }
-    .form-control { font-size:$btn-font-size; }
-    .form-control-lg { font-size:$btn-font-size-lg; }
-
-}
-
-
-/* bs icons */
 .bi {
     width: 1em;
     height: 1em;
@@ -54,3 +13,16 @@ body {
     vertical-align: -.125em;
     fill: currentcolor;
 }
+/*
+.bi { 
+    display: inline-block;
+    fill: currentColor;
+    vertical-align: text-bottom; 
+    overflow: hidden;
+}
+.icon-sprite {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.1em;
+}
+*/

@@ -1,0 +1,233 @@
+<script src="{{ '/assets/main-web/lib/flexsearch.bundle.min.js' | relative_url }}" ></script>
+<script>
+(function () {
+    'use strict';
+
+    var mainNavMenu   = document.getElementById('mainNavMenu');
+    var mainMenuBtn   = document.getElementById('mainMenu');
+    var navSearchInput  = document.getElementById('nav-search-input');
+    var navSearchResults = document.getElementById('nav-search-results');
+    var navMenuColumns  = document.getElementById('nav-menu-columns');
+    var navTimedisp   = document.getElementById('nav-timedisp');
+    var timedisp      = document.getElementById('timedisp');
+
+    // ── Helpers ──────────────────────────────────────────────────
+
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function escapeAttr(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function escapeRegex(str) {
+        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    /** Highlight query matches in raw text; returns safe HTML string. */
+    function highlight(text, query) {
+        if (!query || !text) return escapeHtml(text || '');
+        var re = new RegExp(escapeRegex(query), 'gi');
+        var result = '';
+        var lastIndex = 0;
+        var match;
+        while ((match = re.exec(text)) !== null) {
+            result += escapeHtml(text.slice(lastIndex, match.index));
+            result += '<mark class="nav-search-highlight">' + escapeHtml(match[0]) + '</mark>';
+            lastIndex = re.lastIndex;
+            if (match[0].length === 0) { re.lastIndex++; } // guard zero-width match
+        }
+        result += escapeHtml(text.slice(lastIndex));
+        return result;
+    }
+
+    /** Extract a snippet of content around the first match. */
+    function getSnippet(text, query) {
+        if (!text) return '';
+        var lower = text.toLowerCase();
+        var idx = query ? lower.indexOf(query.toLowerCase()) : -1;
+        if (idx === -1) return text.slice(0, 200) + (text.length > 200 ? '…' : '');
+        var start = Math.max(0, idx - 60);
+        var end   = Math.min(text.length, idx + 160);
+        return (start > 0 ? '… ' : '') + text.slice(start, end) + (end < text.length ? ' …' : '');
+    }
+
+    // ── Hours display ─────────────────────────────────────────────
+
+    function syncHours() {
+        if (!navTimedisp || !timedisp) return;
+        var text = timedisp.textContent.trim();
+        if (text && text !== 'Hours') {
+            navTimedisp.textContent = text;
+        }
+    }
+
+    // Copy hours into nav panel when it becomes available
+    if (timedisp && navTimedisp) {
+        var hoursObserver = new MutationObserver(syncHours);
+        hoursObserver.observe(timedisp, { childList: true, subtree: true, characterData: true });
+    }
+
+    // ── Bootstrap collapse events ─────────────────────────────────
+
+    if (mainNavMenu) {
+        // Focus the search input when the menu finishes opening
+        mainNavMenu.addEventListener('shown.bs.collapse', function () {
+            syncHours();
+            if (navSearchInput) navSearchInput.focus();
+        });
+
+        // Clear search and return focus to hamburger when menu closes
+        mainNavMenu.addEventListener('hidden.bs.collapse', function () {
+            if (navSearchInput) navSearchInput.value = '';
+            showColumns();
+            if (mainMenuBtn) mainMenuBtn.focus();
+        });
+    }
+
+    // ── Keyboard: Escape closes the menu ─────────────────────────
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        if (!mainNavMenu || !mainNavMenu.classList.contains('show')) return;
+        // If focus is inside the search input, Escape clears search first
+        if (document.activeElement === navSearchInput && navSearchInput.value) {
+            navSearchInput.value = '';
+            showColumns();
+            return;
+        }
+        if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+            var collapseInstance = bootstrap.Collapse.getInstance(mainNavMenu);
+            if (collapseInstance) collapseInstance.hide();
+        }
+    });
+
+    // ── Flexsearch site search ────────────────────────────────────
+
+    var searchIndex       = null;
+    var searchDocs        = {};
+    var searchReady       = false;
+    var searchLoading     = false;
+
+    function initSearch() {
+        searchIndex = new FlexSearch.Document({
+            document: {
+                id: 'id',
+                index: [
+                    { field: 'title',   tokenize: 'forward', store: true },
+                    { field: 'content', tokenize: 'forward', store: true }
+                ]
+            },
+            cache: true
+        });
+
+        fetch('{{ "/assets/main-web/site-search.json" | relative_url }}')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                Object.keys(data).forEach(function (id) {
+                    searchIndex.add({
+                        id:      id,
+                        title:   data[id].title   || '',
+                        content: data[id].content || ''
+                    });
+                    searchDocs[id] = data[id];
+                });
+                searchReady   = true;
+                searchLoading = false;
+                // Run pending query if user typed before data loaded
+                if (navSearchInput && navSearchInput.value.trim()) {
+                    runSearch(navSearchInput.value.trim());
+                }
+            })
+            .catch(function (err) {
+                console.warn('Library search data could not be loaded.', err);
+                searchLoading = false;
+            });
+    }
+
+    function runSearch(query) {
+        if (!query) { showColumns(); return; }
+        showResults();
+
+        if (!searchReady) {
+            navSearchResults.innerHTML = '<p class="text-muted px-1 py-2">Loading search…</p>';
+            return;
+        }
+
+        var titleHits   = searchIndex.search(query, { field: 'title',   limit: 8 });
+        var contentHits = searchIndex.search(query, { field: 'content', limit: 8 });
+        var seen = {};
+        var ids  = [];
+        [titleHits, contentHits].forEach(function (groups) {
+            (groups || []).forEach(function (g) {
+                (g.result || []).forEach(function (id) {
+                    if (!seen[id]) { seen[id] = true; ids.push(id); }
+                });
+            });
+        });
+
+        if (!ids.length) {
+            navSearchResults.innerHTML =
+                '<p class="text-muted px-1 py-2">No results found for <strong>' +
+                escapeHtml(query) + '</strong>.</p>';
+            return;
+        }
+
+        var html = '<ul class="list-unstyled mb-0">';
+        ids.slice(0, 10).forEach(function (id) {
+            var doc = searchDocs[id];
+            if (!doc) return;
+            var snippet = getSnippet(doc.content, query);
+            html += '<li>';
+            html += '<a class="d-block text-dark text-decoration-none px-1 py-2 nav-search-result-link"' +
+                    ' href="' + escapeAttr(doc.url || '#') + '">';
+            html += '<div class="fw-semibold">' + highlight(doc.title || '', query) + '</div>';
+            if (doc.page) {
+                html += '<div class="small text-muted">' + escapeHtml(doc.page) + '</div>';
+            }
+            if (snippet) {
+                html += '<div class="small text-muted mt-1">' + highlight(snippet, query) + '</div>';
+            }
+            html += '</a></li>';
+        });
+        html += '</ul>';
+        navSearchResults.innerHTML = html;
+    }
+
+    function showResults() {
+        if (navSearchResults) navSearchResults.classList.remove('d-none');
+        if (navMenuColumns)   navMenuColumns.classList.add('d-none');
+    }
+
+    function showColumns() {
+        if (navSearchResults) {
+            navSearchResults.classList.add('d-none');
+            navSearchResults.innerHTML = '';
+        }
+        if (navMenuColumns) navMenuColumns.classList.remove('d-none');
+    }
+
+    // Lazy-init FlexSearch the first time the menu opens
+    if (mainNavMenu) {
+        mainNavMenu.addEventListener('show.bs.collapse', function () {
+            initSearch();
+        });
+    }
+
+    // Live search as the user types
+    if (navSearchInput) {
+        navSearchInput.addEventListener('input', function () {
+            runSearch(this.value.trim());
+        });
+    }
+
+}());
+</script>
