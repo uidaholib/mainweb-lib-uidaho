@@ -1,8 +1,8 @@
 ---
-title: Library Website Components
+title: Library Website Docs
 noindex: true
-section: Test
-permalink: /components.html
+section: Docs
+permalink: /docs/
 layout: page
 search: false
 tags: 
@@ -17,12 +17,8 @@ The Library website follows some basic design guidelines and constraints in orde
 U of I's official brand includes these theme colors: {{ colors | join: ", " }}.
 We generate a custom Bootstrap theme using those colors, making the color variations available for all standard Bootstrap components.
 
-### Button Colors
-
 {% for c in colors %}
-[{{ c }}](https://www.lib.uidaho.edu/){:.btn .btn-lg .btn-{{ c }}}
-
-{% endfor %}
+[{{ c }}](https://www.lib.uidaho.edu/){:.btn .btn-lg .btn-{{ c }} .m-2}{% endfor %}
 
 ## Style Guide
 
@@ -55,7 +51,7 @@ Phone Numbers:
 
 Names:
 
--Check that names are current and consistent across site.
+- Check that names are current and consistent across site.
 
 Email:
 
@@ -72,31 +68,8 @@ Proper Use of "And":
 
 - Always use "U of I" (not "UI" or "UIdaho")
 
-Check the main [U of I Brand Resource Center](https://www.uidaho.edu/brand), [intranet pages](https://vandalsuidaho.sharepoint.com/sites/InsideUI-UCM/SitePages/Brand.aspx), and [U of I Brand Book](https://content-hub.uidaho.edu/api/public/content/226d8af4ad704e65a2e42d96613305b2?v=e636bbda).
+### Resources
 
-## Components
-
-### Outline Buttons
-
-{% for c in colors %}
-[{{ c }}](https://www.lib.uidaho.edu/){:.btn .btn-lg .btn-outline-{{ c }}}
-
-{% endfor %}
-
-### Text
-
-{% for c in colors %}
-{{ c }} text.
-{:.text-{{ c }}}
-
-{% endfor %}
-
-### Background
-
-{% for c in colors %}
-<div class="bg-{{ c }} p-4 m-3"><span class="text-white">{{ c }}</span></div>{% endfor %}
-
-### Border
-
-{% for c in colors %}
-<div class="p-4 border border-5 border-{{ c }} m-3">{{ c }} at border-5</div>{% endfor %}
+- [U of I Brand Resource Center](https://www.uidaho.edu/brand)
+- [Brand intranet pages](https://vandalsuidaho.sharepoint.com/sites/InsideUI-UCM/SitePages/Brand.aspx)
+- [U of I Brand Book](https://content-hub.uidaho.edu/api/public/content/226d8af4ad704e65a2e42d96613305b2?v=e636bbda).
