@@ -11,7 +11,7 @@ There are many different ways to contribute, including:
 
 The sections below document some guidelines for contributing directly to the web project code.
 
-Please see [Library Website Components]() for style guide information.
+Please see [Library Website Docs](https://www.lib.uidaho.edu/docs/) for style guide information.
 
 ## Making Updates in the Project
 
@@ -55,8 +55,10 @@ Here are the steps:
 
 In general, the Web Team (Evan) will deploy site to the live server.
 In emergency / urgent situations when main Web Team is not available, fall backs are available to deploy with access to the server.
+
 Try:
 
-1. Evan, Andrew
-2. Maryelizabeth
-3. Kevin, Devin
+1. Evan
+2. Devin or Andrew
+3. Kevin
+4. Seth

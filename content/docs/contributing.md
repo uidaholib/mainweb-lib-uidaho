@@ -1,13 +1,15 @@
 ---
 title: How to Contribute
-noindex: true
 section: Docs
 permalink: /docs/contributing.html
 layout: page
 search: false
 tags: 
 description:
-section_parent: /docs/
+page_nav:
+    parent: /docs/
+    children:
+noindex: true
 ---
 
 All library folks are invited to contribute to the web site project.

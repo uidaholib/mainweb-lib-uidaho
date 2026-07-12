@@ -1,14 +1,16 @@
 ---
 title: Library Website Components
-noindex: true
 section: Docs
 permalink: /docs/components.html
 layout: page
 search: false
 tags: 
 description:
-section_parent: /docs/
+page_nav:
+    parent: /docs/
+noindex: true
 ---
+
 {% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black" | split: ";" %}
 
 To build consistency across the pages, the library website has a variety of reusable template components that add features to the content.

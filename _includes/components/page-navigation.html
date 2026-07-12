@@ -1,0 +1,35 @@
+{% comment %}
+
+    Add page nav feature based on page.page_nav keys.
+
+{% endcomment %}
+<nav aria-label="Section Navigation" id="section-nav">
+    {% if page.section %}<h2>{{ page.section }}</h2>{% endif %}
+    <ul class="list-group rounded-0">
+        {% if page.page_nav.parent and page.page_nav.children %}
+            {% assign nav_parent = site.html_pages | where: 'permalink', page.page_nav.parent | first %}
+            {% assign self_child = page.permalink | split: '|' %}
+            {% assign nav_children = nav_parent.permalink | split: '|' | concat: self_child | concat: page.page_nav.children %}
+        {% elsif page.page_nav.parent %}
+            {% assign nav_parent = site.html_pages | where: 'permalink', page.page_nav.parent | first %}
+            {% assign nav_children = nav_parent.permalink | split: '|' | concat: nav_parent.page_nav.children %}
+        {% else %}
+            {% assign nav_parent = page %}
+            {% assign nav_children = nav_parent.permalink | split: '|' | concat: page.page_nav.children %}
+        {%- endif -%}
+        {% for c in nav_children %}
+        {% assign c_page = site.html_pages | where: 'permalink', c | first %}
+        <li class="list-group-item py-3{% if c_page.url == page.url %} active{% endif %}"{% if c_page.url == page.url %} aria-current="true"{% endif %}>
+            <a href="{{ c_page.url | relative_url }}" class="w-100 d-flex justify-content-between stretched-link">
+                <span>{{ c_page.title }}</span>
+                {% unless c_page.url == page.url %}
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor text-dark" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                    </svg>
+                </span>{%- endunless -%}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>

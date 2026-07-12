@@ -1,16 +1,18 @@
 ---
 title: Library Website Docs
-noindex: true
 section: Docs
 permalink: /docs/
 layout: page
 search: false
 tags: 
 description:
-section_children:
-    - /docs/components.html
-    - /docs/contributing.html
+page_nav:
+    children:
+        - /docs/contributing.html
+        - /docs/components.html
+noindex: true
 ---
+
 {% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black" | split: ";" %}
 
 The Library website follows some basic design guidelines and constraints in order to mirror the main University website and accessibility best practices. 
