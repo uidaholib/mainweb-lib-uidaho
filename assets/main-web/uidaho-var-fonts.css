@@ -1,0 +1,30 @@
+---
+# generate font css for UofI fonts
+# reflecting the variable Public Sans of the university site
+---
+@font-face {
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('{{ "/assets/fonts/PublicSans-VariableFont.woff2" | relative_url }}') format('woff2');
+}
+@font-face {
+    font-family: 'Public Sans';
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('{{ "/assets/fonts/PublicSans-Italic-VariableFont.woff2" | relative_url }}') format('woff2');
+}
+/* metrics-adjusted fallback to minimize layout shift while Public Sans loads */
+@font-face {
+    font-family: 'Public Sans Fallback';
+    src: local('Arial');
+    ascent-override: 90.59%;
+    descent-override: 21.46%;
+    line-gap-override: 0.00%;
+    size-adjust: 104.87%;
+}
+body {
+    font-family: 'Public Sans', 'Public Sans Fallback', sans-serif;
+}
