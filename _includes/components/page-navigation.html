@@ -20,7 +20,7 @@ page_nav:
 {% endcomment %}
 <nav aria-label="Section Navigation" id="section-nav">
     {% if page.section %}<h2>{{ page.section }}</h2>{% endif %}
-    <ul class="list-group">
+    <ul class="list-group mb-5">
         {% if page.page_nav.parent and page.page_nav.children %}
             {% assign nav_parent = site.html_pages | where: 'permalink', page.page_nav.parent | first %}
             {% assign self_child = page.permalink | split: '|' %}

@@ -35,7 +35,7 @@ page_callout:
 {% endcomment %}
 {% assign callout = page.page_callout %}
 {% assign callout_color = callout.color | default: "pride-gold" %}
-<div id="page-callout" class="text-bg-{{ callout_color }} mt-5 mb-4">
+<div id="page-callout" class="text-bg-{{ callout_color }} mb-5">
     {% if callout.image %}
     <div class="ratio ratio-16x9">
         <img src="{{ callout.image }}" alt="{{ callout.image-alt | default: '' }}" class="w-100 h-100 object-fit-cover">
