@@ -9,6 +9,13 @@ description:
 page_nav:
     parent: /docs/
     children:
+page_resources:
+    title: More Information
+    links: 
+        - text: Bootstrap
+          link: https://getbootstrap.com/
+        - text: Jekyll
+          link: https://jekyllrb.com/
 noindex: true
 ---
 

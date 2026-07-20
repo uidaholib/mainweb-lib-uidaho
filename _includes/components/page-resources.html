@@ -1,0 +1,43 @@
+{% comment %}
+
+    Page Resources include is a standard page component found on the right side column of default page layout. It provides a list of resource links. These are generally external or deep links, supplementing than the standard page nav.
+
+    It is a card box with grey background, a heading, and list of links.
+    If the link is a file or external link, it has a icon at the end.
+
+    This include is configured using page yaml front matter, page.page_resources keys. If a page has the page.page_resources key the layout will add this include automatically. 
+    Example YAML front matter configuration:
+
+page_resources:
+    title: Resources
+    links:
+        - text: U of I Brand
+          link: https://www.uidaho.edu/brand    
+        - text: Brand intranet pages
+          link: https://vandalsuidaho.sharepoint.com/sites/InsideUI-UCM/SitePages/Brand.aspx
+        - text: U of I Brand Book
+          link: https://content-hub.uidaho.edu/api/public/content/226d8af4ad704e65a2e42d96613305b2?v=e636bbda 
+
+
+{% endcomment %}
+<div id="page-resources" class="bg-brand-grey p-4 mt-5">
+    {% if page.page_resources.title %}<h2 class="fs-3 mb-4">{{ page.page_resources.title }}</h2>{% endif %}
+    <ul class="list-unstyled mb-0">
+        {% for item in page.page_resources.links %}
+        {%- assign link_icon = false -%}
+        {%- if item.link contains "://" -%}
+            {%- assign link_icon = true -%}
+        {%- else -%}
+            {%- assign link_ext = item.link | split: "?" | first | split: "." | last | downcase -%}
+            {%- if link_ext == "pdf" or link_ext == "doc" or link_ext == "docx" or link_ext == "ppt" or link_ext == "pptx" or link_ext == "xls" or link_ext == "xlsx" or link_ext == "zip" -%}{%- assign link_icon = true -%}{%- endif -%}
+        {%- endif -%}
+        <li class="fs-5 fw-medium mb-3">
+            <a href="{% if item.link contains '://' %}{{ item.link }}{% else %}{{ item.link | relative_url }}{% endif %}">{{ item.text }}{% if link_icon %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi icon-sprite ms-1" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
+                    <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
+                </svg>{% endif %}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
