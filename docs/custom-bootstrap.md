@@ -1,6 +1,6 @@
 # Custom Bootstrap Version
 
-See [bootstrap-sass-template](https://github.com/thecdil/bootstrap-sass-template), in uidaho-mainweb branch.
+See [bootstrap-sass-template](https://github.com/thecdil/bootstrap-sass-template), in uidaho-mainweb-autoprefix branch.
 The compiled output is committed to this repo as "assets/main-web/bootstrap-uidaho.css" (a copy of the customized "_variables.scss" is kept in "docs/_variables.scss" for reference, changed variables are marked with uidaho comments).
 
 Customization values mirror the measured styles of www.uidaho.edu (which uses a Tailwind-based build) so standard Bootstrap components more easily match the theme.
