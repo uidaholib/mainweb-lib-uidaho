@@ -18,6 +18,9 @@ layout: default
                 {% if page.page_nav %}
                 {% include components/page-navigation.html %}
                 {% endif %}
+                {% if page.page_callout %}
+                {% include components/page-callout.html %}
+                {% endif %}
                 {% if page.page_resources %}
                 {% include components/page-resources.html %}
                 {% endif %}

@@ -29,8 +29,10 @@
     }
 }
 .arrow-link:after {
+    content: "";
     margin-left: .625rem;
-    display: inline;
+    display: inline-block;
+    vertical-align: text-bottom;
     background-color: currentColor;
     position: relative;
     z-index: 0;

@@ -8,10 +8,18 @@ tags:
 description:
 page_nav:
     parent: /docs/
+page_callout: 
+    title: Digital Collections
+    text: Digital Collections is a continually growing, searchable database that provides access to rare and unique collections to enhance and support research and education at the University of Idaho.
+    link: https://www.lib.uidaho.edu/digital/
+    link-text: Visit
+    image: https://www.lib.uidaho.edu/media/collections/fatmen.jpg
+    image-alt: Two men race down main street in historic photograph
+    color: palouse
 noindex: true
 ---
 
-{% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black" | split: ";" %}
+{% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black;brand-gray" | split: ";" %}
 
 To build consistency across the pages, the library website has a variety of reusable template components that add features to the content.
 They are based on the main U of I design, our needs, and [Bootstrap features](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
