@@ -3,6 +3,16 @@
     The Page Callout feature is a standard page component found on the right side column of default page layout. It is a card feature with an optional image, a heading, description text, and a link. It can be brand colors pride-gold, black, or palouse.
 
     This include is configured using page yaml front matter, page.page_callout keys. If a page has the page.page_callout key the layout will add this include automatically. 
+    Options:
+
+    - title: the heading for the card.
+    - text: the descriptive text, a sentence or two max.
+    - link: full URL (optional).
+    - link-text: the text for the hyperlink (optional).
+    - image: full URL to image file (optional).
+    - image-alt: descriptive alt text for the image.
+    - color: pride-gold, brand-black, or palouse (optional, defaults to pride-gold). Text color is automatically set for contrast.
+    
     Example YAML front matter configuration:
 
 page_callout: 
@@ -13,24 +23,6 @@ page_callout:
     image: https://www.lib.uidaho.edu/media/collections/fatmen.jpg
     image-alt: Two men race down main street in historic photograph
     color: pride-gold
-
-    Options:
-
-    - title: the heading for the card.
-    - text: the descriptive text, a sentence or two max.
-    - link: full URL (optional).
-    - link-text: the text for the hyperlink (optional).
-    - image: full URL to image file (optional).
-    - image-alt: descriptive alt text for the image.
-    - color: pride-gold, brand-black, or palouse (optional, defaults to pride-gold). Text color is automatically set for contrast.
-
-    Examples: 
-
-    - data-component="CardPromo_33" on https://www.uidaho.edu/financial-aid/financial-aid-faq 
-    - pride-gold: docs/ideas/page-callout.png
-    - pride-gold with image: docs/ideas/callout-with-image.png
-    - brand-black with image: docs/ideas/callout-with-image-black.png
-    - palouse: docs/ideas/callout-green.png
 
 {% endcomment %}
 {% assign callout = page.page_callout %}
