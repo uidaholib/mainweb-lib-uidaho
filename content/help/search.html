@@ -1,0 +1,39 @@
+---
+title: Site Search
+section: Help
+permalink: /help/search.html
+layout: page
+search: true
+tags:
+description:
+page_nav:
+    parent: /help/
+    children:
+---
+
+<p class="lead">Search the library website for pages, guides, policies, and help content.</p>
+
+<p>If you are looking for <a href="/find/articles.html">articles</a>, <a href="https://libguides.uidaho.edu/az/databases">databases</a>, or other library resources, please use the <a href="https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?vid=01ALLIANCE_UID:UID">library catalog</a>. You can also try <a href="/help/google.html">Google Site Search</a>.</p>
+
+<form id="page-search-form" role="search" action="{{ '/help/search.html' | relative_url }}" method="get" class="mb-4">
+    <label for="page-search-input" class="visually-hidden">Search the library website</label>
+    <div class="input-group input-group-lg">
+        <input
+            type="search"
+            class="form-control"
+            id="page-search-input"
+            name="q"
+            placeholder="Search the library site..."
+            autocomplete="off"
+            spellcheck="false"
+            aria-controls="page-search-results"
+            aria-describedby="page-search-status"
+            aria-label="Search the library website">
+        <button class="btn btn-pride-gold px-4" type="submit">Search</button>
+    </div>
+</form>
+
+<p id="page-search-status" class="text-muted small mb-3" aria-live="polite"></p>
+
+<div id="page-search-results" role="region" aria-live="polite" aria-atomic="false" aria-label="Search results"></div>
+
