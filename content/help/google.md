@@ -4,8 +4,11 @@ section: Help
 permalink: /help/google.html
 layout: page
 search: false
-tags: 
+tags:
 description:
+page_nav:
+    parent: /help/
+    children:
 ---
 
 Use the search box below to find information and content on the library's website via Google Search.
