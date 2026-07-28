@@ -1,0 +1,143 @@
+---
+title: University of Idaho Library
+section: Home
+permalink: /
+layout: full-width-page
+search: false
+tags: 
+description:
+---
+
+<div class="bg-brand-black p-3 text-end">
+    <script>
+        function primo_search() {
+            var query = document.getElementById("primo-search").value;
+            window.open("https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?tab=Everything&search_scope=DN_and_CI&vid=01ALLIANCE_UID:UID&query=any,contains," + encodeURIComponent(query), "_self" );
+        }
+    </script>
+    <div class="container">
+        <form class="pt-2" role="search" onsubmit="primo_search(); return false;">
+            <div class="row g-2 justify-content-end">
+                <div class="col-10 col-md-6">
+                    <input id="primo-search" class="form-control form-control-lg" type="search" placeholder="Search the catalog ..." aria-label="Search Library Catalog">
+                </div>
+                <div class="col-2 col-md-1">
+                    <button class="btn btn-lg btn-pride-gold text-dark w-100" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" aria-hidden="true"> <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/> </svg><span class="visually-hidden">Search Catalog</span></button>
+                </div>
+            </div>
+        </form>
+
+        <div class="pt-1">
+            <ul class="nav justify-content-end mt-1" id="quickLinks">
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="https://libguides.uidaho.edu/az/databases">Databases A-Z</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="https://libguides.uidaho.edu/">Research Guides</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="{{ '/services/reserve/' | relative_url }}" >Reserves</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link px-2 text-white text-white">|</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="{{ '/datahub/' | relative_url }}" >DataHub</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="{{ '/mill/' | relative_url }}" >MILL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="{{ '/studio/' | relative_url }}" >Studio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-white" href="{{ '/special-collections/' | relative_url }}" >Special Collections</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<h2>Welcome to the Library!</h2>
+
+{% include feature/squiggly-divider.html color="white" %}
+{% include feature/carousel-gallery.html slides=site.data.index_carousel %}
+
+<div id="marketing" class="container py-3 mt-2">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="text-center h4"><a href="{{ '/giving/' | relative_url }}" title="Information regarding donations to the library">Bringing the world to Idaho ... and Idaho to the world.</a></h2>
+        </div>
+        <div class="col-md-4">
+            {% include components/social-media-icons.html %}
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-3 mt-3">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card m-2 mx-auto text-center">
+                <div class="card-body">
+                    <h3><a href="{{ '/about/liaisons.html' | relative_url }}">Featured Subject Librarian</a></h3>
+                    <p class="card-text"><a href="{{ '/help/research.html' | relative_url }}">Get help with your Research!</a></p>
+                    <div id="featuredResearcher" class="mx-auto"></div>
+                    {%- assign liaisons = site.data.about_liaisons -%}
+                    <script>
+                    /* featured librarians */
+                    var researchers = [
+                        // img, college, name, email, vivo, departments
+                        [ "/directory/joe_headshot2.jpg", "Liaison to the University", "Joe \"Reference\" Vandal", "libref@uidaho.edu", "/help/", "Got questions? Just ask us!"],
+                        {% for l in liaisons %}{% assign liaison = site.data.about_people | where: 'id', l.id | first %}
+                        [ "{% if liaison.image %}/directory/{{ liaison.image }}{% else %}/directory/tower_icon_gold_sq.png{% endif %}","{{ l.liaison_title }}","{{ l.first_name }} {{ l.last_name }}","{{ l.email }}","/about/people/{{ l.id }}.html","{{ l.liaison_departments }}" ]{% unless forloop.last %},{% endunless %}
+                        {% endfor %}
+                    ];
+                    var featuredResearcher = researchers.sort(function() { return 0.5 - Math.random() }).pop();
+                    var featuredCard = `<a href="${ featuredResearcher[4]}"><img style="max-width: 200px;" class="img-fluid rounded" src="{{ site.lib-media }}${featuredResearcher[0]}" alt="portrait of ${featuredResearcher[2]}"></a>
+                    <div class="card-body"> 
+                    <h4 class="card-title"><a href="${featuredResearcher[4]}">${featuredResearcher[2]}</a></h4>
+                    <p class="card-text"><strong>${featuredResearcher[1]}</strong><br>${featuredResearcher[5]}</p> 
+                    <a href="https://uidaho.co1.qualtrics.com/jfe/form/SV_1GJiDTJ7po0bDk9?topic=${encodeURIComponent(featuredResearcher[1])}&person=${encodeURIComponent(featuredResearcher[2])}&email=${encodeURIComponent(featuredResearcher[3])}" class="btn btn-outline-pride-gold">Request Meeting</a>
+                    </div>`;
+                    document.getElementById("featuredResearcher").innerHTML = featuredCard;
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card m-2">
+                <div class="card-body">
+                    <div id="api_upc_cid4884_iid3479"></div><script async type="text/javascript" src="https://api3.libcal.com/api_events.php?iid=3479&m=upc&cid=4884&audience=&c=&d=&l=5&simple=ul_date&context=object&format=js"> </script>
+                    <hr>
+                    <div class="text-center">
+                    <a href="{{ '/events/' | relative_url }}" class="btn btn-palouse m-2"><span class="fas fa-calendar-alt"></span> Calendar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card m-2 mx-auto text-center">
+                <div class="card-body">
+                    <h3><a href="https://harvester.lib.uidaho.edu/">Idaho Harvester</a></h3>
+                    <p class="card-text">Read the latest posts featuring unique materials and stories from Special Collections and Archives!</p>
+                    <div id="blog-preview" class="text-center my-3"></div>
+                    <script src="https://harvester.lib.uidaho.edu/assets/harvester-post.js"></script>
+                    <script>
+                    var blogPreview = `<figure class="figure mx-3">
+                            <a href="${harvesterPost.link}" title="${harvesterPost.title}"><img class="figure-img img-fluid rounded" alt="blog post feature" src="${harvesterPost.image_small}"></a>
+                            <figcaption>
+                                <a class="h5 mt-3" href="${harvesterPost.link}">${harvesterPost.title}</a>
+                            </figcaption>
+                        </figure>`;
+                    document.getElementById("blog-preview").innerHTML = blogPreview;
+                    </script>
+                    <div class="text-center">
+                        <a class="btn btn-outline-pride-gold" href="https://harvester.lib.uidaho.edu/">Visit the Idaho Harvester</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

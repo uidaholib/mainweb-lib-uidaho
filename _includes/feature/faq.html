@@ -1,0 +1,66 @@
+{% comment %}
+
+    FAQ is an accordion feature built from a CSV in the "_data" folder that can optionally be divided into sections with headings. The accordion is the same as the accordion component, "feature/accordion.html", and shares its styling.
+
+    The CSV should have the columns `question,answer,category`. Category is optional.
+    If category is included, the FAQ will be divided into separate accordions with a header listing each unique category, grouping together the related questions. When there is more than one category a set of jump links to each section is added above the FAQ.
+    Use category on every row or on none of them, a row left blank will be grouped under an empty heading.
+
+    {% include feature/faq.html data="mill_faq" %}
+
+    Options:
+
+    - "data" = the name of the CSV in the "_data" folder, given without the file extension, e.g. "studio_faq".
+    - "heading_level" = the heading element used for the category headings, "h2", "h3", etc (default "h2"), set for correct heading order on the page. The questions are automatically set one level below.
+    - "single" = optional, add "true" so that opening a question closes the others. By default any number of answers can be open at once, which matches uidaho.edu and lets people compare answers.
+
+{%- endcomment -%}
+{%- assign faq_data = site.data[include.data] -%}
+{%- if faq_data.size > 0 -%}
+{%- assign faq_id = "faq-" | append: include.data | slugify -%}
+{%- assign cat_level = include.heading_level | default: "h2" | strip -%}
+{%- assign q_num = cat_level | remove_first: "h" | plus: 1 -%}
+{%- if q_num > 6 -%}{%- assign q_num = 6 -%}{%- endif -%}
+{%- assign q_level = "h" | append: q_num -%}
+{%- assign cats = faq_data | map: "category" | compact | uniq -%}
+{%- assign grouped = false -%}
+{%- if cats.size > 0 -%}{%- assign grouped = true -%}{%- endif -%}
+{%- comment -%} when there are no categories the loop still runs once, over the whole data set {%- endcomment -%}
+{%- assign groups = cats -%}
+{%- unless grouped -%}{%- assign groups = "all" | split: "," -%}{%- endunless -%}
+{%- assign faq_single = false -%}
+{%- if include.single == true or include.single == "true" -%}{%- assign faq_single = true -%}{%- endif -%}
+{%- if grouped and cats.size > 1 %}
+<nav aria-label="FAQ categories" class="mb-4">
+    <ul class="list-unstyled d-flex flex-wrap gap-2 mb-0">
+        {%- for c in cats %}
+        <li><a href="#{{ faq_id }}-{{ forloop.index }}" class="btn btn-outline-clearwater btn-sm">{{ c }}</a></li>
+        {%- endfor %}
+    </ul>
+</nav>
+{%- endif -%}
+{%- for g in groups -%}
+{%- assign group_id = faq_id | append: "-" | append: forloop.index -%}
+{%- if grouped -%}
+{%- assign section = faq_data | where: "category", g -%}
+{%- assign item_level = q_level -%}
+{%- else -%}
+{%- assign section = faq_data -%}
+{%- assign item_level = cat_level -%}
+{%- endif %}
+{% if grouped %}<{{ cat_level }} class="fs-4 mb-3" id="{{ group_id }}" tabindex="-1">{{ g }}</{{ cat_level }}>{% endif %}
+<div class="accordion mb-5" id="{{ group_id }}-accordion">
+    {%- for q in section -%}
+    {%- assign item_id = group_id | append: "-q" | append: forloop.index %}
+    <div class="accordion-item">
+        <{{ item_level }} class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ item_id }}" aria-expanded="false" aria-controls="{{ item_id }}">{{ q.question }}</button>
+        </{{ item_level }}>
+        <div id="{{ item_id }}" class="accordion-collapse collapse"{% if faq_single %} data-bs-parent="#{{ group_id }}-accordion"{% endif %}>
+            <div class="accordion-body">{{ q.answer | markdownify }}</div>
+        </div>
+    </div>
+    {%- endfor %}
+</div>
+{%- endfor -%}
+{%- endif -%}

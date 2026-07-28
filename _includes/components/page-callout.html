@@ -1,0 +1,43 @@
+{% comment %}
+
+    The Page Callout feature is a standard page component found on the right side column of default page layout. It is a card feature with an optional image, a heading, description text, and a link. It can be brand colors pride-gold, black, or palouse.
+
+    This include is configured using page yaml front matter, page.page_callout keys. If a page has the page.page_callout key the layout will add this include automatically. 
+    Options:
+
+    - title: the heading for the card.
+    - text: the descriptive text, a sentence or two max.
+    - link: full URL (optional).
+    - link-text: the text for the hyperlink (optional).
+    - image: full URL to image file (optional).
+    - image-alt: descriptive alt text for the image.
+    - color: pride-gold, brand-black, or palouse (optional, defaults to pride-gold). Text color is automatically set for contrast.
+    
+    Example YAML front matter configuration:
+
+page_callout: 
+    title: Digital Collections
+    text: Digital Collections is a continually growing, searchable database that provides access to rare and unique collections to enhance and support research and education at the University of Idaho.
+    link: https://www.lib.uidaho.edu/digital/
+    link-text: Visit
+    image: https://www.lib.uidaho.edu/media/collections/fatmen.jpg
+    image-alt: Two men race down main street in historic photograph
+    color: pride-gold
+
+{% endcomment %}
+{% assign callout = page.page_callout %}
+{% assign callout_color = callout.color | default: "pride-gold" %}
+<div id="page-callout" class="text-bg-{{ callout_color }} mb-5">
+    {% if callout.image %}
+    <div class="ratio ratio-16x9">
+        <img src="{{ callout.image }}" alt="{{ callout.image-alt | default: '' }}" class="w-100 h-100 object-fit-cover">
+    </div>
+    {% endif %}
+    <div class="p-4 p-xl-5">
+        {% if callout.title %}<h2 class="fs-3 mb-3">{{ callout.title }}</h2>{% endif %}
+        {% if callout.text %}<p class="mb-4">{{ callout.text }}</p>{% endif %}
+        {% if callout.link %}
+        <a href="{{ callout.link }}" class="arrow-link text-reset text-decoration-none text-uppercase fw-bold">{{ callout.link-text | default: "Learn more" }}</a>
+        {% endif %}
+    </div>
+</div>

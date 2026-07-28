@@ -1,0 +1,9 @@
+<!-- add DataTable -->
+<link rel="stylesheet" type="text/css" href="{{ '/assets/main-web/lib/datatables/datatables.min.css' | relative_url }}">
+<script src="{{ '/assets/main-web/lib/datatables/datatables.min.js' | relative_url }}"></script>
+<script>
+// Initialize basic DataTable
+const table = new DataTable('{{ page.table-id }}', {
+    {% if page.table-paginate == true %}"lengthMenu": [[ 10, 25, 50, -1], [ 10, 25, 50, "All"]], "paging": true{% else %}"paging": false{% endif %}
+});
+</script>

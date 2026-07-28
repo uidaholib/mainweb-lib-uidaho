@@ -1,12 +1,7 @@
-/* 
-    Put your custom SCSS here! 
+/*
+    Put your custom SCSS here!
     This allows you to override any CollectionBuilder or Bootstrap CSS without modifying the base theme files directly.
 */
 
-.bg-brand-grey {
-    background-color: hsla(0,0%,97%,.85);
-}
-// fix pride gold outlines
-.btn-outline-pride-gold {
-    color: #191919;
-}
+// override libcal embed
+.s-lc-ea-h3 { color: #191919 !important; margin-top: 0 !important; }

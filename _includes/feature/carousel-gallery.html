@@ -1,0 +1,152 @@
+{% comment %}
+
+Carousel Gallery, a horizontal feature highlighting several images with very short text and links.
+
+{% include feature/carousel-gallery.html slides=site.data.mill_carousel color="white" %}
+
+The feature is used by providing a CSV in the "_data" folder with the columns
+image-src,image-alt,title,paragraph,link,link-text
+The data is used to populate the gallery.
+
+Options:
+
+- slides = a Liquid array, generally a CSV in the "_data" folder, referenced like site.data.mill_carousel
+- color = set theme to either white or black (default = white).
+- heading_level = the heading element used for the slide titles, "h2", "h3", etc (default = "h2"), set for correct heading order on the page.
+
+{% endcomment %}
+{%- assign cg_color = include.color | default: "white" | strip | downcase -%}
+{%- assign cg_heading = include.heading_level | default: "h2" | strip -%}
+{%- if cg_color == "black" -%}
+    {%- assign cg_wrapper = "carousel-gallery-black text-bg-brand-black py-5" -%}
+    {%- assign cg_btn = "btn-outline-light" -%}
+{%- else -%}
+    {%- assign cg_wrapper = "carousel-gallery-white" -%}
+    {%- assign cg_btn = "btn-outline-dark" -%}
+{%- endif -%}
+{%- if include.slides.size > 0 -%}
+<div class="carousel-gallery {{ cg_wrapper }} mb-5">
+    <div class="carousel-gallery-track" tabindex="0" role="group" aria-label="Gallery">
+        <ul class="carousel-gallery-list list-unstyled d-flex gap-4 mb-0">
+            {%- for slide in include.slides %}
+            <li class="carousel-gallery-slide">
+                {%- if slide.image-src %}
+                <div class="ratio ratio-16x9 mb-3">
+                    <img src="{{ slide.image-src }}" alt="{{ slide.image-alt | default: '' | escape }}" class="w-100 h-100 object-fit-cover" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
+                </div>
+                {%- endif %}
+                {%- if slide.title %}
+                <{{ cg_heading }} class="h4 mb-2">{{ slide.title }}</{{ cg_heading }}>
+                {%- endif %}
+                {%- if slide.paragraph %}
+                <p>{{ slide.paragraph }}</p>
+                {%- endif %}
+                {%- if slide.link %}
+                <p class="mt-auto mb-0"><a href="{% if slide.link contains '://' %}{{ slide.link }}{% else %}{{ slide.link | relative_url }}{% endif %}" class="arrow-link text-reset text-decoration-none text-uppercase fw-bold">{{ slide.link-text | default: "Learn more" }}</a></p>
+                {%- endif %}
+            </li>
+            {%- endfor %}
+        </ul>
+    </div>
+    <div class="carousel-gallery-controls d-none align-items-center gap-4 mt-4">
+        <div class="carousel-gallery-progress flex-grow-1 d-none d-md-block" aria-hidden="true"><span class="carousel-gallery-progress-bar"></span></div>
+        <div class="carousel-gallery-dots flex-grow-1 d-flex d-md-none gap-2" aria-hidden="true">{% for slide in include.slides %}<span class="carousel-gallery-dot"></span>{% endfor %}</div>
+        <div class="d-none d-md-flex gap-3 ms-auto">
+            <button type="button" class="btn {{ cg_btn }} carousel-gallery-btn rounded-circle" data-cg-scroll="prev" aria-label="Previous slides">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16" aria-hidden="true" focusable="false"> <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/> </svg>
+            </button>
+            <button type="button" class="btn {{ cg_btn }} carousel-gallery-btn rounded-circle" data-cg-scroll="next" aria-label="Next slides">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16" aria-hidden="true" focusable="false"> <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/> </svg>
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    // controls for the carousel gallery feature, "_includes/feature/carousel-gallery.html"
+    // the slides are a plain scroll container, this adds the arrows and the progress indicator on top of it
+    (function () {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        document.querySelectorAll(".carousel-gallery").forEach(function (gallery) {
+            const track = gallery.querySelector(".carousel-gallery-track");
+            const list = gallery.querySelector(".carousel-gallery-list");
+            const controls = gallery.querySelector(".carousel-gallery-controls");
+            if (!track || !list || !controls) { return; }
+
+            const bar = gallery.querySelector(".carousel-gallery-progress-bar");
+            const dots = gallery.querySelectorAll(".carousel-gallery-dot");
+            const prev = gallery.querySelector('[data-cg-scroll="prev"]');
+            const next = gallery.querySelector('[data-cg-scroll="next"]');
+
+            // one slide plus the flex gap, the distance an arrow click scrolls
+            function slideStep() {
+                const slide = list.querySelector(".carousel-gallery-slide");
+                if (!slide) { return track.clientWidth; }
+                const gap = parseFloat(window.getComputedStyle(list).columnGap) || 0;
+                return slide.getBoundingClientRect().width + gap;
+            }
+
+            // move focus off an arrow before disabling it, otherwise the tab position is lost
+            function setDisabled(button, state) {
+                if (!button || button.disabled === state) { return; }
+                if (state && document.activeElement === button) {
+                    const other = button === prev ? next : prev;
+                    if (other && !other.disabled) { other.focus(); }
+                }
+                button.disabled = state;
+            }
+
+            function update() {
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                const position = track.scrollLeft;
+
+                // nothing to scroll, e.g. few slides on a wide screen, so there is nothing to control
+                const scrollable = maxScroll > 1;
+                controls.classList.toggle("d-none", !scrollable);
+                controls.classList.toggle("d-flex", scrollable);
+                if (!scrollable) { return; }
+
+                if (bar) {
+                    bar.style.width = (track.clientWidth / track.scrollWidth) * 100 + "%";
+                    bar.style.left = (position / track.scrollWidth) * 100 + "%";
+                }
+                if (dots.length) {
+                    let index = position >= maxScroll - 1 ? dots.length - 1 : Math.round(position / slideStep());
+                    index = Math.min(Math.max(index, 0), dots.length - 1);
+                    dots.forEach(function (dot, i) {
+                        dot.classList.toggle("active", i === index);
+                    });
+                }
+                setDisabled(prev, position <= 1);
+                setDisabled(next, position >= maxScroll - 1);
+            }
+
+            function scrollTrack(direction) {
+                track.scrollBy({
+                    left: slideStep() * direction,
+                    behavior: reduceMotion.matches ? "auto" : "smooth"
+                });
+            }
+
+            if (prev) { prev.addEventListener("click", function () { scrollTrack(-1); }); }
+            if (next) { next.addEventListener("click", function () { scrollTrack(1); }); }
+
+            let ticking = false;
+            track.addEventListener("scroll", function () {
+                if (ticking) { return; }
+                ticking = true;
+                window.requestAnimationFrame(function () {
+                    ticking = false;
+                    update();
+                });
+            }, { passive: true });
+
+            window.addEventListener("resize", update);
+
+            // swap the browser scrollbar for the custom controls only once the script is running
+            gallery.classList.add("cg-ready");
+            update();
+        });
+    })();
+</script>
+{%- endif -%}

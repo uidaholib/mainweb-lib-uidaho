@@ -115,46 +115,121 @@
     var searchIndex       = null;
     var searchDocs        = {};
     var searchReady       = false;
-    var searchLoading     = false;
+    var searchPromise     = null;
+    var searchDataUrl     = '{{ "/assets/main-web/site-search.json" | relative_url }}';
+    var pageSearchForm    = document.getElementById('page-search-form');
+    var pageSearchInput   = document.getElementById('page-search-input');
+    var pageSearchResults = document.getElementById('page-search-results');
+    var pageSearchStatus  = document.getElementById('page-search-status');
 
-    function initSearch() {
+    function ensureSearchIndex() {
+        if (searchPromise) return searchPromise;
+
         searchIndex = new FlexSearch.Document({
             document: {
                 id: 'id',
                 index: [
-                    { field: 'title',   tokenize: 'forward', store: true },
+                    { field: 'title', tokenize: 'forward', store: true },
                     { field: 'content', tokenize: 'forward', store: true }
                 ]
             },
             cache: true
         });
 
-        fetch('{{ "/assets/main-web/site-search.json" | relative_url }}')
+        searchPromise = fetch(searchDataUrl)
             .then(function (r) { return r.json(); })
             .then(function (data) {
                 Object.keys(data).forEach(function (id) {
                     searchIndex.add({
-                        id:      id,
-                        title:   data[id].title   || '',
+                        id: id,
+                        title: data[id].title || '',
                         content: data[id].content || ''
                     });
                     searchDocs[id] = data[id];
                 });
-                searchReady   = true;
-                searchLoading = false;
-                // Run pending query if user typed before data loaded
+                searchReady = true;
+
                 if (navSearchInput && navSearchInput.value.trim()) {
-                    runSearch(navSearchInput.value.trim());
+                    runNavSearch(navSearchInput.value.trim());
+                }
+                if (pageSearchInput && pageSearchInput.value.trim()) {
+                    runPageSearch(pageSearchInput.value.trim());
                 }
             })
             .catch(function (err) {
                 console.warn('Library search data could not be loaded.', err);
-                searchLoading = false;
+                searchReady = false;
             });
+
+        return searchPromise;
     }
 
-    function runSearch(query) {
+    function getSearchIds(query) {
+        if (!searchReady || !query) return [];
+
+        var titleHits = searchIndex.search(query, { field: 'title', limit: 8 });
+        var contentHits = searchIndex.search(query, { field: 'content', limit: 8 });
+        var seen = {};
+        var ids = [];
+
+        [titleHits, contentHits].forEach(function (groups) {
+            (groups || []).forEach(function (g) {
+                (g.result || []).forEach(function (id) {
+                    if (!seen[id]) {
+                        seen[id] = true;
+                        ids.push(id);
+                    }
+                });
+            });
+        });
+
+        return ids;
+    }
+
+    function buildSearchResultList(ids, query, compact) {
+        var html = compact ? '<ul class="list-unstyled mb-0">' : '<div class="list-group">';
+
+        ids.slice(0, 10).forEach(function (id) {
+            var doc = searchDocs[id];
+            if (!doc) return;
+
+            var snippet = getSnippet(doc.content, query);
+            var linkClass = compact
+                ? 'd-block text-dark text-decoration-none px-1 py-2 nav-search-result-link'
+                : 'list-group-item list-group-item-action py-3';
+
+            html += compact ? '<li>' : '';
+            html += '<a class="' + linkClass + '" href="' + escapeAttr(doc.url || '#') + '">';
+            html += '<div class="fw-semibold">' + highlight(doc.title || '', query) + '</div>';
+
+            if (doc.page) {
+                html += '<div class="small text-muted">' + escapeHtml(doc.page) + '</div>';
+            }
+
+            if (!compact && Array.isArray(doc.tags) && doc.tags.length) {
+                html += '<div class="mt-2 d-flex flex-wrap gap-1">';
+                doc.tags.slice(0, 5).forEach(function (tag) {
+                    html += '<span class="badge rounded-pill text-bg-light border text-muted">' + escapeHtml(tag) + '</span>';
+                });
+                html += '</div>';
+            }
+
+            if (snippet) {
+                html += '<div class="small text-muted mt-1">' + highlight(snippet, query) + '</div>';
+            }
+
+            html += '</a>';
+            html += compact ? '</li>' : '';
+        });
+
+        html += compact ? '</ul>' : '</div>';
+        return html;
+    }
+
+    function runNavSearch(query) {
+        if (!navSearchResults) return;
         if (!query) { showColumns(); return; }
+
         showResults();
 
         if (!searchReady) {
@@ -162,17 +237,7 @@
             return;
         }
 
-        var titleHits   = searchIndex.search(query, { field: 'title',   limit: 8 });
-        var contentHits = searchIndex.search(query, { field: 'content', limit: 8 });
-        var seen = {};
-        var ids  = [];
-        [titleHits, contentHits].forEach(function (groups) {
-            (groups || []).forEach(function (g) {
-                (g.result || []).forEach(function (id) {
-                    if (!seen[id]) { seen[id] = true; ids.push(id); }
-                });
-            });
-        });
+        var ids = getSearchIds(query);
 
         if (!ids.length) {
             navSearchResults.innerHTML =
@@ -181,25 +246,49 @@
             return;
         }
 
-        var html = '<ul class="list-unstyled mb-0">';
-        ids.slice(0, 10).forEach(function (id) {
-            var doc = searchDocs[id];
-            if (!doc) return;
-            var snippet = getSnippet(doc.content, query);
-            html += '<li>';
-            html += '<a class="d-block text-dark text-decoration-none px-1 py-2 nav-search-result-link"' +
-                    ' href="' + escapeAttr(doc.url || '#') + '">';
-            html += '<div class="fw-semibold">' + highlight(doc.title || '', query) + '</div>';
-            if (doc.page) {
-                html += '<div class="small text-muted">' + escapeHtml(doc.page) + '</div>';
-            }
-            if (snippet) {
-                html += '<div class="small text-muted mt-1">' + highlight(snippet, query) + '</div>';
-            }
-            html += '</a></li>';
-        });
-        html += '</ul>';
-        navSearchResults.innerHTML = html;
+        navSearchResults.innerHTML = buildSearchResultList(ids, query, true);
+    }
+
+    function renderPageSearchEmpty() {
+        if (!pageSearchResults) return;
+
+        pageSearchStatus.textContent = 'Type a few words to search the library website.';
+        pageSearchResults.innerHTML =
+            '<div class="border rounded-3 bg-light p-4 text-muted">Results will appear here as soon as you search.</div>';
+    }
+
+    function runPageSearch(query) {
+        if (!pageSearchResults) return;
+
+        if (!query) {
+            renderPageSearchEmpty();
+            return;
+        }
+
+        if (!searchReady) {
+            pageSearchStatus.textContent = 'Loading search index…';
+            pageSearchResults.innerHTML = '<p class="text-muted py-3 mb-0">Loading search…</p>';
+            return;
+        }
+
+        var ids = getSearchIds(query);
+
+        if (!ids.length) {
+            pageSearchStatus.textContent = 'No results found for "' + query + '".';
+            pageSearchResults.innerHTML =
+                '<div class="border rounded-3 bg-light p-4">' +
+                '<p class="mb-0 text-muted">No results found for <strong>' + escapeHtml(query) + '</strong>.</p>' +
+                '</div>';
+            return;
+        }
+
+        pageSearchStatus.textContent = 'Showing ' + Math.min(ids.length, 10) + ' of ' + ids.length + ' results for "' + query + '".';
+        pageSearchResults.innerHTML = buildSearchResultList(ids, query, false);
+    }
+
+    function getInitialPageQuery() {
+        if (!window.URLSearchParams) return '';
+        return new URLSearchParams(window.location.search).get('q') || '';
     }
 
     function showResults() {
@@ -215,18 +304,44 @@
         if (navMenuColumns) navMenuColumns.classList.remove('d-none');
     }
 
-    // Lazy-init FlexSearch the first time the menu opens
+    // Lazy-init FlexSearch the first time the menu opens or the search page loads
     if (mainNavMenu) {
         mainNavMenu.addEventListener('show.bs.collapse', function () {
-            initSearch();
+            ensureSearchIndex();
         });
     }
 
     // Live search as the user types
     if (navSearchInput) {
         navSearchInput.addEventListener('input', function () {
-            runSearch(this.value.trim());
+            runNavSearch(this.value.trim());
         });
+    }
+
+    if (pageSearchInput) {
+        var initialQuery = getInitialPageQuery();
+        if (initialQuery) {
+            pageSearchInput.value = initialQuery;
+            runPageSearch(initialQuery);
+        } else {
+            renderPageSearchEmpty();
+        }
+
+        pageSearchInput.addEventListener('input', function () {
+            runPageSearch(this.value.trim());
+        });
+    }
+
+    if (pageSearchForm) {
+        pageSearchForm.addEventListener('submit', function () {
+            if (pageSearchInput) {
+                runPageSearch(pageSearchInput.value.trim());
+            }
+        });
+    }
+
+    if (pageSearchInput || pageSearchResults) {
+        ensureSearchIndex();
     }
 
 }());

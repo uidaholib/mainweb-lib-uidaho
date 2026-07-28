@@ -1,0 +1,12 @@
+<script>
+document.getElementById("selectCollege").addEventListener("change", function() {
+    var college = this.value;
+    document.querySelectorAll(".liaison-card").forEach(function(card) {
+        if (college === "reset" || card.classList.contains(college)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+</script>

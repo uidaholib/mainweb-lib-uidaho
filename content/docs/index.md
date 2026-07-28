@@ -10,6 +10,15 @@ page_nav:
     children:
         - /docs/contributing.html
         - /docs/components.html
+page_resources:
+    title: Resources
+    links:
+        - text: U of I Brand
+          link: https://www.uidaho.edu/brand    
+        - text: Brand Intranet Pages
+          link: https://vandalsuidaho.sharepoint.com/sites/InsideUI-UCM/SitePages/Brand.aspx
+        - text: U of I Brand Book
+          link: https://content-hub.uidaho.edu/api/public/content/226d8af4ad704e65a2e42d96613305b2?v=e636bbda
 noindex: true
 ---
 
@@ -73,8 +82,3 @@ Proper Use of "And":
 
 - Always use "U of I" (not "UI" or "UIdaho")
 
-### Resources
-
-- [U of I Brand Resource Center](https://www.uidaho.edu/brand)
-- [Brand intranet pages](https://vandalsuidaho.sharepoint.com/sites/InsideUI-UCM/SitePages/Brand.aspx)
-- [U of I Brand Book](https://content-hub.uidaho.edu/api/public/content/226d8af4ad704e65a2e42d96613305b2?v=e636bbda).

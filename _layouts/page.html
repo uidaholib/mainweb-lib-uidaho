@@ -5,7 +5,7 @@ layout: default
 <div class="container px-lg-5 pt-4">
 
     <main id="maincontent" role="main">
-        <h1 class="page-title">{{ page.title }}</h1>
+        <h1>{{ page.title }}</h1>
         
         {% include components/page-breadcrumbs.html %}
 
@@ -15,14 +15,20 @@ layout: default
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4">
-                {% if page.page_nav %}
+                {% if page.page_nav.parent or page.page_nav.children %}
                 {% include components/page-navigation.html %}
+                {% endif %}
+                {% if page.page_callout %}
+                {% include components/page-callout.html %}
+                {% endif %}
+                {% if page.page_resources %}
+                {% include components/page-resources.html %}
                 {% endif %}
             </div>
         </div>
     </main>
 
     <div class="text-end mt-5 mb-2">
-        <a href="#banner-home" class="btn btn-outline-clearwater"><span class="fas fa-arrow-up"></span> Back to Top</a>
+        <a href="#banner-home" class="btn btn-outline-clearwater"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16" aria-hidden="true"> <path d="M3.204 11h9.592L8 5.519zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659"/> </svg> Back to Top</a>
     </div>
 </div>

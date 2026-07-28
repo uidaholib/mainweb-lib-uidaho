@@ -1,18 +1,35 @@
 {% comment %}
 
-    Add page nav feature based on page.page_nav keys.
+    Page Navigation is a standard page component found on the right side column of default page layout. It provides a section title and list of section links. The nav is not centrally configured, so each page can tweak what links are added. 
+    
+    This include is configured using page yaml front matter, page.page_nav keys. If a page has the page.page_nav key the layout will add this include automatically. 
+    
+    The page_nav contain two possible keys:
+
+    - parent: adding the permalink of a page will pull in the page nav based on the parent. If this page does not have children, it will be treated as a sub page of the parent, the page_nav will be the same as the parent's.
+    - children: optional list of child pages, given as list of permalink values. If the page has children listed, they will appear in the page_nav feature. If the page does not have a parent, it will appear at the top. If the page has a parent, the parent will appear at the top.
+
+    Example yaml configuration:
+
+page_nav:
+    children:
+        - /docs/contributing.html
+        - /docs/components.html
+
 
 {% endcomment %}
 <nav aria-label="Section Navigation" id="section-nav">
     {% if page.section %}<h2>{{ page.section }}</h2>{% endif %}
-    <ul class="list-group rounded-0">
+    <ul class="list-group mb-5">
         {% if page.page_nav.parent and page.page_nav.children %}
             {% assign nav_parent = site.html_pages | where: 'permalink', page.page_nav.parent | first %}
             {% assign self_child = page.permalink | split: '|' %}
             {% assign nav_children = nav_parent.permalink | split: '|' | concat: self_child | concat: page.page_nav.children %}
         {% elsif page.page_nav.parent %}
             {% assign nav_parent = site.html_pages | where: 'permalink', page.page_nav.parent | first %}
+            {% if nav_parent.page_nav.children %}
             {% assign nav_children = nav_parent.permalink | split: '|' | concat: nav_parent.page_nav.children %}
+            {% else %}{% assign nav_children = nav_parent.permalink | split: '|' %}{% endif %}
         {% else %}
             {% assign nav_parent = page %}
             {% assign nav_children = nav_parent.permalink | split: '|' | concat: page.page_nav.children %}
