@@ -80,8 +80,8 @@ description:
         <div class="col-md-4 mb-4">
             <div class="card m-2 mx-auto text-center">
                 <div class="card-body">
-                    <h3><a href="{{ '/about/liaisons.html' | relative_url }}">Featured Subject Librarian</a></h3>
-                    <p class="card-text"><a href="{{ '/help/research.html' | relative_url }}">Get help with your Research!</a></p>
+                    <h3>Featured Subject Librarian</h3>
+                    <p class="card-text">Get help with your Research!</p>
                     <div id="featuredResearcher" class="mx-auto"></div>
                     {%- assign liaisons = site.data.about_liaisons -%}
                     <script>
@@ -98,7 +98,7 @@ description:
                     <div class="card-body"> 
                     <h4 class="card-title"><a href="${featuredResearcher[4]}">${featuredResearcher[2]}</a></h4>
                     <p class="card-text"><strong>${featuredResearcher[1]}</strong><br>${featuredResearcher[5]}</p> 
-                    <a href="https://uidaho.co1.qualtrics.com/jfe/form/SV_1GJiDTJ7po0bDk9?topic=${encodeURIComponent(featuredResearcher[1])}&person=${encodeURIComponent(featuredResearcher[2])}&email=${encodeURIComponent(featuredResearcher[3])}" class="btn btn-outline-pride-gold">Request Meeting</a>
+                    <a href="https://uidaho.co1.qualtrics.com/jfe/form/SV_1GJiDTJ7po0bDk9?topic=${encodeURIComponent(featuredResearcher[1])}&person=${encodeURIComponent(featuredResearcher[2])}&email=${encodeURIComponent(featuredResearcher[3])}" class="btn btn-pride-gold">Request Meeting</a>
                     </div>`;
                     document.getElementById("featuredResearcher").innerHTML = featuredCard;
                     </script>
@@ -119,7 +119,7 @@ description:
         <div class="col-md-4 mb-4">
             <div class="card m-2 mx-auto text-center">
                 <div class="card-body">
-                    <h3><a href="https://harvester.lib.uidaho.edu/">Idaho Harvester</a></h3>
+                    <h3>Idaho Harvester</h3>
                     <p class="card-text">Read the latest posts featuring unique materials and stories from Special Collections and Archives!</p>
                     <div id="blog-preview" class="text-center my-3"></div>
                     <script src="https://harvester.lib.uidaho.edu/assets/harvester-post.js"></script>
@@ -133,7 +133,7 @@ description:
                     document.getElementById("blog-preview").innerHTML = blogPreview;
                     </script>
                     <div class="text-center">
-                        <a class="btn btn-outline-pride-gold" href="https://harvester.lib.uidaho.edu/">Visit the Idaho Harvester</a>
+                        <a class="btn btn-pride-gold" href="https://harvester.lib.uidaho.edu/">Visit the Idaho Harvester</a>
                     </div>
 
                 </div>
