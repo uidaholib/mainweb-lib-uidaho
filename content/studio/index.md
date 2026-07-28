@@ -11,11 +11,12 @@ page_nav:
     children:
         - /studio/equipment.html
         - /studio/tutorials.html
+        - /studio/faq.html
 page_resources:
     title: Resources
     links:
-        - text: FAQ
-          link: /studio/faq.html    
+        - text: Studio Booking
+          link: https://libcal.uidaho.edu/booking/AV    
         - text: Terms of Use
           link: /studio/termsofuse.html
 ---
