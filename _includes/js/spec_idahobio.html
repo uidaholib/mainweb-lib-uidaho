@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="{{ '/assets/main-web/lib/datatables/datatables.min.css' | relative_url }}">
+<script src="{{ '/assets/main-web/lib/datatables/datatables.min.js' | relative_url }}"></script>
+<script>
+(function(){
+    var itemTable = document.getElementById('item-table');
+    if (!itemTable) return;
+
+    var tableHead = itemTable.querySelector('thead');
+    var headerRow = tableHead ? tableHead.querySelector('tr') : null;
+    if (!tableHead || !headerRow) return;
+
+    // Add a second header row with per-column filter inputs.
+    var filterRow = headerRow.cloneNode(true);
+    tableHead.appendChild(filterRow);
+
+    var table;
+    Array.prototype.forEach.call(filterRow.querySelectorAll('th'), function (th, i) {
+        var title = (th.textContent || '').trim();
+        th.innerHTML = '<input class="form-control form-control-sm" type="text" placeholder="Filter ' + title + '" />';
+
+        var input = th.querySelector('input');
+        if (!input) return;
+
+        function applyColumnFilter() {
+            if (!table) return;
+            if (table.column(i).search() !== input.value) {
+                table
+                    .column(i)
+                    .search(input.value)
+                    .draw();
+            }
+        }
+
+        input.addEventListener('input', applyColumnFilter);
+        input.addEventListener('change', applyColumnFilter);
+    });
+
+    // Initialize DataTables.
+    table = new DataTable('#item-table', {
+        // use DataTables ajax load 
+        ajax: { url: '{{ "/assets/data/spec_idahobio.json" | relative_url }}', dataSrc: 'objects' },
+        // defer render to speed up large sets
+        deferRender: true,
+        // get the data from the json
+        // name,bdate,ddate,book,callnumber
+        columns: [ { data: '0' }, { data: '1' }, { data: '2' }, { data: '3' }, { data: '4' } ],
+        paging: true,
+        lengthMenu: [[ 15, 50, 100, 200], [ 15, 50, 100, 200]],
+        orderCellsTop: true,
+        // sort based on the date
+        order: [[ 0, "asc" ]],
+        // add download features
+        dom: 'i<"row"<"col-md-6"l><"col-md-6"f>>t<"row"<"col-md-6"i><"col-md-6"p>>B', 
+        buttons: [ 'excelHtml5', 'csvHtml5' ]
+    });
+})();
+</script>

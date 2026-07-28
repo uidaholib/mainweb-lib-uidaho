@@ -4,6 +4,7 @@
 <script>
 // Initialize basic DataTable
 const table = new DataTable('{{ page.table-id }}', {
+    {% if page.table-searchbuilder == true %}layout: { top1: 'searchBuilder' },{% endif %}
     {% if page.table-paginate == true %}"lengthMenu": [[ 10, 25, 50, -1], [ 10, 25, 50, "All"]], "paging": true{% else %}"paging": false{% endif %}
 });
 </script>
