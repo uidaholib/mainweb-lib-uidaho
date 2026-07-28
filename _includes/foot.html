@@ -6,6 +6,7 @@
 {% include js/current-hours-js.html %}
 <script src="{{ '/assets/main-web/lib/lazysizes.min.js' | relative_url }}" async></script>
 {% if layout.gallery == true or page.gallery == true %}<script src="{{ '/assets/main-web/lib/spotlight.bundle.js' | relative_url }}" ></script>{% endif %}
+{% if page.table-id %}{% include js/table-basic-js.html %}{% endif %}
 {% if page.custom-foot or layout.custom-foot %}
 {%- assign page_feet = page.custom-foot | split: ";" -%}
 {%- assign layout_feet = layout.custom-foot | split: ";" -%}
