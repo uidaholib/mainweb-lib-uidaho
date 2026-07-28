@@ -32,19 +32,6 @@ collections:
     output: true
     sort_by: title
 
-# set some defaults
-defaults: 
-  - 
-    scope: 
-      path: "content/special-collections/histphoto/"
-    values:
-      noindex: true
-  - 
-    scope: 
-      path: "content/special-collections/old/"
-    values:
-      noindex: true
-
 # cb page gen
 page_gen:
   # generate profile pages

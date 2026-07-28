@@ -15,9 +15,9 @@ page_nav:
 <div class="col-md-6" markdown="1">
 The Special Collections Reading Room welcomes all researchers! Since archival materials are non-circulating, you'll need to view our materials in our Reading Room, located on the [first floor](/about/maps.html) of the library. If you are unable to come to the Reading Room in person, please [contact us](mailto:libspec@uidaho.edu) to discuss options for digital reproductions of materials.
 <div class="text-center">
-  <a href="#hours" class="btn btn-outline-payette-blue m-1">Hours</a>
-  <a href="#rules" class="btn btn-outline-payette-blue m-1">Reading Room</a>
-  <a href="#directions" class="btn btn-outline-payette-blue m-1">Directions</a>
+  <a href="#hours" class="btn btn-outline-palouse m-1">Hours</a>
+  <a href="#rules" class="btn btn-outline-palouse m-1">Reading Room</a>
+  <a href="#directions" class="btn btn-outline-palouse m-1">Directions</a>
 </div>
 </div>
 <div class="col-md-6">
@@ -138,7 +138,7 @@ The department maintains a Reading Room on the first floor of the library where 
 ## Getting Here
 
 We are located on the [first floor](/about/maps.html) of the University of Idaho Library. 
-For directions to the library, see our [Contacts page](/about/contact.html). 
+For directions to the library, see our [Contacts page](/about/#directions). 
 For a wider campus map, see the [Campus Directory Map](https://content-hub.uidaho.edu/api/public/content/6b614552efaa428986c8db8f89432d79?v=551a492c) or the [interactive online map](https://map.concept3d.com/?id=2155#!ct/91622,91623,91624,86486,91562,91645,91646,91647,91648,91649,91650,91651,91652?s/).
 
 You can find information about parking on the [University of Idaho Parking and Transportation Services](https://www.uidaho.edu/parking).

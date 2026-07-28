@@ -1,0 +1,26 @@
+---
+title: Faculty Librarians
+section: About
+permalink: /about/librarians.html
+layout: page
+search: true
+tags:
+description:
+page_nav:
+    parent: /about/directory.html
+    children:
+---
+{% assign people = site.data.about_people | where_exp: 'p','p.id' | where_exp: 'p', 'p.status contains "Faculty"' %}
+<div class="row">
+    {% for p in people %}
+    <div class="col-6 col-md-4 col-lg-3 mb-2">
+        <div class="card">
+            <img class="card-img-top img-fluid" src="{{ site.lib-media }}{% if p.image %}/directory/{{ p.image }}{% else %}/directory/tower_icon_gold_sq.png{% endif %}" alt="{{ p.name }}">
+            <div class="card-body text-center">
+                <h5 class="card-title"><a href="{{ '/about/people/' | relative_url }}{{ p.id }}.html" title="View the profile for {{ p.last_name }}">{{ p.first_name }} {{ p.last_name }}</a></h5>
+                <p class="card-text">{{ p.title }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

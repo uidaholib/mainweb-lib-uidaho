@@ -1,0 +1,74 @@
+# data for Units page
+units:
+  - title: Administrative Services
+    areas:
+      - name: Dean, University of Idaho Libraries
+        head: bhunter
+      - name: Associate Dean Operations and Access
+        head: rattebur
+      - name: Associate Dean Research and Instruction
+        head: dbecker
+      - name: Assistant to the Dean
+        head: samm
+      - name: Fiscal Officer
+        head: brittnil
+      - name: Communications and Marketing 
+        #head: cbarnhart
+      #- name: Giving
+      #  head: hyeats
+  - title: Access and Engagement
+    head: pnmartin
+    areas: 
+      - name: Access Services
+        email: libcirc@uidaho.edu
+      - name: Building
+        link: /about/hours.html   
+      - name: First Year Experience
+        link: /services/instruction/
+      - name: Gary Strong Curriculum Center
+        link: /services/curriculumcenter.html
+      - name: Information and Research Help
+        link: /help/
+        email: libref@uidaho.edu  
+  - title: Discovery and Acquisitions
+    head: jylisadoney
+    areas:
+      - name: Acquisitions
+      - name: Cataloging and Collections
+      - name: Series and E-Resources
+      - name: Mail, Marking, and Mending
+      - name: Government Documents
+        link: /find/govdocs/
+      - name: Interlibrary Loan / Resource Sharing
+        link: /services/ill/
+  - title: Digital Scholarship and Open Strategies
+    head: ewilliamson
+    areas:
+      - name: Center for Digital Inquiry and Learning
+        link: https://cdil.lib.uidaho.edu/
+      - name: Digital Collections
+        link: /digital/
+      - name: Open @ U of I
+        link: /open/
+      - name: OA Publishing Fund
+        link: /open/oapf/
+      - name: Copyright
+        link: /copyright/
+  - title: Research and Experiential Learning
+    head: jkenyon
+    areas:
+      - name: DataHub
+        link: /datahub/
+      - name: The MILL 
+        link: /mill/
+      - name: The Studio
+        link: /studio/
+      - name: VERSO Research Information System
+        link: https://verso.uidaho.edu/esploro/?institution=01ALLIANCE_UID
+  - title: Special Collections and Archives
+    head: dulce
+    areas:
+      - name: Reading Room
+        email: libspec@uidaho.edu
+        phone: (208) 885-0845
+        link: /special-collections/plan.html
