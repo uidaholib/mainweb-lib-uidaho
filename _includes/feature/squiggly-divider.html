@@ -1,0 +1,21 @@
+{% comment %}
+
+Squiggly Divider adds a visual divider feature that is a squiggly line with some spacing. The background color can be selected (white, black, pride-gold, clearwater) and the line color is adjusted to the background.
+
+{% include feature/squiggly-divider.html color="black" %}
+
+Options:
+
+- color = the background the divider sits on, white, black, pride-gold, or clearwater (default = white). The line is drawn in currentColor, so the contrasting text color that comes with the background is what draws the squiggle.
+
+The vertical spacing is built in as padding, so the colored band reads as a band. Place it flush against the content it divides rather than adding margins.
+
+{% endcomment %}
+{%- assign sd_color = include.color | default: "white" | strip | downcase -%}
+{%- case sd_color -%}
+{%- when "black" -%}{%- assign sd_bg = "brand-black" -%}
+{%- when "pride-gold" -%}{%- assign sd_bg = "pride-gold" -%}
+{%- when "clearwater" -%}{%- assign sd_bg = "clearwater" -%}
+{%- else -%}{%- assign sd_bg = "brand-white" -%}
+{%- endcase -%}
+<div class="squiggly-divider text-bg-{{ sd_bg }} py-4 w-75"></div>

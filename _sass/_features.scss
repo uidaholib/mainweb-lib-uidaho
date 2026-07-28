@@ -1,0 +1,82 @@
+/* 
+    features - css related to include features and components
+*/
+
+
+// carousel gallery feature, see "_includes/feature/carousel-gallery.html"
+.carousel-gallery {
+    // the black theme is a filled block, so it needs the slides inset from its edges
+    --cg-pad: 0rem;
+    --cg-muted: rgba(25, 25, 25, .25);
+}
+.carousel-gallery-black {
+    --cg-pad: 1.5rem;
+    --cg-muted: rgba(255, 255, 255, .4);
+}
+.carousel-gallery-track {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline-start: var(--cg-pad);
+    // room for focus rings, which the scroll container would otherwise clip
+    padding-block: .25rem;
+}
+// the progress bar stands in for the scrollbar, but only once the js is running
+.carousel-gallery.cg-ready .carousel-gallery-track {
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+}
+.carousel-gallery-list {
+    // padding on the flex row, not the scroll container, so the trailing space survives the overflow
+    padding-inline: var(--cg-pad);
+}
+.carousel-gallery-slide {
+    // shows about 3 slides in a full width container and about 2 in the narrow page column
+    flex: 0 0 min(85%, 21rem);
+    scroll-snap-align: start;
+    // column so the links sit on a common baseline when the text runs to different lengths
+    display: flex;
+    flex-direction: column;
+}
+.carousel-gallery-progress {
+    position: relative;
+    height: 3px;
+    background-color: var(--cg-muted);
+}
+.carousel-gallery-progress-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+}
+.carousel-gallery-dot {
+    flex: 1 1 0;
+    height: 3px;
+    background-color: var(--cg-muted);
+    &.active { background-color: currentColor; }
+}
+.carousel-gallery-btn {
+    --bs-btn-padding-x: 0;
+    --bs-btn-padding-y: 0;
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// squiggly divider feature, see "_includes/feature/squiggly-divider.html"
+// the wave is a repeating svg mask over a currentColor fill, the same technique as .arrow-link
+// the mask is on the pseudo element so the element itself is free to carry the background color
+.squiggly-divider::before {
+    content: "";
+    display: block;
+    height: 20px;
+    background-color: currentColor;
+    -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='20 0 20 20'><path d='M0 10 Q 5 5, 10 10 T 20 10 T 30 10 T 40 10 T 50 10 T 60 10' stroke='black' fill='transparent' stroke-width='2'/></svg>");
+    mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='20 0 20 20'><path d='M0 10 Q 5 5, 10 10 T 20 10 T 30 10 T 40 10 T 50 10 T 60 10' stroke='black' fill='transparent' stroke-width='2'/></svg>");
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+}

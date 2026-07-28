@@ -23,17 +23,14 @@ page_resources:
           link: https://marketplace.uidaho.edu/C20272_ustores/web/store_main.jsp?STOREID=205
         - text: Workshops
           link: /events/
-lazyload: true
-carousel: true
 ---
 
+{% include feature/squiggly-divider.html color="white" %}
 {% include feature/carousel-gallery.html slides=site.data.mill_carousel %}
 
 <div class="alert alert-info text-center" role="alert">
-<h2 class="alert-heading h4"><span class="fas fa-clock"></span> Semester Hours</h2>
+<h2 class="alert-heading h4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16" aria-hidden="true"> <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/></svg> Semester Hours</h2>
 <p class="h5">Monday - Friday, 8am - 6pm</p>
-<!--<h2 class="alert-heading h4"><span class="fas fa-clock"></span> Summer Hours</h2>
-<p class="h5">Monday - Friday, 9am - 4pm</p>-->
 </div>
 
 The Making, Innovating, Learning Laboratory (the MILL) is a place to gather, explore, learn, and create new knowledge using state-of-the-art technology and other traditional forms of making. 

@@ -15,7 +15,7 @@ layout: default
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4">
-                {% if page.page_nav %}
+                {% if page.page_nav.parent or page.page_nav.children %}
                 {% include components/page-navigation.html %}
                 {% endif %}
                 {% if page.page_callout %}

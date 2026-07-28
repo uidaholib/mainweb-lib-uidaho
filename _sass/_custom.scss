@@ -2,33 +2,3 @@
     Put your custom SCSS here!
     This allows you to override any CollectionBuilder or Bootstrap CSS without modifying the base theme files directly.
 */
-
-// fix pride gold outlines
-.btn-outline-pride-gold {
-    color: #191919;
-}
-
-// clearwater underline treatment, matches uidaho.edu content links
-a {
-    text-decoration-color: var(--bs-clearwater);
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 4px;
-    &:hover {
-        text-decoration-thickness: 2.5px;
-    }
-}
-
-// content heading rhythm, matches uidaho.edu headings sitting close to their content with space above
-#maincontent {
-    h2, h3, h4, h5, h6 {
-        &:not(:first-child) { margin-top: 1.5em; }
-    }
-}
-
-// uidaho.edu button texture, uppercase and bold
-// candidate to move into the custom bootstrap build as $btn-font-weight
-.btn {
-    text-transform: uppercase;
-    letter-spacing: .025em;
-    font-weight: 700;
-}
