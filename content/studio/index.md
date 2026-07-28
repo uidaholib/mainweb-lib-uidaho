@@ -19,6 +19,8 @@ page_resources:
           link: https://libcal.uidaho.edu/booking/AV    
         - text: Terms of Use
           link: /studio/termsofuse.html
+        - text: Troubleshooting
+          link: /studio/troubleshooting.html
 ---
 
 {% include feature/squiggly-divider.html color="white" %}

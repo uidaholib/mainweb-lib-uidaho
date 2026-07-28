@@ -9,23 +9,8 @@ layout: default
         
         {% include components/page-breadcrumbs.html %}
 
-        <div class="row">
-            <div class="col-md-7">
-            {{ content }}
-            </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-4">
-                {% if page.page_nav.parent or page.page_nav.children %}
-                {% include components/page-navigation.html %}
-                {% endif %}
-                {% if page.page_callout %}
-                {% include components/page-callout.html %}
-                {% endif %}
-                {% if page.page_resources %}
-                {% include components/page-resources.html %}
-                {% endif %}
-            </div>
-        </div>
+        {{ content }}
+
     </main>
 
     <div class="text-end mt-5 mb-2">
