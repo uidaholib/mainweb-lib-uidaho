@@ -36,7 +36,7 @@ Applicants must submit:
 3. A letter of support from a U of I faculty member.
 
 <div class="text-center mb-2 pt-3">
-    <a href="https://forms.office.com/r/3UbunAida7 " class="btn btn-info my-2 mx-1"><span class="fas fa-edit"></span> Submit an Application</a>
+    <a href="https://forms.office.com/r/3UbunAida7 " class="btn btn-info my-2 mx-1">Submit an Application</a>
 </div>
 
 **Applications are due Wednesday, April 15th** by the end of the day and a decision will be announced within two weeks of the deadline.

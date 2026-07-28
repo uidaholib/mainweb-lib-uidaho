@@ -1,0 +1,108 @@
+<script>
+(function () {
+    'use strict';
+
+    var searchInput    = document.getElementById('directory-search');
+    var departmentSel  = document.getElementById('directory-department-filter');
+    var sortSelect     = document.getElementById('directory-sort');
+    var clearBtn       = document.getElementById('directory-clear');
+    var listContainer  = document.getElementById('directory-list');
+    var countEl        = document.getElementById('directory-count');
+    var noResultsEl    = document.getElementById('directory-no-results');
+
+    if (!listContainer) return;
+
+    var cards = Array.prototype.slice.call(listContainer.querySelectorAll('.directory-card'));
+    var totalCount = cards.length;
+
+    // ── Filtering (search text + department) ───────────────────────
+
+    function applyFilters() {
+        var query = (searchInput && searchInput.value || '').trim().toLowerCase();
+        var department = departmentSel ? departmentSel.value : 'all';
+        var visibleCount = 0;
+
+        cards.forEach(function (card) {
+            var matchesSearch = !query || card.dataset.search.indexOf(query) !== -1;
+            var matchesDepartment = department === 'all' || card.dataset.department === department;
+            var isVisible = matchesSearch && matchesDepartment;
+
+            card.classList.toggle('d-none', !isVisible);
+            if (isVisible) visibleCount++;
+        });
+
+        if (countEl) {
+            countEl.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' staff members.';
+        }
+        if (noResultsEl) {
+            noResultsEl.classList.toggle('d-none', visibleCount !== 0);
+        }
+    }
+
+    // ── Sorting ──────────────────────────────────────────────────
+
+    function applySort() {
+        var sortBy = sortSelect ? sortSelect.value : 'last-name';
+
+        var sorted = cards.slice().sort(function (a, b) {
+            var fieldA;
+            var fieldB;
+
+            if (sortBy === 'first-name') {
+                fieldA = a.dataset.firstName;
+                fieldB = b.dataset.firstName;
+            } else if (sortBy === 'department') {
+                fieldA = a.dataset.department.toLowerCase();
+                fieldB = b.dataset.department.toLowerCase();
+            } else {
+                fieldA = a.dataset.lastName;
+                fieldB = b.dataset.lastName;
+            }
+
+            return fieldA.localeCompare(fieldB);
+        });
+
+        sorted.forEach(function (card) {
+            listContainer.appendChild(card);
+        });
+    }
+
+    // ── Deep-linkable search, e.g. /about/directory.html?search=smith ──
+
+    function getInitialSearchQuery() {
+        if (!window.URLSearchParams) return '';
+        return new URLSearchParams(window.location.search).get('search') || '';
+    }
+
+    // ── Event wiring ─────────────────────────────────────────────
+
+    if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+    }
+    if (departmentSel) {
+        departmentSel.addEventListener('change', applyFilters);
+    }
+    if (sortSelect) {
+        sortSelect.addEventListener('change', applySort);
+    }
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function () {
+            if (searchInput) searchInput.value = '';
+            if (departmentSel) departmentSel.value = 'all';
+            if (sortSelect) sortSelect.value = 'last-name';
+            applySort();
+            applyFilters();
+            if (searchInput) searchInput.focus();
+        });
+    }
+
+    var initialQuery = getInitialSearchQuery();
+    if (initialQuery && searchInput) {
+        searchInput.value = initialQuery;
+    }
+
+    applySort();
+    applyFilters();
+}());
+</script>
+
