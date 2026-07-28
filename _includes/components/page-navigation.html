@@ -27,7 +27,9 @@ page_nav:
             {% assign nav_children = nav_parent.permalink | split: '|' | concat: self_child | concat: page.page_nav.children %}
         {% elsif page.page_nav.parent %}
             {% assign nav_parent = site.html_pages | where: 'permalink', page.page_nav.parent | first %}
+            {% if nav_parent.page_nav.children %}
             {% assign nav_children = nav_parent.permalink | split: '|' | concat: nav_parent.page_nav.children %}
+            {% else %}{% assign nav_children = nav_parent.permalink | split: '|' %}{% endif %}
         {% else %}
             {% assign nav_parent = page %}
             {% assign nav_children = nav_parent.permalink | split: '|' | concat: page.page_nav.children %}

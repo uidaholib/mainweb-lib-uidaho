@@ -1,0 +1,26 @@
+{% comment %}
+    
+    Image feature,
+    This include adds a figure to the page styled using bootstrap, https://getbootstrap.com/docs/5.3/content/figures/
+
+    All images are lazyloaded.
+    If the page has the front matter option: 
+    gallery: true
+    then the image will also be prepped to open using spotlight gallery.
+
+    E.G. --> {% include feature/image.html img="https://www.lib.uidaho.edu/media/spec/collections/oldadmin.jpg" alt="old admin building" %}
+
+    Options:
+    - "img" = full url link to image file.  
+    - "alt" = alt text for image
+    - "caption" = the caption option allows you to add a caption (optional)
+    - "width" =  manually set width using options such as "50%" (optional)
+    - "img-lg" = full url to larger size of the image (optional, for use with gallery: true)
+
+{%- endcomment -%}
+<figure class="figure d-block text-center p-3">
+    {% if page.gallery == true %}<a class="spotlight" href="{{ include.img-lg | default: include.img }}">{% endif %}
+    <img data-src="{{ include.img }}" alt="{{ include.alt }}" {% if include.width %}style="width:{{ include.width }};" {% endif %}class="figure-img img-fluid rounded lazyload">
+    {% if page.gallery == true %}</a>{% endif %}
+    {% if include.caption %}<figcaption class="figure-caption">{{ include.caption }}</figcaption>{%- endif -%}
+</figure>
