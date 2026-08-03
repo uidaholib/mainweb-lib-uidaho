@@ -6,12 +6,10 @@ permalink: /fellowships/lchistoric.html
 show_past_projects: false
 ---
 
-{:.text-center}
 *Questions?* Contact Dulce Kersting-Lark, Head of Special Collections and Archives, at [dulce@uidaho.edu](mailto:dulce@uidaho.edu).
 
 ---
 
-{:#description}
 ### Project Description
 The [Latah Preservation Commission (LPC)](https://latahcountyid.gov/commissions/#gsc.tab=0), a citizen commission dedicated to documenting and protecting the historic built environment of the county, publishes a physical map of historic sites and provides it as a free resource to the public. It features 90 historic locations, described in two to three sentences, and plotted on a map of the county. The University of Idaho Library's [Special Collections and Archives](https://www.lib.uidaho.edu/special-collections/) department has been approached by LPC to assist with translating the physical map into a digital collection and hosting it. The Library has a track record of supporting community projects through technical services and content creation. Given the richness of the map's written content, it promises to be a useful online tool. At this time, however, the map does not include any photos of the identified sites. In order to enhance the digital collection for a variety of users, we propose augmenting the current map with both contemporary and historic photos of each location. 
 
