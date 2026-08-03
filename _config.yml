@@ -41,6 +41,15 @@ page_gen:
     dir: 'about/people'
     filter: 'id'
 
+# heading ids
+# the heading_ids plugin adds ids to content headings that don't have one,
+# so site search results can link directly to the matching heading.
+# defaults are used unless set here, see _plugins/heading_ids.rb
+#heading_ids:
+#  min_level: 1
+#  max_level: 3
+#  anchors: false
+
 #compress CSS output
 sass:
   style: compressed
