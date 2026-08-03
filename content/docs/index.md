@@ -9,6 +9,7 @@ description:
 page_nav:
     children:
         - /docs/contributing.html
+        - /docs/pages.html
         - /docs/components.html
 page_resources:
     title: Resources

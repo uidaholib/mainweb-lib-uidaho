@@ -1,5 +1,5 @@
 ---
-title: Library Website Components
+title: Website Components
 section: Docs
 permalink: /docs/components.html
 layout: page

@@ -1,4 +1,32 @@
-# Website Page Setup
+---
+title: Page Setup
+section: Docs
+permalink: /docs/pages.html
+layout: page
+search: false
+tags: 
+description:
+page_nav:
+    parent: /docs/
+page_callout: 
+    title: Example Callout
+    text: Callouts are a card feature with an optional image, heading, description text, and link.
+    link: https://www.lib.uidaho.edu/digital/
+    link-text: Visit
+    image: https://www.lib.uidaho.edu/media/collections/fatmen.jpg
+    image-alt: Two men race down main street in historic photograph
+    color: pride-gold
+page_resources:
+    title: Example Resources
+    links:
+        - text: Website Repository
+          link: https://github.com/uidaholib/mainweb-lib-uidaho   
+        - text: Docs on GitHub
+          link: https://github.com/uidaholib/mainweb-lib-uidaho/tree/main/docs
+        - text: Site Search Docs
+          link: https://github.com/uidaholib/mainweb-lib-uidaho/blob/main/docs/site_search_setup.md
+noindex: true
+---
 
 Each page has front matter that helps provide structured data for browsing, searching, and navigating the site.
 
