@@ -4,8 +4,9 @@ section: About
 permalink: /about/program-cost-estimation.html
 layout: page
 search: true
-tags:
-description:
+search_headings: false
+tags: Policies
+description: "This policy ensures that the Library can provide accurate, thorough, and timely estimates of library-related costs associated with proposed new degree programs. These estimates support institutional planning, accreditation requirements, and informed decision-making during the program approval process."
 page_nav:
     parent: /about/policies.html
     children:

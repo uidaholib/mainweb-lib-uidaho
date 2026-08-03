@@ -3,8 +3,8 @@ title: Statement on Harmful Language in Cataloging and Description
 section: About
 permalink: /about/language-statement.html
 layout: page
-search: true
-tags:
+search: false
+tags: Policies
 description:
 page_nav:
     parent: /about/

@@ -4,7 +4,7 @@ section: MILL
 permalink: /mill/about.html
 layout: page
 search: true
-tags:
+tags: MILL
 description:
 page_nav:
     parent: /mill/

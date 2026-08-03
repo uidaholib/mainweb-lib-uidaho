@@ -4,8 +4,9 @@ section: Giving
 permalink: /giving/
 layout: page
 search: true
-tags:
-description:
+search_headings: false
+tags: Giving
+description: "Donors help the Library develop our collections, fund our programs, build our departments, and furnish our study areas."
 page_nav:
     parent: /about/
     children:

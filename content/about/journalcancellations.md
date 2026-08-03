@@ -4,8 +4,8 @@ section: About
 permalink: /about/journalcancellations.html
 layout: page
 search: true
-tags:
-description:
+tags: Policies
+description: "The Library reviews its journal and database subscriptions to ensure that they continue to meet the needs of the campus community and that we are maximizing the impact of our subscriptions budget"
 page_nav:
     parent: /about/policies.html
     children:

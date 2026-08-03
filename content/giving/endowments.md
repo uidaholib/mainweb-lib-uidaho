@@ -4,7 +4,8 @@ section: Giving
 permalink: /giving/endowments.html
 layout: page
 search: true
-tags:
+search_headings: false
+tags: Giving
 description:
 page_nav:
     parent: /giving/

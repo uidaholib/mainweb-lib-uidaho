@@ -4,7 +4,7 @@ section: Giving
 permalink: /giving/ways.html
 layout: page
 search: true
-tags:
+tags: Giving
 description:
 page_nav:
     parent: /giving/

@@ -53,7 +53,7 @@ units:
       - name: OA Publishing Fund
         link: /open/oapf/
       - name: Copyright
-        link: /copyright/
+        link: https://www.lib.uidaho.edu/copyright/
   - title: Research and Experiential Learning
     head: jkenyon
     areas:

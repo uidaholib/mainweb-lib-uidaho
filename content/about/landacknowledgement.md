@@ -3,7 +3,7 @@ title: Land Acknowledgment Information
 section: About
 permalink: /about/landacknowledgment.html
 layout: page
-search: true
+search: false
 tags:
 description:
 page_nav:

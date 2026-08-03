@@ -4,7 +4,7 @@ section: About
 permalink: /about/policies.html
 layout: page
 search: true
-tags:
+tags: Policies
 description:
 page_nav:
     parent: /about/

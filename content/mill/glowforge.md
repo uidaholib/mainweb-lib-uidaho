@@ -4,7 +4,7 @@ section: MILL
 permalink: /mill/glowforge.html
 layout: page
 search: true
-tags:
+tags: Policies; MILL
 description:
 page_nav:
     parent: /mill/

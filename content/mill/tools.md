@@ -20,7 +20,7 @@ We have a number of different tools available for use by students, faculty, and 
 <div class="col-md-6 mb-2">
     <div class="card">
         <div class="card-header">
-            {{ t.name }}
+            <h2 class="h4">{{ t.name }}</h2>
         </div>
         <div class="card-body">
             {% if t.image %}<div class="text-center"><img class="img-fluid mb-3" src="{{ t.image | prepend: '/mill/' | prepend: site.lib-media }}" alt="{{ t.image_alt }}"></div>{% endif %}
