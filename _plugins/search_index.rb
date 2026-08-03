@@ -12,12 +12,11 @@
 #
 # Runs on the ":site, :post_render" hook, once every page has been rendered but
 # before anything is written. That ordering matters: the content read here is
-# fully converted html, with Liquid expanded and heading ids in place (see
-# _plugins/heading_ids.rb). Generating from a Liquid template instead meant the
-# template could be rendered before the pages it was reading, capturing their
-# raw unrendered source.
+# fully converted html, with Liquid expanded and heading ids in place (see _plugins/heading_ids.rb).
 #
 # Pages opt in with "search: true" in their front matter, and must have a title.
+# Adding "search_headings: false" keeps a page in the index as a single record,
+# without a record per heading, for pages too dense to search at that level.
 #
 # Configure in _config.yml under the "search_index" key (all keys optional):
 #
@@ -106,6 +105,11 @@ module SearchIndex
 
         headings = []
 
+        # pages dense enough that per heading results would bury everything else
+        # can opt out with "search_headings: false", leaving just the page record.
+        # their heading text is still collected, to describe the page below
+        index_headings = doc.data['search_headings'] != false
+
         split_sections(doc.content.to_s, heading_regex).each do |section|
           heading = section[:heading]
           content = plain_text(section[:body])
@@ -115,6 +119,8 @@ module SearchIndex
           next if heading.nil? && content.empty?
 
           headings << heading[:text] if heading
+
+          next unless index_headings
 
           records[(id += 1).to_s] = {
             'url'     => heading && !heading[:id].empty? ? "#{url}##{heading[:id]}" : url,
