@@ -26,7 +26,18 @@
 #     output: '/assets/main-web/site-search.json'    # where to write the file
 #     heading_level: 3                               # chunk on headings down to this level
 #     collections: []                                # collection labels to index alongside pages
+#     additions: 'search_index_additions'            # _data file(s) of extra records
+#     tag_delimiter: ';'                             # separator for the csv tags column
 #     pretty: false                                  # true for human readable json
+#
+# "additions" names one or more csv files in _data/ holding curated records for
+# resources that are not pages of this site, such as guides on another server.
+# Each row becomes a single record, with the columns:
+#
+#   title,description,tags,link
+#
+# Rows without a title or link are skipped. Links starting with "/" are treated
+# as site relative and get the baseurl, anything else is used as given.
 #
 # Each record has the shape:
 #
@@ -53,6 +64,8 @@ module SearchIndex
     'output'        => '/assets/main-web/site-search.json',
     'heading_level' => 3,
     'collections'   => [],
+    'additions'     => nil,
+    'tag_delimiter' => ';',
     'pretty'        => false
   }.freeze
 
@@ -87,7 +100,9 @@ module SearchIndex
 
       searchable_docs(site, config['collections']).each do |doc|
         url = relative_url(site, doc.url)
-        title = doc.data['title']
+        # every string stored in the index goes through plain_text, so that
+        # results never render escaped markup back at the user
+        title = plain_text(doc.data['title'])
 
         headings = []
 
@@ -123,10 +138,57 @@ module SearchIndex
         }
       end
 
+      addition_records(site, config).each do |record|
+        records[(id += 1).to_s] = record
+      end
+
       add_page(site, config, records)
     end
 
     private
+
+    # curated records from _data csv files, for resources that are not pages of
+    # this site. one row in, one record out, with no headings to chunk on
+    def addition_records(site, config)
+      Array(config['additions']).flat_map do |name|
+        rows = site.data[name.to_s]
+
+        unless rows.is_a?(Array)
+          Jekyll.logger.warn 'Search Index:', "no _data file found for additions: #{name}"
+          next []
+        end
+
+        rows.filter_map do |row|
+          title = plain_text(row['title'])
+          link = row['link'].to_s.strip
+          next if title.empty? || link.empty?
+
+          {
+            'url'     => addition_url(site, link),
+            'title'   => title,
+            'page'    => nil,
+            'tags'    => split_tags(row['tags'], config['tag_delimiter']),
+            'content' => plain_text(row['description'])
+          }
+        end
+      end
+    end
+
+    # additions can link anywhere, so only links rooted at "/" get the baseurl.
+    # anything carrying a scheme ("https:", "mailto:") or protocol relative
+    # ("//cdn.example.org") points off site and is used exactly as given
+    def addition_url(site, link)
+      return link if link.match?(%r{\A(?:[a-z][a-z0-9+.-]*:|//)}i)
+
+      link.start_with?('/') ? relative_url(site, link) : link
+    end
+
+    # the tags column holds a delimited list, stored as an array for the
+    # search results to render as badges, or null when empty
+    def split_tags(value, delimiter)
+      tags = value.to_s.split(delimiter).map(&:strip).reject(&:empty?)
+      tags.empty? ? nil : tags
+    end
 
     # pages (and optionally collection documents) that opted in to search
     def searchable_docs(site, collections)

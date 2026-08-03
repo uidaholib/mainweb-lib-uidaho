@@ -24,7 +24,7 @@ lib-objects: https://objects.lib.uidaho.edu
 # main url, used to point at server even when on dev server
 liburl: https://www.lib.uidaho.edu
 
-# Collections
+# Collections (Jekyll collections init)
 collections:
   updates:
     sort_by: order
@@ -32,7 +32,7 @@ collections:
     output: true
     sort_by: title
 
-# cb page gen
+# cb page gen (_plugins/cb_page_gen.rb)
 page_gen:
   # generate profile pages
   - data: 'about_people'
@@ -41,16 +41,15 @@ page_gen:
     dir: 'about/people'
     filter: 'id'
 
-# site search index
-# the search_index plugin generates the json data powering site search
-# from pages with "search: true" in their front matter.
-# defaults are used unless set here, see _plugins/search_index.rb
-#search_index:
+# site search index (_plugins/search_index.rb)
+search_index:
+  # _data csv of curated records for resources that are not pages of this site
+  additions: 'search_index_additions'
 #  output: '/assets/main-web/site-search.json'
 #  heading_level: 3
 #  collections: []
 
-# heading ids
+# heading ids (_plugins/headings_ids.rb)
 # the heading_ids plugin adds ids to content headings that don't have one,
 # so site search results can link directly to the matching heading.
 # defaults are used unless set here, see _plugins/heading_ids.rb
