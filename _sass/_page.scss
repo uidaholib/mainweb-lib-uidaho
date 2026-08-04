@@ -47,6 +47,18 @@
     -webkit-mask-position: center center;
     mask-position: center center;
 }
+// bootstrap draws the .stretched-link overlay on ::after, which the arrow above has already claimed,
+// so the two classes on one link lose the overlay and only the arrow is drawn.
+// ::before is free, so redraw the overlay there, same as the bootstrap helper.
+.arrow-link.stretched-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
 
 // popular big block btns
 .popular {

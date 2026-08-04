@@ -1,0 +1,219 @@
+{% comment %}
+
+    Browse Cards include takes a data CSV and generates a basic filterable, sortable browse feature. Each record is represented as a card.
+
+    The CSV can have the columns title,description,link,link-text,image-src,image-alt
+    Only "title" is required. The rows are rendered in the order they appear in the CSV, so put the most popular resources first.
+
+    Use like:
+
+    {% include feature/browse-cards.html data="find_index" %}
+
+    Options:
+
+    - "data" = the name of the CSV in the "_data" folder, given without the file extension, e.g. "find_index".
+    - "search" = false to opt out of adding a search box.
+    - "sort" = false to opt out of adding sort options.
+    - "label" = the plural noun used in the search box, result count, and no results message, e.g. "collections" (default "resources").
+    - "heading_level" = the heading element used for the card titles, "h2", "h3", etc (default "h2"), set for correct heading order on the page.
+
+    A long description is clipped so the cards stay a scannable height, and the rest of it is shown when the card is hovered or tabbed into. The open card floats above its place in the grid, so the cards around it do not move, and Esc closes it.
+
+    The search and sort controls are added by JavaScript, so they are not displayed if it is unavailable, leaving the full set of cards in CSV order.
+
+    Note that every card title is a heading, so a page using this feature will likely want "search_headings: false" in its front matter to keep each card from becoming its own site search result (see "docs/site_search_setup.md").
+
+{% endcomment %}
+{%- assign cards_data = site.data[include.data] -%}
+{%- if cards_data.size > 0 -%}
+{%- assign bc_id = "browse-cards-" | append: include.data | slugify -%}
+{%- assign bc_heading = include.heading_level | default: "h2" | strip -%}
+{%- assign bc_label = include.label | default: "resources" | strip -%}
+{%- assign bc_total = cards_data | size -%}
+{%- assign bc_search = true -%}
+{%- if include.search == false or include.search == "false" -%}{%- assign bc_search = false -%}{%- endif -%}
+{%- assign bc_sort = true -%}
+{%- if include.sort == false or include.sort == "false" -%}{%- assign bc_sort = false -%}{%- endif -%}
+<div class="browse-cards mb-5" id="{{ bc_id }}" data-bc-label="{{ bc_label | escape }}">
+    {%- if bc_search or bc_sort %}
+    <div class="row g-2 align-items-center mb-3 d-none" data-bc-enhance>
+        {%- if bc_search %}
+        <div class="col-12 col-md">
+            <label for="{{ bc_id }}-search" class="visually-hidden">Search {{ bc_label }} by title or description</label>
+            <div class="input-group">
+                <span class="input-group-text bg-white" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" focusable="false">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.099zm-5.242 1.656a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+                    </svg>
+                </span>
+                <input type="search" class="form-control" id="{{ bc_id }}-search" placeholder="Search {{ bc_label }}..." autocomplete="off" spellcheck="false" aria-describedby="{{ bc_id }}-count" data-bc="search">
+            </div>
+        </div>
+        {%- endif %}
+        {%- if bc_sort %}
+        <div class="col-7 col-md-auto">
+            <label for="{{ bc_id }}-sort" class="visually-hidden">Sort {{ bc_label }}</label>
+            <select id="{{ bc_id }}-sort" class="form-select" data-bc="sort">
+                <option value="popularity" selected>Sort: Most Popular</option>
+                <option value="az">Sort: Title (A&ndash;Z)</option>
+                <option value="za">Sort: Title (Z&ndash;A)</option>
+                <option value="random">Sort: Random</option>
+            </select>
+        </div>
+        {%- endif %}
+        <div class="col-5 col-md-auto">
+            <button type="button" class="btn btn-outline-secondary w-100" data-bc="clear">Reset</button>
+        </div>
+    </div>
+    {%- endif %}
+    {%- if bc_search %}
+    <p class="text-muted small d-none" id="{{ bc_id }}-count" aria-live="polite" data-bc="count" data-bc-enhance>Showing {{ bc_total }} of {{ bc_total }} {{ bc_label }}.</p>
+    <div class="alert alert-light border d-none" role="status" data-bc="empty">No {{ bc_label }} match your search. Try another word, or reset to see them all.</div>
+    {%- endif %}
+    <div class="browse-cards-grid">
+        {%- for c in cards_data -%}
+        {%- capture search_blob %}{{ c.title }} {{ c.description }}{% endcapture -%}
+        <div class="browse-card" data-title="{{ c.title | downcase | escape }}" data-search="{{ search_blob | strip_newlines | strip | downcase | escape }}">
+            <div class="card">
+                <div class="card-body d-flex flex-column">
+                    <{{ bc_heading }} class="card-title h5">{{ c.title }}</{{ bc_heading }}>
+                    {%- if c.image-src %}
+                    <div class="ratio ratio-16x9">
+                        <img src="{{ c.image-src | relative_url }}" alt="{{ c.image-alt | default: '' | escape }}" class="w-100 h-100 object-fit-cover rounded-top" loading="lazy" decoding="async">
+                    </div>
+                    {%- endif %}
+                    {%- if c.description %}
+                    <p class="card-text">{{ c.description }}</p>
+                    {%- endif %}
+                    {%- if c.link %}
+                    <p class="mt-auto mb-0"><a href="{% if c.link contains '://' %}{{ c.link }}{% else %}{{ c.link | relative_url }}{% endif %}" class="arrow-link stretched-link text-reset text-decoration-none text-uppercase fw-bold">{{ c.link-text | default: "Learn more" }}</a></p>
+                    {%- endif %}
+                </div>
+            </div>
+        </div>
+        {%- endfor %}
+    </div>
+</div>
+<script>
+    // controls for the browse cards feature, "_includes/feature/browse-cards.html"
+    // the cards are all in the page, this filters them by hiding and sorts them by reordering the grid,
+    // and opens a card with a clipped description on hover or keyboard focus
+    (function () {
+        const root = document.getElementById("{{ bc_id }}");
+        if (!root) { return; }
+
+        const grid = root.querySelector(".browse-cards-grid");
+        const cards = Array.prototype.slice.call(root.querySelectorAll(".browse-card"));
+        const searchInput = root.querySelector('[data-bc="search"]');
+        const sortSelect = root.querySelector('[data-bc="sort"]');
+        const clearButton = root.querySelector('[data-bc="clear"]');
+        const countText = root.querySelector('[data-bc="count"]');
+        const emptyMessage = root.querySelector('[data-bc="empty"]');
+        const label = root.dataset.bcLabel;
+        const total = cards.length;
+
+        // an open card shows the rest of a description the css has clipped.
+        // it floats above its grid cell to do it, so the cards around it do not move,
+        // which means the cell has to hold its own height while the card is out of flow
+        function setOpen(card, open) {
+            if (open === card.classList.contains("bc-open")) { return; }
+            if (open) {
+                card.style.minHeight = card.getBoundingClientRect().height + "px";
+                card.classList.add("bc-open");
+            } else {
+                card.classList.remove("bc-open");
+                card.style.minHeight = "";
+            }
+        }
+
+        function syncOpen(card) {
+            setOpen(card, card.matches(":hover") || card.contains(document.activeElement));
+        }
+
+        function filter() {
+            const query = (searchInput ? searchInput.value : "").trim().toLowerCase();
+            let visible = 0;
+
+            cards.forEach(function (card) {
+                const match = !query || card.dataset.search.indexOf(query) !== -1;
+                // a hidden card must not come back open, it was measured at its old size
+                if (!match) { setOpen(card, false); }
+                card.classList.toggle("d-none", !match);
+                if (match) { visible++; }
+            });
+
+            if (countText) {
+                countText.textContent = "Showing " + visible + " of " + total + " " + label + ".";
+            }
+            if (emptyMessage) {
+                emptyMessage.classList.toggle("d-none", visible !== 0);
+            }
+        }
+
+        function byTitle(a, b) {
+            return a.dataset.title.localeCompare(b.dataset.title);
+        }
+
+        function sort() {
+            const mode = sortSelect ? sortSelect.value : "popularity";
+            // "popularity" is the csv order, which is the order the cards were rendered in
+            const ordered = cards.slice();
+
+            if (mode === "az") {
+                ordered.sort(byTitle);
+            } else if (mode === "za") {
+                ordered.sort(function (a, b) { return byTitle(b, a); });
+            } else if (mode === "random") {
+                for (let i = ordered.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [ordered[i], ordered[j]] = [ordered[j], ordered[i]];
+                }
+            }
+
+            // appending a card that is already in the grid moves it, so this reorders in place
+            ordered.forEach(function (card) { grid.appendChild(card); });
+        }
+
+        // esc closes an open card, so the extra text can be dismissed without moving the pointer
+        document.addEventListener("keydown", function (e) {
+            if (e.key !== "Escape") { return; }
+            cards.forEach(function (card) { setOpen(card, false); });
+        });
+
+        cards.forEach(function (card) {
+            card.addEventListener("mouseenter", function () { syncOpen(card); });
+            card.addEventListener("mouseleave", function () { syncOpen(card); });
+            card.addEventListener("focusin", function () { syncOpen(card); });
+            // focusout runs before the next element takes focus, so let it land first,
+            // otherwise tabbing between two links in the same card closes and reopens it
+            card.addEventListener("focusout", function () {
+                window.setTimeout(function () { syncOpen(card); }, 0);
+            });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener("input", filter);
+        }
+        if (sortSelect) {
+            // reshuffles on each pick of random, so choosing it again gives a new order
+            sortSelect.addEventListener("change", sort);
+        }
+        if (clearButton) {
+            clearButton.addEventListener("click", function () {
+                if (searchInput) { searchInput.value = ""; }
+                if (sortSelect) { sortSelect.value = "popularity"; }
+                sort();
+                filter();
+                if (searchInput) { searchInput.focus(); }
+            });
+        }
+
+        // the controls do nothing without this script, so they stay hidden until it runs
+        root.querySelectorAll("[data-bc-enhance]").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+
+        filter();
+    })();
+</script>
+{%- endif -%}

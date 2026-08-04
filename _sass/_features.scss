@@ -67,6 +67,82 @@
     justify-content: center;
 }
 
+// browse cards feature, see "_includes/feature/browse-cards.html"
+// the grid sizes itself off the container rather than breakpoints, so the same include
+// works in the narrow page column and in a full width page without an option to set columns
+.browse-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1.5rem;
+}
+.browse-card .card {
+    // fills the grid cell so the cards in a row line up, in place of the .h-100 class,
+    // whose "!important" would stop an open card from growing past its cell
+    height: 100%;
+    // brand accent along the top of the card
+    border-top: .25rem solid var(--bs-pride-gold);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+// the whole card is clickable via .stretched-link, so it reacts as one to hover and to keyboard focus
+.browse-card .card:hover,
+.browse-card:focus-within .card {
+    transform: translateY(-.25rem);
+    box-shadow: 0 .5rem 1rem rgba(25, 25, 25, .15);
+}
+// keeps the cards in a row a scannable height when a description runs long
+// the full text stays in the markup, so the search still matches the clipped words
+.browse-card .card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+// hovering a card, or tabbing into it, shows the rest of a clipped description.
+// the card floats above its own grid cell to grow, so nothing around it moves,
+// and the js holds the cell open at its original height, see the include
+.browse-card {
+    position: relative;
+}
+.browse-card.bc-open .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    min-height: 100%;
+    z-index: 3;
+}
+.browse-card.bc-open .card-text {
+    -webkit-line-clamp: none;
+    line-clamp: none;
+    overflow: visible;
+}
+// a link written into a description sits above the .stretched-link overlay so it stays clickable
+.browse-card .card-text a {
+    position: relative;
+    z-index: 2;
+}
+.browse-card .arrow-link::after {
+    transition: transform .2s ease;
+}
+.browse-card .card:hover .arrow-link::after,
+.browse-card:focus-within .arrow-link::after {
+    transform: translateX(.25rem);
+}
+@media (prefers-reduced-motion: reduce) {
+    .browse-card .card,
+    .browse-card .arrow-link::after {
+        transition: none;
+    }
+    .browse-card .card:hover,
+    .browse-card:focus-within .card,
+    .browse-card .card:hover .arrow-link::after,
+    .browse-card:focus-within .arrow-link::after {
+        transform: none;
+    }
+}
+
 // accordion feature, see "_includes/feature/accordion.html" and "_includes/feature/faq.html"
 // matches uidaho.edu, no fill or outline, just a rule between each item and a circled plus/minus
 .accordion {
