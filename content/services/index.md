@@ -20,4 +20,4 @@ page_nav:
 
 Browse the support and services available in the Library.
 
-{% include feature/browse-cards.html data="services_index" %}
+{% include feature/browse-cards.html data="services_index" label="services" %}
