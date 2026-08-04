@@ -18,9 +18,9 @@
     - "img-lg" = full url to larger size of the image (optional, for use with gallery: true)
 
 {%- endcomment -%}
-<figure class="figure d-block text-center p-3">
+<figure class="figure d-block text-center">
     {% if page.gallery == true %}<a class="spotlight" href="{{ include.img-lg | default: include.img }}">{% endif %}
-    <img data-src="{{ include.img }}" alt="{{ include.alt }}" {% if include.width %}style="width:{{ include.width }};" {% endif %}class="figure-img img-fluid rounded lazyload">
+    <img data-src="{{ include.img }}" alt="{{ include.alt }}" {% if include.width %}style="width:{{ include.width }};" {% endif %}class="figure-img img-fluid lazyload">
     {% if page.gallery == true %}</a>{% endif %}
     {% if include.caption %}<figcaption class="figure-caption">{{ include.caption }}</figcaption>{%- endif -%}
 </figure>
