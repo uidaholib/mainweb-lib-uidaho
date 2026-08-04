@@ -10,6 +10,17 @@ description: Discover Library resources to support your research and scholarship
 page_nav:
     parent:
     children:
+      - /find/articles.html
+      - /find/books.html
+      - /find/data.html
+      - /find/video.html
+      - /find/encyclopedias.html
+      - /events/
+      - /find/equipment-loans.html
+      - /find/geospatial/
+      - /find/govdocs/
+      - /find/maps/
+      - /find/newspapers.html
 chat-widget: true
 ---
 

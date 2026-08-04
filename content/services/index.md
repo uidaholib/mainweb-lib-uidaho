@@ -10,6 +10,12 @@ description: Browse the support and services available in the Library.
 page_nav:
     parent:
     children:
+        - /services/borrow/
+        - /services/reserve/
+        - /services/instruction/
+        - /services/ill/
+        - /open/
+        - /services/liaisons.html
 ---
 
 Browse the support and services available in the Library.

@@ -1,3 +1,10 @@
+{% comment %}
+
+    Initializes basic DataTables for an HTML table on a page.
+    Add "table-id: #example-id" to the page front matter to use. 
+    Optionally, add the options "table-paginate: true" to add pagination and/or "table-searchbuilder: true" to add advanced search.
+
+{% endcomment %}
 <!-- add DataTable -->
 <link rel="stylesheet" type="text/css" href="{{ '/assets/main-web/lib/datatables/datatables.min.css' | relative_url }}">
 <script src="{{ '/assets/main-web/lib/datatables/datatables.min.js' | relative_url }}"></script>

@@ -1,0 +1,54 @@
+---
+title: Workshop Resources
+section: Services
+permalink: /services/workshops/resources.html
+layout: page
+search: true
+tags:
+description:
+page_nav:
+    parent: /services/
+    children:
+table-id: "#resources"
+---
+{% assign resources = site.data.services_workshops_resources | where_exp: 'r', 'r.active != "false"'%}
+{% assign materials = "slides,website,handout,video,playlist,code" | split: ',' %}
+
+<p>Slides and additional materials from past workshops and events are shared on this page. Also, see our <a href="{{ '/gisday/repository.html' | relative_url }}">GIS Day Repository</a>.</p>
+
+<div class="alert alert-light mt-4">
+    <p><small>This collection contains unique archived materials in a variety of formats. The Library is committed to ensuring our resources are accessible to all users. Please contact us if you need support accessing or using this archived content.</small></p>
+    <a href="https://uidaho.co1.qualtrics.com/jfe/form/SV_3q11GEehNmqtRVY?source_link={{ page.url | absolute_url }}" class="btn btn-sm btn-secondary m-2">
+        Contact us about a resource 
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi icon-sprite" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg>
+    </a>
+    <a href="https://www.lib.uidaho.edu/help/" class="btn btn-sm btn-secondary m-2">
+        Library Help
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi icon-sprite" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/><path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94"/></svg>
+    </a>
+</div>
+
+<table id="resources" class="table table-striped" data-order='[[1,"desc"]]'>
+    <thead>
+        <tr>
+            <th scope="column">Title</th>
+            <th scope="column">Date</th>
+            <th scope="column">Description</th>
+            <th scope="column">Materials</th>    
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    {% for r in resources %}
+    <tr>
+        <th scope="row">{{ r.title }}</th>
+        <td>{{ r.date }}</td>
+        <td>{{ r.description }}<br>
+            Presenter: {{ r.instructor }}</td>
+        <td>
+            {% for m in materials %}{% if r[m] %}<a href="{{ r[m] }}">{% if m == 'slides' or m == 'handout' %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16" aria-hidden="true"><path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/></svg>{% elsif m == 'video' or m == 'playlist' %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm4 0v6h8V1zm8 8H4v6h8zM1 1v2h2V1zm2 3H1v2h2zM1 7v2h2V7zm2 3H1v2h2zm-2 3v2h2v-2zM15 1h-2v2h2zm-2 3v2h2V4zm2 3h-2v2h2zm-2 3v2h2v-2zm2 3h-2v2h2z"/></svg>{% elsif m == 'code' or m == 'website' %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/></svg>{% endif %}{{ m | capitalize }}</a><br>{% endif %}{% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>													
+			

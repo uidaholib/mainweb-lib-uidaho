@@ -1,0 +1,39 @@
+---
+title: Newspaper Microfilm List
+section: Find
+permalink: /find/microfilm.html
+layout: page
+search: false
+tags:
+description:
+page_nav:
+    parent: /find/newspapers.html
+    children:
+table-id: "#microfilm"
+table-paginate: true
+table-searchbuilder: true
+---
+{% assign newspapers = site.data.find_microfilm %}
+
+<p>This page provides an alphabetical list of Idaho newspapers on microfilm in our collections. However, please note that most microfilm can be discovered in our <a href="https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?vid=01ALLIANCE_UID:UID&mode=advanced">main online catalog</a>. Patrons can also search <a href="https://uidaho.newspapers.com/papers/">Newspapers.com</a> for historic newspapers that have been digitized, but please note that subscription access is only provided <em>on campus</em>.</p>
+
+<table id="microfilm" class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="column">City</th>
+			<th scope="column">County</th>
+			<th scope="column">Title</th>
+			<th scope="column">Dates</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% for n in newspapers %}
+    <tr>
+		<th scope="row">{{ n.city }}</th>
+		<td>{{ n.county }}</td>
+		<td>{{ n.title }}</td>
+		<td>{{ n.dates | replace: ';','<br>' }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>	

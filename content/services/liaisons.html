@@ -1,0 +1,104 @@
+---
+title: Subject Liaisons
+section: Services
+permalink: /services/liaisons.html
+layout: page
+search: true
+tags:
+description:
+page_nav:
+    parent: /services/
+    children:
+---
+
+<p>Each U of I College has a librarian assigned as a subject liaison. Find your liaison using the table below, or click on the topics to learn more about what library liaisons can do for you.</p>
+
+<div class="accordion mb-3" id="accordionGroup">
+
+	<div class="accordion-item">
+		<h2 class="accordion-header">
+			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+				Working with Students
+			</button>
+		</h2>
+		<div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+			<div class="accordion-body">
+				<p>
+					Liaisons teach subject-specific classroom sessions at the request of faculty. 
+					Most incoming first-year students receive some library instruction through English 102, but these sessions cannot cover all the subject databases and other resources they may need for research over the next several years. 
+					Instruction sessions with liaisons are invaluable for high-quality student research.
+				</p>
+				<p>
+					They also conduct one-on-one research sessions with students for specific subjects or assignments through the <a href="{{ '/help/research.html' | relative_url }}">Research Assistance Program</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-item">
+		<h2 class="accordion-header">
+			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+				Working with Faculty
+			</button>
+		</h2>
+		<div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+			<div class="accordion-body">
+				<p>Liaisons work with faculty to create research assignments that maximize students acquisition of research skills.</p>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-item">
+		<h2 class="accordion-header">
+			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+				Collection Building
+			</button>
+		</h2>
+		<div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+			<div class="accordion-body">
+				<p>
+					Liaisons select and purchase books, multimedia materials and other items for the library in their assigned subject areas. 
+					To request that the library purchase materials, send requests directly to the appropriate subject liaisons listed below or use the online <a href="{{ '/find/request.html' | relative_url }}">resource purchase request form</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+
+</div>
+	
+
+<h2>Find your Liaison</h2>
+{% assign liaisons = site.data.about_liaisons | sort: "liaison_college" %}
+
+<div id="liaison-list">
+	<input type="text" id="listSearch" class="form-control form-control-lg search mb-3" aria-label="Text input to filter list" placeholder="Search...">
+
+	<div class="list">
+	{% for l in liaisons %}
+		<div class="row mx-1 mb-3 p-3 border rounded">
+			<div class="col-md-5 listCollege">
+				<h3 class="h4">{{ l.liaison_college }}</h3>
+				<p><strong>Departments:</strong><br> {{ l.liaison_departments }}</p>
+			</div>
+			{% assign liaison = site.data.about_people | where: 'id', l.id | first %}
+			<div class="col-md-4 listLiaison">
+				<p class="h5">{{ l.first_name }} {{ l.last_name }}</p>
+				<p><a href="mailto:{{ l.email }}">{{ l.email }}</a><br>
+				{{ liaison.phone }}</p>
+			</div>
+			<div class="col-md-3">
+				<a href="{{ '/about/people/' | relative_url }}{{ l.id }}.html" title="view full profile of {{ l.liaison_title }}">
+					<img class="img-fluid rounded" src="{{ site.lib-media }}{% if liaison.image %}/directory/{{ liaison.image }}{% else %}/directory/tower_icon_gold_sq.png{% endif %}" alt="portrait of {{ l.last_name }}">
+				</a>
+			</div>
+		</div>
+	{% endfor %}
+	</div>
+</div>
+
+<script src="{{ '/assets/js/list.min.js' | relative_url }}"></script>
+<script> 
+// init list.js
+var options = {
+  valueNames: [ 'listCollege', 'listLiaison' ]
+};
+var documentList = new List('liaison-list', options);
+</script>

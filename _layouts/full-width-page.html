@@ -7,7 +7,7 @@ layout: default
     <main id="maincontent" role="main">
         <h1>{{ page.title }}</h1>
         
-        {% include components/page-breadcrumbs.html %}
+        {% unless page.breadcrumbs == false %}{% include components/page-breadcrumbs.html %}{% endunless %}
 
         {{ content }}
 

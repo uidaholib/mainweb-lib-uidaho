@@ -17,6 +17,8 @@ page_nav:
 page_resources:
     title: Resources
     links: 
+        - text: Work With Us
+          link: /opportunities/
         - text: Strategic Plan
           link: /about/stratplan.html
         - text: Library Literacies
