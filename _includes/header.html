@@ -56,15 +56,11 @@
                 <div class="bg-clearwater flex-shrink-0" style="width:3rem;height:20px" aria-hidden="true"></div>
                 <nav class="ps-3 align-self-center flex-grow-1" aria-label="Section navigation">
                     <div class="hstack gap-3 text-uppercase fw-bold mb-0" style="font-size:16px;line-height:1">
-                        {% if page.section %}
-                        <div class="text-clearwater ms-2">{{ page.section }}</div>
-                        <div class="vr d-none d-md-block"></div>
-                        {% endif %}
-                        <div class="d-none d-md-block"><a href="{{ '/find/' | relative_url }}" class="text-brand-black">Find</a></div>
-                        <div class="d-none d-md-block"><a href="{{ '/services/' | relative_url }}" class="text-brand-black">Services</a></div>
-                        <div class="d-none d-md-block"><a href="{{ '/collections/' | relative_url }}" class="text-brand-black">Collections</a></div>
-                        <div class="d-none d-md-block"><a href="{{ '/about/' | relative_url }}" class="text-brand-black">About</a></div>
-                        <div class="d-none d-md-block"><a href="{{ '/about/updates.html' | relative_url }}" class="text-brand-black">Updates</a></div>
+                        <div class="d-none d-md-block"><a href="{{ '/find/' | relative_url }}" class="{% if page.section == 'Find' %}text-clearwater{% else %}text-brand-black{% endif %}">Find</a></div>
+                        <div class="d-none d-md-block"><a href="{{ '/services/' | relative_url }}" class="{% if page.section == 'Services' %}text-clearwater{% else %}text-brand-black{% endif %}">Services</a></div>
+                        <div class="d-none d-md-block"><a href="{{ '/collections/' | relative_url }}" class="{% if page.section == 'Collections' %}text-clearwater{% else %}text-brand-black{% endif %}">Collections</a></div>
+                        <div class="d-none d-md-block"><a href="{{ '/about/' | relative_url }}" class="{% if page.section == 'About' %}text-clearwater{% else %}text-brand-black{% endif %}">About</a></div>
+                        <div class="d-none d-md-block"><a href="{{ '/about/updates.html' | relative_url }}" class="{% if page.section == 'Updates' %}text-clearwater{% else %}text-brand-black{% endif %}">Updates</a></div>
                         <div class="ms-auto d-md-none"><a href="{{ '/help/' | relative_url }}" class="text-brand-black">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
