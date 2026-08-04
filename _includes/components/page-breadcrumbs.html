@@ -10,9 +10,6 @@
     {% if page.page_nav.parent %}{% assign parent = site.html_pages | where: 'permalink', page.page_nav.parent | first %}
     <li class="breadcrumb-item">
         <a class="text-secondary" href="{{ parent.url | relative_url }}">{{ parent.title }}</a>
-    </li>{%- elsif page.section -%}
-    <li class="breadcrumb-item text-secondary">
-        {{ page.section }}
     </li>{%- endif -%}
     <li class="breadcrumb-item active text-secondary">{{ page.title | truncatewords: 10 }}</li>
 </ul>
