@@ -4,8 +4,8 @@ section: The Studio
 permalink: /studio/termsofuse.html
 layout: page
 search: true
-tags:
-description:
+tags: the studio; terms of use; studio policies
+description: "Terms of use and eligibility rules patrons must follow when reserving and using the Studio and its equipment."
 page_nav:
     parent: /studio/
     children:

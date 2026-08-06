@@ -4,8 +4,8 @@ section: VERSO
 permalink: /verso/faq.html
 layout: page
 search: true
-tags:
-description:
+tags: VERSO; frequently asked questions; policies
+description: "Answers to frequently asked questions about VERSO policies, deposits, and researcher profiles at the University of Idaho."
 page_nav:
     parent: /verso/
     children:

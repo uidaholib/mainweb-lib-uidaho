@@ -4,8 +4,8 @@ section: Special Collections
 permalink: /special-collections/faq.html
 layout: page
 search: true
-tags:
-description:
+tags: special collections; frequently asked questions; archives research
+description: "Frequently asked questions about using materials and services at Special Collections and Archives."
 page_nav:
     parent: /special-collections/about.html
     children:

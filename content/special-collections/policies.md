@@ -4,8 +4,8 @@ section: Special Collections
 permalink: /special-collections/policies.html
 layout: page
 search: true
-tags:
-description:
+tags: reproduction requests; copyright policy; special collections
+description: "Policies for Special Collections and Archives covering reproduction requests, copyright, citing archival materials, and describing offensive content."
 page_nav:
     parent: /special-collections/about.html
     children:

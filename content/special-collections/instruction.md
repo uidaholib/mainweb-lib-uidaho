@@ -4,8 +4,8 @@ section: Special Collections
 permalink: /special-collections/instruction.html
 layout: page
 search: true
-tags:
-description:
+tags: archives instruction; primary source research; special collections
+description: "Information on scheduling archives instruction sessions, hands-on activities, and orientations to primary source research for University of Idaho classes."
 page_nav:
     parent: /special-collections/about.html
     children:

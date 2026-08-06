@@ -4,8 +4,8 @@ section: The Studio
 permalink: /studio/rodecaster.html
 layout: page
 search: true
-tags:
-description:
+tags: the studio; rodecaster pro ii; podcast recording
+description: "Step-by-step tutorial for recording, reviewing, and exporting podcast or voiceover audio using the RODECaster Pro II in the Studio."
 page_nav:
     parent: /studio/tutorials.html
     children:

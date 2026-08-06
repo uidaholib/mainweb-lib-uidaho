@@ -4,8 +4,8 @@ section: Special Collections
 permalink: /special-collections/donations.html
 layout: page
 search: true
-tags:
-description:
+tags: donating materials; deed of gift; special collections
+description: "Guidelines and forms for donating historical materials, faculty papers, or university records to Special Collections and Archives, including monetary gifts."
 page_nav:
     parent: /special-collections/about.html
     children:
