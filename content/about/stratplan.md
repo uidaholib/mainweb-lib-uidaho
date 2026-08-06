@@ -4,8 +4,8 @@ section: About
 permalink: /about/stratplan.html
 layout: page
 search: true
-tags: Policies
-description:
+tags: strategic plan; library goals; organizational priorities
+description: "University of Idaho Library strategic plan with goals, priorities, and progress for library services and operations."
 page_nav:
     parent: /about/policies.html
     children:

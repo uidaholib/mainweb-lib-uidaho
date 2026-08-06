@@ -4,8 +4,8 @@ section: Find
 permalink: /find/equipment-loans.html
 layout: page
 search: true
-tags:
-description:
+tags: equipment loans; checkout; loan periods
+description: "Information about borrowing library equipment, loan periods, and checkout options."
 page_nav:
     parent: /find/
     children:

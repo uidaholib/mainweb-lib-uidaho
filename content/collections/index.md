@@ -5,8 +5,8 @@ permalink: /collections/
 layout: full-width-page
 search: true
 search_headings: false
-tags:
-description: Explore Library collections that span a variety of topics and formats, including physical and digital resources that support research and document Idaho's past.
+tags: library collections; digital resources; idaho history
+description: "Browse University of Idaho Library collections across subjects and formats, including physical materials, digital resources, and Idaho-focused holdings."
 page_nav:
     parent:
     children:

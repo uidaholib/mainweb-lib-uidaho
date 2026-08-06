@@ -1,0 +1,44 @@
+---
+description: Generate concise, search-focused frontmatter descriptions and semicolon-separated tags.
+applyTo: "**/*.md"
+---
+
+<!-- Tip: Use /create-instructions in chat to generate content with agent assistance -->
+
+Use these instructions when creating or updating the `description` and `tags` values in page frontmatter.
+
+Goal:
+- Write a short description of what the page contains.
+- Place that sentence in the frontmatter `description` field.
+
+Requirements:
+- Write exactly 1 sentence.
+- Keep it brief, clear, and specific.
+- Use plain, direct language in a declarative sentence.
+- Include likely user search terms for the local library site search feature.
+- Include broader SEO-friendly terms that match the page topic naturally.
+- Describe the actual page content and primary use for visitors.
+
+Style constraints:
+- Do not use hype, promotional language, or exaggeration.
+- Do not use em dashes.
+- Do not use contrived or AI-sounding phrasing.
+- Avoid vague filler words.
+
+Quality check before finalizing:
+- Is it 1 sentence?
+- Does it accurately describe the page content?
+- Does it contain useful keywords people would search for?
+- Is the tone neutral and straightforward?
+
+Tags:
+- After writing the description, add or update the frontmatter `tags` value.
+- Use 2 to 3 tags when possible.
+- Do not use more than 5 tags.
+- Separate tags with semicolons.
+- Choose tags that match page content and likely user search terms.
+- Keep tags short, specific nouns or noun phrases.
+- Avoid duplicate tags or near-synonyms in the same list.
+
+Tags format example:
+- `tags: research help; citation guides; library workshops`

@@ -5,8 +5,8 @@ permalink: /events/
 layout: page
 search: true
 search_headings: false
-tags:
-description: Browse the full calendar for listings of upcoming events and workshops.
+tags: library events; workshops; calendar
+description: "Events calendar for University of Idaho Library workshops, classes, and public programs."
 page_nav:
     parent: /find/
     children:

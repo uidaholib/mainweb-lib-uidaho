@@ -4,8 +4,8 @@ section: About
 permalink: /about/
 layout: page
 search: true
-tags:
-description:
+tags: library overview; hours and locations; contact information
+description: "Overview of University of Idaho Library services, departments, hours, maps, and contact information for students, faculty, and visitors."
 page_nav:
     #parent:
     children:

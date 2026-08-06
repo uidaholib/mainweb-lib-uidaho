@@ -4,8 +4,8 @@ section: Find
 permalink: /find/data.html
 layout: page
 search: true
-tags:
-description:
+tags: research data; datasets; data repositories
+description: "Data research guide with links to datasets, data repositories, and support for finding and using data."
 page_nav:
     parent: /find/
     children:

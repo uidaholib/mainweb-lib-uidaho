@@ -4,8 +4,8 @@ section: Find
 permalink: /find/ebooks.html
 layout: page
 search: true
-tags:
-description:
+tags: ebooks; access tools; library search
+description: "Instructions and tools for locating, accessing, and using ebooks through University of Idaho Library resources."
 page_nav:
     parent: /find/books.html
     children:

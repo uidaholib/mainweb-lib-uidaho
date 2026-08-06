@@ -4,8 +4,8 @@ section: Docs
 permalink: /docs/pages.html
 layout: page
 search: false
-tags: 
-description:
+tags: page setup; frontmatter; navigation
+description: "Instructions for page frontmatter, navigation, and setup patterns used to build library website pages."
 page_nav:
     parent: /docs/
 page_callout: 

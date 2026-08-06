@@ -4,8 +4,8 @@ section: About
 permalink: /about/tech.html
 layout: page
 search: true
-tags:
-description:
+tags: website documentation; technical information; library web
+description: "Technical notes about how the library website is built, maintained, and updated."
 page_nav:
     parent: /about/
     children:

@@ -4,8 +4,8 @@ section: Docs
 permalink: /docs/
 layout: page
 search: false
-tags: 
-description:
+tags: website docs; content management; editing workflow
+description: "Documentation hub for University of Idaho Library website structure, page setup, and editing workflows."
 page_nav:
     children:
         - /docs/contributing.html

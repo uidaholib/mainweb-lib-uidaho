@@ -4,8 +4,8 @@ section: Docs
 permalink: /docs/contributing.html
 layout: page
 search: false
-tags: 
-description:
+tags: contributing guide; website editing; documentation
+description: "Contributor guide for editing and maintaining content on the University of Idaho Library website."
 page_nav:
     parent: /docs/
     children:

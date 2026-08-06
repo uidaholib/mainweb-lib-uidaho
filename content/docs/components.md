@@ -4,8 +4,8 @@ section: Docs
 permalink: /docs/components.html
 layout: page
 search: false
-tags: 
-description:
+tags: website components; documentation; design patterns
+description: "Documentation for reusable website components used across the University of Idaho Library site."
 page_nav:
     parent: /docs/
 page_callout: 
