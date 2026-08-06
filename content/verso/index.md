@@ -13,6 +13,7 @@ page_nav:
         - /verso/profile.html
         - /verso/depositing.html
         - /verso/formats.html
+        - /verso/universo.html
 page_callout: 
     title: VERSO
     text: Vandal Expertise, Research, and Scholarship Online
