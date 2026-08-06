@@ -5,8 +5,8 @@ permalink: /giving/endowments.html
 layout: page
 search: true
 search_headings: false
-tags: Giving
-description:
+tags: endowments; library giving; donor support
+description: "Information about library endowments and how donor funding supports collections, programs, and services."
 page_nav:
     parent: /giving/
     children:

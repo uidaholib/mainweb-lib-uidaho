@@ -4,8 +4,8 @@ section: Find
 permalink: /find/govdocs/
 layout: page
 search: true
-tags:
-description:
+description: "Government documents research guide for locating federal and state publications through library collections and catalogs."
+tags: government documents; public records; research guide
 page_nav:
     parent: /find/
     children:

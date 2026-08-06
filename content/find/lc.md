@@ -4,8 +4,8 @@ section: Find
 permalink: /find/lc.html
 layout: page
 search: true
-tags:
-description:
+description: "Guide to Library of Congress call numbers and book locations in the University of Idaho Library."
+tags: call numbers; book locations; library stacks
 page_nav:
     parent: /find/
     children:

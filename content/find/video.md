@@ -4,8 +4,8 @@ section: Find
 permalink: /find/video.html
 layout: page
 search: true
-tags:
-description:
+description: "Guide to streaming video and DVD resources available through University of Idaho Library services."
+tags: streaming video; DVDs; media resources
 page_nav:
     parent: /find/
     children:

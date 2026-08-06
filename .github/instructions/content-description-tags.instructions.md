@@ -1,11 +1,11 @@
 ---
-description: Generate concise, search-focused frontmatter descriptions and semicolon-separated tags.
-applyTo: "**/*.md"
+description: Generate concise, search-focused frontmatter descriptions and semicolon-separated tags for content markdown and HTML pages.
+applyTo: "content/**/*.{md,html}"
 ---
 
 <!-- Tip: Use /create-instructions in chat to generate content with agent assistance -->
 
-Use these instructions when creating or updating the `description` and `tags` values in page frontmatter.
+Use these instructions when creating or updating the `description` and `tags` values in frontmatter for pages in the `content/` folder, including both Markdown and HTML files.
 
 Goal:
 - Write a short description of what the page contains.

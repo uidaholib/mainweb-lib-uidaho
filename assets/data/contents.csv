@@ -3,8 +3,9 @@ layout: null
 ---
 link,title,description,tags
 {%- assign base = "https://uidaholib.github.io/mainweb-lib-uidaho" -%}
-{%- assign content_pages = site.pages | where_exp: "p", "p.path contains 'content/' and p.path contains '.md'" | sort: "url" -%}
+{%- assign content_pages = site.pages | where_exp: "p", "p.path contains 'content/'" | sort: "url" -%}
 {% for p in content_pages -%}
+{%- if p.path contains '.md' or p.path contains '.html' -%}
 {%- assign title = p.title | default: "" | strip | replace: '"', '""' -%}
 {%- assign description = p.description | default: "" | strip | replace: '"', '""' -%}
 {%- assign tags_json = p.tags | jsonify -%}
@@ -12,4 +13,5 @@ link,title,description,tags
 {%- if tags_first_char == "[" -%}{%- assign tags = p.tags | join: '; ' -%}{%- else -%}{%- assign tags = p.tags | default: "" -%}{%- endif -%}
 {%- assign tags = tags | strip | replace: '"', '""' -%}
 {{ base }}{{ p.url }},"{{ title }}","{{ description }}","{{ tags }}"
+{%- endif -%}
 {% endfor -%}

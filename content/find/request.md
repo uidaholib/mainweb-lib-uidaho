@@ -4,8 +4,8 @@ section: Find
 permalink: /find/request.html
 layout: page
 search: true
-tags:
-description:
+description: "Purchase request form for recommending books, media, and other materials for library collections."
+tags: purchase request; collection recommendations; library materials
 page_nav:
     parent: /find/
     children:

@@ -5,8 +5,8 @@ permalink: /find/
 layout: full-width-page
 search: true
 search_headings: false
-tags:
-description: Discover Library resources to support your research and scholarship.
+description: "Find library resources, research tools, and collections to support coursework and scholarship."
+tags: library search; research resources; collections access
 page_nav:
     parent:
     children:

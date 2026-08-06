@@ -4,8 +4,8 @@ section: Find
 permalink: /find/maps/
 layout: page
 search: true
-tags:
-description:
+description: "Map resources and map collections for geographic research, coursework, and reference."
+tags: maps; cartographic resources; geographic research
 page_nav:
     parent: /find/
     children:

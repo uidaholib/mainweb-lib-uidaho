@@ -4,8 +4,8 @@ section: Find
 permalink: /find/tutorials.html
 layout: page
 search: true
-tags:
-description:
+description: "Library tutorials and how-to guides for research tools, databases, and resource access."
+tags: library tutorials; research guides; database help
 page_nav:
     parent:
     children:
