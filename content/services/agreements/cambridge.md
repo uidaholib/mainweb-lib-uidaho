@@ -4,8 +4,8 @@ section: Services
 permalink: /services/agreements/cambridge.html
 layout: page
 search: false
-tags:
-description:
+tags: read and publish agreement; open access publishing; Cambridge University Press
+description: "Describes the University of Idaho Library's Read and Publish agreement with Cambridge University Press, which provides journal access and free open access publishing for U of I authors."
 page_nav:
     parent: /services/agreements/
     children:

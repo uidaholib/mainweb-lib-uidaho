@@ -4,8 +4,8 @@ section: Services
 permalink: /services/orcid.html
 layout: page
 search: true
-tags:
-description:
+tags: ORCID; researcher identifiers; research profiles
+description: "Explains ORCID researcher identifiers and how University of Idaho faculty and students can set up, manage, and connect their ORCID account with campus research systems."
 page_nav:
     parent: /services/
     children:

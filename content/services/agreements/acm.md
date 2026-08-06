@@ -4,8 +4,8 @@ section: Services
 permalink: /services/agreements/acm.html
 layout: page
 search: false
-tags:
-description:
+tags: read and publish agreement; open access publishing; ACM
+description: "Describes the University of Idaho Library's Read and Publish agreement with the Association for Computing Machinery, which provides ACM Digital Library access and free open access publishing for U of I authors."
 page_nav:
     parent: /services/agreements/
     children:

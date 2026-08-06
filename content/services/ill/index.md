@@ -4,8 +4,8 @@ section: Services
 permalink: /services/ill/
 layout: page
 search: true
-tags:
-description:
+tags: interlibrary loan; Rapido; resource sharing
+description: "Explains how University of Idaho Library patrons use Rapido to request interlibrary loan materials not owned by the library, including turnaround times, lending periods, and return instructions."
 page_nav:
     parent: /services/
     children:

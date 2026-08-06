@@ -4,8 +4,8 @@ section: Services
 permalink: /services/agreements/
 layout: page
 search: true
-tags:
-description:
+tags: transformative agreements; read and publish agreement; open access publishing
+description: "Lists the University of Idaho Library's transformative publishing agreements with academic publishers and answers frequently asked questions about read and publish and publish and read agreements."
 page_nav:
     parent: /services/
     children:

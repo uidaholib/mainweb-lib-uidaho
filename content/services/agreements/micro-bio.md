@@ -4,8 +4,8 @@ section: Services
 permalink: /services/agreements/micro-bio.html
 layout: page
 search: false
-tags:
-description:
+tags: publish and read agreement; open access publishing; Microbiology Society
+description: "Describes the University of Idaho Library's Publish and Read agreement with the Microbiology Society, providing full archive access and free open access publishing for corresponding U of I authors."
 page_nav:
     parent: /services/agreements/
     children:

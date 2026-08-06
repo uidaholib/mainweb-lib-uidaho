@@ -4,8 +4,8 @@ section: Services
 permalink: /services/borrow/
 layout: page
 search: true
-tags:
-description:
+tags: library account; loan periods; library card
+description: "Explains how to log into your Library Account to renew materials, and covers library card eligibility, loan periods, and fines for borrowing books, DVDs, and other items."
 page_nav:
     parent: /services/
     children:

@@ -4,8 +4,8 @@ section: Open at U of I
 permalink: /open/federal-requirements/nih.html
 layout: page
 search: true
-tags:
-description:
+tags: public access requirements; NIH funded research; PubMed Central
+description: "Explains the NIH Public Access Policy, including the zero embargo requirement effective July 2025 and how to submit manuscripts to PubMed Central."
 page_nav:
     parent: /open/federal-requirements/
     #children:

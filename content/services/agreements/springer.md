@@ -4,8 +4,8 @@ section: Services
 permalink: /services/agreements/springer.html
 layout: page
 search: false
-tags:
-description:
+tags: read and publish agreement; open access publishing; Springer Nature
+description: "Explains the University of Idaho Library's Read and Publish agreement with Springer Nature, which waives open access publishing fees and gives full-text access to Springer, Nature, and Scientific American titles."
 page_nav:
     parent: /services/agreements/
     children:

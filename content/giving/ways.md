@@ -5,7 +5,7 @@ permalink: /giving/ways.html
 layout: page
 search: true
 tags: Giving
-description:
+description: "Explains ways to give to the University of Idaho Library, including cash gifts, planned giving, in-kind donations, and memorial gifts."
 page_nav:
     parent: /giving/
     children:

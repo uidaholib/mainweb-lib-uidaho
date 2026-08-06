@@ -5,7 +5,7 @@ permalink: /mill/faq.html
 layout: page
 search: true
 tags: MILL
-description:
+description: "Answers frequently asked questions about using the MILL makerspace at the University of Idaho Library."
 page_nav:
     parent: /mill/
     children:

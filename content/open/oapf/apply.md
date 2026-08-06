@@ -4,8 +4,8 @@ section: OAPF
 permalink: /open/oapf/apply.html
 layout: page
 search: true
-tags:
-description:
+tags: open access publishing fund; application process; funding periods
+description: "Explains how to apply for the University of Idaho Open Access Publishing Fund, including funding periods, the award process, and payment or reimbursement steps."
 page_nav:
     parent: /open/oapf/
     #children:

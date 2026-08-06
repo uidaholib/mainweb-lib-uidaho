@@ -4,8 +4,8 @@ section: Services
 permalink: /services/agreements/institute_of_physics.html
 layout: page
 search: false
-tags:
-description:
+tags: read and publish agreement; open access publishing; IOP Science
+description: "Explains the University of Idaho Library's Read and Publish agreement with IOP Science, giving affiliates full access to IOP journals and no-cost open access publishing for eligible authors."
 page_nav:
     parent: /services/agreements/
     children:

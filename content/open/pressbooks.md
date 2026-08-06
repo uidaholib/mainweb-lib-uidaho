@@ -4,8 +4,8 @@ section: Open at U of I
 permalink: /open/pressbooks.html
 layout: page
 search: true
-tags:
-description:
+tags: pressbooks; open educational resources; open textbook publishing
+description: "Explains the University of Idaho Library's Pressbooks platform for creating and publishing open textbooks, websites, and other OER content."
 page_nav:
     parent: /open/
     children:

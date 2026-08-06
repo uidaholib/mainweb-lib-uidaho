@@ -4,8 +4,8 @@ section: Help
 permalink: /help/distance.html
 layout: page
 search: true
-tags:
-description:
+tags: off-campus access; distance education; remote resources
+description: "Explains how students, faculty, and staff can access University of Idaho Library resources, research help, and services off campus."
 page_nav:
     parent: /help/
     children:

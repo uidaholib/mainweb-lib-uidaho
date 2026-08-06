@@ -4,8 +4,8 @@ section: Services
 permalink: /services/agreements/rsc.html
 layout: page
 search: false
-tags:
-description:
+tags: transformative agreement; open access publishing; Royal Society of Chemistry
+description: "Describes the University of Idaho Library's transformative agreement with the Royal Society of Chemistry, giving access to RSC Gold journals and an annual allowance of APC-free articles for U of I authors."
 page_nav:
     parent: /services/agreements/
     children:

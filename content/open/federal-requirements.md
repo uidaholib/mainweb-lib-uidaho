@@ -4,8 +4,8 @@ section: Open at U of I
 permalink: /open/federal-requirements/
 layout: page
 search: true
-tags:
-description:
+tags: public access requirements; federal funding; open access mandates
+description: "Overview of new federal public access requirements for publications and data from federally funded research, including NIH and other agency deadlines."
 page_nav:
     parent: /open/
     children:
