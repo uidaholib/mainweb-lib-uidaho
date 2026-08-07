@@ -149,10 +149,21 @@
           {% comment %} Show ALL rooms from all floors, grouped by floor {% endcomment %}
           {% for floor_item in site.data.floors %}
             {% assign floor_number = floor_item.floor %}
+            {% assign floor_number_str = floor_number | append: "" %}
             {% assign all_floor_rooms = site.data.rooms | where: "floor", floor_number %}
+            {% assign is_active_floor = floor_number_str == floor_num_str %}
 
-            <div class="floor-group" data-floor="{{ floor_number }}">
-              <div class="floor-group-label">{{ floor_item.title }}</div>
+            {% comment %} Only the active floor starts expanded; the rest start collapsed
+              behind a toggle button so switching floors doesn't bury the current floor's
+              rooms under every other floor's list. JS keeps this in sync as the floor
+              changes and expands everything while a search is active. {% endcomment %}
+            <div class="floor-group{% unless is_active_floor %} is-collapsed{% endunless %}" data-floor="{{ floor_number }}">
+              <button type="button" class="floor-group-label" aria-expanded="{{ is_active_floor }}">
+                {{ floor_item.title }}
+                <svg class="floor-group-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
 
               {% assign zones_with_rooms = "" | split: "" %}
               {% for room in all_floor_rooms %}

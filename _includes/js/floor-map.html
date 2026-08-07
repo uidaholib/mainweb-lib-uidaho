@@ -225,6 +225,7 @@
     // since the server-rendered markup only reflects the Liquid-included floor
     updateFloorTabs(targetFloor);
     updateSideHeader(targetFloor);
+    updateFloorGroupCollapse(targetFloor);
 
     // Load SVG, applying the resolved room/tour state once it's ready
     loadSVG(targetFloor, floorData.svg_path, function() {
@@ -433,6 +434,17 @@
         } else {
           selectRoom(floor, roomId);
         }
+      });
+    });
+
+    // Floor group toggles in the Browse room list — expand/collapse a
+    // single floor's rooms independent of which floor the map is showing
+    const floorGroupLabels = document.querySelectorAll('#room-list-1 .floor-group-label');
+    floorGroupLabels.forEach(label => {
+      label.addEventListener('click', function() {
+        const group = this.closest('.floor-group');
+        if (!group) return;
+        setFloorGroupCollapsed(group, !group.classList.contains('is-collapsed'));
       });
     });
 
@@ -658,6 +670,7 @@
     // Update floor tabs and side header
     updateFloorTabs(targetFloor);
     updateSideHeader(targetFloor);
+    updateFloorGroupCollapse(targetFloor);
 
     // Load new SVG, applying any requested room/tour state once ready
     loadSVG(targetFloor, floorData.svg_path, function() {
@@ -706,6 +719,29 @@
     const subtitle = document.querySelector('.side-header p');
     if (heading) heading.textContent = data.title;
     if (subtitle) subtitle.textContent = data.subtitle || '';
+  }
+
+  /**
+   * Collapse every floor group in the Browse room list except the active
+   * floor's, so the list opens focused on "here" with other floors a click
+   * away rather than one long scroll of every room on every floor.
+   */
+  function updateFloorGroupCollapse(activeFloor) {
+    const groups = document.querySelectorAll('#room-list-1 .floor-group');
+    groups.forEach(group => {
+      const groupFloor = parseInt(group.getAttribute('data-floor'), 10);
+      setFloorGroupCollapsed(group, groupFloor !== activeFloor);
+    });
+  }
+
+  /**
+   * Expand or collapse a single floor group and keep its toggle button's
+   * aria-expanded state (and chevron direction, via CSS) in sync.
+   */
+  function setFloorGroupCollapsed(group, collapsed) {
+    group.classList.toggle('is-collapsed', collapsed);
+    const label = group.querySelector('.floor-group-label');
+    if (label) label.setAttribute('aria-expanded', (!collapsed).toString());
   }
 
   /**
@@ -1291,11 +1327,17 @@
     const floorGroups = document.querySelectorAll(`#room-list-1 .floor-group`);
 
     if (!lowerQuery) {
-      // Show all rooms and groups
+      // Show all rooms and groups, then restore the per-floor collapse state
+      // (only the active floor expanded) now that search has been cleared
       items.forEach(item => item.classList.remove('is-hidden'));
       floorGroups.forEach(group => group.style.display = 'block');
+      updateFloorGroupCollapse(currentFloor);
       return;
     }
+
+    // A search is in progress — expand every floor group so matches on
+    // collapsed floors aren't hidden behind their (unrelated) collapse state
+    floorGroups.forEach(group => setFloorGroupCollapsed(group, false));
 
     // Filter rooms across all floors
     items.forEach(item => {

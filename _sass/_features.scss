@@ -1087,17 +1087,41 @@
 }
 
 .floor-group-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-top: 2px solid #e3e3dc;
   padding: 16px 24px 8px;
   font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #191919;
-  border-top: 2px solid #e3e3dc;
+  text-align: left;
+  cursor: pointer;
 }
 
 .floor-group:first-child .floor-group-label {
   border-top: none;
+}
+
+.floor-group-chevron {
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+/* Collapsed = the "other" floors: rooms hidden, chevron pointing up as the
+   affordance to reopen them */
+.floor-group.is-collapsed .room-list-item {
+  display: none;
+}
+
+.floor-group.is-collapsed .floor-group-chevron {
+  transform: rotate(180deg);
 }
 
 .room-floor-indicator {

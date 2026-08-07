@@ -9,17 +9,23 @@ tags: floor maps; library locations; study spaces
 page_nav:
     parent: /about/
     children:
-gallery: true
+page_callout:
+    title: Interactive Floor Map
+    text: Search for a room, get zoomed straight to any space, or take a self-guided tour of each floor from your phone or desktop.
+    link: /about/floor-maps/
+    link-text: Launch the Map
+    color: palouse
 ---
 
 <div class="text-center align-content-center mb-3">
-	<button id="viewGalleryBtn" class="btn btn-clearwater btn-sm my-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/><path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/></svg> Map Gallery</button>
+	<a href="{{ '/about/floor-maps/' | relative_url }}" class="btn btn-clearwater btn-sm my-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg> Interactive Map</a>
 	<a href="/find/lc.html" class="btn btn-clearwater btn-sm my-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/></svg> Book Locations (LOC Numbers)</a>
 	<a href="{{ '/services/rooms.html' | relative_url }}" class="btn btn-clearwater btn-sm my-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15zM11 2h.5a.5.5 0 0 1 .5.5V15h-1zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/></svg> Book a Room</a>
 </div>
 
 {% assign maps = site.data.about_floor_maps %}
 {% for m in maps %}
+{% assign floor_match = site.data.floors | where: "title", m.name | first %}
 <div class="card mb-3">
 	<div class="row no-gutter">
 		<div class="col-md-8">
@@ -34,19 +40,10 @@ gallery: true
 			</div>
 		</div>
 		<div class="col-md-4">
-			<a href="{{ site.lib-media }}{{ m.img }}" title="{{ m.name }}" class="spotlight gallery-img" data-download="true" >
+			<a href="{{ '/about/floor-maps/' | relative_url }}?floor={{ floor_match.floor }}" title="View {{ m.name }} in the interactive map">
 				<img src="{{ site.lib-media }}{{ m.img_md }}" class="card-img p-2" alt="map of {{ m.name }} highlighting services as described in the content">
 			</a>
 		</div>
 	</div>
 </div>
 {% endfor %}
-
-<script>
-	// add trigger for gallery button
-	window.onload = (event) => {
-		var galleryBtn = document.getElementById('viewGalleryBtn');
-		var gallery = document.querySelectorAll('.gallery-img');
-		galleryBtn.addEventListener('click', e => { Spotlight.show(gallery); });
-	};
-</script>
