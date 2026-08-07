@@ -22,6 +22,13 @@
                                 <a href="{{ '/' | relative_url }}" class="text-dark text-decoration-none">Library</a>
                             </h1>
                         </div>
+                        <div class="ps-2 pt-2 align-self-center">
+                            <button id="searchToggle" type="button" class="btn btn-outline-dark border-0" data-bs-toggle="collapse" data-bs-target="#mainNavMenu" aria-expanded="false" aria-controls="mainNavMenu" aria-label="Search the library website">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.099zm-5.242 1.656a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+                                </svg>
+                            </button>
+                        </div>
                         <div class="ms-auto align-self-center">
                             <ul class="list-inline text-uppercase fw-bold mb-0 d-none d-md-inline-block">
                                 <li class="list-inline-item">
@@ -81,7 +88,7 @@
                 <!-- search box -->
                 <div class="row align-items-center mb-4 g-2">
                     <div class="col">
-                        <form role="search" id="nav-search-form" action="{{ '/search/' | relative_url }}">
+                        <form role="search" id="nav-search-form" action="{{ '/help/search.html' | relative_url }}">
                             <div class="input-group">
                                 <label for="nav-search-input" class="visually-hidden">Search the library website</label>
                                 <input type="search"

@@ -5,6 +5,8 @@
 
     var mainNavMenu   = document.getElementById('mainNavMenu');
     var mainMenuBtn   = document.getElementById('mainMenu');
+    var navTriggers   = document.querySelectorAll('[data-bs-target="#mainNavMenu"]');
+    var lastTrigger   = mainMenuBtn;
     var navSearchInput  = document.getElementById('nav-search-input');
     var navSearchResults = document.getElementById('nav-search-results');
     var navMenuColumns  = document.getElementById('nav-menu-columns');
@@ -78,6 +80,14 @@
 
     // ── Bootstrap collapse events ─────────────────────────────────
 
+    // Remember which trigger (hamburger or search icon) opened the menu,
+    // so closing it can return focus to that same control.
+    navTriggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+            lastTrigger = trigger;
+        });
+    });
+
     if (mainNavMenu) {
         // Focus the search input when the menu finishes opening
         mainNavMenu.addEventListener('shown.bs.collapse', function () {
@@ -85,11 +95,11 @@
             if (navSearchInput) navSearchInput.focus();
         });
 
-        // Clear search and return focus to hamburger when menu closes
+        // Clear search and return focus to whichever trigger opened the menu
         mainNavMenu.addEventListener('hidden.bs.collapse', function () {
             if (navSearchInput) navSearchInput.value = '';
             showColumns();
-            if (mainMenuBtn) mainMenuBtn.focus();
+            if (lastTrigger) lastTrigger.focus();
         });
     }
 

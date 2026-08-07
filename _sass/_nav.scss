@@ -9,6 +9,11 @@ header a {
     width: 1.75rem;
     height: 1.75rem;
 }
+// set search icon size
+#searchToggle svg {
+    width: 1.375rem;
+    height: 1.375rem;
+}
 // Search results panel: scrollable, max height
 #nav-search-results {
     max-height: 60vh;
