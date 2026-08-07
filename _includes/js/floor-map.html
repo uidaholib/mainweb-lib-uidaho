@@ -33,10 +33,21 @@
   }
 
   /**
-   * Load data for all floors into memory
+   * Load data for all floors into memory. The set of floor numbers comes
+   * from the container's data-floor-numbers attribute (server-rendered from
+   * site.data.floors) rather than a hardcoded range, so this stays correct
+   * if floors are ever added or removed.
    */
   function loadAllFloorData() {
-    for (let i = 1; i <= 4; i++) {
+    const container = document.querySelector('.floor-map-container');
+    const floorNumbers = container
+      ? (container.getAttribute('data-floor-numbers') || '')
+          .split(',')
+          .map(n => parseInt(n, 10))
+          .filter(n => !isNaN(n))
+      : [1, 2, 3, 4];
+
+    floorNumbers.forEach(i => {
       const dataScript = document.getElementById(`floor-${i}-data`);
       if (dataScript) {
         try {
@@ -45,7 +56,7 @@
           console.error(`Error parsing floor ${i} data:`, e);
         }
       }
-    }
+    });
   }
 
   /**
@@ -185,46 +196,63 @@
   }
 
   /**
-   * Initialize a specific floor
+   * Initialize a specific floor. Resolves the real target floor/room/tour
+   * state from the URL first (which may differ from the floor Liquid
+   * rendered into the page), so a deep link only loads one SVG rather than
+   * loading the rendered floor and immediately replacing it.
    */
   function initFloor(floor) {
-    currentFloor = floor;
+    const urlState = resolveURLState(floor);
+    const targetFloor = urlState.floor;
+
+    currentFloor = targetFloor;
 
     // Load floor data from JSON
-    const dataScript = document.getElementById(`floor-${floor}-data`);
+    const dataScript = document.getElementById(`floor-${targetFloor}-data`);
     if (!dataScript) {
-      console.error(`Floor ${floor} data not found`);
+      console.error(`Floor ${targetFloor} data not found`);
       return;
     }
 
     try {
       floorData = JSON.parse(dataScript.textContent);
     } catch (e) {
-      console.error(`Error parsing floor ${floor} data:`, e);
+      console.error(`Error parsing floor ${targetFloor} data:`, e);
       return;
     }
 
-    // Load SVG
-    loadSVG(floor, floorData.svg_path);
+    // Reflect the resolved floor in the tab/dropdown UI and side header,
+    // since the server-rendered markup only reflects the Liquid-included floor
+    updateFloorTabs(targetFloor);
+    updateSideHeader(targetFloor);
+
+    // Load SVG, applying the resolved room/tour state once it's ready
+    loadSVG(targetFloor, floorData.svg_path, function() {
+      applyURLState(targetFloor, urlState);
+    });
 
     // Set up event listeners
-    setupEventListeners(floor);
+    setupEventListeners(targetFloor);
 
     // Size the initial Peek height to the real (mobile) chrome rather than
     // leaving the CSS fallback in place indefinitely
     setSheetState('peek');
-
-    // Handle initial URL parameters
-    handleURLParams(floor);
   }
 
   /**
-   * Load and enhance SVG with data attributes
+   * Load and enhance SVG with data attributes. `onReady` fires once the map
+   * is actually interactive (pan/zoom initialized) — or as soon as that's
+   * known to be impossible (fetch/parse failure, svg-pan-zoom missing) — so
+   * callers can reliably apply a pending room/tour selection instead of
+   * racing a fixed setTimeout against the load.
    */
-  function loadSVG(floor, svgPath) {
+  function loadSVG(floor, svgPath, onReady) {
     // Use the first floor's wrapper for all floors (there's only one SVG container)
     const wrapper = document.getElementById(`svg-wrapper-1`);
-    if (!wrapper) return;
+    if (!wrapper) {
+      if (onReady) onReady();
+      return;
+    }
 
     fetch(svgPath)
       .then(response => response.text())
@@ -236,6 +264,7 @@
         const svg = wrapper.querySelector('svg');
         if (!svg) {
           console.error('SVG not found in loaded content');
+          if (onReady) onReady();
           return;
         }
 
@@ -245,7 +274,7 @@
         enhanceSVG(floor, svg);
 
         // Initialize pan/zoom
-        initializePanZoom(floor, svg);
+        initializePanZoom(floor, svg, onReady);
 
         // Set up SVG interactions
         setupSVGInteractions(floor, svg);
@@ -253,16 +282,21 @@
       .catch(error => {
         console.error('Error loading SVG:', error);
         wrapper.innerHTML = '<div class="alert alert-danger m-3">Error loading map. Please refresh the page.</div>';
+        if (onReady) onReady();
       });
   }
 
   /**
-   * Initialize svg-pan-zoom on the SVG element
+   * Initialize svg-pan-zoom on the SVG element. `onReady` fires once the
+   * instance is created (or immediately, degrading gracefully, if the
+   * library is missing or initialization throws) so callers have a real
+   * signal for "the map can be zoomed/selected now" instead of guessing.
    */
-  function initializePanZoom(floor, svg) {
+  function initializePanZoom(floor, svg, onReady) {
     // Check if svg-pan-zoom is available
     if (typeof svgPanZoom === 'undefined') {
       console.warn('svg-pan-zoom library not loaded');
+      if (onReady) onReady();
       return;
     }
 
@@ -307,6 +341,7 @@
       } catch (e) {
         console.error('Error initializing pan/zoom:', e);
       }
+      if (onReady) onReady();
     }, 100);
   }
 
@@ -394,7 +429,7 @@
 
         // If clicking a room on a different floor, switch floors first
         if (roomFloor !== currentFloor) {
-          switchToFloor(roomFloor, roomId);
+          switchToFloor(roomFloor, { roomId });
         } else {
           selectRoom(floor, roomId);
         }
@@ -441,7 +476,9 @@
 
     // Mobile context-bar back/exit icon: goes "back" to Browse either way,
     // but from which state depends on what's currently showing — a room
-    // detail (back to the list) or Tour mode (exit the tour entirely)
+    // detail (back to the list) or Tour mode (exit the tour entirely). The
+    // icon itself swaps between a back-chevron and an X to match (see
+    // updateContextBar).
     const contextBackBtn = document.getElementById('context-bar-back-1');
     if (contextBackBtn) {
       contextBackBtn.addEventListener('click', function() {
@@ -449,7 +486,7 @@
         if (detailView && detailView.style.display !== 'none') {
           deselectRoom(floor);
         } else {
-          switchMode(floor, 'browse');
+          exitTour(floor);
         }
       });
     }
@@ -493,7 +530,7 @@
 
     // Mobile panel menu: open/close + position the popover, which is
     // deliberately rendered outside .side-pane (see setupPanelMenu)
-    setupPanelMenu();
+    setupPanelMenu(floor);
 
     // Set the initial search-vs-context-bar row now that listeners exist
     updateContextBar(floor);
@@ -506,7 +543,7 @@
    * sheet's box off-screen. Position is computed from the trigger button's
    * on-screen rect each time it opens, rather than via CSS anchoring.
    */
-  function setupPanelMenu() {
+  function setupPanelMenu(floor) {
     const trigger = document.getElementById('panel-menu-btn-1');
     const popover = document.getElementById('panel-menu-popover-1');
     if (!trigger || !popover) return;
@@ -526,10 +563,18 @@
       }
     });
 
+    // Escape closes the popover if it's open; otherwise, if a tour is in
+    // session, Escape exits it — nobody should feel stuck in that mode,
+    // keyboard-only or otherwise
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && !popover.hidden) {
+      if (e.key !== 'Escape') return;
+      if (!popover.hidden) {
         closePanelMenu();
         trigger.focus();
+        return;
+      }
+      if (currentMode === 'tour') {
+        exitTour(floor);
       }
     });
 
@@ -541,6 +586,25 @@
     window.addEventListener('resize', function() {
       if (!popover.hidden) closePanelMenu();
     });
+  }
+
+  /**
+   * Exit Tour mode back to Browse — the default resting state (search bar
+   * at Peek, nothing highlighted on the map) — and move focus somewhere
+   * useful (the search field) rather than letting it fall into a now-hidden
+   * element. Used by every explicit "leave the tour" affordance (the mobile
+   * context bar's X, the Exit Tour button, and the Escape key) so all three
+   * behave identically and predictably for keyboard/screen-reader users.
+   */
+  function exitTour(floor) {
+    switchMode(floor, 'browse');
+    const searchInput = document.getElementById('room-search-1');
+    if (searchInput) searchInput.focus();
+    // Focusing the search field triggers its own focus listener, which
+    // expands the sheet to Full — override that back to Peek so exiting
+    // the tour actually lands on the calm default view, not a full-screen
+    // room list.
+    setSheetState('peek');
   }
 
   function openPanelMenu() {
@@ -575,9 +639,13 @@
   }
 
   /**
-   * Switch to a different floor
+   * Switch to a different floor. `options.roomId` selects a room once the
+   * new floor's map is ready; `options.mode`/`options.stopIndex` instead
+   * launch Tour mode at a given stop. Selection is applied via loadSVG's
+   * onReady callback (the map being actually interactive), not a guessed
+   * timeout.
    */
-  function switchToFloor(targetFloor, roomId = null) {
+  function switchToFloor(targetFloor, options = {}) {
     if (!allFloorsData[targetFloor]) {
       console.error(`Floor ${targetFloor} data not found`);
       return;
@@ -587,21 +655,20 @@
     currentFloor = targetFloor;
     floorData = allFloorsData[targetFloor];
 
-    // Update floor tabs
+    // Update floor tabs and side header
     updateFloorTabs(targetFloor);
+    updateSideHeader(targetFloor);
 
-    // Load new SVG
-    loadSVG(targetFloor, floorData.svg_path);
-
-    // If a specific room was requested, select it after SVG loads
-    if (roomId) {
-      setTimeout(() => {
-        selectRoom(targetFloor, roomId);
-      }, 200);
-    } else {
-      // Update URL with new floor
-      updateURL(targetFloor, null);
-    }
+    // Load new SVG, applying any requested room/tour state once ready
+    loadSVG(targetFloor, floorData.svg_path, function() {
+      if (options.roomId) {
+        selectRoom(targetFloor, options.roomId);
+      } else if (options.mode === 'tour') {
+        switchMode(targetFloor, 'tour', { stopIndex: options.stopIndex || 0 });
+      } else {
+        updateURL(targetFloor, {});
+      }
+    });
   }
 
   /**
@@ -627,9 +694,26 @@
   }
 
   /**
-   * Switch between Browse and Tour modes
+   * Update the desktop side panel's title/subtitle to match the active
+   * floor. These are only ever Liquid-rendered for the floor the page was
+   * included with (floor 1), so JS has to keep them in sync on every switch.
    */
-  function switchMode(floor, mode) {
+  function updateSideHeader(targetFloor) {
+    const data = allFloorsData[targetFloor];
+    if (!data) return;
+
+    const heading = document.querySelector('.side-header h1');
+    const subtitle = document.querySelector('.side-header p');
+    if (heading) heading.textContent = data.title;
+    if (subtitle) subtitle.textContent = data.subtitle || '';
+  }
+
+  /**
+   * Switch between Browse and Tour modes. `options.stopIndex` (Tour only)
+   * picks which stop to open on, e.g. from a resolved `?stop=` URL param.
+   */
+  function switchMode(floor, mode, options = {}) {
+    const previousMode = currentMode;
     currentMode = mode;
 
     // Update mode buttons (desktop tabs + mobile panel-menu items)
@@ -653,13 +737,31 @@
       // Switching back to Browse (e.g. from the panel menu while viewing a
       // room) should also close out of the detail view, matching the Tour branch below
       if (detailView) detailView.style.display = 'none';
+
+      // Leaving Tour specifically (not just re-clicking Browse while already
+      // there) — the map is still zoomed/panned to wherever the last stop
+      // left it, with that stop's outline still showing. Reset both so
+      // Browse starts from a clean, unzoomed view rather than carrying tour
+      // state over.
+      if (previousMode === 'tour') {
+        clearSVGSelection(floor);
+        if (panZoomInstance) {
+          panZoomInstance.resetZoom();
+          panZoomInstance.center();
+          panZoomInstance.fit();
+        }
+      }
+
+      // Leaving/staying in Browse always resolves to a plain floor URL —
+      // any room/tour state belongs to the view being left
+      updateURL(currentFloor, {});
     } else if (mode === 'tour') {
       if (browseContent) browseContent.style.display = 'none';
       if (tourContent) tourContent.style.display = 'flex';
       if (detailView) detailView.style.display = 'none';
 
-      // Initialize tour
-      initializeTour(floor);
+      // Initialize tour at the requested stop (defaults to the first)
+      initializeTour(floor, options.stopIndex || 0);
     }
 
     // Search only makes sense in Browse mode; Peek is dynamically measured
@@ -693,16 +795,20 @@
 
     if (showingTour && contextLabel) {
       contextLabel.textContent = 'Guided Tour';
-      if (contextBackBtn) contextBackBtn.setAttribute('aria-label', 'Exit tour');
+      if (contextBackBtn) {
+        contextBackBtn.setAttribute('aria-label', 'Exit tour');
+        contextBackBtn.classList.add('is-exit');
+      }
     } else if (showingDetail && contextBackBtn) {
       contextBackBtn.setAttribute('aria-label', 'Back to browse');
+      contextBackBtn.classList.remove('is-exit');
     }
   }
 
   /**
    * Initialize tour mode
    */
-  function initializeTour(floor) {
+  function initializeTour(floor, startStopIndex = 0) {
     const tourView = document.getElementById(`tour-view-1`);
     if (!tourView) return;
 
@@ -713,8 +819,11 @@
       return;
     }
 
+    // Clamp a requested starting stop (e.g. from a ?stop= URL param) into range
+    const initialStop = Math.min(Math.max(startStopIndex, 0), tourStops.length - 1);
+
     // Reset tour position
-    currentTourStop = 0;
+    currentTourStop = initialStop;
 
     // Build tour UI. The nav row/name/short description form the compact card
     // that's visible at the mobile sheet's Peek height (wrapped in
@@ -728,14 +837,14 @@
               <path d="M12.5 15L7.5 10l5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
-          <span class="tour-progress">Stop <span id="tour-current">1</span> of ${tourStops.length}</span>
+          <span class="tour-progress">Stop <span id="tour-current">${initialStop + 1}</span> of ${tourStops.length}</span>
           <button type="button" class="tour-nav-btn" id="tour-next" aria-label="Next stop">
             <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M7.5 15l5-5-5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
         </div>
-        <h3 class="tour-stop-name" id="tour-stop-name">${tourStops[0].name}</h3>
+        <h3 class="tour-stop-name" id="tour-stop-name">${tourStops[initialStop].name}</h3>
         <p class="tour-stop-short-desc" id="tour-stop-short-desc"></p>
       </div>
 
@@ -748,6 +857,7 @@
 
       <div class="tour-expand-content">
         <p class="tour-stop-description" id="tour-stop-description"></p>
+        <button type="button" class="tour-exit-btn" id="tour-exit-btn">Exit Tour</button>
       </div>
     `;
 
@@ -771,8 +881,19 @@
       });
     }
 
-    // Show first tour stop
-    showTourStop(floor, 0);
+    // Sits at the bottom of the stop's expanded details — always visible on
+    // desktop (nothing there is collapsed), and on mobile once someone has
+    // expanded to read more, which is exactly when they're likely done and
+    // ready to leave
+    const tourExitBtn = document.getElementById('tour-exit-btn');
+    if (tourExitBtn) {
+      tourExitBtn.addEventListener('click', function() {
+        exitTour(floor);
+      });
+    }
+
+    // Show the starting tour stop
+    showTourStop(floor, initialStop);
   }
 
   /**
@@ -850,6 +971,9 @@
     // constantly re-framing the view.
     updateSVGSelection(floor, stop.svg_id);
     zoomToRoom(stop.svg_id, { padding: 2.4, minEffectiveZoom: 0.9, maxEffectiveZoom: 1.7 });
+
+    // Keep the address bar pointed at this exact stop so it's copyable/shareable
+    updateURL(currentFloor, { mode: 'tour', stop: stopIndex + 1 });
   }
 
   /**
@@ -883,7 +1007,7 @@
     setSheetState('half');
 
     // Update URL
-    updateURL(floor, roomId);
+    updateURL(currentFloor, { room: roomId });
   }
 
   /**
@@ -982,7 +1106,7 @@
     setSheetState(sheetStateBeforeDetail || 'half');
 
     // Update URL
-    updateURL(floor, null);
+    updateURL(currentFloor, {});
   }
 
   /**
@@ -1218,40 +1342,125 @@
   }
 
   /**
-   * Handle URL parameters on page load
+   * Resolve the floor/room/tour state a page load should land on from the
+   * URL, tolerating partial or malformed input rather than doing nothing:
+   *   ?floor=<n>              — a specific floor (falls back to defaultFloor
+   *                              if unknown/non-numeric)
+   *   ?room=<room_id>         — a specific room, found by searching every
+   *                              floor's data (its real floor wins over a
+   *                              missing/mismatched ?floor=)
+   *   ?mode=tour[&stop=<n or room_id>] — launches Tour mode, optionally at a
+   *                              given stop (1-based index, or a room_id for
+   *                              a link that stays valid if stops are reordered)
+   * `defaultFloor` is the floor Liquid rendered into the page (always 1
+   * today, since only one floor-map-container exists per page).
    */
-  function handleURLParams(floor) {
+  function resolveURLState(defaultFloor) {
     const params = new URLSearchParams(window.location.search);
-    const floorParam = params.get('floor');
+    const rawFloor = params.get('floor');
     const roomParam = params.get('room');
+    const modeParam = params.get('mode');
+    const stopParam = params.get('stop');
 
-    // Check if this floor should be active based on URL
-    if (floorParam && parseInt(floorParam) !== floor) {
-      return; // This floor is not the one specified in URL
+    const state = { floor: defaultFloor, room: null, mode: null, stopIndex: 0 };
+
+    // A room id, if present, is searched for across every floor's data so a
+    // link that omits ?floor= (or gets it wrong) still lands in the right place
+    let roomFloor = null;
+    if (roomParam) {
+      for (const key in allFloorsData) {
+        const data = allFloorsData[key];
+        if (data && data.rooms && data.rooms.some(r => r.room_id === roomParam)) {
+          roomFloor = parseInt(key, 10);
+          break;
+        }
+      }
     }
 
-    // Select room if specified
+    if (roomFloor !== null) {
+      state.floor = roomFloor;
+      if (rawFloor && parseInt(rawFloor, 10) !== roomFloor) {
+        console.warn(`Floor map: room "${roomParam}" is on floor ${roomFloor}, not floor ${rawFloor} as given in the URL — showing floor ${roomFloor}.`);
+      }
+      state.room = roomParam;
+      return state;
+    }
+
     if (roomParam) {
-      // Small delay to ensure SVG is loaded
-      setTimeout(() => {
-        selectRoom(floor, roomParam);
-      }, 100);
+      console.warn(`Floor map: room "${roomParam}" from the URL was not found on any floor.`);
+    }
+
+    if (rawFloor) {
+      const parsedFloor = parseInt(rawFloor, 10);
+      if (!isNaN(parsedFloor) && allFloorsData[parsedFloor]) {
+        state.floor = parsedFloor;
+      } else {
+        console.warn(`Floor map: unknown floor "${rawFloor}" in the URL — showing floor ${defaultFloor} instead.`);
+      }
+    }
+
+    if (modeParam === 'tour') {
+      state.mode = 'tour';
+      const tourStops = (allFloorsData[state.floor] && allFloorsData[state.floor].tour_stops) || [];
+      state.stopIndex = resolveStopIndex(stopParam, tourStops);
+    }
+
+    return state;
+  }
+
+  /**
+   * Resolve a ?stop= value (1-based stop number, or a stop's room_id) to a
+   * 0-based index, clamped/defaulted rather than failing on bad input.
+   */
+  function resolveStopIndex(stopParam, tourStops) {
+    if (!stopParam || tourStops.length === 0) return 0;
+
+    const asNumber = parseInt(stopParam, 10);
+    if (!isNaN(asNumber) && asNumber >= 1 && asNumber <= tourStops.length) {
+      return asNumber - 1;
+    }
+
+    const byRoomId = tourStops.findIndex(stop => stop.room_id === stopParam);
+    if (byRoomId !== -1) return byRoomId;
+
+    console.warn(`Floor map: unknown tour stop "${stopParam}" in the URL — starting at stop 1.`);
+    return 0;
+  }
+
+  /**
+   * Apply a resolved URL state (see resolveURLState) once the target
+   * floor's map is ready. No-op for plain browse — the floor itself is
+   * already loaded by the caller.
+   */
+  function applyURLState(floor, urlState) {
+    if (urlState.room) {
+      selectRoom(floor, urlState.room);
+    } else if (urlState.mode === 'tour') {
+      switchMode(floor, 'tour', { stopIndex: urlState.stopIndex });
     }
   }
 
   /**
-   * Update URL with current state
+   * Update the URL to reflect current state, so it stays copyable/shareable
+   * at any point. `state` is one of: {} (plain browse), {room}, or
+   * {mode: 'tour', stop} — never combined, since those views are mutually
+   * exclusive in the UI.
    */
-  function updateURL(floor, roomId) {
+  function updateURL(floor, state = {}) {
     const params = new URLSearchParams();
     params.set('floor', floor);
 
-    if (roomId) {
-      params.set('room', roomId);
+    if (state.room) {
+      params.set('room', state.room);
+    } else if (state.mode === 'tour') {
+      params.set('mode', 'tour');
+      if (state.stop) {
+        params.set('stop', state.stop);
+      }
     }
 
     const newURL = `${window.location.pathname}?${params.toString()}`;
-    window.history.replaceState({floor, room: roomId}, '', newURL);
+    window.history.replaceState({ floor, ...state }, '', newURL);
   }
 
   // Initialize when DOM is ready

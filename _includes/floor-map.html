@@ -23,7 +23,7 @@
 }
 </style>
 
-<div class="floor-map-container" data-floor="{{ floor_num }}">
+<div class="floor-map-container" data-floor="{{ floor_num }}" data-floor-numbers="{{ site.data.floors | map: 'floor' | join: ',' }}">
   <noscript>
     <div class="alert alert-info m-3">
       For an interactive experience with room search and a guided tour, please enable JavaScript.
@@ -118,9 +118,14 @@
           "back" from — an open room detail, or being in Tour mode. Label and the back
           button's destination are set by JS depending on which of those is active. {% endcomment %}
         <div class="context-bar d-md-none" id="context-bar-{{ floor_num }}" style="display: none;">
+          {% comment %} Icon swaps between a back-chevron (returning from a room detail)
+            and an X (exiting Tour mode entirely) — see updateContextBar in the JS. {% endcomment %}
           <button type="button" class="back-btn-compact" id="context-bar-back-{{ floor_num }}" aria-label="Back">
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <svg class="icon-back" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M12.5 15L7.5 10l5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="icon-close" width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </button>
           <span class="context-bar-label" id="context-bar-label-{{ floor_num }}"></span>
@@ -261,6 +266,7 @@
 {
   "floor": {{ json_floor_num }},
   "title": "{{ floor_item.title }}",
+  "subtitle": {{ floor_item.subtitle | jsonify }},
   "svg_path": "{{ floor_item.svg_path | prepend: '/' | relative_url }}",
   "tour_intro": {{ floor_item.tour_intro | jsonify }},
   "rooms": [

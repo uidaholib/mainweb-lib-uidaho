@@ -540,6 +540,21 @@
     background: #f7f5ed;
   }
 
+  /* Default: "back to browse" (returning from a room detail). When exiting
+     Tour mode instead, .is-exit swaps this to a plain X — closing a mode
+     reads differently than navigating back a level, so the icon should too */
+  .back-btn-compact .icon-close {
+    display: none;
+  }
+
+  .back-btn-compact.is-exit .icon-back {
+    display: none;
+  }
+
+  .back-btn-compact.is-exit .icon-close {
+    display: block;
+  }
+
   .context-bar-label {
     font-size: 14px;
     font-weight: 700;
@@ -1111,8 +1126,7 @@
   line-height: 1.6;
 }
 
-/* Previous/Next live in the same compact row as the stop counter, rather
-   than a full-width button pair, so the Peek card stays short */
+
 .tour-nav-row {
   display: flex;
   align-items: center;
@@ -1175,4 +1189,24 @@
   font-size: 14px;
   line-height: 1.6;
   color: #323232;
+}
+
+.tour-exit-btn {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px 4px 4px;
+  border: none;
+  border-top: 1px solid #e3e3dc;
+  background: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #6a6a6a;
+  cursor: pointer;
+  text-align: center;
+  transition: color 0.15s;
+}
+
+.tour-exit-btn:hover {
+  color: #191919;
 }
