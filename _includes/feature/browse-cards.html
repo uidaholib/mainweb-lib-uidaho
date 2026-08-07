@@ -2,8 +2,9 @@
 
     Browse Cards include takes a data CSV and generates a basic filterable, sortable browse feature. Each record is represented as a card.
 
-    The CSV can have the columns title,description,link,link-text,image-src,image-alt
-    Only "title" is required. The rows are rendered in the order they appear in the CSV, so put the most popular resources first.
+    The CSV can have the columns title,description,link,link-text,image-src,image-alt,popularity-rank
+    Only "title" is required. The rows are rendered in the order they appear in the CSV. "popularity-rank" is
+    a number (1 = most popular) that drives the default "Most Popular" sort; rows without it sort last.
 
     Use like:
 
@@ -73,7 +74,7 @@
     <div class="browse-cards-grid">
         {%- for c in cards_data -%}
         {%- capture search_blob %}{{ c.title }} {{ c.description }}{% endcapture -%}
-        <div class="browse-card" data-title="{{ c.title | downcase | escape }}" data-search="{{ search_blob | strip_newlines | strip | downcase | escape }}">
+        <div class="browse-card" data-title="{{ c.title | downcase | escape }}" data-search="{{ search_blob | strip_newlines | strip | downcase | escape }}" data-popularity-rank="{{ c.popularity-rank }}">
             <div class="card">
                 <div class="card-body d-flex flex-column">
                     <{{ bc_heading }} class="card-title h5">{{ c.title }}</{{ bc_heading }}>
@@ -154,12 +155,20 @@
             return a.dataset.title.localeCompare(b.dataset.title);
         }
 
+        // cards without a rank (no GA data behind them) sort after every ranked card
+        function byPopularity(a, b) {
+            const rankA = Number(a.dataset.popularityRank) || Infinity;
+            const rankB = Number(b.dataset.popularityRank) || Infinity;
+            return rankA - rankB;
+        }
+
         function sort() {
             const mode = sortSelect ? sortSelect.value : "popularity";
-            // "popularity" is the csv order, which is the order the cards were rendered in
             const ordered = cards.slice();
 
-            if (mode === "az") {
+            if (mode === "popularity") {
+                ordered.sort(byPopularity);
+            } else if (mode === "az") {
                 ordered.sort(byTitle);
             } else if (mode === "za") {
                 ordered.sort(function (a, b) { return byTitle(b, a); });
@@ -213,6 +222,7 @@
             el.classList.remove("d-none");
         });
 
+        sort();
         filter();
     })();
 </script>
