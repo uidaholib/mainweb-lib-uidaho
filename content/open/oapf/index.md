@@ -32,15 +32,15 @@ Please explore the pages below for full details.
 </div>
 
 {% capture history %}
-As a land grant university, the University of Idaho seeks to "shape the future through innovative thinking" and "expand the institution's intellectual and economic impact."<sup>1</sup>
+As a land grant university, the University of Idaho seeks to “shape the future of Idaho and beyond through innovative research, education and community engagement” with a focus on "fostering economic growth, improving quality of life and advancing knowledge."<sup>1</sup>
 
 The U of I - OAPF supports this vision by making the innovative research conducted at U of I as widely accessible as possible.
 
 Supporting open access models of publication demonstrates that U of I embraces equity of access, which is a catalyst for increased impact and visibility throughout the state, nation, and beyond.
 
-Between FY 2019 and FY 2025, the [U of I Library](https://www.lib.uidaho.edu/), [Office of the Provost](https://www.uidaho.edu/leadership/provost), [Office of Research and Economic Development](https://www.uidaho.edu/research), and donors such as David and Julie Levine allocated a combined total of $245,000.00 to pay article processing charges (APCs) in eligible open access journals. During this period, the U of I - OAPF funded the publication of 166 open access journal articles written by a combined total of 292 U of I affiliated authors from eight colleges; approximately 31 departments, programs, and centers; Extension; the Idaho Geological Survey; and two institutes.
+Between FY 2019 and FY 2026, the [U of I Library](https://www.lib.uidaho.edu/), [Office of the Provost](https://www.uidaho.edu/leadership/provost), [Office of Research and Economic Development](https://www.uidaho.edu/research), and donors such as David and Julie Levine allocated a combined total of $270,000.00 to pay article processing charges (APCs) in eligible open access journals. During this period, the U of I - OAPF funded the publication of 181 open access journal articles written by a total of 113 unique applicants from eight colleges; approximately 31 departments, programs, and centers; Extension; the Idaho Geological Survey; and two institutes.
 
-<small>1. The Office of the Provost &amp; Executive Vice President, "Strategic Plan and Process | 2016-2025," University of Idaho, accessed April 27, 2018, <http://www.uidaho.edu/provost/strategic-plan>.</small>
+<small>1. The Office of the Provost &amp; Executive Vice President, "Strategic plan | University of Idaho," University of Idaho, accessed August 7, 2026, <http://www.uidaho.edu/provost/strategic-plan>.</small>
 
 {% endcapture %}
 {% include feature/card.html header="History of the OAPF" text=history %}
