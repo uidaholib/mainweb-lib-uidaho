@@ -7,6 +7,10 @@
 {% assign floor_num = include.floor | default: 1 %}
 {% assign floor_data = site.data.floors | where: "floor", floor_num | first %}
 {% assign floor_rooms = site.data.rooms | where: "floor", floor_num %}
+{% comment %} CSV-sourced "floor" values always come back as strings, but floor_num
+  may be a Liquid integer (e.g. the page's default `floor=1`), so raw `==` comparisons
+  against it need both sides normalized to strings first. {% endcomment %}
+{% assign floor_num_str = floor_num | append: "" %}
 
 {% comment %} Generate CSS custom properties for zone colors {% endcomment %}
 <style id="zone-colors">
@@ -35,37 +39,91 @@
       </div>
     </div>
 
+    {% comment %} Floor switcher: sits above the side panel on desktop, floats over the map on mobile.
+      On mobile the pill leads with a link back to Library Home, then the floor tabs. {% endcomment %}
+    <div class="floor-switcher">
+      <a href="{{ '/' | relative_url }}" class="floor-switcher-home" aria-label="Back to Library Home">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M3 9.5L10 3l7 6.5M5 8v8h10V8" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <span class="floor-switcher-divider" aria-hidden="true"></span>
+      <span class="floor-switcher-label">Floors:</span>
+      <div class="floor-tabs">
+        {% for floor in site.data.floors %}
+          {% assign floor_number = floor.floor %}
+          {% assign floor_number_str = floor_number | append: "" %}
+          <button
+            class="floor-tab{% if floor_number_str == floor_num_str %} is-active{% endif %}"
+            data-floor="{{ floor_number }}"
+            aria-label="Floor {{ floor_number }}"
+          >
+            <span class="floor-tab-full" aria-hidden="true">Floor {{ floor_number }}</span>
+            <span class="floor-tab-short" aria-hidden="true">{{ floor_number }}</span>
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+
     {% comment %} Side pane (right on desktop, bottom sheet on mobile) {% endcomment %}
-    <div class="side-pane" id="side-pane-{{ floor_num }}">
-      {% comment %} Floor switcher {% endcomment %}
-      <div class="floor-switcher">
-        {% comment %} Desktop: tabs {% endcomment %}
-        <div class="floor-tabs d-none d-md-flex">
-          {% for floor in site.data.floors %}
-            {% assign floor_number = floor.floor %}
-            <button
-              class="floor-tab{% if floor_number == floor_num %} is-active{% endif %}"
-              data-floor="{{ floor_number }}"
-            >
-              Floor {{ floor_number }}
-            </button>
-          {% endfor %}
+    <div class="side-pane" id="side-pane-{{ floor_num }}" data-sheet-state="peek">
+      {% comment %} Sheet toolbar: drag handle + menu trigger + search / context-bar row.
+        This replaces the always-visible mode tabs and detail back-bar on mobile; desktop
+        restores the original visual order via the CSS "order" property. {% endcomment %}
+      <div class="sheet-chrome" id="sheet-chrome-{{ floor_num }}">
+        <button
+          type="button"
+          class="sheet-handle"
+          id="sheet-handle-{{ floor_num }}"
+          aria-expanded="false"
+          aria-label="Expand panel"
+        >
+          <span class="sheet-handle-bar" aria-hidden="true"></span>
+        </button>
+
+        <div class="panel-menu d-md-none">
+          <button
+            type="button"
+            class="panel-menu-btn"
+            id="panel-menu-btn-{{ floor_num }}"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="Menu: switch between Browse and Tour"
+          >
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 6h12M4 10h12M4 14h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
         </div>
 
-        {% comment %} Mobile: dropdown {% endcomment %}
-        <div class="floor-dropdown d-md-none">
-          <label for="floor-select-{{ floor_num }}" class="visually-hidden">Select Floor</label>
-          <select id="floor-select-{{ floor_num }}" class="floor-select">
-            {% for floor in site.data.floors %}
-              {% assign floor_number = floor.floor %}
-              <option
-                value="{{ floor_number }}"
-                {% if floor_number == floor_num %}selected{% endif %}
-              >
-                {{ floor.title }}
-              </option>
-            {% endfor %}
-          </select>
+        <div class="search-wrap">
+          <input
+            type="search"
+            id="room-search-{{ floor_num }}"
+            placeholder="Search rooms..."
+            aria-label="Search rooms"
+          >
+          <button
+            type="button"
+            class="search-cancel"
+            id="search-cancel-{{ floor_num }}"
+            aria-label="Cancel search"
+            style="display: none;"
+          >
+            Cancel
+          </button>
+        </div>
+
+        {% comment %} Context bar: replaces the search row whenever there's somewhere to go
+          "back" from — an open room detail, or being in Tour mode. Label and the back
+          button's destination are set by JS depending on which of those is active. {% endcomment %}
+        <div class="context-bar d-md-none" id="context-bar-{{ floor_num }}" style="display: none;">
+          <button type="button" class="back-btn-compact" id="context-bar-back-{{ floor_num }}" aria-label="Back">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M12.5 15L7.5 10l5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <span class="context-bar-label" id="context-bar-label-{{ floor_num }}"></span>
         </div>
       </div>
 
@@ -74,23 +132,14 @@
         <p>{{ floor_data.subtitle }}</p>
       </div>
 
-      {% comment %} Mode tabs (Browse / Tour) {% endcomment %}
-      <div class="modes">
+      {% comment %} Mode tabs (Browse / Tour) — desktop only; mobile uses the panel menu {% endcomment %}
+      <div class="modes d-none d-md-flex">
         <button class="mode-btn is-active" data-mode="browse">Browse</button>
         <button class="mode-btn" data-mode="tour">Tour</button>
       </div>
 
       {% comment %} Browse mode content {% endcomment %}
       <div class="mode-content" data-mode-content="browse">
-        <div class="search-wrap">
-          <input
-            type="search"
-            id="room-search-{{ floor_num }}"
-            placeholder="Search rooms..."
-            aria-label="Search rooms"
-          >
-        </div>
-
         <div class="room-list" id="room-list-{{ floor_num }}">
           {% comment %} Show ALL rooms from all floors, grouped by floor {% endcomment %}
           {% for floor_item in site.data.floors %}
@@ -140,18 +189,32 @@
 
       {% comment %} Detail view (shown when a room is selected) {% endcomment %}
       <div class="detail-view" id="detail-view-{{ floor_num }}" style="display: none;">
-        <button class="back-btn" aria-label="Back to browse">
-          <svg width="20" height="20" fill="currentColor">
-            <path d="M15 10H5M5 10l5-5M5 10l5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Back to Browse
-        </button>
-
         <div class="detail-content">
+          <button class="back-btn d-none d-md-flex" aria-label="Back to browse">
+            <svg width="20" height="20" fill="currentColor">
+              <path d="M15 10H5M5 10l5-5M5 10l5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back to Browse
+          </button>
+
           <span class="zone-tag" id="detail-zone-tag"></span>
           <h2 id="detail-name"></h2>
           <p class="room-number" id="detail-room-number"></p>
           <p class="short-description" id="detail-short-desc"></p>
+
+          <button
+            type="button"
+            class="sheet-expand-btn"
+            id="detail-expand-btn"
+            aria-expanded="false"
+            style="display: none;"
+          >
+            <span class="expand-btn-label">More details</span>
+            <svg class="expand-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
           <p class="long-description" id="detail-long-desc"></p>
 
           <div class="action-buttons" id="detail-actions">
@@ -161,15 +224,32 @@
         </div>
       </div>
     </div>
+
+    {% comment %}
+      Panel menu popover: rendered as a sibling of .side-pane (not nested inside it) so it
+      isn't trapped by the sheet's own overflow:hidden + translateY, which in Peek state
+      pushes most of .side-pane's box off-screen. JS positions this with getBoundingClientRect()
+      from the trigger button each time it opens.
+    {% endcomment %}
+    <div class="panel-menu-popover d-md-none" id="panel-menu-popover-{{ floor_num }}" role="menu" aria-labelledby="panel-menu-btn-{{ floor_num }}" hidden>
+      <button type="button" class="panel-mode-item is-active" data-mode="browse" role="menuitemradio" aria-checked="true">
+        <svg class="panel-mode-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Browse rooms
+      </button>
+      <button type="button" class="panel-mode-item" data-mode="tour" role="menuitemradio" aria-checked="false">
+        <svg class="panel-mode-check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Guided tour
+      </button>
+    </div>
   </div>
 </div>
 
 {% comment %} Load JavaScript libraries (only once per page) {% endcomment %}
-{% unless page.floor_map_js_loaded %}
-  <script src="{{ '/assets/js/svg-pan-zoom.min.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/floor-map.js' | relative_url }}" defer></script>
-  {% assign page.floor_map_js_loaded = true %}
-{% endunless %}
+
 
 {% comment %} Store room data in JSON for ALL floors {% endcomment %}
 {% for floor_item in site.data.floors %}
@@ -182,7 +262,7 @@
   "floor": {{ json_floor_num }},
   "title": "{{ floor_item.title }}",
   "svg_path": "{{ floor_item.svg_path | prepend: '/' | relative_url }}",
-  "tour_intro": "{{ floor_item.tour_intro | escape }}",
+  "tour_intro": {{ floor_item.tour_intro | jsonify }},
   "rooms": [
     {% for room in json_floor_rooms %}
     {
@@ -192,8 +272,8 @@
       "name": "{{ room.name }}",
       "zone": "{{ room.zone }}",
       "room_number": "{{ room.room_number }}",
-      "short_description": "{{ room.short_description | escape }}",
-      "long_description": "{{ room.long_description | escape }}",
+      "short_description": {{ room.short_description | jsonify }},
+      "long_description": {{ room.long_description | jsonify }},
       "more_info_url": "{{ room.more_info_url }}",
       "action_url": "{{ room.action_url }}",
       "action_label": "{{ room.action_label }}",

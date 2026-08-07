@@ -220,28 +220,59 @@
 
 /* Container */
 .floor-map-container {
-  height: calc(100vh - 100px); /* Reduced from 200px to account for just the back button header */
+  height: calc(100vh - 100px); /* desktop: back-to-home bar is still in flow */
   min-height: 600px;
 }
 
-/* App layout - Desktop: side-by-side, Mobile: stacked */
+@media (max-width: 767px) {
+  .floor-map-container {
+    height: 100vh; /* mobile: back-to-home bar is replaced by a floating control, out of flow */
+  }
+}
+
+/* App layout - Desktop: side-by-side, Mobile: map + floating controls + bottom sheet */
 .floor-map-app {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   height: 100%;
   background: #fafaf7;
+  position: relative; /* containing block for the mobile floating floor-switcher */
 }
 
 @media (min-width: 768px) {
   .floor-map-app {
     grid-template-columns: 1fr 380px;
+    grid-template-rows: auto 1fr;
   }
+
+  .map-pane {
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+
+  .floor-switcher {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .side-pane {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* Restore the desktop reading order regardless of the mobile-driven DOM order
+     (.sheet-chrome now sits ahead of .side-header/.modes in markup) */
+  .side-header { order: 0; }
+  .modes { order: 1; }
+  .sheet-chrome { order: 2; }
+  .mode-content { order: 3; }
+  .detail-view { order: 4; }
 }
 
 @media (max-width: 767px) {
   .floor-map-app {
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr;
   }
 }
@@ -364,17 +395,224 @@
 
 @media (max-width: 767px) {
   .side-pane {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90vh;
+    max-height: none;
     border-left: none;
     border-top: 1px solid #e3e3dc;
-    height: 60vh; /* Fixed height on mobile */
-    max-height: 60vh;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -6px 20px rgba(25, 25, 25, 0.14);
+    z-index: 20;
+    --sheet-peek: 100px; /* fallback; JS sizes this to actual content via measurePeekContentHeight */
+    --sheet-half: 40vh; /* fallback; JS sizes this to actual content via measureVisibleContentHeight */
+    transform: translateY(calc(90vh - var(--sheet-peek)));
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .side-pane[data-sheet-state="half"] {
+    transform: translateY(calc(90vh - var(--sheet-half)));
+  }
+
+  .side-pane[data-sheet-state="full"] {
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .side-pane {
+      transition-duration: 0.01ms;
+    }
   }
 }
 
-/* Floor switcher */
+/* Drag handle: the primary tap control for cycling the mobile sheet's state */
+.sheet-handle {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .sheet-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 6px 0 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .sheet-handle-bar {
+    width: 40px;
+    height: 4px;
+    border-radius: 999px;
+    background: #d8d5c8;
+    transition: background 0.15s;
+  }
+
+  .sheet-handle:hover .sheet-handle-bar,
+  .sheet-handle:focus-visible .sheet-handle-bar {
+    background: #a8a48f;
+  }
+}
+
+/* Sheet toolbar: drag handle + menu trigger + search / context-bar row.
+   Replaces the old always-visible mode tabs and detail back-bar on mobile. */
+.sheet-chrome {
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .sheet-chrome {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* anchors the absolutely-positioned menu trigger */
+    border-bottom: 1px solid #e3e3dc;
+  }
+
+  .panel-menu {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    z-index: 2;
+  }
+
+  .panel-menu-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #e3e3dc;
+    border-radius: 50%;
+    color: #191919;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(25, 25, 25, 0.12);
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .panel-menu-btn:hover {
+    background: #f7f5ed;
+  }
+
+  .panel-menu-btn:active {
+    transform: scale(0.95);
+  }
+
+  .panel-menu-btn[aria-expanded="true"] {
+    background: #008080;
+    color: #ffffff;
+    border-color: transparent;
+  }
+
+  .search-wrap {
+    padding: 8px 44px 8px 16px; /* right padding clears the floating menu button */
+    border-bottom: none;
+  }
+
+  .context-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 44px 10px 16px;
+    min-height: 40px;
+  }
+
+  .back-btn-compact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: #191919;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  .back-btn-compact:hover {
+    background: #f7f5ed;
+  }
+
+  .context-bar-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #191919;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Panel menu popover: rendered outside .side-pane (see the include's comment) so it
+   isn't clipped by the sheet's overflow:hidden + translateY. JS sets top/left inline. */
+.panel-menu-popover {
+  position: fixed;
+  z-index: 30;
+  min-width: 180px;
+  background: #ffffff;
+  border: 1px solid #e3e3dc;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(25, 25, 25, 0.18);
+  padding: 6px;
+}
+
+.panel-mode-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #191919;
+  text-align: left;
+  cursor: pointer;
+}
+
+.panel-mode-item:hover {
+  background: #f7f5ed;
+}
+
+.panel-mode-item.is-active {
+  font-weight: 700;
+}
+
+.panel-mode-check {
+  visibility: hidden;
+  flex-shrink: 0;
+  color: #008080;
+}
+
+.panel-mode-item.is-active .panel-mode-check {
+  visibility: visible;
+}
+
+/* Floor switcher: top of the side column on desktop, a floating pill over the map on mobile */
 .floor-switcher {
   border-bottom: 1px solid #e3e3dc;
+  background: #ffffff;
   flex-shrink: 0;
+}
+
+.floor-switcher-home {
+  display: none;
+}
+
+.floor-switcher-divider {
+  display: none;
+}
+
+.floor-switcher-label {
+  display: none;
 }
 
 .floor-tabs {
@@ -412,25 +650,123 @@
   z-index: 2;
 }
 
-.floor-dropdown {
-  padding: 16px;
+.floor-tab-short {
+  display: none;
 }
 
-.floor-select {
-  width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  border: 1px solid #e3e3dc;
-  border-radius: 4px;
-  background: white;
-  cursor: pointer;
+@media (min-width: 768px) {
+  .floor-switcher {
+    border-left: 1px solid #e3e3dc;
+  }
 }
 
-.floor-select:focus {
-  outline: 2px solid #F1B300;
-  outline-offset: -1px;
-  border-color: #F1B300;
+@media (max-width: 767px) {
+  .floor-switcher {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #e3e3dc;
+    border-bottom: 1px solid #e3e3dc;
+    border-radius: 999px;
+    padding: 6px 10px;
+    box-shadow: 0 2px 8px rgba(25, 25, 25, 0.14);
+  }
+
+  .floor-switcher-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: #191919;
+    transition: background 0.15s;
+  }
+
+  .floor-switcher-home:hover {
+    background: #f7f5ed;
+  }
+
+  .floor-switcher-divider {
+    display: block;
+    width: 1px;
+    height: 18px;
+    flex-shrink: 0;
+    background: #e3e3dc;
+  }
+
+  .floor-switcher-label {
+    display: inline;
+    font-size: 12px;
+    font-weight: 700;
+    color: #6a6a6a;
+    white-space: nowrap;
+  }
+
+  .floor-tabs {
+    padding: 0;
+    background: transparent;
+    gap: 4px;
+  }
+
+  .floor-tab {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+  }
+
+  .floor-tab.is-active {
+    background: #008080;
+    color: #ffffff;
+    font-weight: 800;
+    border-color: transparent;
+    margin-bottom: 0;
+  }
+
+  .floor-tab-full {
+    display: none;
+  }
+
+  .floor-tab-short {
+    display: inline;
+  }
+}
+
+@media (max-width: 340px) {
+  .floor-switcher {
+    padding: 5px 8px;
+    gap: 6px;
+  }
+
+  .floor-switcher-home {
+    width: 24px;
+    height: 24px;
+  }
+
+  .floor-switcher-label {
+    font-size: 11px;
+  }
+
+  .floor-tabs {
+    gap: 3px;
+  }
+
+  .floor-tab {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
 }
 
 .side-header {
@@ -499,12 +835,17 @@
 
 /* Search */
 .search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 16px 24px;
   border-bottom: 1px solid #e3e3dc;
   flex-shrink: 0; /* Prevent search from shrinking */
 }
 
 .search-wrap input {
+  flex: 1;
+  min-width: 0;
   width: 100%;
   padding: 10px 12px;
   font-size: 14px;
@@ -517,6 +858,18 @@
   outline: 2px solid #F1B300;
   outline-offset: -1px;
   border-color: #F1B300;
+}
+
+.search-cancel {
+  display: none; /* shown via JS once there's a query */
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 8px 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #191919;
+  cursor: pointer;
 }
 
 /* Room list */
@@ -567,6 +920,20 @@
   display: none;
 }
 
+@media (max-width: 767px) {
+  .room-list-item {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 24px;
+    font-size: 15px;
+  }
+
+  .mode-btn {
+    min-height: 44px;
+  }
+}
+
 .swatch {
   display: inline-block;
   width: 10px;
@@ -597,6 +964,10 @@
   cursor: pointer;
   border-bottom: 1px solid #e3e3dc;
   transition: background 0.1s;
+  /* now the first child of .detail-content rather than its sibling — cancel the
+     parent's padding so this row still spans flush to the pane's edges */
+  margin: -20px -24px 20px;
+  width: calc(100% + 48px);
 }
 
 .back-btn:hover {
@@ -653,6 +1024,48 @@
   gap: 8px;
 }
 
+/* Expand affordance shared by the room detail view and the tour card
+   (mobile only — desktop already shows everything at once) */
+.sheet-expand-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 16px;
+  padding: 8px 4px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #191919;
+  cursor: pointer;
+}
+
+.sheet-expand-btn .expand-chevron {
+  transition: transform 0.2s ease;
+}
+
+.sheet-expand-btn[aria-expanded="true"] .expand-chevron {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 767px) {
+  .sheet-expand-btn {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .sheet-expand-btn {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-expand-btn .expand-chevron {
+    transition-duration: 0.01ms;
+  }
+}
+
 /* Floor groups in multi-floor browse */
 .floor-group {
   margin-bottom: 12px;
@@ -686,25 +1099,80 @@
   flex: 1;
 }
 
+@media (max-width: 767px) {
+  .tour-view {
+    padding: 16px 24px 24px;
+  }
+}
+
 .tour-intro {
   margin-bottom: 20px;
   font-size: 14px;
   line-height: 1.6;
 }
 
-.tour-controls {
+/* Previous/Next live in the same compact row as the stop counter, rather
+   than a full-width button pair, so the Peek card stays short */
+.tour-nav-row {
   display: flex;
-  gap: 8px;
-  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
-.tour-controls button {
-  flex: 1;
+.tour-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid #e3e3dc;
+  border-radius: 50%;
+  color: #191919;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.tour-nav-btn:hover:not(:disabled) {
+  background: #f7f5ed;
+}
+
+.tour-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 .tour-progress {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   color: #6a6a6a;
-  margin-bottom: 12px;
+  white-space: nowrap;
+}
+
+.tour-stop-name {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.tour-stop-short-desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #323232;
+}
+
+.tour-expand-content {
+  margin-top: 4px;
+}
+
+.tour-stop-description {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #323232;
 }
