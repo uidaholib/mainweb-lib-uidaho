@@ -1,0 +1,39 @@
+<script>
+(function () {
+    'use strict';
+
+    var searchInput   = document.getElementById('liaisonSearch');
+    var listContainer = document.getElementById('liaison-list');
+    var countEl       = document.getElementById('liaison-count');
+    var noResultsEl   = document.getElementById('liaison-no-results');
+
+    if (!listContainer) return;
+
+    var cards = Array.prototype.slice.call(listContainer.querySelectorAll('.liaison-card'));
+    var totalCount = cards.length;
+
+    function applyFilter() {
+        var query = (searchInput && searchInput.value || '').trim().toLowerCase();
+        var visibleCount = 0;
+
+        cards.forEach(function (card) {
+            var isVisible = !query || card.dataset.search.indexOf(query) !== -1;
+            card.classList.toggle('d-none', !isVisible);
+            if (isVisible) visibleCount++;
+        });
+
+        if (countEl) {
+            countEl.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' liaisons.';
+        }
+        if (noResultsEl) {
+            noResultsEl.classList.toggle('d-none', visibleCount !== 0);
+        }
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', applyFilter);
+    }
+
+    applyFilter();
+}());
+</script>

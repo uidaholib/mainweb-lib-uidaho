@@ -9,6 +9,7 @@ description: "Lists University of Idaho Library subject liaisons by college and 
 page_nav:
     parent: /services/
     children:
+custom-foot: "js/liaisons-js.html"
 ---
 
 <p>Each U of I College has a librarian assigned as a subject liaison. Find your liaison using the table below, or click on the topics to learn more about what library liaisons can do for you.</p>
@@ -67,19 +68,24 @@ page_nav:
 
 <h2>Find your Liaison</h2>
 {% assign liaisons = site.data.about_liaisons | sort: "liaison_college" %}
+{% assign liaisonCount = liaisons | size %}
+
+<label for="liaisonSearch" class="visually-hidden">Search liaisons by name, college, or department</label>
+<input type="search" id="liaisonSearch" class="form-control form-control-lg mb-3" autocomplete="off" spellcheck="false" placeholder="Search..." aria-describedby="liaison-count">
+
+<p id="liaison-count" class="text-muted small" aria-live="polite">Showing {{ liaisonCount }} of {{ liaisonCount }} liaisons.</p>
+<div id="liaison-no-results" class="alert alert-light border d-none" role="status">No liaisons match your search. Try a different name, college, or department.</div>
 
 <div id="liaison-list">
-	<input type="text" id="listSearch" class="form-control form-control-lg search mb-3" aria-label="Text input to filter list" placeholder="Search...">
-
-	<div class="list">
 	{% for l in liaisons %}
-		<div class="row mx-1 mb-3 p-3 border rounded">
-			<div class="col-md-5 listCollege">
+	{% assign liaison = site.data.about_people | where: 'id', l.id | first %}
+	{% capture search_blob %}{{ l.first_name }} {{ l.last_name }} {{ l.liaison_college }} {{ l.liaison_departments }}{% endcapture %}
+		<div class="row mx-1 mb-3 p-3 border rounded liaison-card" data-search="{{ search_blob | strip_newlines | strip | downcase | escape }}">
+			<div class="col-md-5">
 				<h3 class="h4">{{ l.liaison_college }}</h3>
 				<p><strong>Departments:</strong><br> {{ l.liaison_departments }}</p>
 			</div>
-			{% assign liaison = site.data.about_people | where: 'id', l.id | first %}
-			<div class="col-md-4 listLiaison">
+			<div class="col-md-4">
 				<p class="h5">{{ l.first_name }} {{ l.last_name }}</p>
 				<p><a href="mailto:{{ l.email }}">{{ l.email }}</a><br>
 				{{ liaison.phone }}</p>
@@ -91,14 +97,4 @@ page_nav:
 			</div>
 		</div>
 	{% endfor %}
-	</div>
 </div>
-
-<script src="{{ '/assets/js/list.min.js' | relative_url }}"></script>
-<script> 
-// init list.js
-var options = {
-  valueNames: [ 'listCollege', 'listLiaison' ]
-};
-var documentList = new List('liaison-list', options);
-</script>
