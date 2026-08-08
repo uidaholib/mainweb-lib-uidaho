@@ -218,6 +218,14 @@
 [data-zone="admin"] { fill: var(--zone-admin) !important; }
 [data-zone="nonpublic"] { fill: var(--zone-nonpublic) !important; }
 
+/* Visual-viewport-aware sizing for the mobile bottom sheet. Defaults are the
+   static fallback for browsers without the VisualViewport API (JS overrides
+   both once it can measure the real keyboard-aware viewport) */
+:root {
+  --vvh: 100vh;
+  --vv-offset-top: 0px;
+}
+
 /* Container */
 .floor-map-container {
   height: calc(100vh - 100px); /* desktop: back-to-home bar is still in flow */
@@ -306,6 +314,16 @@
   justify-content: center;
   width: 44px;
   height: 44px;
+  /* isolates it from the map's own touch-action:none scope so it stays tappable */
+  touch-action: manipulation;
+}
+
+@media (max-width: 767px) {
+  .reset-zoom-btn {
+    /* anchor to the real viewport, not the page, so a pinch gesture over the
+       map (see .svg-wrapper) can't carry this off screen */
+    position: fixed;
+  }
 }
 
 .reset-zoom-btn:hover {
@@ -326,6 +344,10 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  /* svg-pan-zoom owns pinch/pan gestures here; without this, the browser's
+     native pinch-zoom fires at the same time and the two fight, producing
+     drifting/jittery zoom on touch devices */
+  touch-action: none;
 }
 
 .svg-wrapper svg {
@@ -408,16 +430,20 @@
     z-index: 20;
     --sheet-peek: 100px; /* fallback; JS sizes this to actual content via measurePeekContentHeight */
     --sheet-half: 40vh; /* fallback; JS sizes this to actual content via measureVisibleContentHeight */
-    transform: translateY(calc(90vh - var(--sheet-peek)));
+    /* --vvh/--vv-offset-top track the real visual viewport (JS-updated from
+       window.visualViewport) so the sheet stays correctly sized and positioned
+       once a keyboard opens, instead of a static vh figure that ignores it */
+    height: calc(var(--vvh) * 0.9);
+    transform: translateY(calc((var(--vvh) * 0.9) - var(--sheet-peek) - var(--vv-offset-top)));
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .side-pane[data-sheet-state="half"] {
-    transform: translateY(calc(90vh - var(--sheet-half)));
+    transform: translateY(calc((var(--vvh) * 0.9) - var(--sheet-half) - var(--vv-offset-top)));
   }
 
   .side-pane[data-sheet-state="full"] {
-    transform: translateY(0);
+    transform: translateY(calc(var(--vv-offset-top) * -1));
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -425,6 +451,22 @@
       transition-duration: 0.01ms;
     }
   }
+}
+
+/* Locks document scroll while the mobile sheet is active. Plain overflow:hidden
+   on body isn't enough — iOS Safari still allows touch-driven scroll through it —
+   which is what lets the browser's own "scroll focused input into view" behavior
+   fight the fixed-position sheet when the search field is focused. */
+html.sheet-scroll-locked,
+html.sheet-scroll-locked body {
+  overflow: hidden;
+}
+
+html.sheet-scroll-locked body {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 /* Drag handle: the primary tap control for cycling the mobile sheet's state */
@@ -512,6 +554,13 @@
   .search-wrap {
     padding: 8px 44px 8px 16px; /* right padding clears the floating menu button */
     border-bottom: none;
+  }
+
+  /* iOS Safari auto-zooms the page on focus for any text input under 16px,
+     which stacks a second, uncontrolled zoom on top of the sheet's own
+     Full-state transform */
+  .search-wrap input {
+    font-size: 16px;
   }
 
   .context-bar {
@@ -677,7 +726,9 @@
 
 @media (max-width: 767px) {
   .floor-switcher {
-    position: absolute;
+    /* anchored to the real viewport, not the page, so a pinch gesture over
+       the map (see .svg-wrapper) can't carry this off screen */
+    position: fixed;
     top: 16px;
     left: 16px;
     z-index: 15;
@@ -689,6 +740,7 @@
     border-radius: 999px;
     padding: 6px 10px;
     box-shadow: 0 2px 8px rgba(25, 25, 25, 0.14);
+    touch-action: manipulation;
   }
 
   .floor-switcher-home {

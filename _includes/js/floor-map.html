@@ -30,6 +30,17 @@
       const floor = parseInt(container.getAttribute('data-floor'));
       initFloor(floor);
     });
+
+    // Keep the mobile sheet keyboard-aware and the page from fighting its
+    // fixed positioning; page-global rather than per-floor since there's
+    // only ever one active sheet on this page
+    updateScrollLock();
+    window.matchMedia('(max-width: 767px)').addEventListener('change', updateScrollLock);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', scheduleViewportMetricsUpdate);
+      window.visualViewport.addEventListener('scroll', scheduleViewportMetricsUpdate);
+      updateViewportMetrics();
+    }
   }
 
   /**
@@ -64,6 +75,15 @@
    */
   function isMobileLayout() {
     return window.matchMedia('(max-width: 767px)').matches;
+  }
+
+  /**
+   * The height of the actually-visible viewport. VisualViewport shrinks when
+   * a virtual keyboard opens; window.innerHeight generally does not, which is
+   * why sheet-sizing math needs this instead of a bare innerHeight read.
+   */
+  function currentViewportHeight() {
+    return window.visualViewport ? window.visualViewport.height : window.innerHeight;
   }
 
   /**
@@ -154,14 +174,14 @@
       // *width*, not height, so a plain fraction-of-height cap can clip a short
       // device's Prev/Next row even though the same content fits fine elsewhere.
       const measured = measurePeekContentHeight();
-      const clamped = Math.min(Math.max(measured, 72), window.innerHeight * 0.35);
+      const clamped = Math.min(Math.max(measured, 72), currentViewportHeight() * 0.35);
       sidePane.style.setProperty('--sheet-peek', `${clamped}px`);
     }
 
     if (state === 'half') {
       // Size Half to the actual content, not a flat fraction of the screen
       const measured = measureVisibleContentHeight();
-      const clamped = Math.min(Math.max(measured, 170), window.innerHeight * 0.42);
+      const clamped = Math.min(Math.max(measured, 170), currentViewportHeight() * 0.42);
       sidePane.style.setProperty('--sheet-half', `${clamped}px`);
     }
 
@@ -193,6 +213,57 @@
    */
   function cycleSheetState() {
     setSheetState(currentSheetState === 'peek' ? 'half' : 'peek');
+  }
+
+  /**
+   * Push the real visual-viewport height/offset into --vvh/--vv-offset-top
+   * (see .side-pane in _features.scss) so the mobile sheet tracks the space
+   * actually visible above a virtual keyboard, instead of a static vh figure
+   * that ignores it. Also re-runs the current sheet state so an already-open
+   * Half/Full sheet re-clamps against the new height rather than overflowing
+   * or leaving stale peek/half sizing from before the keyboard opened.
+   */
+  function updateViewportMetrics() {
+    if (!window.visualViewport) return;
+    const vv = window.visualViewport;
+    document.documentElement.style.setProperty('--vvh', `${vv.height}px`);
+    document.documentElement.style.setProperty('--vv-offset-top', `${vv.offsetTop}px`);
+    if (isMobileLayout()) setSheetState(currentSheetState);
+  }
+
+  let vvUpdatePending = false;
+  function scheduleViewportMetricsUpdate() {
+    if (vvUpdatePending) return;
+    vvUpdatePending = true;
+    requestAnimationFrame(function() {
+      vvUpdatePending = false;
+      updateViewportMetrics();
+    });
+  }
+
+  /**
+   * Lock document scroll while the mobile sheet is active. Plain
+   * overflow:hidden on body isn't enough — iOS Safari still allows
+   * touch-driven scroll through it — which is what lets the browser's own
+   * "scroll focused input into view" behavior fight the fixed-position sheet
+   * when the search field is focused. Safe to hold for the whole mobile
+   * session: this page has no other scrollable content to lock users out of.
+   */
+  let scrollLockY = 0;
+  function lockBodyScroll() {
+    if (document.documentElement.classList.contains('sheet-scroll-locked')) return;
+    scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.documentElement.classList.add('sheet-scroll-locked');
+    document.body.style.top = `-${scrollLockY}px`;
+  }
+  function unlockBodyScroll() {
+    if (!document.documentElement.classList.contains('sheet-scroll-locked')) return;
+    document.documentElement.classList.remove('sheet-scroll-locked');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollLockY);
+  }
+  function updateScrollLock() {
+    if (isMobileLayout()) lockBodyScroll(); else unlockBodyScroll();
   }
 
   /**
