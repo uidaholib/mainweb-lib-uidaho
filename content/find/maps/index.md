@@ -21,7 +21,7 @@ The Map Room is located in <a href="{{ '/about/maps.html#first-floor' | relative
     <a class="btn btn-secondary btn-sm mb-2" href="https://www.lib.uidaho.edu/digital/aerial/">Idaho Historical Aerial Photographs</a>
 </div>
 
-Please contact Government Documents Librarian <a href="mailto:rattebur@uidaho.edu">Rami Attebury</a> if you have questions about print maps or the Map Room--or GIS Librarian <a href="bgodfrey@uidaho.edu">Bruce Godfrey</a> for questions about digital maps and Geographic Information Services (GIS).
+Please contact Government Documents Librarian <a href="mailto:rattebur@uidaho.edu">Rami Attebury</a> if you have questions about print maps or the Map Room--or GIS Librarian <a href="mailto:bgodfrey@uidaho.edu">Bruce Godfrey</a> for questions about digital maps and Geographic Information Services (GIS).
 You can also always <a href="{{ '/help/' | relative_url}}">ask Reference Services</a>!
 
 ## Map Resources
@@ -34,7 +34,7 @@ A paper index located in the map room can help find additional items.
 If you have a specific geographic area or topic, the paper index can point you to the drawers where those maps are located.
 Just [ask a reference librarian]({{ '/help/' | relative_url}}) if you have questions about using the index.
 
-In addition to the large print map collection, many digital map resources are made available through [Digital Initiatives]({{ '/digital/' | relative_url }}) and [Inside Idaho](https://www.insideidaho.org/).
+In addition to the large print map collection, many digital map resources are made available through [Digital Initiatives](https://www.lib.uidaho.edu/digital/) and [Inside Idaho](https://www.insideidaho.org/).
 Many of our digital collections feature maps to explore geolocated items or [contain digitized archival maps](https://www.lib.uidaho.edu/digital/home/collections.html#maps) as part of their content, such as the [Idaho Historical Maps Collection](https://www.lib.uidaho.edu/digital/historicalmaps/).
 
 ## Topographic Maps

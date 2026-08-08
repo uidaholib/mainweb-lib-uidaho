@@ -60,4 +60,4 @@ Visit our [GIS software page]({{ '/find/geospatial/software.html' | relative_url
 - [State of Idaho Geotech Listserv](https://survey123.arcgis.com/share/4cd053e4ee6547eab85ca795e3219491)
 - [Esri Higher Education Community](https://www.esri.com/en-us/industries/higher-education/community)
 - [Esri User Conference Complimentary Registrations](https://www.esri.com/en-us/about/events/uc/overview) - A limited number of complimentary registrations are available on a first come, first served basis to those affiliated with the U of I. Email [Bruce Godfrey](mailto:bgodfrey@uidaho.edu) for more information.
-- [GIS Day @ U of I]({{ '/gisday/' | relative_url }}) - annual event on campus each fall.
+- [GIS Day @ U of I](https://www.lib.uidaho.edu/gisday/) - annual event on campus each fall.

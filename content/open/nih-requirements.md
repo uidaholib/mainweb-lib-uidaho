@@ -57,7 +57,7 @@ Some Journals also have "Selective Deposits"
 {:.ms-3}
 *This manuscript is the result of funding in whole or in part by the National Institutes of Health (NIH). It is subject to the NIH Public Access Policy. Through acceptance of this federal funding, NIH has been given a right to make this manuscript publicly available in PubMed Central upon the Official Date of Publication, as defined by NIH.*
 
-**Publisher Policy Conflicts**: Major publishers including Elsevier and Springer Nature currently maintain embargo periods conflicting with NIH policy. See [this Authors Alliance FAQ for Authors](ttps://www.authorsalliance.org/2025/06/06/the-nih-public-access-policy-qa-for-authors/) for more information. 
+**Publisher Policy Conflicts**: Major publishers including Elsevier and Springer Nature currently maintain embargo periods conflicting with NIH policy. See [this Authors Alliance FAQ for Authors](https://www.authorsalliance.org/2025/06/06/the-nih-public-access-policy-qa-for-authors/) for more information. 
 
 
 ### Budget and Cost Considerations

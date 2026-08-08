@@ -17,7 +17,7 @@ page_nav:
 
 The 2022 White House Office of Science and Technology Policy (OSTP) memorandum "Ensuring Free, Immediate, and Equitable Access to Federally Funded Research" mandates that all peer-reviewed publications and underlying data from federally funded research must be made freely available immediately upon publication, eliminating the previous 12-month embargo period that allowed publishers to restrict access.
 
-[NIH has already accelerated implementation to July 1, 2025]((nih-requirements.html)), meaning these requirements are currently in effect for NIH-funded researchers. All other federal agencies must implement their policies by December 31, 2025.
+[NIH has already accelerated implementation to July 1, 2025](nih.html), meaning these requirements are currently in effect for NIH-funded researchers. All other federal agencies must implement their policies by December 31, 2025.
 
 This policy affects grant applications, publication strategies, data management, and budget planning. Researchers can comply through repository deposit or publishing with  open access journals, but must understand agency-specific requirements.  
 

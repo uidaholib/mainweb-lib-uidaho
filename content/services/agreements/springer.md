@@ -23,4 +23,4 @@ In January 2024, the U of I Library, as a member of Lyrasis, entered into a [Rea
 
 - The U of I author must be the corresponding author of the article.
 - The author must identify themselves during the author identification process by using an institutional email address.
-- Have an article accepted in an [eligible journal](https://resource-cms.springernature.com/springer-cms/rest/v1/content/26326572/data/v7).
+- Have an article accepted in an [eligible journal](https://www.springernature.com/gp/open-research/oa-agreements/lyrasis).
