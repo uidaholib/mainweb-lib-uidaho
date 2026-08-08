@@ -1,5 +1,15 @@
 <meta charset="utf-8">
+{% comment %} The floor-map app has its own pinch-zoom/pan built into the map (svg-pan-zoom),
+  and letting the browser's native page-zoom engage at the same time is what causes fixed
+  UI (search box, floating controls) to drift/clip on touch devices — the two compete over
+  the same gesture. Disabling native zoom is scoped to this one app page rather than
+  site-wide: OS-level screen magnification remains available regardless of this meta tag,
+  and the map itself provides an equivalent, accessible zoom control. {% endcomment %}
+{% if page.layout == "floor-map" %}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+{% else %}
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% endif %}
 <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
 <meta http-equiv="Content-Language" content="en-us" >
 <!--
