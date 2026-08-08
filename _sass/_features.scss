@@ -421,7 +421,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 90vh;
     max-height: none;
     border-left: none;
     border-top: 1px solid #e3e3dc;
@@ -431,8 +430,10 @@
     --sheet-peek: 100px; /* fallback; JS sizes this to actual content via measurePeekContentHeight */
     --sheet-half: 40vh; /* fallback; JS sizes this to actual content via measureVisibleContentHeight */
     /* --vvh/--vv-offset-top track the real visual viewport (JS-updated from
-       window.visualViewport) so the sheet stays correctly sized and positioned
-       once a keyboard opens, instead of a static vh figure that ignores it */
+       window.visualViewport) so Peek/Half stay correctly sized once a keyboard
+       opens, instead of a static vh figure that ignores it. Neither state should
+       actually coexist with the keyboard in practice (focusing search jumps
+       straight to Full), but this keeps them honest if that ever changes. */
     height: calc(var(--vvh) * 0.9);
     transform: translateY(calc((var(--vvh) * 0.9) - var(--sheet-peek) - var(--vv-offset-top)));
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -442,8 +443,21 @@
     transform: translateY(calc((var(--vvh) * 0.9) - var(--sheet-half) - var(--vv-offset-top)));
   }
 
+  /* Full is a true full-screen takeover, anchored from the TOP rather than
+     bottom:0 like Peek/Half. This matters specifically because of the keyboard:
+     bottom:0 pins to the bottom of the *layout* viewport, which is exactly the
+     part the keyboard covers, so the sheet was ending up hidden behind it
+     (or the search box at its top got shoved out of view entirely). The top
+     of the screen never moves when a keyboard opens, so anchoring there keeps
+     the search box always visible with results scrolling beneath it and the
+     keyboard simply covering the tail end of the list — the expected pattern
+     for a search screen, not something to solve around. */
   .side-pane[data-sheet-state="full"] {
-    transform: translateY(calc(var(--vv-offset-top) * -1));
+    top: var(--vv-offset-top);
+    height: var(--vvh);
+    transform: none;
+    border-radius: 0;
+    border-top: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
