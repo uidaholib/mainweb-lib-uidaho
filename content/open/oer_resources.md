@@ -46,7 +46,7 @@ There are several established open textbook and OER collections available, liste
 * [BC Open Textbook Collection](https://open.bccampus.ca/find-open-textbooks/)
 * [Open SUNY Textbooks](http://textbooks.opensuny.org/browse/)
 * [Open Education Resource Textbook List (Sacred Heart University)](http://digitalcommons.sacredheart.edu/cgi/viewcontent.cgi?article=1043&context=library_staff)
-* [Project Gutenberg](http://www.gutenberg.org/wiki/Main_Page)
+* [Project Gutenberg](https://www.gutenberg.org/)
 * [Wikibooks](https://en.wikibooks.org/wiki/Main_Page)
 * [College Open Textbooks](http://www.collegeopentextbooks.org/)
 * [Merlot II](https://www.merlot.org/merlot/index.htm?action=find)
