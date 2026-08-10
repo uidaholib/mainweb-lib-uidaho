@@ -33,7 +33,7 @@ The NIH provides a [chart that is helpful for understanding submission methods](
 
 There are several ways to comply with the requirements:
 
-**1. Author Self-Submission**: Use the [NIH Manuscript Submission System (NIHMS)](https://www.nihms.nih.gov/) to deposit Author Accepted Manuscripts (AAC)* manuscripts directly. This is most reliable method of submission for individual contributors. 
+**1. Author Self-Submission**: Use the [NIH Manuscript Submission System (NIHMS)](https://www.nihms.nih.gov/) to deposit Author Accepted Manuscripts (AAC)*. This is the most reliable method of submission for individual contributors. 
 - An ***Author Accepted Manuscript*** is defined by the NIH as "The author’s final version that has been accepted for journal publication and includes all revisions resulting from the peer review process, including all associated tables, graphics, and supplemental material."
 
 **2. Automatic Deposits Via Journal Agreements**: Some journals have agreements with the National Library of Medicine for automatic manuscript deposit. Journals will submit the "Final Published Article" at the time of publication. 
@@ -45,7 +45,7 @@ There are several ways to comply with the requirements:
 Some Journals also have "Selective Deposits"
 - Check [NIH's list of Publishers following this method](https://pmc.ncbi.nlm.nih.gov/about/selectivedeposit/). 
 - These are often "Hybrid" journals that charge processing fees for articles. 
-    - The Library has "[transformative agreements](/services/agreements/)" in place with some publishers to pay for these APCs via our subscriptions. 
+    - The Library has "[transformative agreements](/services/agreements/)" in place with some publishers to pay for these Article Processing Charges (APCs) via our subscriptions. 
     - *Note: The Library's [Open Access Publishing Fund (OAPF)](/open/oapf/) does not pay for APC charges in "Hybrid" journals.*
 
 **4. Publisher Submission to NIHMS**: Some publishers submit directly to NIHMS on behalf of authors.
