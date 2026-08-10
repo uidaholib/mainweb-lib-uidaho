@@ -462,7 +462,7 @@
     floorData.rooms.forEach(room => {
       const element = svg.getElementById(room.svg_id);
       if (element) {
-        element.setAttribute('data-zone', room.zone);
+        element.setAttribute('data-zone', room.idle_zone || room.zone);
         element.setAttribute('data-room-id', room.room_id);
         element.classList.add('room');
       }
@@ -734,9 +734,23 @@
       return;
     }
 
+    const hasExplicitTarget = !!options.roomId || options.mode === 'tour';
+
+    // Plain floor-tab switches should behave like "Back to browse" first:
+    // clear any active room/detail/tour state before loading the new floor.
+    if (!hasExplicitTarget) {
+      selectedRoomId = null;
+      clearSVGSelection(currentFloor);
+      clearRoomListSelection(currentFloor);
+    }
+
     // Update current floor and floor data
     currentFloor = targetFloor;
     floorData = allFloorsData[targetFloor];
+
+    if (!hasExplicitTarget) {
+      switchMode(targetFloor, 'browse');
+    }
 
     // Update floor tabs and side header
     updateFloorTabs(targetFloor);
@@ -1229,6 +1243,11 @@
     const roomElement = svgDocument.getElementById(svgId);
     if (roomElement) {
       roomElement.classList.add('is-selected');
+      // Reveal the room's true zone color, overriding any idle_zone blend
+      const room = floorData.rooms.find(r => r.svg_id === svgId);
+      if (room && room.idle_zone) {
+        roomElement.setAttribute('data-zone', room.zone);
+      }
     }
 
     // Add has-selection class to map pane
@@ -1245,7 +1264,14 @@
     if (!svgDocument) return;
 
     const selectedElements = svgDocument.querySelectorAll('.is-selected');
-    selectedElements.forEach(el => el.classList.remove('is-selected'));
+    selectedElements.forEach(el => {
+      el.classList.remove('is-selected');
+      // Restore the idle_zone blend, if this room has one
+      const room = floorData.rooms.find(r => r.svg_id === el.id);
+      if (room && room.idle_zone) {
+        el.setAttribute('data-zone', room.idle_zone);
+      }
+    });
 
     const mapPane = document.getElementById(`map-pane-1`);
     if (mapPane) {

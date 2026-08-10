@@ -209,14 +209,16 @@
 /* Apply zone colors to SVG elements */
 [data-zone="service"] { fill: var(--zone-service) !important; }
 [data-zone="resources"] { fill: var(--zone-resources) !important; }
-[data-zone="collab"] { fill: var(--zone-collab) !important; }
+[data-zone="study"] { fill: var(--zone-study) !important; }
 [data-zone="books"] { fill: var(--zone-books) !important; }
+[data-zone="lendable"] { fill: var(--zone-lendable) !important; }
 [data-zone="periodicals"] { fill: var(--zone-periodicals) !important; }
-[data-zone="individual"] { fill: var(--zone-individual) !important; }
-[data-zone="study"] { fill: var(--zone-individual) !important; } /* Alias for individual */
 [data-zone="restrooms"] { fill: var(--zone-restrooms) !important; }
-[data-zone="admin"] { fill: var(--zone-admin) !important; }
 [data-zone="nonpublic"] { fill: var(--zone-nonpublic) !important; }
+
+/* Reserved idle-state value (see rooms.csv `idle_zone`) — not a real zone,
+   so it isn't generated from zones.yml like the rules above. */
+[data-zone="transparent"] { fill: transparent !important; }
 
 /* Visual-viewport-aware sizing for the mobile bottom sheet. Defaults are the
    static fallback for browsers without the VisualViewport API (JS overrides

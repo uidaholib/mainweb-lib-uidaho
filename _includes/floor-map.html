@@ -288,6 +288,7 @@
       "svg_id": "{{ room.svg_id }}",
       "name": "{{ room.name }}",
       "zone": "{{ room.zone }}",
+      "idle_zone": "{{ room.idle_zone }}",
       "room_number": "{{ room.room_number }}",
       "short_description": {{ room.short_description | jsonify }},
       "long_description": {{ room.long_description | jsonify }},
@@ -316,12 +317,8 @@
     "{{ zone_key }}": {
       "label": "{{ zone.label }}",
       "color": "{{ zone.color }}"
-    },
+    }{% unless forloop.last %},{% endunless %}
     {% endfor %}
-    "study": {
-      "label": "Individual Study",
-      "color": "#D7003F"
-    }
   }
 }
 </script>
