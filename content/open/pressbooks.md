@@ -15,7 +15,7 @@ The Idaho State Board of Education established a Pressbooks platform for Idaho u
 
 <a href="https://uidaho.pressbooks.pub/" class="btn btn-lg btn-outline-pride-gold">Visit U of I Pressbooks</a>
 
-Pressbooks is web-based book production software used by authors and educational institutions around the world to create textbooks, monographs, syllabi, white papers, and more. The platform is designed to make creating or adapting existing content easier, with an online editing interface similar to using WordPress CMS that can output multiple formats including:
+Pressbooks is a web-based book production software used by authors and educational institutions around the world to create textbooks, monographs, syllabi, white papers, and more. The platform is designed to make creating or adapting existing content easier, with an online editing interface similar to using WordPress CMS that can output multiple formats including:
 
 - Website
 - EPUB ebooks
