@@ -19,7 +19,7 @@ If you have questions, please contact the ILL Office at <libill@uidaho.edu> or (
 
 ## Requesting Items 
 
-Once you are signed in to the [library’s catalog](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?vid=01ALLIANCE_UID:UID), items not owned by the U of I Library can be requested via the form available in relevant search results or the "Blank Request Form" available in the menu. 
+Once you are signed in to the [library’s catalog](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?vid=01ALLIANCE_UID:UID), items not owned by the U of I Library can be requested via the form available in relevant search results or the "ILL Request Form" available in the menu. 
 You can monitor the status of requests in your [library account](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/account?vid=01ALLIANCE_UID:UID). 
 
 ## Lending Periods 
