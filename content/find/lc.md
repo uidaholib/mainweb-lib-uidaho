@@ -12,10 +12,10 @@ page_nav:
 
 ---
 
-The University of Idaho Library, along with most academic libraries, classifies materials using the Library of Congress (LOC) system. 
-This means you will find books on our shelves organized by their LOC call numbers. 
-Below is a chart providing an overview of where the LOC classes are located on the library floors.
-They start with class "A" on the fourth floor and winding through the shelves all the way down to class "Z" on the second floor.
+The University of Idaho Library, along with most academic libraries, classifies materials using the Library of Congress Classification System (LCC). This classification system organizes books based on their subject area. 
+This means you will find books on our shelves organized by their LCC call numbers. 
+Below is a chart providing an overview of where each LCC subject area is located within the library.
+They start with class "A" on the fourth floor and wind through the shelves all the way down to class "Z" on the second floor.
 
 For more information check our [Book Research Guide](https://libguides.uidaho.edu/c.php?g=363237&p=2453519) or the full [Library of Congress classification outlines](https://www.loc.gov/catdir/cpso/lcco/).
 
