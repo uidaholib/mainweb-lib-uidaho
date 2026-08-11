@@ -25,7 +25,7 @@ University of Idaho Library's collections include millions of books and ebooks. 
   </div>
 </div>
 
-Print books can be found in the library arranged by their Library of Congress call numbers. Consult our <a href="{{ '/about/maps.html' | relative_url }}">floor maps</a> and <a href="{{ '/find/lc.html' | relative_url }}">LOC reference</a> to find where they are located.
+Print books can be found in the library arranged by their Library of Congress Classification System call numbers. Consult our <a href="{{ '/about/maps.html' | relative_url }}">floor maps</a> and <a href="{{ '/find/lc.html' | relative_url }}">LCC reference</a> to find where they are located.
 
 Ebooks can be accessed through our catalog from anywhere in the world using your U of I login. Check our <a href="{{ '/find/ebooks.html' | relative_url }}">Finding eBooks page</a> for more details about access. 
 
