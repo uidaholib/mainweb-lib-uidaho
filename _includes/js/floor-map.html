@@ -216,6 +216,21 @@
   }
 
   /**
+   * Move the sheet one snap state up ('up') or down ('down') the Peek -> Half
+   * -> Full ladder, clamped at the ends. Backs the handle's swipe gesture —
+   * unlike cycleSheetState() (tap), this is the way to actually reach Full,
+   * which was otherwise buried behind the search field or a "more" button.
+   */
+  function stepSheetState(direction) {
+    const order = ['peek', 'half', 'full'];
+    const currentIndex = order.indexOf(currentSheetState);
+    const nextIndex = direction === 'up'
+      ? Math.min(currentIndex + 1, order.length - 1)
+      : Math.max(currentIndex - 1, 0);
+    setSheetState(order[nextIndex]);
+  }
+
+  /**
    * Push the real visual-viewport height/offset into --vvh/--vv-offset-top
    * (see .side-pane in _features.scss) so the mobile sheet tracks the space
    * actually visible above a virtual keyboard, instead of a static vh figure
@@ -574,11 +589,47 @@
       });
     }
 
-    // Mobile bottom-sheet handle: tap to collapse to Peek, or expand to Half
+    // Mobile bottom-sheet handle: tap to collapse to Peek, or expand to Half.
+    // Swipe up/down steps through Peek -> Half -> Full (or back down) instead,
+    // so Full is reachable with a gesture rather than hunting for a button.
+    // This is a plain vertical-distance check on touchstart/touchend, not a
+    // 1:1 drag-follow, to keep it a small, self-contained addition.
     const sheetHandle = document.getElementById(`sheet-handle-1`);
     if (sheetHandle) {
       sheetHandle.addEventListener('click', function() {
         cycleSheetState();
+      });
+
+      const SWIPE_THRESHOLD = 30; // px of vertical travel to count as a swipe, not a tap
+      let touchStartX = null;
+      let touchStartY = null;
+
+      sheetHandle.addEventListener('touchstart', function(e) {
+        if (e.touches.length !== 1) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      sheetHandle.addEventListener('touchend', function(e) {
+        if (touchStartY === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        touchStartX = null;
+        touchStartY = null;
+
+        // Short or mostly-horizontal movement is a tap (handled by the click
+        // listener above) or an accidental sideways drag — ignore it.
+        if (Math.abs(dy) < SWIPE_THRESHOLD || Math.abs(dy) < Math.abs(dx)) return;
+
+        // A real swipe: consume the touch so it doesn't also fire the
+        // synthetic click that would immediately re-toggle via cycleSheetState.
+        e.preventDefault();
+        stepSheetState(dy < 0 ? 'up' : 'down');
+      });
+
+      sheetHandle.addEventListener('touchcancel', function() {
+        touchStartX = null;
+        touchStartY = null;
       });
     }
 

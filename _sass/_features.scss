@@ -485,7 +485,7 @@ html.sheet-scroll-locked body {
   width: 100%;
 }
 
-/* Drag handle: the primary tap control for cycling the mobile sheet's state */
+/* Drag handle: tap or swipe up/down to step the mobile sheet's state */
 .sheet-handle {
   display: none;
 }
@@ -501,6 +501,9 @@ html.sheet-scroll-locked body {
     border: none;
     cursor: pointer;
     flex-shrink: 0;
+    /* Let JS own vertical touch gestures here instead of the browser
+       treating them as a scroll/rubber-band attempt. */
+    touch-action: none;
   }
 
   .sheet-handle-bar {
