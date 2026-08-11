@@ -51,6 +51,7 @@ We also have various Idaho, local, national, and international current and histo
 <a href="https://uidaho.idm.oclc.org/login?url=https://infoweb.newsbank.com/?db=EANX" class="btn btn-outline-pride-gold my-2" >Pacific Northwest Historical Newspapers Archive</a>
 <a href="https://www.lib.uidaho.edu/digital/argonaut/index.html" class="btn btn-outline-pride-gold my-2" >Argonaut Digital Collection</a>
 <a href="https://chroniclingamerica.loc.gov" class="btn btn-outline-pride-gold my-2" >Chronicling America</a>
+<a href="https://uidaho.newspapers.com/papers/" class="btn btn-outline-pride-gold my-2" >Newspapers.com</a>
 
 {% endcapture %}
 {% include feature/accordion.html title1="Print Access" text1=print-access title2="Microfilm Access" text2=microfilm title3="Online Access" text3=online %}
