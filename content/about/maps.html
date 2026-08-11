@@ -41,7 +41,7 @@ page_callout:
 		</div>
 		<div class="col-md-4">
 			<a href="{{ '/about/floor-maps/' | relative_url }}?floor={{ floor_match.floor }}" title="View {{ m.name }} in the interactive map">
-				<img src="{{ '/assets/maps/pngs/floor_map_0' | append: floor_match.floor | append: '.png' }}" class="card-img p-2" alt="map of {{ m.name }} highlighting services as described in the content">
+				<img src="{{ '/assets/maps/pngs/floor_map_0' | append: floor_match.floor | append: '.png' | relative_url }}" class="card-img p-2" alt="map of {{ m.name }} highlighting services as described in the content">
 			</a>
 		</div>
 	</div>
