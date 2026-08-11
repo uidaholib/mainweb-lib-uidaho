@@ -231,6 +231,65 @@
   }
 
   /**
+   * Wire a swipe-up/down gesture on `el` that steps the mobile sheet via
+   * stepSheetState(). A plain vertical-distance check on touchstart/touchend,
+   * not a 1:1 drag-follow — kept deliberately simple.
+   *
+   * `canSwipe(dy)` gates whether a given drag is allowed to move the sheet,
+   * rather than being left to whatever `el` normally does with a vertical
+   * drag (e.g. scrolling). The handle passes no gate (it never scrolls); the
+   * scrollable detail/tour panes pass one that only allows the gesture at the
+   * relevant scroll edge, so mid-scroll drags keep scrolling instead of
+   * fighting the sheet for control.
+   */
+  function attachSheetSwipe(el, canSwipe) {
+    if (!el) return;
+    const SWIPE_THRESHOLD = 30; // px of vertical travel to count as a swipe, not a tap/scroll
+    let touchStartX = null;
+    let touchStartY = null;
+
+    el.addEventListener('touchstart', function(e) {
+      if (e.touches.length !== 1) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    el.addEventListener('touchend', function(e) {
+      if (touchStartY === null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      touchStartX = null;
+      touchStartY = null;
+
+      // Short or mostly-horizontal movement is a tap or an accidental
+      // sideways drag — ignore it.
+      if (Math.abs(dy) < SWIPE_THRESHOLD || Math.abs(dy) < Math.abs(dx)) return;
+      if (canSwipe && !canSwipe(dy)) return;
+
+      // A real, allowed swipe: consume the touch so it doesn't also fire a
+      // synthetic click on whatever it started/ended over.
+      e.preventDefault();
+      stepSheetState(dy < 0 ? 'up' : 'down');
+    });
+
+    el.addEventListener('touchcancel', function() {
+      touchStartX = null;
+      touchStartY = null;
+    });
+  }
+
+  /**
+   * Scroll-edge gate for attachSheetSwipe() on a scrollable content pane:
+   * swiping up (toward Full) is only allowed once the pane has nothing left
+   * to scroll down to, and swiping down (toward Peek) only once it's already
+   * scrolled to the top — otherwise the drag is left to scroll the content.
+   */
+  function atScrollEdge(el, dy) {
+    if (dy < 0) return el.scrollHeight - el.scrollTop - el.clientHeight <= 1;
+    return el.scrollTop <= 0;
+  }
+
+  /**
    * Push the real visual-viewport height/offset into --vvh/--vv-offset-top
    * (see .side-pane in _features.scss) so the mobile sheet tracks the space
    * actually visible above a virtual keyboard, instead of a static vh figure
@@ -592,46 +651,31 @@
     // Mobile bottom-sheet handle: tap to collapse to Peek, or expand to Half.
     // Swipe up/down steps through Peek -> Half -> Full (or back down) instead,
     // so Full is reachable with a gesture rather than hunting for a button.
-    // This is a plain vertical-distance check on touchstart/touchend, not a
-    // 1:1 drag-follow, to keep it a small, self-contained addition.
+    // The handle never scrolls, so its swipe is ungated (always allowed).
     const sheetHandle = document.getElementById(`sheet-handle-1`);
     if (sheetHandle) {
       sheetHandle.addEventListener('click', function() {
         cycleSheetState();
       });
-
-      const SWIPE_THRESHOLD = 30; // px of vertical travel to count as a swipe, not a tap
-      let touchStartX = null;
-      let touchStartY = null;
-
-      sheetHandle.addEventListener('touchstart', function(e) {
-        if (e.touches.length !== 1) return;
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-
-      sheetHandle.addEventListener('touchend', function(e) {
-        if (touchStartY === null) return;
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        const dy = e.changedTouches[0].clientY - touchStartY;
-        touchStartX = null;
-        touchStartY = null;
-
-        // Short or mostly-horizontal movement is a tap (handled by the click
-        // listener above) or an accidental sideways drag — ignore it.
-        if (Math.abs(dy) < SWIPE_THRESHOLD || Math.abs(dy) < Math.abs(dx)) return;
-
-        // A real swipe: consume the touch so it doesn't also fire the
-        // synthetic click that would immediately re-toggle via cycleSheetState.
-        e.preventDefault();
-        stepSheetState(dy < 0 ? 'up' : 'down');
-      });
-
-      sheetHandle.addEventListener('touchcancel', function() {
-        touchStartX = null;
-        touchStartY = null;
-      });
+      attachSheetSwipe(sheetHandle, null);
     }
+
+    // Room detail and Tour content also accept the swipe gesture — e.g.
+    // swiping up on a room's Half-height detail card takes it to Full — but
+    // only at the top/bottom of their own scroll, so a swipe partway through
+    // a long description scrolls the text instead of yanking the sheet out
+    // from under it. The Browse room list deliberately does NOT get this: it
+    // scrolls constantly by comparison, so gating there would be fighting the
+    // list's normal scroll far more often than it helps.
+    const detailView = document.getElementById('detail-view-1');
+    attachSheetSwipe(detailView, function(dy) {
+      return atScrollEdge(detailView, dy);
+    });
+
+    const tourView = document.getElementById('tour-view-1');
+    attachSheetSwipe(tourView, function(dy) {
+      return atScrollEdge(tourView, dy);
+    });
 
     // "More details" affordance in the room detail view
     const detailExpandBtn = document.getElementById('detail-expand-btn');
