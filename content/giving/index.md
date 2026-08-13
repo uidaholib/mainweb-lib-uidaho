@@ -5,7 +5,7 @@ permalink: /giving/
 layout: page
 search: true
 search_headings: false
-tags: Giving
+tags: giving; donors; impact; 
 description: "Donors help the Library develop our collections, fund our programs, build our departments, and furnish our study areas."
 page_nav:
     parent: /about/
