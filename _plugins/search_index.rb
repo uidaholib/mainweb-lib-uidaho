@@ -139,7 +139,7 @@ module SearchIndex
           'url'     => url,
           'title'   => title,
           'page'    => nil,
-          'tags'    => doc.data['tags'],
+          'tags'    => split_tags(doc.data['tags'], config['tag_delimiter']),
           'content' => description.empty? ? headings.join(', ') : description
         }
       end

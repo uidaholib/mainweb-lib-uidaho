@@ -45,9 +45,9 @@ page_gen:
 search_index:
   # _data csv of curated records for resources that are not pages of this site
   additions: 'search_index_additions'
+  collections: ['fellowships']
 #  output: '/assets/main-web/site-search.json'
 #  heading_level: 3
-#  collections: []
 
 # heading ids (_plugins/headings_ids.rb)
 # the heading_ids plugin adds ids to content headings that don't have one,

@@ -140,7 +140,8 @@
                 id: 'id',
                 index: [
                     { field: 'title', tokenize: 'forward', store: true },
-                    { field: 'content', tokenize: 'forward', store: true }
+                    { field: 'content', tokenize: 'forward', store: true },
+                    { field: 'tags', tokenize: 'forward' }
                 ]
             },
             cache: true
@@ -153,7 +154,8 @@
                     searchIndex.add({
                         id: id,
                         title: data[id].title || '',
-                        content: data[id].content || ''
+                        content: data[id].content || '',
+                        tags: Array.isArray(data[id].tags) ? data[id].tags.join(' ') : ''
                     });
                     searchDocs[id] = data[id];
                 });
@@ -179,10 +181,11 @@
 
         var titleHits = searchIndex.search(query, { field: 'title', limit: 8 });
         var contentHits = searchIndex.search(query, { field: 'content', limit: 8 });
+        var tagHits = searchIndex.search(query, { field: 'tags', limit: 8 });
         var seen = {};
         var ids = [];
 
-        [titleHits, contentHits].forEach(function (groups) {
+        [titleHits, contentHits, tagHits].forEach(function (groups) {
             (groups || []).forEach(function (g) {
                 (g.result || []).forEach(function (id) {
                     if (!seen[id]) {
