@@ -76,7 +76,7 @@ individual-study-floor-4,4,Individual_Study_Spaces,Individual Study Spaces,study
 group-study-rooms-floor-4,4,Group_Study_Rooms,Group Study Rooms,study,,"First-come, first-served group study rooms.","The library's first come, first served study rooms are on the 3rd and 4th floors.",,,,,,,FALSE,,,
 restrooms-floor-4-w,4,Womens,Restrooms,restrooms,,Accessible restrooms near the central staircase.,Accessible women's restrooms are located near the central staircase.,,,,,,,FALSE,,Womens shape; deduped with Mens in UI.,
 restrooms-floor-4-m,4,Mens,Restrooms,restrooms,,Accessible restrooms near the central staircase.,Accessible men's restrooms are located near the central staircase.,,,,,,,FALSE,,Mens shape; deduped with Womens in UI.,
-books-a-e,4,Books_A_to_E,Main Stacks: Books A–E,books,,Main Stacks A–E.,Main Stacks A-E, organized by Library of Congress call numbers..,,,,,,,FALSE,,,
+books-a-e,4,Books_A_to_E,Main Stacks: Books A–E,books,,Main Stacks A–E.,"Main Stacks A-E, organized by Library of Congress call numbers..",,,,,,,FALSE,,,
 books-e-gv,4,Books_E_to_GV,Main Stacks: Books E–GV,books,,Main Stacks E–GV.,"Main Stacks E-GV, organized by Library of Congress call numbers..",,,,,,,FALSE,,,
 computer-lab-floor-4,4,Student_Computer_Lab,Student Computer Lab,resources,,Computer lab on the fourth floor.,"Computer lab featuring workstations with specialized software including MATLAB, MathCAD, SPSS, ArcGIS, and Adobe Creative Suite.",,,,,,,FALSE,,,
 library-computer-floor-4,4,Library_Computer,Library Computer,resources,,Public-access computer.,,,,,,,,FALSE,,,
