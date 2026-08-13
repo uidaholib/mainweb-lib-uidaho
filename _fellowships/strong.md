@@ -1,6 +1,7 @@
 ---
 title: Gary and Carolyn Strong Special Collections Fellowship
 layout: fellowship
+search: true
 section: Fellowships
 permalink: /fellowships/strong.html
 show_past_projects: true

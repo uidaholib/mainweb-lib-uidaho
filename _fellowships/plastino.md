@@ -1,6 +1,7 @@
 ---
 title: Ben J. Plastino Collection Fellowship
 layout: fellowship
+search: true
 section: Fellowships
 permalink: /fellowships/plastino.html
 show_past_projects: false

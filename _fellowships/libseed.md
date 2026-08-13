@@ -3,6 +3,7 @@ title: Library Seed Grant
 section: Fellowships
 permalink: /fellowships/libseed.html
 layout: fellowship
+search: true
 show_past_projects: true
 ---
 

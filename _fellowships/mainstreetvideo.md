@@ -3,6 +3,7 @@ title: Main Street Video Project Fellowship
 section: Fellowships
 permalink: /fellowships/mainstreetvideo.html
 layout: fellowship
+search: true
 show_past_projects: true
 ---
 

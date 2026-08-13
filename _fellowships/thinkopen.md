@@ -1,6 +1,7 @@
 ---
 title: ThinkOpen Fellowship
 layout: fellowship
+search: true
 section: Fellowships
 permalink: /fellowships/thinkopen.html
 show_past_projects: true

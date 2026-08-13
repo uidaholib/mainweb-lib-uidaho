@@ -3,6 +3,7 @@ title: CDIL Graduate Student Fellowship
 section: Fellowships
 permalink: /fellowships/cdil-graduate.html
 layout: fellowship
+search: true
 show_past_projects: true
 ---
 

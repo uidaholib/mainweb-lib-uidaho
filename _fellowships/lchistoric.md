@@ -1,6 +1,7 @@
 ---
 title: Latah County Historic Sites Digital Map Project Fellowship
 layout: fellowship
+search: true
 section: Fellowships
 permalink: /fellowships/lchistoric.html
 show_past_projects: false

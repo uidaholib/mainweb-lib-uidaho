@@ -3,6 +3,7 @@ title: CDIL Metadata Fellowship
 section: Fellowships
 permalink: /fellowships/cdil-metadata.html
 layout: fellowship
+search: true
 show_past_projects: false
 ---
 
