@@ -65,4 +65,12 @@ sass:
 # add liquid profiler to id bottlenecks
 # profile: true
 
+defaults:
+  - scope:
+      path: ""
+      type: fellowships
+    values:
+      page_nav:
+        parent: /fellowships/opportunities.html
+
 exclude: [lib-apps, 'Rakefile', docs]

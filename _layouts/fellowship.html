@@ -122,8 +122,8 @@ layout: page
     {% assign past_recipients = site.data.fellowships | where: "fellowship", page.title %}
     
     {% if past_recipients.size > 0 %}
-        {% comment %} Group recipients by project to handle multiple fellows on same project {% endcomment %}
-        {% assign unique_projects = past_recipients | group_by: "project" %}
+        {% comment %} Sort newest to oldest before grouping so the most recent project appears first {% endcomment %}
+        {% assign unique_projects = past_recipients | sort: "year" | reverse | group_by: "project" %}
         
         <div class="row">
             {% for project_group in unique_projects limit: 12 %}
