@@ -39,7 +39,7 @@ Offline, use your Vandal Card to check out and renew Books, DVDs, and other mate
 
 Your Idaho Vandal ID card can be used as your library card to check out materials as well as to access your interlibrary loan account and other online materials.
 
-If you have a valid University of Idaho network username and password, you will also be able to access databases like JSTOR, Web of Science and Academic Search Premier <a href="{{ '/services/distance.html' | relative_url }}" >from off campus</a> by using your University of Idaho username and password.
+If you have a valid University of Idaho network username and password, you will also be able to access databases like JSTOR, Web of Science and Academic Search Premier <a href="{{ '/help/distance.html' | relative_url }}" >from off campus</a> by using your University of Idaho username and password.
 
 **Preferred Name:** the Library circulation system used to check in and out materials can be updated to include a preferred name. Patrons interested in changing the name used on this system should inquire at the circulation desk or email <a href="mailto:libcirc@uidaho.edu">libcirc@uidaho.edu</a>. Please note campus systems that use the U of I single sign-on system will still display the legally registered name for your account.
 
