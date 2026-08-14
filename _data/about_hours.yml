@@ -118,9 +118,9 @@ hours:
             times: 12:00pm - 6:00pm
           - days: November 23 - 25
             times: 8:00am - 6:00pm
-          - days: November 26 - Thanksgiving
+          - days: November 26 - 27 - Thanksgiving
             times: Closed
-          - days: November 27 - 29
+          - days: November 28 - 29
             times: 12:00pm - 6:00pm
       - title: Winter Intersession
         note: 2026-27
