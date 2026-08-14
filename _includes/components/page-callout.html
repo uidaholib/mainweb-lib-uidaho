@@ -37,7 +37,7 @@ page_callout:
         {% if callout.title %}<h2 class="fs-3 mb-3">{{ callout.title }}</h2>{% endif %}
         {% if callout.text %}<p class="mb-4">{{ callout.text }}</p>{% endif %}
         {% if callout.link %}
-        <a href="{{ callout.link }}" class="arrow-link text-reset text-decoration-none text-uppercase fw-bold">{{ callout.link-text | default: "Learn more" }}</a>
+        <a href="{{ callout.link | relative_url }}" class="arrow-link text-reset text-decoration-none text-uppercase fw-bold">{{ callout.link-text | default: "Learn more" }}</a>
         {% endif %}
     </div>
 </div>
