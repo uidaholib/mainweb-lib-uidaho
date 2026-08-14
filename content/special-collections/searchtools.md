@@ -30,7 +30,7 @@ Use these tools to discover finding aids, collections, and items in Special Coll
 
 <div class="row py-3 justify-content-center">
 {% for t in tools %}
-<div class="col-md-4 text-center">
+<div class="col-md-10 text-center">
 {% capture text %}
 **Use to find**: {{ t.shortdesc }} 
 

@@ -3,13 +3,15 @@ title: University of Idaho President's Office records, 1893-1965
 section: Special Collections
 permalink: /special-collections/presidentialrecords.html
 layout: page
-search: true
+search: false
 search_headings: false
 tags: finding aid; university archives; presidential records
 description: "Finding aid for the University of Idaho President's Office records, 1893-1965, an archival collection documenting university administration and governance."
 page_nav:
     parent: /special-collections/
     children:
+noindex: true
+# delete?
 ---
 
 [PDF Version](http://archiveswest.orbiscascade.org/ark:/80444/xv47544/pdf)

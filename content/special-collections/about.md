@@ -48,8 +48,8 @@ Special Collections and Archives is a department within the University of Idaho 
 </div>
 </div>
 
-Learn more about the strengths and focus of our holdings on the [Description of Collections](/special-collections/description.html) page.
-You can view our physical materials by visiting our [Reading Room](/special-collections/plan.html). 
+Learn more about the strengths and focus of our holdings on the [Description of Collections]({{ '/special-collections/description.html' | relative_url }}) page.
+You can view our physical materials by visiting our [Reading Room]({{ '/special-collections/plan.html' | relative_url }}). 
 Many items have been digitized and can be discovered in the [U of I Library Digital Collections](https://www.lib.uidaho.edu/digital/) and the [Idaho Harvester](https://harvester.lib.uidaho.edu/),
 and finding aids can be searched on [Archives West](https://archiveswest.orbiscascade.org/search.php?r=idu).
 

@@ -225,4 +225,4 @@ Monetary support is not required when gifting archival materials. Financial cont
 
 Gift funds may be used to honor an individual, a family, a company, or an organization, and the Library will work with donors to employ appropriate means to publicly acknowledge donations. 
 If interested in making a monetary gift to Special Collections and Archives, please contact Dulce Kersting-Lark, department Head, at <dulce@uidaho.edu> or call (208) 885-1309. To discuss setting up endowments or bequests, please contact Ben Hunter, Dean of University of Idaho Libraries, at <bhunter@uidaho.edu> or call (208) 885-5858. 
-More information is also available on the [Giving page](/giving/).
+More information is also available on the [Giving page]({{ '/giving/' | relative_url }}).

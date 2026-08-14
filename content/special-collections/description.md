@@ -16,7 +16,7 @@ page_nav:
 Special Collections and Archives specializes in archival materials that document the history and culture of Idaho and the University of Idaho. 
 Our holdings contain over 25,000 linear feet of rare, unique, and valuable materials. 
 
-These materials are available for research use by faculty, staff, students, visiting scholars, and the public in the Special Collections [Reading Room](/special-collections/plan.html). 
+These materials are available for research use by faculty, staff, students, visiting scholars, and the public in the Special Collections [Reading Room]({{ '/special-collections/plan.html' | relative_url }}). 
 Most collections are described by finding aids hosted on [Archives West](https://archiveswest.orbiscascade.org/search.php?r=idu), a searchable repository of archival finding aids from throughout the Northwest.
 
 ## Collection Types

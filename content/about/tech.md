@@ -7,7 +7,7 @@ search: true
 tags: website documentation; technical information; library web
 description: "Technical notes about how the library website is built, maintained, and updated."
 page_nav:
-    parent: /about/
+    parent: /about/policies.html
     children:
 ---
 
@@ -48,9 +48,9 @@ Here are some accessibility resources relevant to library websites that we use a
 
 - [Accessibility Fundamentals, W3C Web Accessibility Initiative](https://www.w3.org/WAI/fundamentals/)
 - [Accessibility at Digital.gov](https://digital.gov/topics/accessibility)
+- [Useability at Digital.gov](https://digital.gov/topics/usability/)
 - [Accessibility Developer Guide](https://www.accessibility-developer-guide.com/)
 - [MDN Webdocs Docs: Handling common accessibility problems](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility/Tooling)
-- [Useability.gov](https://www.usability.gov/what-and-why/accessibility.html)
 - [WAVE Evaluation Tool](https://chromewebstore.google.com/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
 
 If you encounter any issues, please don't hesitate to [contact us](https://uidaho.co1.qualtrics.com/jfe/form/SV_eqZdsQyel8sKBAG?source_link=https://www.lib.uidaho.edu/about/tech.html)!

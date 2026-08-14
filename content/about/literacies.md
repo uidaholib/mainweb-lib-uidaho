@@ -16,9 +16,9 @@ The 2016 ACRL [Framework for Information Literacy for Higher Education](https://
 To clarify and amplify the distinct educational value that the Library provides to our students, the Library faculty has defined distinct learning literacies. These literacies clearly articulate our instructional goals, support scaffolding of course-integrated instruction, and strategically inform the development of credit-bearing Library courses, workshops, presentations, and asynchronous learning content. This framework is rooted in established scholarship and uniquely responsive to the specific needs of our student community, and aims to enhance our instructional coherence and effectively communicate the vital role librarians play in fostering academic excellence.
 
 [Research Literacy](#research-literacy){:.btn .btn-outline-pride-gold .m-1}
-[Archival & Primary Source Literacy](#{{ 'Archival & Primary Source Literacy' | slugify }} ){:.btn .btn-outline-pride-gold .m-1}
+[Archival & Primary Source Literacy](#archival--primary-source-literacy){:.btn .btn-outline-pride-gold .m-1}
 [Data Literacy](#data-literacy){:.btn .btn-outline-pride-gold .m-1}
-[Creative Technology & Digital Publishing Literacy](#{{ 'Creative Technology & Digital Publishing Literacy' | slugify }}){:.btn .btn-outline-pride-gold .m-1}
+[Creative Technology & Digital Publishing Literacy](#creative-technology--digital-publishing-literacy){:.btn .btn-outline-pride-gold .m-1}
 {:.text-center .my-4}
 
 ## Research Literacy
