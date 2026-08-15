@@ -3,13 +3,15 @@ title: Teaching with eGlass
 section: The Studio
 permalink: /studio/eglass.html
 layout: page
-search: true
+search: false
 tags: the studio; eglass; lightboard teaching
 description: "Guide to using the eGlass transparent lightboard to record instructional videos or teach synchronous online classes in the Studio."
 page_nav:
     parent: /studio/tutorials.html
     children:
 gallery: true
+noindex: true
+# delete?
 ---
 
 eGlass is a transparent lightboard with a built-in camera ideal for synchronous online instruction or creating videos for asynchronous learning.

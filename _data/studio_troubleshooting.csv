@@ -19,3 +19,4 @@ The noise gate is likely engaged. To disengage this, follow the steps below:
 2. You should now see the microphone settings menu. You will then want to make sure that you are in the ""advanced"" menu, indicated by a green dot next to where it says ""Advanced"".
 3. Then you should see a few different icons in the right-hand side of the screen. Press on the icon that resembles a mountain with a horizontal dashed line.
 4. You should now be within the ""Noise Gate"" settings. To disable the noise gate, press the green button within the middle panel."
+No sound is coming from the Whisper Room headphones.,"Open the Focusrite app, select the routing tab, and set headphone 1 and 2 to the channel 'Playback 1-2'."
