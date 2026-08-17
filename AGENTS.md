@@ -4,9 +4,9 @@ Jekyll static site for the University of Idaho Library (www.lib.uidaho.edu). Sta
 
 ## Ground rules for agents
 
-- **Reuse before you build.** Reusable features live as Jekyll includes in `_includes/components/` (page nav, callouts, resource lists, breadcrumbs, chat widgets, etc.). Check there — and `docs/components.md` — before writing a new pattern for something a component may already do.
+- **Reuse before you build.** Reusable features live as Jekyll includes in `_includes/` (page nav, callouts, resource lists, breadcrumbs, chat widgets, etc.). Check there — and `docs/components.md` — before writing a new pattern for something a component may already do.
 - **Bootstrap classes first.** Reach for existing Bootstrap / bootstrap-uidaho utility classes before custom or inline CSS. If custom CSS is genuinely needed, it belongs in `_sass/_custom.scss`.
-- **Brand is inherited, not invented.** The site strictly mirrors www.uidaho.edu's theme, reimplemented independently in Jekyll/Bootstrap. Treat the existing Bootstrap-uidaho theme as fixed — don't reinterpret it, introduce new typefaces/icon fonts/colors, or push past what's documented in `docs/custom-bootstrap.md` and `docs/_variables.scss`, even on standard content pages. Sub-sections (Verso, Studio, Mill, Datahub, fellowships, etc.) share the same templates and are not separate sub-brands.
+- **Brand is inherited, not invented.** The site mirrors www.uidaho.edu's theme, reimplemented independently in Jekyll/Bootstrap. Treat the existing Bootstrap-uidaho theme as fixed — don't reinterpret it, introduce new typefaces/icon fonts/colors, or push past what's documented in `docs/custom-bootstrap.md` and `docs/_variables.scss`, even on standard content pages. Sub-sections (Verso, Studio, Mill, Datahub, fellowships, etc.) share the same templates and are not separate sub-brands.
 - **Calm, not flashy.** Avoid heavy motion/animation — patrons use a wide range of devices and connections. Interactions should be functional and unobtrusive.
 - **Keep it simple.** This is a small, informal team project (see `docs/contributing.md`). Prefer the plain, obvious solution over new abstractions, plugins, or build tooling.
 - **WCAG 2.1 AA** is required — this is a public university site. Preserve contrast, focus states (the teal focus ring is load-bearing, don't override it), and semantic markup.
