@@ -1,0 +1,239 @@
+{% comment %}
+
+    Browse List include takes a data CSV and generates a basic filterable browse feature sized for the
+    narrow column of the standard "page" layout. Each record is one full width row of the list, so long
+    titles and descriptions stay readable where the card grid of "feature/browse-cards.html" would be cramped.
+
+    The CSV can have the columns title,description,link,link-text,category,subjects,year,image-src,image-alt,hidden
+    Only "title" is required. The rows are rendered in the order they appear in the CSV.
+
+    Use like:
+
+    {% include feature/browse-list.html data="instruction_resources" label="tutorials" %}
+
+    Options:
+
+    - "data" = the name of the CSV in the "_data" folder, given without the file extension, e.g. "instruction_resources".
+    - "label" = the plural noun used in the search box, result count, and no results message, e.g. "tutorials" (default "resources").
+    - "search" = false to opt out of adding a search box.
+    - "filter" = false to opt out of adding the category and subject filters.
+    - "heading_level" = the heading element used for the item titles, "h2", "h3", etc (default "h2"), set for correct heading order on the page.
+    - "image_base" = a prefix added to plain image file names, for images kept on the media server rather than in the repo.
+      Give it with the trailing slash, and assign it in the page since an include option cannot take a filter, e.g.
+      {% raw %}{% assign studio_media = site.lib-media | append: "/studio/" %}{% endraw %}
+
+    The filters are built from the data, so a CSV without those columns simply gets fewer controls:
+
+    - "category" is one value per row, e.g. "tutorial". It becomes a row of filter buttons and a badge on each item.
+      The value is displayed as written in the CSV (styled uppercase), so use the wording you want patrons to read.
+    - "subjects" is one or more values per row separated by semicolons, e.g. "Citing sources;Evaluating sources".
+      It becomes a dropdown of every subject in the data, listed under each item.
+    - "hidden" set to "true" drops the row from the page, for tutorials that are retired or not ready yet.
+
+    The search and filter controls are added by JavaScript, so they are not displayed if it is unavailable,
+    leaving the full list in CSV order.
+
+    Note that every item title is a heading, so a page using this feature will likely want "search_headings: false"
+    in its front matter to keep each item from becoming its own site search result (see "docs/site_search_setup.md").
+
+{% endcomment %}
+{%- assign bl_rows = site.data[include.data] | where_exp: "r", "r.hidden != 'true'" -%}
+{%- if bl_rows.size > 0 -%}
+{%- assign bl_id = "browse-list-" | append: include.data | slugify -%}
+{%- assign bl_heading = include.heading_level | default: "h2" | strip -%}
+{%- assign bl_label = include.label | default: "resources" | strip -%}
+{%- assign bl_total = bl_rows | size -%}
+{%- assign bl_search = true -%}
+{%- if include.search == false or include.search == "false" -%}{%- assign bl_search = false -%}{%- endif -%}
+{%- assign bl_filter = true -%}
+{%- if include.filter == false or include.filter == "false" -%}{%- assign bl_filter = false -%}{%- endif -%}
+{%- comment -%} when any row has an image the rest keep an empty space in its place, so the titles line up {%- endcomment -%}
+{%- assign bl_has_images = false -%}
+{%- for r in bl_rows -%}
+    {%- assign r_image = r.image-src | default: r.img -%}
+    {%- if r_image and r_image != "" -%}{%- assign bl_has_images = true -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
+{%- comment -%} the facets are gathered from the data, so a CSV without the column gets no control for it {%- endcomment -%}
+{%- assign bl_categories = "" | split: "," -%}
+{%- assign bl_subjects = "" | split: "," -%}
+{%- if bl_filter -%}
+    {%- assign bl_cat_rows = bl_rows | where_exp: "r", "r.category != nil and r.category != ''" -%}
+    {%- assign bl_categories = bl_cat_rows | map: "category" | uniq | sort_natural -%}
+    {%- assign bl_subject_values = bl_rows | map: "subjects" | compact | join: ";" | split: ";" -%}
+    {%- capture bl_subject_blob -%}{%- for s in bl_subject_values -%}{%- assign st = s | strip -%}{%- if st != "" %}{{ st }};{% endif -%}{%- endfor -%}{%- endcapture -%}
+    {%- assign bl_subjects = bl_subject_blob | split: ";" | uniq | sort_natural -%}
+{%- endif -%}
+<div class="browse-list mb-5" id="{{ bl_id }}" data-bl-label="{{ bl_label | escape }}">
+    {%- if bl_search %}
+    <div class="row g-2 mb-3 d-none" data-bl-enhance>
+        <div class="col-12 col-sm">
+            <label for="{{ bl_id }}-search" class="visually-hidden">Search {{ bl_label }} by title or description</label>
+            <div class="input-group">
+                <span class="input-group-text bg-white" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" focusable="false">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.099zm-5.242 1.656a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+                    </svg>
+                </span>
+                <input type="search" class="form-control" id="{{ bl_id }}-search" placeholder="Search {{ bl_label }}..." autocomplete="off" spellcheck="false" aria-describedby="{{ bl_id }}-count" data-bl="search">
+            </div>
+        </div>
+        <div class="col-12 col-sm-auto">
+            <button type="button" class="btn btn-outline-secondary w-100" data-bl="clear">Reset</button>
+        </div>
+    </div>
+    {%- endif %}
+    {%- if bl_categories.size > 1 %}
+    <div class="d-flex flex-wrap gap-2 mb-3 d-none" role="group" aria-label="Filter {{ bl_label }} by type" data-bl-enhance>
+        <button type="button" class="btn btn-sm btn-outline-clearwater active" aria-pressed="true" data-bl-category="">All</button>
+        {%- for cat in bl_categories %}
+        <button type="button" class="btn btn-sm btn-outline-clearwater text-uppercase" aria-pressed="false" data-bl-category="{{ cat | slugify }}">{{ cat }}</button>
+        {%- endfor %}
+    </div>
+    {%- endif %}
+    {%- if bl_subjects.size > 1 %}
+    <div class="mb-3 d-none" data-bl-enhance>
+        <label for="{{ bl_id }}-subject" class="visually-hidden">Filter {{ bl_label }} by subject</label>
+        <select id="{{ bl_id }}-subject" class="form-select" data-bl="subject">
+            <option value="" selected>All subjects</option>
+            {%- for sub in bl_subjects %}
+            <option value="{{ sub | slugify }}">{{ sub }}</option>
+            {%- endfor %}
+        </select>
+    </div>
+    {%- endif %}
+    {%- if bl_search or bl_filter %}
+    <p class="text-muted small d-none" id="{{ bl_id }}-count" aria-live="polite" data-bl="count" data-bl-enhance>Showing {{ bl_total }} of {{ bl_total }} {{ bl_label }}.</p>
+    <div class="alert alert-light border d-none" role="status" data-bl="empty">No {{ bl_label }} match your search. Try another word, or reset to see them all.</div>
+    {%- endif %}
+    <ul class="browse-list-items list-unstyled mb-0">
+        {%- for r in bl_rows -%}
+        {%- assign r_subjects = r.subjects | default: "" | split: ";" -%}
+        {%- capture r_subject_keys -%}|{% for s in r_subjects %}{{ s | strip | slugify }}|{% endfor %}{%- endcapture -%}
+        {%- capture r_search_blob %}{{ r.title }} {{ r.description }} {{ r.category }} {{ r.subjects | replace: ";", " " }}{% endcapture -%}
+        {%- assign r_image = r.image-src | default: r.img -%}
+        {%- assign r_image_url = "" -%}
+        {%- if r_image and r_image != "" -%}
+            {%- if r_image contains "://" -%}
+                {%- assign r_image_url = r_image -%}
+            {%- elsif include.image_base -%}
+                {%- assign r_image_url = include.image_base | append: r_image -%}
+            {%- else -%}
+                {%- assign r_image_url = r_image | relative_url -%}
+            {%- endif -%}
+        {%- endif -%}
+        <li class="browse-list-item py-3" data-search="{{ r_search_blob | strip_newlines | strip | downcase | escape }}" data-category="{{ r.category | slugify }}" data-subjects="{{ r_subject_keys | escape }}">
+            <div class="d-flex gap-3">
+                {%- if r_image_url != "" %}
+                <img src="{{ r_image_url }}" alt="" class="browse-list-thumb flex-shrink-0" loading="lazy" decoding="async">
+                {%- elsif bl_has_images %}
+                <div class="browse-list-thumb flex-shrink-0"></div>
+                {%- endif %}
+                <div>
+                    <{{ bl_heading }} class="h5 mb-1">
+                        {%- if r.link and r.link != "" -%}
+                        <a href="{% if r.link contains '://' %}{{ r.link }}{% else %}{{ r.link | relative_url }}{% endif %}" class="stretched-link text-reset text-decoration-none">{{ r.title }}</a>
+                        {%- else -%}
+                        {{ r.title }}
+                        {%- endif -%}
+                    </{{ bl_heading }}>
+                    {%- if r.description %}
+                    <p class="mb-2">{{ r.description | strip }}</p>
+                    {%- endif %}
+                    {%- comment -%} captured first so a row with no category, subject, or year gets no empty line {%- endcomment -%}
+                    {%- capture r_meta -%}
+                        {%- if r.category and r.category != "" %}<span class="badge rounded-pill text-bg-light border text-uppercase me-1">{{ r.category }}</span>{% endif -%}
+                        {%- for s in r_subjects %}{% assign st = s | strip %}{% if st != "" %}<span class="me-2">{{ st }}</span>{% endif %}{% endfor -%}
+                        {%- if r.year and r.year != "" %}<span class="me-2">{{ r.year }}</span>{% endif -%}
+                        {%- if r.link contains "://" %}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi icon-sprite" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                            <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
+                            <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
+                        </svg>{% endif -%}
+                    {%- endcapture -%}
+                    {%- assign r_meta = r_meta | strip -%}
+                    {%- if r_meta != "" %}
+                    <p class="mb-0 small text-muted">{{ r_meta }}</p>
+                    {%- endif %}
+                </div>
+            </div>
+        </li>
+        {%- endfor %}
+    </ul>
+</div>
+<script>
+    // controls for the browse list feature, "_includes/feature/browse-list.html"
+    // every item is in the page, this filters them by hiding the ones that do not match
+    (function () {
+        const root = document.getElementById("{{ bl_id }}");
+        if (!root) { return; }
+
+        const items = Array.prototype.slice.call(root.querySelectorAll(".browse-list-item"));
+        const searchInput = root.querySelector('[data-bl="search"]');
+        const subjectSelect = root.querySelector('[data-bl="subject"]');
+        const categoryButtons = Array.prototype.slice.call(root.querySelectorAll("[data-bl-category]"));
+        const clearButton = root.querySelector('[data-bl="clear"]');
+        const countText = root.querySelector('[data-bl="count"]');
+        const emptyMessage = root.querySelector('[data-bl="empty"]');
+        const label = root.dataset.blLabel;
+        const total = items.length;
+        let category = "";
+
+        function filter() {
+            const query = (searchInput ? searchInput.value : "").trim().toLowerCase();
+            // the subject keys are wrapped in pipes so a partial word cannot match a whole subject
+            const subject = subjectSelect && subjectSelect.value ? "|" + subjectSelect.value + "|" : "";
+            let visible = 0;
+
+            items.forEach(function (item) {
+                const match = (!query || item.dataset.search.indexOf(query) !== -1) &&
+                    (!category || item.dataset.category === category) &&
+                    (!subject || item.dataset.subjects.indexOf(subject) !== -1);
+                item.classList.toggle("d-none", !match);
+                if (match) { visible++; }
+            });
+
+            if (countText) {
+                countText.textContent = "Showing " + visible + " of " + total + " " + label + ".";
+            }
+            if (emptyMessage) {
+                emptyMessage.classList.toggle("d-none", visible !== 0);
+            }
+        }
+
+        // the pressed button is the current filter, so the state is in the buttons, not a separate legend
+        function setCategory(value) {
+            category = value;
+            categoryButtons.forEach(function (button) {
+                const on = button.dataset.blCategory === value;
+                button.classList.toggle("active", on);
+                button.setAttribute("aria-pressed", on ? "true" : "false");
+            });
+            filter();
+        }
+
+        categoryButtons.forEach(function (button) {
+            button.addEventListener("click", function () { setCategory(button.dataset.blCategory); });
+        });
+        if (searchInput) {
+            searchInput.addEventListener("input", filter);
+        }
+        if (subjectSelect) {
+            subjectSelect.addEventListener("change", filter);
+        }
+        if (clearButton) {
+            clearButton.addEventListener("click", function () {
+                if (searchInput) { searchInput.value = ""; }
+                if (subjectSelect) { subjectSelect.value = ""; }
+                setCategory("");
+                if (searchInput) { searchInput.focus(); }
+            });
+        }
+
+        // the controls do nothing without this script, so they stay hidden until it runs
+        root.querySelectorAll("[data-bl-enhance]").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+
+        filter();
+    })();
+</script>
+{%- endif -%}

@@ -143,6 +143,37 @@
     }
 }
 
+// browse list feature, see "_includes/feature/browse-list.html"
+// one item per row instead of a card grid, so it fits the narrow column of the "page" layout,
+// where the cards would be squeezed into a column or two
+.browse-list-items {
+    border-top: 1px solid var(--bs-border-color);
+}
+.browse-list-item {
+    // holds the .stretched-link that makes the whole row clickable
+    position: relative;
+    border-bottom: 1px solid var(--bs-border-color);
+    // reaches past the text column so the highlight reads as a full width row
+    padding-inline: .75rem;
+    margin-inline: -.75rem;
+    transition: background-color .15s ease;
+}
+// the whole row is one link, so it reacts as one to hover and to keyboard focus
+.browse-list-item:hover,
+.browse-list-item:focus-within {
+    background-color: var(--bs-brand-gray);
+}
+.browse-list-thumb {
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+}
+@media (prefers-reduced-motion: reduce) {
+    .browse-list-item {
+        transition: none;
+    }
+}
+
 // accordion feature, see "_includes/feature/accordion.html" and "_includes/feature/faq.html"
 // matches uidaho.edu, no fill or outline, just a rule between each item and a circled plus/minus
 .accordion {
