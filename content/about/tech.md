@@ -12,7 +12,7 @@ page_nav:
 ---
 
 University of Idaho Library's website is built using modern static web technologies following the [Lib-Static](https://lib-static.github.io/) methodology. 
-Our development stack is powered by open source tools and libraries, including [Jekyll static generator](https://jekyllrb.com/), [Bootstrap](https://getbootstrap.com/), [FontAwesome](https://fontawesome.com/), [DataTables](https://datatables.net/), [lazysizes](https://github.com/aFarkas/lazysizes), and many others.
+Our development stack is powered by open source tools and libraries, including [Jekyll static generator](https://jekyllrb.com/), [Bootstrap](https://getbootstrap.com/), [DataTables](https://datatables.net/), [lazysizes](https://github.com/aFarkas/lazysizes), and many others.
 Project code is managed on GitHub.
 
 Our site content is created using plain text files and data spreadsheets, which are rendered into the final web pages using modular template elements.
