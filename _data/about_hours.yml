@@ -46,7 +46,7 @@ hours:
     boxes: 
       - title: Semester Hours
         hours: 
-          - days: Monday - Friday
+          - days: Monday - Thursday
             times: 12:00pm - 3:00pm
       - title: Summer Hours
         note: "By appointment, please contact Jeremy Kenyon <a href='mailto:jkenyon@uidaho.edu'>jkenyon@uidaho.edu</a>"
