@@ -12,6 +12,8 @@ page_nav:
         - /datahub/ai-guidance.html
         - /datahub/mindrouter.html
         - /datahub/ai-examples.html
+        - /datahub/citing-ai.html
+        - /datahub/instructor-ai.html
 last_reviewed: 2026-08-11
 ---
 
