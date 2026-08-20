@@ -11,7 +11,7 @@ page_nav:
 last_reviewed: 2026-08-17
 ---
 
-## Uncertainty and variance in AI citations and disclosures
+## Uncertainty and variance
 
 As with many new technologies, the advancement and use of AI is outpacing the development of policies guiding its usage, including when to cite or disclose usage of AI. Some disciplines may insist that every usage of AI is recorded and disclosed; other fields may not require AI disclosure for brainstorming or coding. For documents that need formal citations, MLA guidelines explicitly exclude AI from authorship, while APA guidelines credit the AI companies as authors. In addition, citations are intended to help the reader (or instructor) trace an author's work, but AI conversations are not reproducible or constant, often clouding attempts to find the cited information's precise origin. Consequently, it is unsurprising that citation and disclosure practices differ and are currently evolving. The guidance below is offered to provide some clarity but cannot resolve all uncertainty in this area.
 
