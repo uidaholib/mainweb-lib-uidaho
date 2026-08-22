@@ -30,6 +30,6 @@ Institutional support is available through the Office of Sponsored Programs and 
 **Effective July 1, 2025** - Essential information for NIH-funded researchers about zero-embargo requirements, submission deadlines, and compliance pathways.
 
 ### [Federal Agency Requirements →](full.html)
-**Effective December 31, 2025** - Comprehensive guide to OSTP 2022 memo implementation across NSF, DOE, NASA, and other federal agencies funding UI research.
+**Effective December 31, 2025** - Comprehensive guide to OSTP 2022 memo implementation across NSF, DOE, NASA, and other federal agencies funding U of I research.
 
 ---

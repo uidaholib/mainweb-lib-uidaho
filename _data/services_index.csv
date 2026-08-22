@@ -1,13 +1,13 @@
 title,description,link,popularity-rank
-Special Collections & Archives,"Need to use rare books, manuscripts, university archives, or historical photographs for your research? Our team can help.",/special-collections/,1
+Special Collections & Archives,"Need to use rare books, manuscripts, university archives, or historical photographs for your research? Our team can help.",/special-collections/,3
 Room Reservations,The Library has a variety of reservable spaces from group study rooms to 3D printers.,/services/rooms.html,2
-Research Help Desk and Reference Services,"Ask a librarian in person, by chat, text, email, or phone — or schedule a one-on-one research appointment.",/help/,3
+Research Help Desk and Reference Services,"Ask a librarian in person, by chat, text, email, or phone — or schedule a one-on-one research appointment.",/help/,1
 Course Reserves,"Browse course reserves by instructor, department, or course number, or put your own materials on reserve for a class.",/services/reserve/,4
-CDIL - Digital Scholarship,The Center for Digital Inquiry and Learning (CDIL) advances digital humanities and digital scholarship at U of I.,https://cdil.lib.uidaho.edu/,5.5
+CDIL - Digital Scholarship,The Center for Digital Inquiry and Learning (CDIL) advances digital humanities and digital scholarship at U of I.,https://cdil.lib.uidaho.edu/,9
 The MILL,"The Making, Innovating, Learning Laboratory (the MILL) offers space and technology for hands-on making and creating.",/mill/,6
 The Studio,"The Studio offers audio and video production space for U of I students, staff, and faculty making podcasts, videos, and more.",/studio/,7
-Interlibrary Loan,Interlibrary Loan (ILL) requests can get students, staff, and faculty materials the University of Idaho Library doesn't own.,/services/ill/,8
-Workshops & Learning Opportunities,Build research and information literacy skills through library workshops and learning opportunities.,/events/,9
+Interlibrary Loan,"Interlibrary Loan (ILL) requests can get students, staff, and faculty access to materials the University of Idaho Library doesn't own.",/services/ill/,8
+Workshops & Learning Opportunities,Build research and information literacy skills through library workshops and learning opportunities.,/events/,5.5
 Geospatial Resources,"Need help with geospatial data, web GIS, spatial analysis, or mapping? Our experts and resources can help.",/find/geospatial/,10
 Borrow/Renew - Library Account Information,Learn more about your library account and our loan policies.,/services/borrow/,11
 Data Services - Data Hub,"Get support with GIS, geospatial data, data science, data analysis, and research data management.",/datahub/,5
@@ -19,5 +19,5 @@ Open @ U of I,The library supports Open Education via a variety of initiatives a
 Pressbooks,"Create open textbooks, websites, and books with Pressbooks, U of I's platform for quality OER publishing.",/open/pressbooks.html,18
 Instruction Services,Need a library session for your class? We offer subject-specific or general library instruction.,/services/instruction/,19
 Copyright,"Find out general information on copyright law for teaching and research, as well as library copyright policies.",https://www.lib.uidaho.edu/copyright/,20
-Research Guides,Browse and search nearly 100 research guides to find useful resources compiled by your friendly librarians at the University of Idaho.,https://libguides.uidaho.edu/,21
+Research Guides,"Browse guides created by librarians at University of Idaho to help start your research, find curated resources, and learn about research tools.",https://libguides.uidaho.edu/,21
 Subject Liaisons,Each college at U of I has a designated subject librarian who is ready to help with all your research and library questions.,/services/liaisons.html,22

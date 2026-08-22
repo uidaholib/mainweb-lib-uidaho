@@ -43,7 +43,7 @@ If you would like to have your own VERSO researcher profile, you can request one
 VERSO serves as both a research information management (RIM) system for the university and as an Institutional Repository (IR) for U of I research outputs. 
 
 - As a RIM System, VERSO collects, publishes, and preserves  data about research outputs and creative activity emanating from the University of Idaho. 
-- As an IR, VERSO allows for the deposit and preservation of UI materials and publications. 
+- As an IR, VERSO allows for the deposit and preservation of U of I materials and publications. 
 
 Questions? Email [lib-verso@uidaho.edu](mailto:lib-verso@uidaho.edu) or [fill out our form](https://forms.office.com/r/Kef7ziHzHy). 
 
