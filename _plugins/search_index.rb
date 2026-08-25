@@ -94,7 +94,7 @@ module SearchIndex
       max_level = config['heading_level'].to_i.clamp(1, 6)
       heading_regex = %r{<h([1-#{max_level}])((?:\s[^>]*)?)>(.*?)</h\1\s*>}im
 
-      records = {}
+      records = []
       id = 0
 
       searchable_docs(site, config['collections']).each do |doc|
@@ -122,7 +122,9 @@ module SearchIndex
 
           next unless index_headings
 
-          records[(id += 1).to_s] = {
+          id += 1
+          records << {
+            'id'      => id,
             'url'     => heading && !heading[:id].empty? ? "#{url}##{heading[:id]}" : url,
             'title'   => heading ? heading[:text] : title,
             'page'    => title,
@@ -135,7 +137,9 @@ module SearchIndex
         # or, failing that, a list of the headings it contains
         description = plain_text(doc.data['description'])
 
-        records[(id += 1).to_s] = {
+        id += 1
+        records << {
+          'id'      => id,
           'url'     => url,
           'title'   => title,
           'page'    => nil,
@@ -145,7 +149,8 @@ module SearchIndex
       end
 
       addition_records(site, config).each do |record|
-        records[(id += 1).to_s] = record
+        id += 1
+        records << record.merge('id' => id)
       end
 
       add_page(site, config, records)

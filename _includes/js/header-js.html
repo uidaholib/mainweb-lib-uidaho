@@ -127,10 +127,25 @@
     var searchReady       = false;
     var searchPromise     = null;
     var searchDataUrl     = '{{ "/assets/main-web/site-search.json" | relative_url }}';
+    var minSearchChars    = 2;
+    var searchDebounceMs  = 120;
+    var searchFieldLimit  = 20;
     var pageSearchForm    = document.getElementById('page-search-form');
     var pageSearchInput   = document.getElementById('page-search-input');
     var pageSearchResults = document.getElementById('page-search-results');
     var pageSearchStatus  = document.getElementById('page-search-status');
+
+    function debounce(fn, wait) {
+        var timeoutId = null;
+        return function () {
+            var ctx = this;
+            var args = arguments;
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function () {
+                fn.apply(ctx, args);
+            }, wait);
+        };
+    }
 
     function ensureSearchIndex() {
         if (searchPromise) return searchPromise;
@@ -138,9 +153,10 @@
         searchIndex = new FlexSearch.Document({
             document: {
                 id: 'id',
+                store: false,
                 index: [
-                    { field: 'title', tokenize: 'forward', store: true },
-                    { field: 'content', tokenize: 'forward', store: true },
+                    { field: 'title', tokenize: 'forward' },
+                    { field: 'content', tokenize: 'forward' },
                     { field: 'tags', tokenize: 'forward' }
                 ]
             },
@@ -150,14 +166,21 @@
         searchPromise = fetch(searchDataUrl)
             .then(function (r) { return r.json(); })
             .then(function (data) {
-                Object.keys(data).forEach(function (id) {
+                if (!Array.isArray(data)) {
+                    throw new Error('Search data must be an array of records.');
+                }
+
+                data.forEach(function (record) {
+                    var id = Number(record.id);
+                    if (!Number.isFinite(id)) return;
+
                     searchIndex.add({
                         id: id,
-                        title: data[id].title || '',
-                        content: data[id].content || '',
-                        tags: Array.isArray(data[id].tags) ? data[id].tags.join(' ') : ''
+                        title: record.title || '',
+                        content: record.content || '',
+                        tags: Array.isArray(record.tags) ? record.tags.join(' ') : ''
                     });
-                    searchDocs[id] = data[id];
+                    searchDocs[id] = record;
                 });
                 searchReady = true;
 
@@ -179,24 +202,39 @@
     function getSearchIds(query) {
         if (!searchReady || !query) return [];
 
-        var titleHits = searchIndex.search(query, { field: 'title', limit: 8 });
-        var contentHits = searchIndex.search(query, { field: 'content', limit: 8 });
-        var tagHits = searchIndex.search(query, { field: 'tags', limit: 8 });
-        var seen = {};
-        var ids = [];
+        var fieldBoost = {
+            title: 8,
+            tags: 5,
+            content: 2
+        };
+        var fieldHits = {
+            title: searchIndex.search(query, { field: 'title', limit: searchFieldLimit }),
+            tags: searchIndex.search(query, { field: 'tags', limit: searchFieldLimit }),
+            content: searchIndex.search(query, { field: 'content', limit: searchFieldLimit })
+        };
+        var scores = {};
 
-        [titleHits, contentHits, tagHits].forEach(function (groups) {
-            (groups || []).forEach(function (g) {
-                (g.result || []).forEach(function (id) {
-                    if (!seen[id]) {
-                        seen[id] = true;
-                        ids.push(id);
-                    }
+        Object.keys(fieldHits).forEach(function (field) {
+            var groups = fieldHits[field] || [];
+            var boost = fieldBoost[field] || 1;
+
+            groups.forEach(function (group) {
+                (group.result || []).forEach(function (id, rank) {
+                    var key = String(id);
+                    // Higher-ranked matches in stronger fields receive more weight.
+                    var rankScore = (searchFieldLimit - rank) * boost;
+                    scores[key] = (scores[key] || 0) + rankScore;
                 });
             });
         });
 
-        return ids;
+        return Object.keys(scores)
+            .sort(function (a, b) {
+                var scoreDiff = scores[b] - scores[a];
+                if (scoreDiff !== 0) return scoreDiff;
+                return Number(a) - Number(b);
+            })
+            .map(function (id) { return Number(id); });
     }
 
     function buildSearchResultList(ids, query, compact) {
@@ -242,6 +280,7 @@
     function runNavSearch(query) {
         if (!navSearchResults) return;
         if (!query) { showColumns(); return; }
+        if (query.length < minSearchChars) { showColumns(); return; }
 
         showResults();
 
@@ -275,6 +314,13 @@
 
         if (!query) {
             renderPageSearchEmpty();
+            return;
+        }
+
+        if (query.length < minSearchChars) {
+            pageSearchStatus.textContent = 'Type at least ' + minSearchChars + ' characters to search.';
+            pageSearchResults.innerHTML =
+                '<div class="border rounded-3 bg-light p-4 text-muted">Keep typing to see search results.</div>';
             return;
         }
 
@@ -326,9 +372,11 @@
 
     // Live search as the user types
     if (navSearchInput) {
-        navSearchInput.addEventListener('input', function () {
+        var debouncedNavSearch = debounce(function () {
             runNavSearch(this.value.trim());
-        });
+        }, searchDebounceMs);
+
+        navSearchInput.addEventListener('input', debouncedNavSearch);
     }
 
     if (pageSearchInput) {
@@ -340,9 +388,11 @@
             renderPageSearchEmpty();
         }
 
-        pageSearchInput.addEventListener('input', function () {
+        var debouncedPageSearch = debounce(function () {
             runPageSearch(this.value.trim());
-        });
+        }, searchDebounceMs);
+
+        pageSearchInput.addEventListener('input', debouncedPageSearch);
     }
 
     if (pageSearchForm) {
