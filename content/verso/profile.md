@@ -37,6 +37,13 @@ Go to: [verso.uidaho.edu](https://verso.uidaho.edu/)
 - *Activities*: Teaching, advising, service, outreach  
 2. New tabs will appear on your profile as content is added
 
+
+### Adding content in bulk
+
+If you have a lot of works to add, don't do them one at a time. Send us your CV and we'll batch-add the items to your profile for you — usually within one to three business days, depending on the queue. We'll follow up if anything is ambiguous.
+
+You can upload your CV directly through the [VERSO Feedback and Profile Update form](https://forms.office.com/r/Kef7ziHzHy), or email it to <lib-verso@uidaho.edu>.
+
 {% include feature/image.html img="https://www.lib.uidaho.edu/media/verso/2add_content_50.gif" alt="A gif showing use of the 'Add Content' button on a VERSO profile's 'overview' tab to bring up the VERSO content submission form. Users fill out dropdown menus, text entry fields, and upload files to complete the submission." width="75" %}  
 
 ## Exporting Output
@@ -62,10 +69,18 @@ Verso is designed to show professional and research data. However, you may hide 
 
 ## Communication
 
-Contact <lib-verso@uidaho.edu> for Verso related questions and requests:
+Use the [VERSO Feedback and Profile Update form](https://forms.office.com/r/Kef7ziHzHy) — which also accepts a CV upload — or email <lib-verso@uidaho.edu> for Verso related questions and requests:
 
-- Uploading research outputs in bulk  
+- Uploading research outputs in bulk, or sending a CV for us to add items from  
 - Issues / inability to edit your profile  
 - Major changes, errors, typos in your personal information that need to be corrected  
   
 If you find a small error on an individual research asset: Use ellipsis -> *Messages* to notify the team.
+
+## Your Profile in UniVERSO
+
+Everything on this page also affects [UniVERSO](/verso/universo.html), the AI-powered discovery tool built on VERSO data. UniVERSO doesn't have its own editing interface — it reads from your VERSO profile on a regular refresh, so the way to change what UniVERSO says about you is to change what's here.
+
+Two things matter most: the number of works linked to your profile, and whether those works have abstracts. If you also write a research overview in *Edit Profile* → *About*, UniVERSO will use it in place of an AI-generated summary.
+
+See [About UniVERSO](/verso/universo.html#managing-your-ai-generated-summary) for your options around the AI-generated summary, including how to revise it or opt out.
