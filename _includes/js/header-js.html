@@ -129,6 +129,7 @@
     var searchDataUrl     = '{{ "/assets/main-web/site-search.json" | relative_url }}';
     var minSearchChars    = 2;
     var searchDebounceMs  = 120;
+    var searchFieldLimit  = 20;
     var pageSearchForm    = document.getElementById('page-search-form');
     var pageSearchInput   = document.getElementById('page-search-input');
     var pageSearchResults = document.getElementById('page-search-results');
@@ -201,24 +202,39 @@
     function getSearchIds(query) {
         if (!searchReady || !query) return [];
 
-        var titleHits = searchIndex.search(query, { field: 'title', limit: 8 });
-        var contentHits = searchIndex.search(query, { field: 'content', limit: 8 });
-        var tagHits = searchIndex.search(query, { field: 'tags', limit: 8 });
-        var seen = {};
-        var ids = [];
+        var fieldBoost = {
+            title: 8,
+            tags: 5,
+            content: 2
+        };
+        var fieldHits = {
+            title: searchIndex.search(query, { field: 'title', limit: searchFieldLimit }),
+            tags: searchIndex.search(query, { field: 'tags', limit: searchFieldLimit }),
+            content: searchIndex.search(query, { field: 'content', limit: searchFieldLimit })
+        };
+        var scores = {};
 
-        [titleHits, contentHits, tagHits].forEach(function (groups) {
-            (groups || []).forEach(function (g) {
-                (g.result || []).forEach(function (id) {
-                    if (!seen[id]) {
-                        seen[id] = true;
-                        ids.push(id);
-                    }
+        Object.keys(fieldHits).forEach(function (field) {
+            var groups = fieldHits[field] || [];
+            var boost = fieldBoost[field] || 1;
+
+            groups.forEach(function (group) {
+                (group.result || []).forEach(function (id, rank) {
+                    var key = String(id);
+                    // Higher-ranked matches in stronger fields receive more weight.
+                    var rankScore = (searchFieldLimit - rank) * boost;
+                    scores[key] = (scores[key] || 0) + rankScore;
                 });
             });
         });
 
-        return ids;
+        return Object.keys(scores)
+            .sort(function (a, b) {
+                var scoreDiff = scores[b] - scores[a];
+                if (scoreDiff !== 0) return scoreDiff;
+                return Number(a) - Number(b);
+            })
+            .map(function (id) { return Number(id); });
     }
 
     function buildSearchResultList(ids, query, compact) {
