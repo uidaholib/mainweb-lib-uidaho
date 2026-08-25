@@ -1,5 +1,5 @@
 ---
-title: Interlibrary Loan / Rapido Resource Sharing
+title: Interlibrary Loan & Resource Sharing
 section: Services
 permalink: /services/ill/
 layout: page
@@ -45,5 +45,5 @@ Moscow, ID 83844-2350
 
 ## Additional Information
 
-{% include feature/faq.html data="services_ill_faq" %}
+{% include feature/faq.html data="services_ill_faq" heading_level="h3" %}
 
