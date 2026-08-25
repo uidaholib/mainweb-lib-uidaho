@@ -127,10 +127,24 @@
     var searchReady       = false;
     var searchPromise     = null;
     var searchDataUrl     = '{{ "/assets/main-web/site-search.json" | relative_url }}';
+    var minSearchChars    = 2;
+    var searchDebounceMs  = 120;
     var pageSearchForm    = document.getElementById('page-search-form');
     var pageSearchInput   = document.getElementById('page-search-input');
     var pageSearchResults = document.getElementById('page-search-results');
     var pageSearchStatus  = document.getElementById('page-search-status');
+
+    function debounce(fn, wait) {
+        var timeoutId = null;
+        return function () {
+            var ctx = this;
+            var args = arguments;
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function () {
+                fn.apply(ctx, args);
+            }, wait);
+        };
+    }
 
     function ensureSearchIndex() {
         if (searchPromise) return searchPromise;
@@ -249,6 +263,7 @@
     function runNavSearch(query) {
         if (!navSearchResults) return;
         if (!query) { showColumns(); return; }
+        if (query.length < minSearchChars) { showColumns(); return; }
 
         showResults();
 
@@ -282,6 +297,13 @@
 
         if (!query) {
             renderPageSearchEmpty();
+            return;
+        }
+
+        if (query.length < minSearchChars) {
+            pageSearchStatus.textContent = 'Type at least ' + minSearchChars + ' characters to search.';
+            pageSearchResults.innerHTML =
+                '<div class="border rounded-3 bg-light p-4 text-muted">Keep typing to see search results.</div>';
             return;
         }
 
@@ -333,9 +355,11 @@
 
     // Live search as the user types
     if (navSearchInput) {
-        navSearchInput.addEventListener('input', function () {
+        var debouncedNavSearch = debounce(function () {
             runNavSearch(this.value.trim());
-        });
+        }, searchDebounceMs);
+
+        navSearchInput.addEventListener('input', debouncedNavSearch);
     }
 
     if (pageSearchInput) {
@@ -347,9 +371,11 @@
             renderPageSearchEmpty();
         }
 
-        pageSearchInput.addEventListener('input', function () {
+        var debouncedPageSearch = debounce(function () {
             runPageSearch(this.value.trim());
-        });
+        }, searchDebounceMs);
+
+        pageSearchInput.addEventListener('input', debouncedPageSearch);
     }
 
     if (pageSearchForm) {
