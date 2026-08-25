@@ -4,7 +4,6 @@ section: Find
 permalink: /find/
 layout: full-width-page
 search: true
-search_headings: false
 description: "Find library resources, research tools, and collections to support coursework and scholarship."
 tags: library search; research resources; collections access
 page_nav:

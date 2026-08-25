@@ -4,7 +4,6 @@ section: Collections
 permalink: /collections/
 layout: full-width-page
 search: true
-search_headings: false
 tags: library collections; digital resources; idaho history
 description: "Browse University of Idaho Library collections across subjects and formats, including physical materials, digital resources, and Idaho-focused holdings."
 page_nav:

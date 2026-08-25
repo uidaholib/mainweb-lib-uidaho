@@ -5,7 +5,6 @@ permalink: /studio/tutorials.html
 layout: page
 search: true
 tags: the studio; tutorials; how-to guides
-search_headings: false
 description: "Index of step-by-step tutorials and how-to guides for recording podcasts and videos and using Studio equipment and software."
 page_nav:
     parent: /studio/

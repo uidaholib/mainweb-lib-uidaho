@@ -4,7 +4,6 @@ section: Services
 permalink: /services/
 layout: full-width-page
 search: true
-search_headings: false
 tags: library services; service directory; student support
 description: Browse the support and services available in the Library.
 page_nav:
