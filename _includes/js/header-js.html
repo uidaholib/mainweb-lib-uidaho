@@ -152,9 +152,10 @@
         searchIndex = new FlexSearch.Document({
             document: {
                 id: 'id',
+                store: false,
                 index: [
-                    { field: 'title', tokenize: 'forward', store: true },
-                    { field: 'content', tokenize: 'forward', store: true },
+                    { field: 'title', tokenize: 'forward' },
+                    { field: 'content', tokenize: 'forward' },
                     { field: 'tags', tokenize: 'forward' }
                 ]
             },
