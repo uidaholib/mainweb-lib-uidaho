@@ -150,14 +150,21 @@
         searchPromise = fetch(searchDataUrl)
             .then(function (r) { return r.json(); })
             .then(function (data) {
-                Object.keys(data).forEach(function (id) {
+                if (!Array.isArray(data)) {
+                    throw new Error('Search data must be an array of records.');
+                }
+
+                data.forEach(function (record) {
+                    var id = Number(record.id);
+                    if (!Number.isFinite(id)) return;
+
                     searchIndex.add({
                         id: id,
-                        title: data[id].title || '',
-                        content: data[id].content || '',
-                        tags: Array.isArray(data[id].tags) ? data[id].tags.join(' ') : ''
+                        title: record.title || '',
+                        content: record.content || '',
+                        tags: Array.isArray(record.tags) ? record.tags.join(' ') : ''
                     });
-                    searchDocs[id] = data[id];
+                    searchDocs[id] = record;
                 });
                 searchReady = true;
 
