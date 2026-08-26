@@ -37,6 +37,7 @@ Go to: [verso.uidaho.edu](https://verso.uidaho.edu/)
 - *Activities*: Teaching, advising, service, outreach  
 2. New tabs will appear on your profile as content is added
 
+{% include feature/image.html img="https://www.lib.uidaho.edu/media/verso/2add_content_50.gif" alt="A gif showing use of the 'Add Content' button on a VERSO profile's 'overview' tab to bring up the VERSO content submission form. Users fill out dropdown menus, text entry fields, and upload files to complete the submission." width="75" %}  
 
 ### Adding content in bulk
 
@@ -44,7 +45,6 @@ If you have a lot of works to add, don't do them one at a time. Send us your CV 
 
 You can upload your CV directly through the [VERSO Feedback and Profile Update form](https://forms.office.com/r/Kef7ziHzHy), or email it to <lib-verso@uidaho.edu>.
 
-{% include feature/image.html img="https://www.lib.uidaho.edu/media/verso/2add_content_50.gif" alt="A gif showing use of the 'Add Content' button on a VERSO profile's 'overview' tab to bring up the VERSO content submission form. Users fill out dropdown menus, text entry fields, and upload files to complete the submission." width="75" %}  
 
 ## Exporting Output
 
