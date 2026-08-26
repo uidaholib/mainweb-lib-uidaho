@@ -11,7 +11,7 @@ In addition to being an important part of the State Board of Education’s requi
 The Library has developed several new digital tools to support faculty in utilizing the new course cost marking system:
 
 - The [course cost checking tool](https://www.lib.uidaho.edu/instruction/cost-labeling-tool/) is an interactive website that can help you determine if your materials qualify for the Zero or Very Low Cost labels
-- The [Open at the University of Idaho pressbook](https://uidaho.pressbooks.pub/OpenatUIdaho/) lays out on overall view of the open programs and activity supported on campus by the library
+- The [Open at the University of Idaho pressbook](https://idaho.pressbooks.pub/OpenatUIdaho/) lays out on overall view of the open programs and activity supported on campus by the library
 - A [FAQ](https://www.lib.uidaho.edu/open/course-marking.html) with commonly asked questions
 - Workflows and guidance for course schedulers
 
