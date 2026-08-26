@@ -5,7 +5,7 @@ permalink: /find/geospatial/
 layout: page
 search: true
 description: "Geospatial research resources for finding GIS data, maps, software, and spatial analysis support."
-tags: geospatial resources; GIS data; mapping tools
+keywords: geospatial resources; GIS data; mapping tools
 page_nav:
     parent: /datahub/
     children:

@@ -1,11 +1,11 @@
 ---
-description: Generate concise, search-focused frontmatter descriptions and semicolon-separated tags for content markdown and HTML pages.
+description: Generate concise, search-focused frontmatter descriptions and semicolon-separated keywords for content markdown and HTML pages.
 applyTo: "content/**/*.{md,html}"
 ---
 
 <!-- Tip: Use /create-instructions in chat to generate content with agent assistance -->
 
-Use these instructions when creating or updating the `description` and `tags` values in frontmatter for pages in the `content/` folder, including both Markdown and HTML files.
+Use these instructions when creating or updating the `description` and `keywords` values in frontmatter for pages in the `content/` folder, including both Markdown and HTML files.
 
 Goal:
 - Write a short description of what the page contains.
@@ -31,14 +31,14 @@ Quality check before finalizing:
 - Does it contain useful keywords people would search for?
 - Is the tone neutral and straightforward?
 
-Tags:
-- After writing the description, add or update the frontmatter `tags` value.
-- Use 2 to 3 tags when possible.
-- Do not use more than 5 tags.
-- Separate tags with semicolons.
-- Choose tags that match page content and likely user search terms.
-- Keep tags short, specific nouns or noun phrases.
-- Avoid duplicate tags or near-synonyms in the same list.
+keywords:
+- After writing the description, add or update the frontmatter `keywords` value.
+- Use 2 to 3 keywords when possible.
+- Do not use more than 5 keywords.
+- Separate keywords with semicolons.
+- Choose keywords that match page content and likely user search terms.
+- Keep keywords short, specific nouns or noun phrases.
+- Avoid duplicate keywords or near-synonyms in the same list.
 
-Tags format example:
-- `tags: research help; citation guides; library workshops`
+keywords format example:
+- `keywords: research help; citation guides; library workshops`

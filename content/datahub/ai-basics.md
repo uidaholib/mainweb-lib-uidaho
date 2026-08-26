@@ -4,7 +4,7 @@ section: Data Hub
 permalink: /datahub/ai-basics.html
 layout: page
 search: true
-tags: artificial intelligence; ai basics; large language models; hallucination
+keywords: artificial intelligence; ai basics; large language models; hallucination
 description: "Plain-language introduction to how AI language models work, their limits, and how to get better results from them."
 page_nav:
     parent: /datahub/

@@ -11,7 +11,7 @@
 # fully converted html, with Liquid expanded and heading ids in place (see _plugins/heading_ids.rb).
 #
 # Pages opt in with "search: true" in their front matter and must have a title.
-# The data will contain the page title, description, and tags from front matter.
+# The data will contain the page title, description, and keywords from front matter.
 # Adding "search_headings: true" additionally indexes records per heading, using the section content.
 #
 # Optionally, provide configuration options in _config.yml under the "search_index" key:
@@ -22,14 +22,14 @@
 #     heading_level: 3                               # chunk on headings down to this level
 #     collections: []                                # collection labels to index alongside pages
 #     additions: 'search_index_additions'            # _data file(s) of extra records
-#     tag_delimiter: ';'                             # separator for the csv tags column
+#     tag_delimiter: ';'                             # separator for the csv keywords column
 #     pretty: false                                  # true for human readable json
 #
 # "additions" names one or more csv files in _data/ holding curated records for
 # resources that are not pages of this site, such as guides on another server.
 # Each row becomes a single record, with the columns:
 #
-#   title,description,tags,link
+#   title,description,keywords,link
 #
 # Rows without a title or link are skipped. Links starting with "/" are treated
 # as site relative and get the baseurl, anything else is used as given.
@@ -41,9 +41,11 @@
 #     "url": "/studio/audacity.html#2-recording",  page url plus heading anchor
 #     "title": "2. Recording",                     heading text, or page title
 #     "page": "Audio Recording and Editing",       parent page title, null on page records
-#     "tags": null,                                  page front matter tags, page records only
+#     "tags": null,                                  page front matter keywords, page records only
 #     "content": "..."                             plain text of the section
 #   }
+#
+# Note: page frontmatter uses key "keywords", while output json data uses "tags". This avoids issues with Jekyll use of "tags" frontmatter key.
 #
 # (c) 2026 University of Idaho Library
 # Distributed under the conditions of the MIT license
@@ -139,7 +141,7 @@ module SearchIndex
           'url'     => url,
           'title'   => title,
           'page'    => nil,
-          'tags'    => split_tags(doc.data['tags'], config['tag_delimiter']),
+          'tags'    => split_tags(doc.data['keywords'], config['tag_delimiter']),
           'content' => description.empty? ? headings.join(', ') : description
         }
       end
@@ -174,7 +176,7 @@ module SearchIndex
             'url'     => addition_url(site, link),
             'title'   => title,
             'page'    => nil,
-            'tags'    => split_tags(row['tags'], config['tag_delimiter']),
+            'tags'    => split_tags(row['keywords'], config['tag_delimiter']),
             'content' => plain_text(row['description'])
           }
         end

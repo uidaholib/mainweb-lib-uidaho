@@ -4,6 +4,7 @@ section: Fellowships
 permalink: /fellowships/baird.html
 layout: fellowship
 search: true
+keywords: fellowships
 show_past_projects: true
 ---
 

@@ -4,7 +4,7 @@ section: About
 permalink: /about/updates.html
 layout: page
 search: true
-tags: library news; announcements; updates
+keywords: library news; announcements; updates
 description: "Library news page listing recent updates, announcements, and project highlights."
 page_nav:
     parent: /about/

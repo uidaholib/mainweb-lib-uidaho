@@ -4,7 +4,7 @@ section: The Studio
 permalink: /studio/
 layout: page
 search: true
-tags: the studio; podcasting; audio video production
+keywords: the studio; podcasting; audio video production
 description: "Overview of the Studio, a Library audio and video production space with a podcasting station, editing station, and WhisperRoom available by reservation."
 page_nav:
     parent:

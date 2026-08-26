@@ -4,7 +4,7 @@ section: Data Hub
 permalink: /datahub/citing-ai.html
 layout: page
 search: true
-tags: artificial intelligence; ai citation; ai disclosure; citation styles; academic integrity
+keywords: artificial intelligence; ai citation; ai disclosure; citation styles; academic integrity
 description: "Guidance on when and how to cite or disclose AI use, including disclosure statement elements, disclosure tools, and citation style guidelines."
 page_nav:
     parent: /datahub/ai-basics.html

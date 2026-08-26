@@ -4,7 +4,7 @@ section: Special Collections
 permalink: /special-collections/description.html
 layout: page
 search: true
-tags: special collections; collection strengths; manuscript collections
+keywords: special collections; collection strengths; manuscript collections
 description: "Overview of the manuscript, photograph, and book collections held by Special Collections and Archives, including subject strengths in jazz, forestry, and mining."
 page_nav:
     parent: /special-collections/

@@ -4,7 +4,7 @@ section: About
 permalink: /about/
 layout: page
 search: true
-tags: library overview; hours and locations; contact information
+keywords: about; contact information; directions
 description: "Overview of University of Idaho Library and contact information"
 page_nav:
     #parent:

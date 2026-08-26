@@ -4,7 +4,7 @@ section: Find
 permalink: /find/books.html
 layout: page
 search: true
-tags: books; ebooks; library catalog
+keywords: books; ebooks; library catalog
 description: "Starting points for finding books and ebooks through the library catalog and related search tools."
 page_nav:
     parent: /find/

@@ -4,7 +4,7 @@ section: The Studio
 permalink: /studio/led.html
 layout: page
 search: true
-tags: the studio; led sign; recording equipment
+keywords: the studio; led sign; recording equipment
 description: "Safety guidelines and instructions for using the Studio's LED sign and dimmer while recording audio or video podcasts."
 page_nav:
     parent: /studio/tutorials.html

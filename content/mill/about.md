@@ -4,7 +4,7 @@ section: MILL
 permalink: /mill/about.html
 layout: page
 search: true
-tags: MILL
+keywords: MILL
 description: "Introduces the manager and student staff who run the MILL makerspace at the University of Idaho Library."
 page_nav:
     parent: /mill/

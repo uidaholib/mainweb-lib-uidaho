@@ -4,7 +4,7 @@ section: Special Collections
 permalink: /special-collections/about.html
 layout: page
 search: true
-tags: special collections; archives; contact information
+keywords: special collections; archives; contact information
 description: "Overview of Special Collections and Archives, the University of Idaho Library department preserving rare materials and Idaho history, with staff directory and contact information."
 page_nav:
     parent: /special-collections/

@@ -5,7 +5,7 @@ permalink: /find/newspapers.html
 layout: page
 search: true
 description: "Guide to finding newspapers through library databases, archives, and current news resources."
-tags: newspapers; news databases; historical archives
+keywords: newspapers; news databases; historical archives
 page_nav:
     parent: /find/
     children:

@@ -4,7 +4,7 @@ section: VERSO
 permalink: /verso/depositing.html
 layout: page
 search: true
-tags: VERSO; data deposit; submission checklist
+keywords: VERSO; data deposit; submission checklist
 description: "Checklist and quick format reference for preparing and submitting research data or documents to VERSO, the University of Idaho's institutional repository."
 page_nav:
     parent: /verso/

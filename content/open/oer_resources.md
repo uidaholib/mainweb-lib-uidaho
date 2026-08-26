@@ -4,7 +4,7 @@ section: Open at U of I
 permalink: /open/oer_resources.html
 layout: page
 search: true
-tags: open educational resources; open textbooks; OER search tools
+keywords: open educational resources; open textbooks; OER search tools
 description: "Lists open textbook directories, search tools, and collections for finding free and openly licensed course materials."
 page_nav:
     parent: /open/

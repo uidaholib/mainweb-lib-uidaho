@@ -4,7 +4,7 @@ section: Special Collections
 permalink: /special-collections/searchtools.html
 layout: page
 search: true
-tags: special collections; finding aids; research tools
+keywords: special collections; finding aids; research tools
 description: "Directory of research tools and finding aids for searching collections, manuscripts, and archival materials held by Special Collections and Archives."
 page_nav:
     parent: /special-collections/

@@ -4,7 +4,7 @@ section: Open at U of I
 permalink: /open/federal-requirements/full.html
 layout: page
 search: true
-tags: public access requirements; federal agencies; OSTP mandate
+keywords: public access requirements; federal agencies; OSTP mandate
 description: "Details federal agency public access requirements from the 2022 OSTP memo, including NSF, DOE, NASA, and DOD deadlines and repositories."
 page_nav:
     parent: /open/federal-requirements/

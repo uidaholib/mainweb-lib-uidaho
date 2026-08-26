@@ -4,7 +4,7 @@ section: VERSO
 permalink: /verso/profile.html
 layout: page
 search: true
-tags: VERSO; profile editing; research profiles
+keywords: VERSO; profile editing; research profiles
 description: "Step-by-step instructions for accessing VERSO, editing your researcher profile, adding content, and managing privacy settings."
 page_nav:
     parent: /verso/

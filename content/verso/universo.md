@@ -4,7 +4,7 @@ section: VERSO
 permalink: /verso/universo.html
 layout: page
 search: true
-tags: UniVERSO; AI search; research discovery; VERSO
+keywords: UniVERSO; AI search; research discovery; VERSO
 description: "UniVERSO is the University of Idaho's AI-powered research discovery tool for finding researchers and expertise using plain-language search over VERSO profiles and publications."
 page_nav:
     parent: /verso/

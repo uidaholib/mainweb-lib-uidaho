@@ -4,7 +4,7 @@ section: Find
 permalink: /find/encyclopedias.html
 layout: page
 search: true
-tags: encyclopedias; reference sources; background research
+keywords: encyclopedias; reference sources; background research
 description: "Reference guide to encyclopedias and other background sources for topic overviews and quick facts."
 page_nav:
     parent: /find/

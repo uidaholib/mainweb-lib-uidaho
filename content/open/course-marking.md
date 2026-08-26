@@ -4,7 +4,7 @@ section: Open at U of I
 permalink: /open/course-marking.html
 layout: page
 search: true
-tags: course marking; open educational resources; zero cost textbooks
+keywords: course marking; open educational resources; zero cost textbooks
 description: "Explains U of I's course marking initiative that labels zero and low cost courses in the class schedule and answers related FAQs."
 page_nav:
     parent: /open/

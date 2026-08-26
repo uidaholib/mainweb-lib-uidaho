@@ -4,7 +4,7 @@ section: Find
 permalink: /events/
 layout: page
 search: true
-tags: library events; workshops; calendar
+keywords: library events; workshops; calendar
 description: "Events calendar for University of Idaho Library workshops, classes, and public programs."
 page_nav:
     parent: /find/

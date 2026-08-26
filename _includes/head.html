@@ -21,7 +21,7 @@
 
 -->
 {% unless page.noindex == true or layout.noindex == true %}
-<meta name="keywords" content="{% if page.tags %}{{ page.tags | escape }}{% else %}{{ site.keywords | escape }}{% endif %}" >
+<meta name="keywords" content="{% if page.keywords %}{{ page.keywords | escape }}{% else %}{{ site.keywords | escape }}{% endif %}" >
 <meta name="description" content="{% if page.description %}{{ page.description | escape }}{% else %}{{ site.description | escape }}{% endif %}">
 <!-- Open Graph meta -->
 <meta property="og:title" content="{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}" />

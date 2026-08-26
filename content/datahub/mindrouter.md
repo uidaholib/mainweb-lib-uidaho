@@ -4,7 +4,7 @@ section: Data Hub
 permalink: /datahub/mindrouter.html
 layout: page
 search: true
-tags: artificial intelligence; mindrouter; ai chat tool
+keywords: artificial intelligence; mindrouter; ai chat tool
 description: "How to sign in to and use MindRouter, the University of Idaho's own AI chat tool for Vandal account holders."
 page_nav:
     parent: /datahub/ai-basics.html

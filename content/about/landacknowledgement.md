@@ -4,7 +4,7 @@ section: About
 permalink: /about/landacknowledgment.html
 layout: page
 search: false
-tags: land acknowledgment; native communities; library statement
+keywords: land acknowledgment; native communities; library statement
 description: "Information about the University of Idaho Library land acknowledgment, its context, and related resources."
 page_nav:
     parent: /about/

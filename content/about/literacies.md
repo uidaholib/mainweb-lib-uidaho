@@ -4,7 +4,7 @@ section: About
 permalink: /about/literacies.html
 layout: page
 search: true
-tags: information literacy; research skills; library instruction
+keywords: information literacy; research skills; library instruction
 description: "Guide to the Library Literacies framework and learning outcomes used to support research, information use, and critical evaluation."
 page_nav:
     parent: /about/policies.html

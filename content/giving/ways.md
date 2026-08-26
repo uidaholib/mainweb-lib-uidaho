@@ -6,7 +6,7 @@ redirect_from:
     - /giving/endowments.html
 layout: page
 search: true
-tags: Giving; endowments; library giving; donor support; planned giving
+keywords: Giving; endowments; library giving; donor support; planned giving
 description: "How to give to the University of Idaho Library — outright gifts, endowments, planned gifts, in-kind donations, and memorial gifts — and where your gift can be directed."
 page_nav:
     parent: /giving/

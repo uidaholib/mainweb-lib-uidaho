@@ -4,7 +4,7 @@ section: Services
 permalink: /services/agreements/mdpi.html
 layout: page
 search: false
-tags: article processing charge discount; open access publishing; MDPI
+keywords: article processing charge discount; open access publishing; MDPI
 description: "Explains the University of Idaho Library's participation in the MDPI Institutional Open Access Program, which gives affiliated authors a 10% discount on article processing charges."
 page_nav:
     parent: /services/agreements/

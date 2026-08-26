@@ -4,7 +4,7 @@ section: Collections
 permalink: /collections/details.html
 layout: page
 search: true
-tags: special collections; anthropology; asian studies; herbarium; language learning
+keywords: special collections; anthropology; asian studies; herbarium; language learning
 description: "Details about the American Language and Cultures Program, the Bowers Laboratory of Anthropology, the Asian Studies Collection, and the Herbarium Collection."
 page_nav:
     parent: /collections/

@@ -4,7 +4,7 @@ section: Giving
 permalink: /giving/
 layout: page
 search: true
-tags: Giving
+keywords: Giving
 description: "Donors fund the Library's fellowships, seed its grant-winning projects, build its spaces, and develop its collections."
 page_nav:
     parent: /about/

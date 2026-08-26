@@ -4,7 +4,7 @@ section: The Studio
 permalink: /studio/mictechnique.html
 layout: page
 search: true
-tags: the studio; microphone technique; podcasting
+keywords: the studio; microphone technique; podcasting
 description: "Tips on microphone positioning, gain adjustment, and proximity effect for clear podcast and voiceover recordings in the Studio."
 page_nav:
     parent: /studio/tutorials.html

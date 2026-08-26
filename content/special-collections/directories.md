@@ -4,7 +4,7 @@ section: Special Collections
 permalink: /special-collections/directories.html
 layout: page
 search: true
-tags: Idaho directories; telephone directories; special collections
+keywords: Idaho directories; telephone directories; special collections
 description: "Searchable list of Idaho telephone books and city business directories held by Special Collections and Archives, organized by city and date."
 page_nav:
     parent: /special-collections/

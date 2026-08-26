@@ -4,7 +4,7 @@ section: Data Hub
 permalink: /datahub/ai-guidance.html
 layout: page
 search: true
-tags: artificial intelligence; ai policy; ai guidance; data risk
+keywords: artificial intelligence; ai policy; ai guidance; data risk
 description: "Links to the University's official AI guidance, data risk categories, and who to contact with AI questions."
 page_nav:
     parent: /datahub/ai-basics.html

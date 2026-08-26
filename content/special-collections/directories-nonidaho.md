@@ -4,7 +4,7 @@ section: Special Collections
 permalink: /special-collections/non-idaho-directories.html
 layout: page
 search: true
-tags: non-Idaho directories; telephone directories; special collections
+keywords: non-Idaho directories; telephone directories; special collections
 description: "List of telephone books and city business directories from states neighboring Idaho held by Special Collections and Archives."
 page_nav:
     parent: /special-collections/

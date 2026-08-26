@@ -4,7 +4,7 @@ section: The Studio
 permalink: /studio/scarlett18i20.html
 layout: page
 search: true
-tags: the studio; scarlett 18i20; audio interface
+keywords: the studio; scarlett 18i20; audio interface
 description: "Quick guide to the front panel controls and setup of the Scarlett 18i20 audio interface used in the Studio."
 page_nav:
     parent: /studio/tutorials.html

@@ -2,6 +2,7 @@
 title: Berry International Jazz Collections Fellowship
 layout: fellowship
 search: true
+keywords: fellowships
 section: Fellowships
 permalink: /fellowships/berry-ijc.html
 show_past_projects: true

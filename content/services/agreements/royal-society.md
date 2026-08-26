@@ -4,7 +4,7 @@ section: Services
 permalink: /services/agreements/royal-society.html
 layout: page
 search: false
-tags: open access membership; open access publishing; Royal Society
+keywords: open access membership; open access publishing; Royal Society
 description: "Explains the University of Idaho Library's Open Access Membership with the Royal Society, which gives U of I authors a 25% discount on article processing charges for open access articles."
 page_nav:
     parent: /services/agreements/
