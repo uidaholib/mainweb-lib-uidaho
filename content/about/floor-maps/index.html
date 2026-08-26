@@ -154,7 +154,7 @@ custom-foot: js/floor-map.html
             {% assign floor_number = floor_item.floor %}
             {% assign floor_number_str = floor_number | append: "" %}
             {% assign all_floor_rooms = site.data.rooms | where: "floor", floor_number %}
-            {% assign is_active_floor = floor_number_str == floor_num_str %}
+            {% assign is_active_floor = floor_number_str %}
 
             {% comment %} Only the active floor starts expanded; the rest start collapsed
               behind a toggle button so switching floors doesn't bury the current floor's
