@@ -86,9 +86,10 @@ hours:
       - title: Semester Hours
         hours: 
           - days: Monday, Wednesday, Friday
-            times: 10:00am - 2:00pm
+            times: 9:00am - 1:00pm
           - days: Tuesday, Thursday
-            times: 12:00pm - 4:00pm          
+            times: 12:00pm - 4:00pm  
+      - title: By appointment only Aug. 31-Sept. 4, 2026       
       - title: Summer Hours
         hours: 
           - days: Tuesday, Wednesday, Thursday

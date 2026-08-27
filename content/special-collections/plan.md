@@ -55,34 +55,17 @@ Everyone is welcome to visit our Reading Room and view our materials!
           <tbody>
             <tr>
               <td>Monday, Wednesday, Friday</td>
-              <td>10:00am - 2:00pm</td>
+              <td>9:00am - 1:00pm</td>
             </tr>
             <tr>
               <td>Tuesday, Thursday</td>
               <td>12:00pm - 4:00pm</td>
             </tr>
+            <tr>
+              <td>Aug. 31-Sept. 6, 2026 - by appointment only</td>
+            </tr>  
           </tbody>
         </table>
-        <h3>Summer Hours 2026</h3>
-        <table class="table table-hover">
-          <tbody>
-            <tr>
-              <td>May 11-15</td>
-              <td>Mon-Fri, 10:00 AM - 2:00 PM</td>
-            </tr>
-            <tr>
-              <td>May 18-22</td>
-              <td>Appointment only</td>
-            </tr>
-            <tr>
-              <td>May 26 - August 14</td>
-              <td>Tues - Thurs, 10:00am - 3:00pm</td>
-            </tr>
-            <tr>
-              <td colspan="2">Closed: May 25, June 24-25 (By appointment only June 23), July 2, July 3, July 6</td>
-            </tr>
-          </tbody>
-        </table> 
       </div>
     </div>
   </div>
