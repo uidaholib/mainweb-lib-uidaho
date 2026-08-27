@@ -4,7 +4,7 @@ section: Data Hub
 permalink: /datahub/ai-examples.html
 layout: page
 search: true
-tags: artificial intelligence; ai examples; ai tools
+keywords: artificial intelligence; ai examples; ai tools
 description: "Examples of AI tools already built or supported by the University of Idaho, including MindRouter, Vandalizer, and Microsoft Copilot."
 page_nav:
     parent: /datahub/ai-basics.html

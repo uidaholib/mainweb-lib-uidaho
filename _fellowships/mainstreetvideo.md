@@ -3,7 +3,9 @@ title: Main Street Video Project Fellowship
 section: Fellowships
 permalink: /fellowships/mainstreetvideo.html
 layout: fellowship
-search: true
+search: false
+description: The Main Street Video Project Fellowship is an opportunity for writers and/or designers to help the library interpret and present a collection of oral histories related to the Main Street Video Co-Op/Howard Hughes Video Store, which operated in Moscow from 1978-2020.
+keywords: fellowships
 show_past_projects: true
 ---
 

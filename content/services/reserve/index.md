@@ -4,7 +4,7 @@ section: Services
 permalink: /services/reserve/
 layout: page
 search: true
-tags: course reserves; Leganto; loan periods
+keywords: course reserves; Leganto; loan periods
 description: "Explains how instructors and students place and access Course Reserves materials through Leganto, including reserve request forms, loan periods, and fines."
 page_nav:
     parent: /services/

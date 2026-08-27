@@ -4,7 +4,7 @@ section: Services
 permalink: /services/rooms.html
 layout: page
 search: true
-tags: study rooms; room reservations; LibCal booking
+keywords: study rooms; room reservations; LibCal booking
 description: "Browse and reserve group study rooms, 3D printers, and other bookable library spaces through the LibCal reservation system."
 page_nav:
     parent: /services/

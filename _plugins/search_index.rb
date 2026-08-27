@@ -4,21 +4,17 @@
 #
 # Search Index
 #
-# Jekyll plugin to generate the JSON data file powering the site search.
-#
-# Page content is chunked on its headings, so each heading becomes its own
-# search record linking straight to that heading's anchor. A final record per
-# page covers the page as a whole.
+# Jekyll plugin to generate a JSON data file for use in client-side site search.
 #
 # Runs on the ":site, :post_render" hook, once every page has been rendered but
 # before anything is written. That ordering matters: the content read here is
 # fully converted html, with Liquid expanded and heading ids in place (see _plugins/heading_ids.rb).
 #
-# Pages opt in with "search: true" in their front matter, and must have a title.
-# Adding "search_headings: false" keeps a page in the index as a single record,
-# without a record per heading, for pages too dense to search at that level.
+# Pages opt in with "search: true" in their front matter and must have a title.
+# The data will contain the page title, description, and keywords from front matter.
+# Adding "search_headings: true" additionally indexes records per heading, using the section content.
 #
-# Configure in _config.yml under the "search_index" key (all keys optional):
+# Optionally, provide configuration options in _config.yml under the "search_index" key:
 #
 #   search_index:
 #     enabled: true                                  # set false to skip generating
@@ -26,27 +22,30 @@
 #     heading_level: 3                               # chunk on headings down to this level
 #     collections: []                                # collection labels to index alongside pages
 #     additions: 'search_index_additions'            # _data file(s) of extra records
-#     tag_delimiter: ';'                             # separator for the csv tags column
+#     tag_delimiter: ';'                             # separator for the csv keywords column
 #     pretty: false                                  # true for human readable json
 #
 # "additions" names one or more csv files in _data/ holding curated records for
 # resources that are not pages of this site, such as guides on another server.
 # Each row becomes a single record, with the columns:
 #
-#   title,description,tags,link
+#   title,description,keywords,link
 #
 # Rows without a title or link are skipped. Links starting with "/" are treated
 # as site relative and get the baseurl, anything else is used as given.
 #
 # Each record has the shape:
 #
-#   "12": {
+#   {
+#     "id": 12,
 #     "url": "/studio/audacity.html#2-recording",  page url plus heading anchor
 #     "title": "2. Recording",                     heading text, or page title
 #     "page": "Audio Recording and Editing",       parent page title, null on page records
-#     "tags": null,                                page front matter tags, page records only
+#     "tags": null,                                  page front matter keywords, page records only
 #     "content": "..."                             plain text of the section
 #   }
+#
+# Note: page frontmatter uses key "keywords", while output json data uses "tags". This avoids issues with Jekyll use of "tags" frontmatter key.
 #
 # (c) 2026 University of Idaho Library
 # Distributed under the conditions of the MIT license
@@ -105,10 +104,9 @@ module SearchIndex
 
         headings = []
 
-        # pages dense enough that per heading results would bury everything else
-        # can opt out with "search_headings: false", leaving just the page record.
-        # their heading text is still collected, to describe the page below
-        index_headings = doc.data['search_headings'] != false
+        # heading-level indexing is opt-in, so most pages stay single-record by default.
+        # heading text is still collected to describe the page-level record below.
+        index_headings = doc.data['search_headings'] == true
 
         split_sections(doc.content.to_s, heading_regex).each do |section|
           heading = section[:heading]
@@ -143,7 +141,7 @@ module SearchIndex
           'url'     => url,
           'title'   => title,
           'page'    => nil,
-          'tags'    => split_tags(doc.data['tags'], config['tag_delimiter']),
+          'tags'    => split_tags(doc.data['keywords'], config['tag_delimiter']),
           'content' => description.empty? ? headings.join(', ') : description
         }
       end
@@ -178,7 +176,7 @@ module SearchIndex
             'url'     => addition_url(site, link),
             'title'   => title,
             'page'    => nil,
-            'tags'    => split_tags(row['tags'], config['tag_delimiter']),
+            'tags'    => split_tags(row['keywords'], config['tag_delimiter']),
             'content' => plain_text(row['description'])
           }
         end

@@ -3,7 +3,9 @@ title: CDIL Metadata Fellowship
 section: Fellowships
 permalink: /fellowships/cdil-metadata.html
 layout: fellowship
-search: true
+search: false
+description: The CDIL Metadata Fellowship Program provides a stipend for a student currently enrolled in a university undergraduate or graduate program to work on developing descriptive metadata for a new or existing digital collection. The experience will offer a fellow first-hand experience with foundational skills in digital humanities, preparing them to engaging with self-directed projects in the future.
+keywords: fellowships
 show_past_projects: false
 ---
 

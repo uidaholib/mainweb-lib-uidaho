@@ -4,6 +4,8 @@ section: Fellowships
 permalink: /fellowships/libseed.html
 layout: fellowship
 search: true
+description: Library Seed Grants support research and outreach projects in their nascent stages. These grants are intended to seed a project; in other words, we are looking to support projects that have the potential to grow and garner additional grant funds. Library Seed Grants must utilize the library's collections and/or staff member expertise in order to qualify. Preference is given to projects that create collaborative partnerships between the library and campus stakeholders.
+keywords: fellowships
 show_past_projects: true
 ---
 

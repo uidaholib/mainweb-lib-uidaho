@@ -4,7 +4,7 @@ section: VERSO
 permalink: /verso/formats.html
 layout: page
 search: true
-tags: VERSO; file formats; data preservation
+keywords: VERSO; file formats; data preservation
 description: "Guidance on choosing open, non-proprietary file formats for text, data, images, audio, video, and code when depositing to VERSO."
 page_nav:
     parent: /verso/

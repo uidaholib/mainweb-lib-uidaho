@@ -4,8 +4,7 @@ section: Special Collections
 permalink: /special-collections/presidentialrecords.html
 layout: page
 search: false
-search_headings: false
-tags: finding aid; university archives; presidential records
+keywords: finding aid; university archives; presidential records
 description: "Finding aid for the University of Idaho President's Office records, 1893-1965, an archival collection documenting university administration and governance."
 page_nav:
     parent: /special-collections/

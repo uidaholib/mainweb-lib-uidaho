@@ -5,7 +5,7 @@ permalink: /find/geospatial/software.html
 layout: page
 search: true
 description: "GIS software guide with available tools, access methods, and support for geospatial work."
-tags: GIS software; geospatial tools; software support
+keywords: GIS software; geospatial tools; software support
 page_nav:
     parent: /find/geospatial/
     children:

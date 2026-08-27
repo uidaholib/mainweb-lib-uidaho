@@ -4,7 +4,7 @@ section: Open at U of I
 permalink: /open/course-marking.html
 layout: page
 search: true
-tags: course marking; open educational resources; zero cost textbooks
+keywords: course marking; open educational resources; zero cost textbooks
 description: "Explains U of I's course marking initiative that labels zero and low cost courses in the class schedule and answers related FAQs."
 page_nav:
     parent: /open/
@@ -17,7 +17,7 @@ In keeping with the mandates of this memo, U of I has developed and implemented 
 
 Instructors began reporting their course materials costs during scheduling in spring of 2024, for application to courses listed and taught in starting Fall 2024. Students are now able to browse the class schedule using Zero and Very Low Cost categories as facets, and, if desired, limit their registration selections to courses in those categories.
 
-To learn more about course marking and utilizing open course materials at U of I, explore the FAQs below and visit our pressbook, [Open at the University of Idaho Library](https://uidaho.pressbooks.pub/OpenatUIdaho/).
+To learn more about course marking and utilizing open course materials at U of I, explore the FAQs below and visit our pressbook, [Open at the University of Idaho Library](https://idaho.pressbooks.pub/OpenatUIdaho/).
 
 For help determining if your course would qualify for a Zero or Low Cost marking in the catalog, check out our [U of I Course Cost Labeling Tool](https://www.lib.uidaho.edu/instruction/cost-labeling-tool/).
 

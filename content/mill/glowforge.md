@@ -4,12 +4,14 @@ section: MILL
 permalink: /mill/glowforge.html
 layout: page
 search: true
-tags: Policies; MILL
-description: "Lists Glowforge laser cutter policies, reservation rules, and approved and prohibited materials for the MILL makerspace."
+keywords: Policies; MILL
+description: "Glowforge laser cutter policies, reservation rules, and approved and prohibited materials for the MILL makerspace."
 page_nav:
     parent: /mill/
     children:
 ---
+
+These policies and guidelines apply to using the MILL's Glowforge laser cutter.
 
 ## Policies
 

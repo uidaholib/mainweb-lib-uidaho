@@ -4,8 +4,8 @@ section: The Studio
 permalink: /studio/equipment.html
 layout: page
 search: true
-tags: the studio; studio equipment; equipment loans
-description: "List of in-studio and loanable audio and video equipment available to patrons using the Studio."
+keywords: the studio; studio equipment
+description: "Audio and video equipment available to patrons using the Studio."
 page_nav:
     parent: /studio/
     children:

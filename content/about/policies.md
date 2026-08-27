@@ -4,7 +4,8 @@ section: About
 permalink: /about/policies.html
 layout: page
 search: true
-tags: library policies; user guidelines; service policies
+search_headings: true
+keywords: library policies; user guidelines; service policies
 description: "Index of University of Idaho Library policies covering services, collections, spaces, and user responsibilities."
 page_nav:
     parent: /about/

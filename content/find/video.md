@@ -5,7 +5,7 @@ permalink: /find/video.html
 layout: page
 search: true
 description: "Guide to streaming video and DVD resources available through University of Idaho Library services."
-tags: streaming video; DVDs; media resources
+keywords: streaming video; DVDs; media resources
 page_nav:
     parent: /find/
     children:

@@ -4,7 +4,7 @@ section: About
 permalink: /about/updates.html
 layout: page
 search: true
-tags: library news; announcements; updates
+keywords: library news; announcements; updates
 description: "Library news page listing recent updates, announcements, and project highlights."
 page_nav:
     parent: /about/
@@ -12,7 +12,6 @@ page_nav:
 chat-widget: true
 ---
 
-----------
 {% assign updates = site.updates | where_exp: "u","u.archive != true" | reverse %}
 {% for u in updates %}
 <div class="card mb-3">

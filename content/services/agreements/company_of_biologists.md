@@ -4,7 +4,7 @@ section: Services
 permalink: /services/agreements/company_of_biologists.html
 layout: page
 search: false
-tags: read and publish agreement; open access publishing; Company of Biologists
+keywords: read and publish agreement; open access publishing; Company of Biologists
 description: "Describes the University of Idaho Library's Read and Publish agreement with the Company of Biologists, which provides journal access and free open access publishing for U of I authors."
 page_nav:
     parent: /services/agreements/

@@ -4,7 +4,7 @@ section: The Studio
 permalink: /studio/audacity.html
 layout: page
 search: true
-tags: the studio; audacity; audio editing
+keywords: the studio; audacity; audio editing; tutorials
 description: "Step-by-step tutorial for recording and editing audio in Audacity using the Scarlett 18i20 interface in the Studio."
 page_nav:
     parent: /studio/tutorials.html

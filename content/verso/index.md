@@ -4,7 +4,7 @@ section: VERSO
 permalink: /verso/
 layout: page
 search: true
-tags: VERSO; institutional repository; research profiles
+keywords: VERSO; institutional repository; research profiles
 description: "Overview of VERSO, the University of Idaho's research information system and institutional repository for faculty, student, and staff scholarship."
 page_nav:
     parent:

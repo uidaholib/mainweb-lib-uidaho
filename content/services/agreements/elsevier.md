@@ -4,7 +4,7 @@ section: Services
 permalink: /services/agreements/elsevier.html
 layout: page
 search: false
-tags: read and publish agreement; open access publishing; Elsevier
+keywords: read and publish agreement; open access publishing; Elsevier
 description: "Describes the University of Idaho Library's Read and Publish agreement with Elsevier, which provides access to the Freedom Collection and a discount on open access publishing fees for U of I authors."
 page_nav:
     parent: /services/agreements/

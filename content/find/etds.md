@@ -4,7 +4,7 @@ section: Find
 permalink: /find/etds.html
 layout: page
 search: true
-tags: theses and dissertations; ETD; ProQuest
+keywords: theses and dissertations; ETD; ProQuest
 description: "Guide to finding University of Idaho and global theses and dissertations in the catalog, VERSO, and ProQuest databases."
 page_nav:
     parent: /find/

@@ -205,7 +205,7 @@
         var fieldBoost = {
             title: 8,
             tags: 5,
-            content: 2
+            content: 1
         };
         var fieldHits = {
             title: searchIndex.search(query, { field: 'title', limit: searchFieldLimit }),
@@ -257,8 +257,8 @@
                 html += '<div class="small text-muted">' + escapeHtml(doc.page) + '</div>';
             }
 
-            if (!compact && Array.isArray(doc.tags) && doc.tags.length) {
-                html += '<div class="mt-2 d-flex flex-wrap gap-1">';
+            if (Array.isArray(doc.tags) && doc.tags.length) {
+                html += '<div class="' + (compact ? 'mt-1' : 'mt-2') + ' d-flex flex-wrap gap-1">';
                 doc.tags.slice(0, 5).forEach(function (tag) {
                     html += '<span class="badge rounded-pill text-bg-light border text-muted">' + escapeHtml(tag) + '</span>';
                 });

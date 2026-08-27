@@ -4,7 +4,7 @@ section: Help
 permalink: /help/google.html
 layout: page
 search: false
-tags: google search; website search
+keywords: google search; website search
 description: "Provides a Google-powered search box for finding pages and content on the University of Idaho Library website."
 page_nav:
     parent: /help/

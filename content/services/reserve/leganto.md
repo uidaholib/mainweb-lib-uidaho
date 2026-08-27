@@ -4,7 +4,7 @@ section: Services
 permalink: /services/reserve/leganto.html
 layout: page
 search: true
-tags: Leganto; Canvas integration; course reserves
+keywords: Leganto; Canvas integration; course reserves
 description: "Explains how instructors activate and use Leganto, the U of I Library's Canvas-integrated course reserves and reading list tool."
 page_nav:
     parent: /services/reserve/

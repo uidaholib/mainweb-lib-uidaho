@@ -4,8 +4,8 @@ section: Work with Us
 permalink: /opportunities/faculty.html
 layout: page
 search: false
-tags: faculty positions; library careers; employment opportunities
-description: "Lists current faculty librarian job openings at the University of Idaho Library and explains why to work here."
+keywords: faculty positions; library careers; employment opportunities
+description: "Current faculty librarian job openings and the highlights of working at our Library, University, and community."
 page_nav:
     parent: /opportunities/
     children:

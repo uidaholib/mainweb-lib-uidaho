@@ -4,7 +4,7 @@ section: Find
 permalink: /find/accesstools.html
 layout: page
 search: true
-tags: article access; browser tools; full text
+keywords: article access; browser tools; full text
 description: "Guide to browser tools and library services that help you access full-text articles from off-campus and publisher websites."
 page_nav:
     parent: /find/articles.html

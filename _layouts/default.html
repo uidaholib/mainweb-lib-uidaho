@@ -6,11 +6,11 @@
 
   <body>
     <a id="skip-to-content" class="visually-hidden-focusable btn btn-lg btn-dark position-absolute top-0 start-0" href="#maincontent">Skip to main content</a>
-    {% unless page.layout == 'floor-map' %}{% include header.html %}{% endunless %}
+    {% include header.html %}
     
     {{ content }}
     
-    {% unless page.layout == 'floor-map' %}{% include footer.html %}{% endunless %}
+    {% include footer.html %}
     {% include foot.html %}
   </body>
 

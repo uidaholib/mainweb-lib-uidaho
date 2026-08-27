@@ -4,15 +4,14 @@ section: Find
 permalink: /events/
 layout: page
 search: true
-search_headings: false
-tags: library events; workshops; calendar
+keywords: library events; workshops; calendar
 description: "Events calendar for University of Idaho Library workshops, classes, and public programs."
 page_nav:
     parent: /find/
     children:
 ---
 
-The Library hosts a variety of events, from weekly workshops to annual book readings, from [GIS Day](https://www.lib.uidaho.edu/gisday/) to Renfrew Interdisciplinary Colloquium. Join us!
+The Library hosts a variety of events, from weekly workshops to [book clubs](https://libguides.uidaho.edu/bookclub), from [GIS Day](https://www.lib.uidaho.edu/gisday/) to Renfrew Interdisciplinary Colloquium. Join us!
 
 Use the calendar below or the [list view](https://libcal.uidaho.edu/calendar/workshops/) to find upcoming events. Please click on the title to get full details and register.
 **Schedule is listed in Pacific Time Zone!**

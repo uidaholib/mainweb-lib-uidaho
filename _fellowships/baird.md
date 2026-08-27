@@ -4,6 +4,8 @@ section: Fellowships
 permalink: /fellowships/baird.html
 layout: fellowship
 search: true
+description: The Lynn and Dennis Baird Fellowship funds one graduate student a year to work with library faculty and staff to expand the reach of the Wilderness/Environmental archival holdings at the University of Idaho.
+keywords: fellowships
 show_past_projects: true
 ---
 

@@ -4,7 +4,7 @@ section: About
 permalink: /about/tech.html
 layout: page
 search: true
-tags: website documentation; technical information; library web
+keywords: website; technical information; web accessibility
 description: "Technical notes about how the library website is built, maintained, and updated."
 page_nav:
     parent: /about/policies.html

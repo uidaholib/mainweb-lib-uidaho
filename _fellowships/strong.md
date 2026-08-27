@@ -1,9 +1,11 @@
 ---
 title: Gary and Carolyn Strong Special Collections Fellowship
-layout: fellowship
-search: true
 section: Fellowships
 permalink: /fellowships/strong.html
+layout: fellowship
+search: true
+description: This program funds one student each year to work for the faculty and staff at the Library to increase the visibility and use of previously unprocessed collections in the University of Idaho Library's Special Collections & Archives.
+keywords: fellowships
 show_past_projects: true
 ---
 

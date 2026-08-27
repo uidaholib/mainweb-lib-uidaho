@@ -4,7 +4,7 @@ section: VERSO
 permalink: /verso/how-universo-works.html
 layout: page
 search: true
-tags: UniVERSO; AI search; semantic search; embeddings; MindRouter
+keywords: UniVERSO; AI search; semantic search; embeddings; MindRouter
 description: "A technical walkthrough of how UniVERSO ingests VERSO data, embeds it, matches it against your query, and generates AI responses using MindRouter."
 page_nav:
     parent: /verso/universo.html

@@ -4,7 +4,7 @@ section: Find
 permalink: /find/find-articles.html
 layout: page
 search: true
-tags: scholarly articles; database search; research strategies
+keywords: scholarly articles; database search; research strategies
 description: "Step-by-step guide for finding scholarly articles with library databases, search strategies, and filters."
 page_nav:
     parent: /find/articles.html

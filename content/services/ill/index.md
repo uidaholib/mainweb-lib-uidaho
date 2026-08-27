@@ -4,7 +4,7 @@ section: Services
 permalink: /services/ill/
 layout: page
 search: true
-tags: ILL; Rapido; resource sharing
+keywords: ILL; Rapido; resource sharing
 description: "Interlibrary Loan (ILL) is a service to request access to materials not owned by the library. Learn more about Rapido resource sharing, turnaround times, lending periods, and return instructions."
 page_nav:
     parent: /services/

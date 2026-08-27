@@ -1,9 +1,15 @@
-title,description,tags,link
-Copyright Guide,"The library provides copyright expertise and guidance to the university community. This guide helps make informed decisions regarding appropriate uses of copyrighted materials.",Guides,https://www.lib.uidaho.edu/copyright/
-Data Management Guide,"This guide helps researchers become familiar with data management practices, including data storage standards and protocols, metadata reporting requirements and best practices, and the requirements and recommendations of national funding bodies and professional associations.",Guides,https://www.lib.uidaho.edu/services/data/data-management/
-Digital Collections,"Digital Collections make tens of thousands of rare and unique items openly available online for research and learning.",Collections; Resources,https://www.lib.uidaho.edu/digital/
-Research Guides,"Our Research Guides provide tailored help to get started with research and finding resources curated for U of I classes and subjects.",Guides,https://libguides.uidaho.edu/
-A-Z Databases,"Library databases provide discovery and access to research materials online.",Guides,https://libguides.uidaho.edu/az/databases
-Library Catalog,"Our library catalog and discovery system Primo provides one-stop searching for books, e-books, articles, and more.",Resources,https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?vid=01ALLIANCE_UID:UID&lang=en
+title,description,keywords,link
+Copyright Guide,"The library provides copyright expertise and guidance to the university community. This guide helps make informed decisions regarding appropriate uses of copyrighted materials.",guides,https://www.lib.uidaho.edu/copyright/
+Data Management Guide,"This guide helps researchers become familiar with data management practices, including data storage standards and protocols, metadata reporting requirements and best practices, and the requirements and recommendations of national funding bodies and professional associations.",guides,https://www.lib.uidaho.edu/services/data/data-management/
+Digital Collections,"Digital Collections make tens of thousands of rare and unique items openly available online for research and learning.",collections; resources,https://www.lib.uidaho.edu/digital/
+Research Guides,"Our Research Guides provide tailored help to get started with research and finding resources curated for U of I classes and subjects.",guides; libguides; help,https://libguides.uidaho.edu/
+A-Z Databases,"Library databases provide discovery and access to research materials online.",guides,https://libguides.uidaho.edu/az/databases
+Library Catalog,"Our library catalog and discovery system Primo provides one-stop searching for books, e-books, articles, and more.",resources; search,https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?vid=01ALLIANCE_UID:UID&lang=en
 GIS Day @ University of Idaho,"A free event bringing together scholars, students, professionals, businesses, and the public to discuss geospatial technologies and demonstrate their many uses.",Events,https://www.lib.uidaho.edu/gisday/
-INSIDE Idaho,"The geospatial data clearinghouse for Idaho assisting in the discovery and use of geospatial information.",Resources; Collections,https://www.insideidaho.org/
+INSIDE Idaho,"The geospatial data clearinghouse for Idaho assisting in the discovery and use of geospatial information.",resources; collections,https://www.insideidaho.org/
+Hit the Book(s) Club,"Join the Library's book club for fun reading outside of classwork.",events,https://libguides.uidaho.edu/bookclub
+Board Game Collection,"Board and card games available to check out for game nights, team-building, or classroom use.",collections; fun,https://www.lib.uidaho.edu/games/
+VERSO,"An repository of University of Idaho research and creative work, with web profiles for faculty, students, and staff.",collections; scholarship,https://verso.uidaho.edu/esploro/?institution=01ALLIANCE_UID
+UniVERSO,An AI-powered search tool for finding University of Idaho researchers and expertise using natural-language questions.,scholarship,https://universo.uidaho.edu
+Idaho Harvester,"Blog and working collection of unique materials from Special Collections and Archives",blog; history,https://harvester.lib.uidaho.edu/
+Center for Digital Inquiry and Learning (CDIL),CDIL advances digital humanities and digital scholarship at U of I,cdil; digital scholarship,https://cdil.lib.uidaho.edu/

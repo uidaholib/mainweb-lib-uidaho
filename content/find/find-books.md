@@ -4,7 +4,7 @@ section: Find
 permalink: /find/find-books.html
 layout: page
 search: true
-tags: book search; library catalog; call numbers
+keywords: book search; library catalog; call numbers
 description: "Step-by-step guide for finding books in the library catalog using keywords, subjects, and call numbers."
 page_nav:
     parent: /find/books.html

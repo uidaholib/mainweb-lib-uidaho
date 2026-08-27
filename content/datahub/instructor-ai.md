@@ -4,7 +4,7 @@ section: Data Hub
 permalink: /datahub/instructor-ai.html
 layout: page
 search: true
-tags: artificial intelligence; ai literacy; teaching with ai; instructor resources; library guides
+keywords: artificial intelligence; ai literacy; teaching with ai; instructor resources; library guides
 description: "Guidance, tutorials, and library guides to support instructors teaching with and about AI."
 page_nav:
     parent: /datahub/ai-basics.html

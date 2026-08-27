@@ -1,19 +1,39 @@
----
-layout: default
----
-<div class="container-fluid px-0">
-  <div class="row g-0">
-    <div class="col-12">
-      <div class="p-3 bg-light border-bottom d-none d-md-block">
-        <a href="{{ '/' | relative_url }}" class="btn btn-sm btn-outline-secondary">
-          <svg width="16" height="16" fill="currentColor" class="me-1">
-            <path d="M15 8H3M3 8l4-4M3 8l4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Back to Library Home
-        </a>
-      </div>
-    </div>
-  </div>
+<!doctype html>
+<html lang="en">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    {% include head.html %}
+  </head>
 
-  {{ content }}
-</div>
+  <body>
+    <div class="container-fluid px-0">
+      <div class="row g-0">
+        <div class="col-12">
+          <div class="p-3 bg-light border-bottom d-none d-md-block">
+            <a href="{{ '/' | relative_url }}" class="btn btn-sm btn-outline-secondary">
+              <svg width="16" height="16" fill="currentColor" class="me-1">
+                <path d="M15 8H3M3 8l4-4M3 8l4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Back to Library Home
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {{ content }}
+    </div>
+
+    <!-- bootstrap js -->
+    <script src="{{ '/assets/main-web/lib/bootstrap.bundle.min.js' | relative_url }}"></script>
+    <!-- analytics events -->
+    <!-- load other js -->
+    <script src="{{ '/assets/main-web/lib/lazysizes.min.js' | relative_url }}" async></script>
+    {% if page.custom-foot or layout.custom-foot %}
+    {%- assign page_feet = page.custom-foot | split: ";" -%}
+    {%- assign layout_feet = layout.custom-foot | split: ";" -%}
+    {%- assign feet = page_feet | concat: layout_feet -%}
+    {% for f in feet %}{% include {{ f }} %}
+    {% endfor %}
+    {%- endif -%}
+  </body>
+
+</html>

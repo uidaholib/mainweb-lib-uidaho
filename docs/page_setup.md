@@ -14,7 +14,7 @@ section:
 permalink: 
 layout: 
 search:
-tags: 
+keywords: 
 description:
 ---
 ```
@@ -26,10 +26,10 @@ Use these guidelines for filling in the front matter:
 - `title:` the page title that will appear at the top of the page
 - `section:` general category the content fits under
 - `permalink:` location on the site. This should match the location in the project folders. 
-- `layout:` the page template to use
-- `search: true` true or false, opt in to appear in site search results
-- `search_headings: false` set site search to NOT index at the sub-heading level, it will only have a record for the page. This is useful for complicated pages with lots of headings that should not be individual results or less-essential page content that we don't need deep access to.
-- tags: keywords to help with search and browse, used in site search and meta markup.
+- `layout:` the page template to use. This is typically `page` or `full-width-page`.
+- `search: true` true or false, opt in to appear in site search results. Search will use the title, description, and keywords values to index.
+- `search_headings: true` true or false, opt in to index at the sub-heading level. This is useful for documentation pages that contain many subsections with important information that users may want to discover at a deeper granular level, with links directly to the related heading.
+- `keywords:` keywords to help with search and browse, used in site search and meta markup.
 - `description:` short summary of the content, used in site search and meta markup.
 - `noindex: true` set to ask google to NOT index the page.
 - `custom-foot:` pulls in an include at the bottom of the html to allow custom js loading.
@@ -58,7 +58,7 @@ section: Example
 permalink: /demo/
 layout: page
 search: true
-tags: Demos; Cats
+keywords: Demos; Cats
 description: "A demo page with features"
 page_nav:
     parent: /example/

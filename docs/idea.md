@@ -31,7 +31,7 @@ The site search is powered by static client-side Flexsearch, https://github.com/
 The library is at "assets/main-web/flexsearch.bundle.min.js" and the page data is in "assets/main-web/site-search.json".
 The script handling the search is in "_includes/js/flexsearch-js.html" which is added to every page.
 
-Search results feature the heading, page title, tags, and highlight of related content snippet.
+Search results feature the heading, page title, keywords, and highlight of related content snippet.
 Results are pages and chunks at the heading level.
-Each page can have tags and a description.
+Each page can have keywords and a description.
 Each chunk has an associated page title.

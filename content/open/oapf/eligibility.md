@@ -4,7 +4,7 @@ section: OAPF
 permalink: /open/oapf/eligibility.html
 layout: page
 search: true
-tags: open access publishing fund; eligibility criteria; article processing charges
+keywords: open access publishing fund; eligibility criteria; article processing charges
 description: "Outlines author, journal, and publisher eligibility requirements for the University of Idaho Open Access Publishing Fund."
 page_nav:
     parent: /open/oapf/

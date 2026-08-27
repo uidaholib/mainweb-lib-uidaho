@@ -4,7 +4,7 @@ section: The Studio
 permalink: /studio/troubleshooting.html
 layout: page
 search: true
-tags: the studio; troubleshooting; technical support
+keywords: the studio; troubleshooting; technical support
 description: "Quick fixes for common Studio equipment problems, plus how to contact staff for additional troubleshooting help."
 page_nav:
     parent: /studio/tutorials.html

@@ -4,7 +4,7 @@ section: About
 permalink: /about/language-statement.html
 layout: page
 search: false
-tags: cataloging language; metadata description; library policy
+keywords: cataloging language; metadata description; library policy
 description: "Statement describing how the Library addresses harmful language in cataloging and metadata description."
 page_nav:
     parent: /about/

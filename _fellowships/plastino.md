@@ -1,9 +1,11 @@
 ---
 title: Ben J. Plastino Collection Fellowship
-layout: fellowship
-search: true
 section: Fellowships
 permalink: /fellowships/plastino.html
+layout: fellowship
+search: false
+description: The Ben J. Plastino Collection Fellowship funds one graduate student to produce one or more essays which contextualize and highlight Plastino's contributions to Idaho's written history.
+keywords: fellowships
 show_past_projects: false
 ---
 

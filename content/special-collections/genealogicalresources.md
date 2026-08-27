@@ -4,7 +4,7 @@ section: Special Collections
 permalink: /special-collections/genealogicalresources.html
 layout: page
 search: true
-tags: genealogy research; census records; special collections
+keywords: genealogy research; census records; special collections
 description: "Bibliography of genealogical resources at the University of Idaho Library, including census records, city directories, and vital records for Idaho and the Pacific Northwest."
 page_nav:
     parent: /special-collections/

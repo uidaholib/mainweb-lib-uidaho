@@ -4,7 +4,7 @@ section: Special Collections
 permalink: /special-collections/uibibliography.html
 layout: page
 search: true
-tags: special collections; university history; bibliography
+keywords: special collections; university history; bibliography
 description: "Bibliography of published histories and books about the University of Idaho, its people, colleges, and departments held by Special Collections and Archives."
 page_nav:
     parent: /special-collections/

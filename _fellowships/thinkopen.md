@@ -1,9 +1,11 @@
 ---
 title: ThinkOpen Fellowship
-layout: fellowship
-search: true
 section: Fellowships
 permalink: /fellowships/thinkopen.html
+layout: fellowship
+search: false
+description: The University of Idaho Library's Think Open Fellowship is an opportunity to equalize access to educational materials in your classroom and save your students money by supporting the use of low- or no-cost course materials in place of traditional textbooks.
+keywords: fellowships
 show_past_projects: true
 ---
 

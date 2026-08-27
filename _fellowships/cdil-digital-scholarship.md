@@ -4,6 +4,8 @@ section: Fellowships
 permalink: /fellowships/cdil-digital-scholarship.html
 layout: fellowship
 search: true
+description: The CDIL Digital Scholarship Fellowship program provides time and assistance for faculty members in the College of Letters, Arts, and Social Sciences (CLASS) to begin or continue exploring digital means for publishing or accomplishing their research.
+keywords: fellowships
 show_past_projects: true
 ---
 

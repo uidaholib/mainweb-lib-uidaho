@@ -4,7 +4,7 @@ section: Special Collections
 permalink: /special-collections/plan.html
 layout: page
 search: true
-tags: reading room; special collections; visit planning
+keywords: reading room; special collections; visit planning
 description: "Plan a visit to the Special Collections and Archives Reading Room, including hours, appointment scheduling, reading room rules, and directions."
 page_nav:
     parent: /special-collections/

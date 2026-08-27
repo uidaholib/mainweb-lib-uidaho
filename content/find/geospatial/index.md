@@ -5,7 +5,7 @@ permalink: /find/geospatial/
 layout: page
 search: true
 description: "Geospatial research resources for finding GIS data, maps, software, and spatial analysis support."
-tags: geospatial resources; GIS data; mapping tools
+keywords: geospatial resources; GIS data; mapping tools
 page_nav:
     parent: /datahub/
     children:
@@ -23,10 +23,10 @@ page_resources:
           link: https://uidaho.maps.arcgis.com
         - text: U of I Geocatalog
           link: https://geocatalog-uidaho.hub.arcgis.com/
-        - text: Find Data
-          link: /find/data.html
         - text: Inside Idaho
           link: https://insideidaho.org/
+        - text: GIS Day @ U of I
+          link: https://www.lib.uidaho.edu/gisday/
 ---
 
 Need help accessing geospatial data or software? Curious about web GIS? Have questions about mobile data collection using GIS? Interested in discussing spatial analysis or a mapping project?
