@@ -1,33 +1,26 @@
 ---
-title: MindRouter
+title: MindRouter and VandalChat
 section: Data Hub
 permalink: /datahub/mindrouter.html
 layout: page
 search: true
-keywords: artificial intelligence; mindrouter; ai chat tool
-description: "How to sign in to and use MindRouter, the University of Idaho's own AI chat tool for Vandal account holders."
+keywords: artificial intelligence; mindrouter; vandalchat; ai chat tool
+description: "How to sign in to and use MindRouter and VandalChat, the University of Idaho's own AI services for Vandal account holders."
 page_nav:
     parent: /datahub/ai-basics.html
     children:
 last_reviewed: 2026-08-11
 ---
 
-[MindRouter](https://mindrouter.uidaho.edu/) is the University of Idaho's own AI service. It runs on University
-hardware. Anyone with a Vandal account can sign in, and using it needs no coding.
+[MindRouter](https://mindrouter.uidaho.edu/) is the University of Idaho's own generative AI service. Anyone with a Vandal account can sign in. It runs on University hardware and is managed by Research Computing and Data Services, so no data is sent to non-campus entities.
 
-## What it is
+[VandalChat](https://chat.uidaho.edu/) is a no-code AI chat assistant powered by MindRouter. It is great for drafting and editing writing, explaining concepts, summarizing and asking questions about your documents, working with data, writing code, brainstorming, and translating.
 
-MindRouter is a tool created by Research Computing and Data Services that allows the U of I community to use generative AI without sending their data to non-campus entities.
-
-It provides a no-code-required chat interface, much like standard commercial AI tools. It also provides an API for anyone wanting to build generative AI applications.
-
-It can search the web to respond to queries, and help process documents you
-upload to it, but ultimately it still uses language models, with
+Both ultimately rely on language models, with
 the strengths and failure modes described on
-[AI Basics]({{ '/datahub/ai-basics.html' | relative_url }}). That page is worth
-reading first if this is your first AI tool.
+[AI Basics]({{ '/datahub/ai-basics.html' | relative_url }}), as well as [VandalChat's help page](https://chat.uidaho.edu/help/01_getting-started).
 
-## Why you might use it
+## Why you might use them
 
 For those new to AI, some first experiments could be:
 
@@ -39,28 +32,27 @@ follow, or ask what changed between two drafts of a policy.
 explain one somebody else wrote, or help you troubleshoot a mail merge that will not
 behave.
 
-Because your text stays on University hardware, it's more likely you can work from the real message or the real document without violating privacy or confidentiality (see the *"What is safe to put in it"* section below).
+Because your text stays on University hardware, it's more likely you can work from the real message or the real document without violating privacy or confidentiality (see the *"What is safe to put in them"* section below).
 
 Whatever you try, what you get back is a draft: verify any factual claims before using them.
 
 ## How to sign in
 
-MindRouter is reachable only from the University network. On campus you are
+MindRouter and VandalChat are reachable only from the University network. On campus you are
 already on it; from home, connect to the University VPN first.
 [How to Install and Connect to University of Idaho VPN](https://support.uidaho.edu/TDClient/40/Portal/KB/Article/3816/How-to-Install-and-Connect-to-University-of-Idaho-VPN)
 covers the setup.
 
-1. Go to [MindRouter](https://mindrouter.uidaho.edu/).
+1. Go to [MindRouter](https://mindrouter.uidaho.edu/) or [VandalChat](https://chat.uidaho.edu/).
 2. Sign in with your Vandal credentials at the usual single sign-on page.
-3. Hit the "Chat" tab in the top bar, type into the message box, and press Enter.
 
-## What is safe to put in it
+## What is safe to put in them
 
 <div class="alert alert-info" markdown="1">
 Which categories of University information may go into which AI service is set
 by OIT. OIT's [Guidance for Artificial Intelligence](https://support.uidaho.edu/TDClient/40/Portal/KB/Article/3464/Guidance-for-Artificial-Intelligence){:.alert-link}
 carries the table of approved services and the data risk levels each one is
-approved for, MindRouter included. Check it before sending anything to MindRouter.
+approved for, MindRouter included. Check it before sending anything to these tools.
 </div>
 
 If you are unsure which category the information in front of you falls into,

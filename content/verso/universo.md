@@ -77,32 +77,27 @@ Instructions for making these changes live on the [Editing Your Profile](/verso/
 
 ## Managing Your AI-Generated Summary
 
-Your AI-generated summary is separate from your VERSO profile itself — it's a derived, algorithmically written overview that UniVERSO displays and searches on your behalf. It is deliberately non-comprehensive: an overview of your main areas of work plus a few highlights, sourced from your own publications and profile data, not a CV.
+Your AI-generated summary is separate from your VERSO profile itself — it's a derived, algorithmically written overview that UniVERSO displays and searches. It is deliberately non-comprehensive: an overview of your main areas of work plus a few highlights, sourced from your own publications and profile data, not a CV.
 
 Most faculty won't need to do anything here. The options, from least to most effort:
 
 **Nothing to do**
 
-- **Leave it as is.** You get the AI-generated overview described above, drawn from your own VERSO-linked work. It's a starting point for someone who doesn't know your field.
+- **Leave it as is.** Your get the AI-generated overview described above, drawn from your own VERSO-linked work. 
 - **Already wrote a research overview in VERSO? It's already in use.** If you have a self-written overview in your VERSO profile, UniVERSO pulls it in automatically and shows it in place of a generated summary. There's nothing to send us. 
-  - If you don't have one and would rather write your own, add it in VERSO (*Sign In* → *Edit Profile* → *About*) and it will come through on the next refresh.
+  
 
 **Tell us what to change**
 
+- **Add Your Own** -- If you would like to control what's written in the summary, [add your bio/research summary in VERSO](https://verso.uidaho.edu/esploro/settings/about?institution=01ALLIANCE_UID) (*Sign In* → *Edit Profile* → *About* → *Describe Your Research*) and it will come through on the next refresh (email us at lib-verso@uidaho.edu if you'd like it up sooner).
 - **Request a revision.** If your summary is inaccurate, outdated, or doesn't reflect your work the way you'd like, [tell us what should change](https://universo.uidaho.edu/feedback?category=profile_summary_change). You can also copy the summary, edit it yourself, and send us the edited version — we'll use it as written. Or just describe what's wrong and we'll make the fix.
 - **Give the generator standing notes.** If there's something the summary keeps getting wrong or keeps leaving out — a subfield it misreads, a project it ignores, a term you don't use for your own work — [send us a note](https://universo.uidaho.edu/feedback?category=profile_summary_change) and we'll attach it to every future summary generated for you. Unlike a one-time edit, this holds as your publications change and your summary is regenerated.
-- **Opt out of AI summarization.** If you'd prefer that no AI-generated summary be produced for you at all, [request an opt-out](https://universo.uidaho.edu/feedback?category=profile_opt_out) and we will exclude you from future summary generation. No explanation needed.
+- **Opt out of AI summarization.** If you'd prefer that no AI-generated summary be produced for you at all, [request an opt-out](https://universo.uidaho.edu/feedback?category=profile_opt_out) and we will exclude you from future summary generation. 
+  - Let us know in your request if you'd like to be opted out of just the summary (we'll disable the summarization) or of UniVERSO entirely (we'll delete you from the system). 
 
-### Two different kinds of opting out
+### Contolling what Outputs Appear
 
-These get confused, so to be explicit:
-
-- **Opting out of the AI summary** removes only the AI-written narrative overview. Your profile, keywords, and publications still appear in UniVERSO search results.
-- **Opting out of UniVERSO entirely** removes you from the tool.
-
-Both go through the [Request Profile Opt-Out](https://universo.uidaho.edu/feedback?category=profile_opt_out) form — just say which one you want.
-
-Both are distinct from VERSO's own visibility controls. Hiding a work or field directly in VERSO (see the *Privacy* section of [Editing Your Profile](/verso/profile.html)) removes it from both VERSO and UniVERSO. Nothing you do in UniVERSO changes anything in VERSO itself.
+Hiding a work or field directly in VERSO (see the *Privacy* section of [Editing Your Profile](/verso/profile.html)) removes it from both VERSO and UniVERSO. Nothing you do in UniVERSO changes anything in VERSO itself.
 
 ## Good to Know
 
