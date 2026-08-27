@@ -1,10 +1,11 @@
 ---
 title: Berry International Jazz Collections Fellowship
-layout: fellowship
-search: true
-keywords: fellowships
 section: Fellowships
 permalink: /fellowships/berry-ijc.html
+layout: fellowship
+search: true
+description: This program funds one student each year to collaborate with the faculty and staff at the University of Idaho Library to increase the visibility and use of the International Jazz Collections (IJC) through work on a specific research project.
+keywords: fellowships
 show_past_projects: true
 ---
 

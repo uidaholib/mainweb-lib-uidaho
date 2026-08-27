@@ -4,6 +4,8 @@ section: Fellowships
 permalink: /fellowships/cdil-graduate.html
 layout: fellowship
 search: true
+description: The CDIL Graduate Student Summer Fellowship Program provides a stipend for a student currently enrolled in a university graduate program to work on the development of CDIL-related digital projects, be they projects related to CDIL connected faculty or that of the graduate student's own creation.
+keywords: fellowships
 show_past_projects: true
 ---
 

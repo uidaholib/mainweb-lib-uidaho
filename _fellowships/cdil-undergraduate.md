@@ -4,6 +4,8 @@ section: Fellowships
 permalink: /fellowships/cdil-undergraduate.html
 layout: fellowship
 search: true
+description: The CDIL Undergraduate Summer Fellowship Program provides a stipend for a student currently enrolled as an undergraduate at the University of Idaho to work on the development of CDIL-related digital projects, be they projects related to CDIL connected faculty or that of the graduate student's own creation.
+keywords: fellowships
 show_past_projects: true
 ---
 

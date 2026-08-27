@@ -4,6 +4,8 @@ section: Fellowships
 permalink: /fellowships/cdil-faculty-development.html
 layout: fellowship
 search: true
+description: The CDIL Faculty Development Fellowship provides time and customized learning opportunities for faculty looking to improve their knowledge of digital scholarship skills and practices.
+keywords: fellowships
 show_past_projects: true
 ---
 
