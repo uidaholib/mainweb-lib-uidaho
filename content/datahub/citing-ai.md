@@ -11,15 +11,17 @@ page_nav:
 last_reviewed: 2026-08-17
 ---
 
+As with many new technologies, the advancement and use of AI is outpacing the development of policies guiding its usage, including when to cite or disclose usage of AI. The guidance below is offered to provide some clarity but cannot resolve all uncertainty in this area.
+
 ## Uncertainty and variance
 
-As with many new technologies, the advancement and use of AI is outpacing the development of policies guiding its usage, including when to cite or disclose usage of AI. Some disciplines may insist that every usage of AI is recorded and disclosed; other fields may not require AI disclosure for brainstorming or coding. For documents that need formal citations, MLA guidelines explicitly exclude AI from authorship, while APA guidelines credit the AI companies as authors. In addition, citations are intended to help the reader (or instructor) trace an author's work, but AI conversations are not reproducible or constant, often clouding attempts to find the cited information's precise origin. Consequently, it is unsurprising that citation and disclosure practices differ and are currently evolving. The guidance below is offered to provide some clarity but cannot resolve all uncertainty in this area.
+Some disciplines may insist that every usage of AI is recorded and disclosed; other fields may not require AI disclosure for brainstorming or coding. For documents that need formal citations, MLA guidelines explicitly exclude AI from authorship, while APA guidelines credit the AI companies as authors. In addition, citations are intended to help the reader (or instructor) trace an author's work, but AI conversations are not reproducible or constant, often clouding attempts to find the cited information's precise origin. Consequently, it is unsurprising that citation and disclosure practices differ and are currently evolving. 
 
-## Citations vs. Disclosure
+## Citations vs. disclosure
 
 While both citations and disclosures allow authors to reference outside inspiration for their work, there are differences. Authors cite a source to acknowledge content (ideas, quotes, images, etc.) that was created by others. Disclosure focuses more on the "how" something was created — in this case, how AI tools were used, e.g., brainstorming, editing, outlining, etc.
 
-## AI Disclosure statements
+## AI disclosure statements
 
 Any disclosure statement should include 1) which AI tool was used, 2) how the tool was used, and 3) what was done with the output.
 
