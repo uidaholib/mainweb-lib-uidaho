@@ -11,7 +11,7 @@ page_nav:
     children:
 ---
 
-The Library hosts a variety of events, from weekly workshops to annual book readings, from [GIS Day](https://www.lib.uidaho.edu/gisday/) to Renfrew Interdisciplinary Colloquium. Join us!
+The Library hosts a variety of events, from weekly workshops to [book clubs](https://libguides.uidaho.edu/bookclub), from [GIS Day](https://www.lib.uidaho.edu/gisday/) to Renfrew Interdisciplinary Colloquium. Join us!
 
 Use the calendar below or the [list view](https://libcal.uidaho.edu/calendar/workshops/) to find upcoming events. Please click on the title to get full details and register.
 **Schedule is listed in Pacific Time Zone!**
