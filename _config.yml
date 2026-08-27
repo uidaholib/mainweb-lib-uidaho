@@ -73,4 +73,4 @@ defaults:
       page_nav:
         parent: /fellowships/opportunities.html
 
-exclude: [lib-apps, 'Rakefile', docs]
+exclude: ['Rakefile', docs/, AGENTS.md, CLAUDE.md, README.md]
