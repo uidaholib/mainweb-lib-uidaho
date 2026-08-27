@@ -5,7 +5,7 @@ permalink: /mill/about.html
 layout: page
 search: true
 keywords: MILL
-description: "Introduces the manager and student staff who run the MILL makerspace at the University of Idaho Library."
+description: "The Library's MILL makerspace is staffed by a friendly team of student employees each year, lead by MILL manager Jessica Fleener."
 page_nav:
     parent: /mill/
     children:

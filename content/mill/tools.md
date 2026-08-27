@@ -5,7 +5,7 @@ permalink: /mill/tools.html
 layout: page
 search: true
 keywords: MILL; equipment; makerspace tools
-description: "Lists tools and technology available at the MILL makerspace, including 3D printers, vinyl cutters, and laser cutting and engraving equipment."
+description: "Tools and technology available at the MILL makerspace, including 3D printers, vinyl cutters, and laser cutting and engraving equipment."
 page_nav:
     parent: /mill/
     children:

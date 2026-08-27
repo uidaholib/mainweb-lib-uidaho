@@ -24,6 +24,8 @@ Style constraints:
 - Do not use em dashes.
 - Do not use contrived or AI-sounding phrasing.
 - Avoid vague filler words.
+- Avoid unnecessary words such as "This page lists..."
+- Avoid unnecessary repetitive words such as "at University of Idaho Library"
 
 Quality check before finalizing:
 - Is it 1 sentence?
@@ -33,12 +35,14 @@ Quality check before finalizing:
 
 keywords:
 - After writing the description, add or update the frontmatter `keywords` value.
-- Use 2 to 3 keywords when possible.
+- Use 1 to 3 keywords when possible.
 - Do not use more than 5 keywords.
 - Separate keywords with semicolons.
 - Choose keywords that match page content and likely user search terms.
 - Keep keywords short, specific nouns or noun phrases.
 - Avoid duplicate keywords or near-synonyms in the same list.
+- Avoid highly specific words like brand names that are already available in the description.
+- keywords are all lowercase.
 
 keywords format example:
 - `keywords: research help; citation guides; library workshops`

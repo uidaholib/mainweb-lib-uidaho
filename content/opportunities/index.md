@@ -4,8 +4,8 @@ section: Work with Us
 permalink: /opportunities/
 layout: page
 search: true
-keywords: Employment; Jobs
-description: Explore opportunities for employment and student jobs at the Library.
+keywords: employment; jobs
+description: Information about opportunities for employment and student jobs at the Library.
 page_nav:
     parent: /about/
     children:
