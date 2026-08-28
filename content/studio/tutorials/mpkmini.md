@@ -4,7 +4,7 @@ section: The Studio
 permalink: /studio/mpkmini.html
 layout: page
 search: true
-keywords: the studio; midi controller; tutorials
+keywords: tutorials; midi controller; audio equipment
 description: "Quick reference guide to the keys, pads, and controls of the Akai MPK mini MIDI keyboard controller available in the Studio."
 page_nav:
     parent: /studio/tutorials.html

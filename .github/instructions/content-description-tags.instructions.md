@@ -8,7 +8,7 @@ applyTo: "content/**/*.{md,html}"
 Use these instructions when creating or updating the `description` and `keywords` values in frontmatter for pages in the `content/` folder, including both Markdown and HTML files.
 
 Goal:
-- Write a short description of what the page contains.
+- Write a short description of the service or resource represented in the page content.
 - Place that sentence in the frontmatter `description` field.
 
 Requirements:

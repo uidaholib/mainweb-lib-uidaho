@@ -1,11 +1,12 @@
 ---
-title: "Making, Innovating, and Learning Laboratory"
+title: "MILL - Making, Innovating, and Learning Laboratory"
 section: MILL
 permalink: /mill/
 layout: page
 search: true
+search_boost: true
 keywords: MILL; makerspace
-description: "The Making, Innovating, Learning Laboratory (the MILL) is a place to gather, explore, learn, and create new knowledge using state-of-the-art technology and other traditional forms of making."
+description: "The MILL is a place to gather, explore, learn, and create new knowledge using state-of-the-art technology and other traditional forms of making."
 page_nav:
     parent:
     children:

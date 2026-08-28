@@ -4,7 +4,7 @@ section: VERSO
 permalink: /verso/universo.html
 layout: page
 search: true
-keywords: UniVERSO; AI search; research discovery; VERSO
+keywords: UniVERSO; AI search; research discovery
 description: "UniVERSO is the University of Idaho's AI-powered research discovery tool for finding researchers and expertise using plain-language search over VERSO profiles and publications."
 page_nav:
     parent: /verso/
@@ -35,7 +35,7 @@ UniVERSO is currently in **beta**. Data is still being ingested, ranking is stil
 
 **UniVERSO is not a second version of VERSO.** VERSO is the system of record — it holds your profile and publications, and it's where you make edits. UniVERSO is a discovery layer on top of that record: you ask it a question in ordinary language and it points you to people and their work. You don't edit anything in UniVERSO. You edit in VERSO, and it flows through on the next refresh.
 
-<nav aria-label="Jump to a section" class="p-3 mb-4 border rounded">
+<nav aria-label="Jump to a section" class="p-3 mb-4 border">
     <span class="fw-bold text-uppercase small me-2">Jump to a section:</span>
     <a href="#what-you-can-use-it-for" class="btn btn-sm btn-outline-secondary m-1">What You Can Use It For</a>
     <a href="#how-universo-works" class="btn btn-sm btn-outline-secondary m-1">How UniVERSO Works</a>

@@ -4,7 +4,7 @@ section: The Studio
 permalink: /studio/scarlett16i16.html
 layout: page
 search: true
-keywords: the studio; audio equipment; tutorials
+keywords: tutorials; audio equipment
 description: "Quick guide to the front panel controls and setup of the Scarlett 16i16 audio interface used in the Studio's WhisperRoom."
 page_nav:
     parent: /studio/tutorials.html

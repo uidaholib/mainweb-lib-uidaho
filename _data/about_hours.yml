@@ -88,8 +88,7 @@ hours:
           - days: Monday, Wednesday, Friday
             times: 9:00am - 1:00pm
           - days: Tuesday, Thursday
-            times: 12:00pm - 4:00pm  
-      - title: By appointment only Aug. 31-Sept. 4, 2026       
+            times: 12:00pm - 4:00pm      
       - title: Summer Hours
         hours: 
           - days: Tuesday, Wednesday, Thursday

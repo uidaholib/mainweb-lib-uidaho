@@ -1,10 +1,10 @@
 ---
-title: Equipment
+title: Studio Equipment
 section: The Studio
 permalink: /studio/equipment.html
 layout: page
 search: true
-keywords: the studio; studio equipment
+keywords: the studio; equipment
 description: "Audio and video equipment available to patrons using the Studio."
 page_nav:
     parent: /studio/

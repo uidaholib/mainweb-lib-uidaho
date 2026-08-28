@@ -4,7 +4,7 @@ section: The Studio
 permalink: /studio/eglass.html
 layout: page
 search: false
-keywords: the studio; eglass; lightboard teaching
+keywords: eglass; lightboard teaching
 description: "Guide to using the eGlass transparent lightboard to record instructional videos or teach synchronous online classes in the Studio."
 page_nav:
     parent: /studio/tutorials.html
