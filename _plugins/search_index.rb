@@ -13,6 +13,8 @@
 # Pages opt in with "search: true" in their front matter and must have a title.
 # The data will contain the page title, description, and keywords from front matter.
 # Adding "search_headings: true" additionally indexes records per heading, using the section content.
+# Adding "search_boost: true" gives the page-level record a slight ranking boost, useful for
+# nudging a section's home page ahead of otherwise similarly-ranked related pages.
 #
 # Optionally, provide configuration options in _config.yml under the "search_index" key:
 #
@@ -42,7 +44,8 @@
 #     "title": "2. Recording",                     heading text, or page title
 #     "page": "Audio Recording and Editing",       parent page title, null on page records
 #     "tags": null,                                  page front matter keywords, page records only
-#     "content": "..."                             plain text of the section
+#     "content": "...",                            plain text of the section
+#     "boost": true                                 present and true only when "search_boost: true" is set, page records only
 #   }
 #
 # Note: page frontmatter uses key "keywords", while output json data uses "tags". This avoids issues with Jekyll use of "tags" frontmatter key.
@@ -136,7 +139,7 @@ module SearchIndex
         description = plain_text(doc.data['description'])
 
         id += 1
-        records << {
+        record = {
           'id'      => id,
           'url'     => url,
           'title'   => title,
@@ -144,6 +147,8 @@ module SearchIndex
           'tags'    => split_tags(doc.data['keywords'], config['tag_delimiter']),
           'content' => description.empty? ? headings.join(', ') : description
         }
+        record['boost'] = true if doc.data['search_boost'] == true
+        records << record
       end
 
       addition_records(site, config).each do |record|

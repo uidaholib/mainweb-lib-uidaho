@@ -29,6 +29,7 @@ Use these guidelines for filling in the front matter:
 - `layout:` the page template to use. This is typically `page` or `full-width-page`.
 - `search: true` true or false, opt in to appear in site search results. Search will use the title, description, and keywords values to index.
 - `search_headings: true` true or false, opt in to index at the sub-heading level. This is useful for documentation pages that contain many subsections with important information that users may want to discover at a deeper granular level, with links directly to the related heading.
+- `search_boost: true` true or false, gives the page a slight search ranking boost. Use sparingly on a section's home page to help it outrank closely related pages.
 - `keywords:` keywords to help with search and browse, used in site search and meta markup.
 - `description:` short summary of the content, used in site search and meta markup.
 - `noindex: true` set to ask google to NOT index the page.

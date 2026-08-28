@@ -207,6 +207,8 @@
             tags: 5,
             content: 1
         };
+        // Multiplier applied to records opting in via front matter "search_boost: true".
+        var recordBoostFactor = 1.15;
         var fieldHits = {
             title: searchIndex.search(query, { field: 'title', limit: searchFieldLimit }),
             tags: searchIndex.search(query, { field: 'tags', limit: searchFieldLimit }),
@@ -226,6 +228,13 @@
                     scores[key] = (scores[key] || 0) + rankScore;
                 });
             });
+        });
+
+        Object.keys(scores).forEach(function (key) {
+            var doc = searchDocs[key];
+            if (doc && doc.boost) {
+                scores[key] *= recordBoostFactor;
+            }
         });
 
         return Object.keys(scores)

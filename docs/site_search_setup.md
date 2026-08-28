@@ -6,6 +6,7 @@ The search is configured on each individual page in the YAML front matter using 
 
 - `search:` true/false, opt in to appear in site search results. The page record adds the page front matter `description:` and `keywords:` to the index.
 - `search_headings:` true/false, opt in to index at the sub-heading level. Setting `search_headings: true` will split the page content up by the sub-headings, creating smaller records containing the text content of the section to index. This allows users to find more specific information with results linking directly to the related heading. This is useful for documentation pages that contain many subsections with important information that users may want to discover at a deeper granular level.
+- `search_boost:` true/false, gives the page's whole-page record a slight ranking boost. Use this sparingly, on a section's home page, to help it outrank closely related pages for shared terms (e.g. `/studio/index.html` for the query "studio").
 
 Additional external sources can be added as records in the index using the file "_data/search_index_additions.csv".
 
