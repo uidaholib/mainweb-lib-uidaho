@@ -11,7 +11,7 @@ page_nav:
     #children:
 ---
 
-{% capture open %}The FY 2027 U of I - OAPF application for funding period #1 opens August 17, 2026. Applications are accepted on a first come, first served basis. Please contact <a href='https://www.lib.uidaho.edu/about/people/llove.html' class='alert-link'>Leesa Love</a>, U of I - OAPF Fund Manager, with any questions.{% endcapture %}
+{% capture open %}The FY 2027 U of I - OAPF application for funding period #2 opens January 11, 2027. Applications are accepted on a first come, first served basis. Please contact <a href='https://www.lib.uidaho.edu/about/people/llove.html' class='alert-link'>Leesa Love</a>, U of I - OAPF Fund Manager, with any questions.{% endcapture %}
 {% capture closed %}The FY 2027 U of I - OAPF has awarded its entire allocation and applications are now closed. Check back in Fall 2027 for the next round of funding. Explore our <a href='/open/oapf/funded.html' class='alert-link'>funded articles</a> to see this year's impact! Please contact <a href='https://www.lib.uidaho.edu/about/people/llove.html' class='alert-link'>Leesa Love</a>, U of I - OAPF Fund Manager, with any questions.{% endcapture %}
 {% include feature/alert.html text=open %}
 
@@ -21,8 +21,8 @@ Potential applicants are strongly encouraged to speak with [Leesa Love](https://
        
 In FY 2026, the total allocation will be split into two funding periods:
 
-- Funding Period #1 = $12,500: Articles accepted for publication between July 1, 2026 and December 31, 2026 - (Opens August 17, 2026)
-- Funding Period #2 = $12,500: Articles accepted for publication between January 1, 2027 and June 16, 2027
+- Funding Period #1 = $12,500: Articles accepted for publication between July 1, 2026 and December 31, 2026 - (Closed)
+- Funding Period #2 = $12,500: Articles accepted for publication between January 1, 2027 and June 16, 2027 - (Opens January 11, 2027)
      
 Applicants must be current U of I affiliates throughout the application, award, and payment/reimbursement process. Cases in which an applicant leaves or graduates from the U of I during the award or payment/reimbursement process will be referred to the Dean of Libraries for review and final decision.
 
