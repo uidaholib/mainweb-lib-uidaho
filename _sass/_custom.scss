@@ -5,3 +5,10 @@
 
 // override libcal embed
 .s-lc-ea-h3 { color: #191919 !important; margin-top: 0 !important; }
+
+// smaller modal dismiss icon; padding keeps the clickable area at 24px
+.btn-close-sm {
+  width: .7em;
+  height: .7em;
+  padding: .4em;
+}

@@ -160,10 +160,14 @@ layout: page
                         <p class="card-text flex-grow-1">{{ first_recipient.description | truncate: 150 }}</p>
                         {% endif %}
                         
-                        <div class="mt-auto">
+                        <div class="mt-auto d-flex flex-wrap gap-2">
                             {% if first_recipient.site %}
                             <a href="{{ first_recipient.site }}" class="btn btn-outline-palouse btn-sm">View Project</a>
                             {% endif %}
+                            {% comment %}Blog posts live on the person rows, so gather them across everyone on the project{% endcomment %}
+                            {% assign project_blogs = project_group.items | map: "blog" | compact | join: ";" %}
+                            {% capture blog_id %}Past{{ forloop.index }}{% endcapture %}
+                            {% include components/fellowship-blog-links.html blog=project_blogs id=blog_id name=first_recipient.project %}
                         </div>
                     </div>
                 </div>

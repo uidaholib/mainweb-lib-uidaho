@@ -1,0 +1,21 @@
+{% comment %}
+Renders a fellowship name as a badge, linked to that fellowship's description page.
+
+Parameters:
+  fellowship - the fellowship name (the "fellowship" column in _data/fellowships.csv)
+  class      - optional; badge classes (default "border p-1 small border-dark rounded")
+
+Pages are matched on the _fellowships front matter title, which is the same string the
+CSV uses. A few older CSV values have no page of their own; those render as a plain
+badge rather than a dead link.
+{% endcomment %}
+{% assign fellowship_name = include.fellowship | strip %}
+{% if fellowship_name != "" %}
+{% assign fellowship_page = site.fellowships | where: "title", fellowship_name | first %}
+{% assign fellowship_badge_class = include.class | default: "border p-1 small border-dark rounded" %}
+{% if fellowship_page %}
+<a href="{{ fellowship_page.url | relative_url }}" class="{{ fellowship_badge_class }} text-decoration-none">{{ fellowship_name }}</a>
+{% else %}
+<span class="{{ fellowship_badge_class }}">{{ fellowship_name }}</span>
+{% endif %}
+{% endif %}

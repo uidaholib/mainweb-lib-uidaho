@@ -82,8 +82,8 @@ custom-foot: js/fellowships-browse.html
                 </script>
             </div>
         </div>
+    </section>
 </div>
-</section>
 
 <!-- Impact Statistics -->
 <section id="impact" class="py-5 bg-light">
@@ -185,23 +185,23 @@ custom-foot: js/fellowships-browse.html
 
                     <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
                         <button class="filter-btn btn btn-outline-clearwater active" data-filter="all">All Types</button>
-                        <button class="filter-btn btn btn-outline-secondary" data-filter="student">Student</button>
-                        <button class="filter-btn btn btn-outline-secondary" data-filter="faculty">Faculty</button>
                         <button class="filter-btn btn btn-outline-clearwater" data-filter="cdil">CDIL</button>
                         <button class="filter-btn btn btn-outline-clearwater" data-filter="thinkopen">Think Open</button>
                         <button class="filter-btn btn btn-outline-raspberry" data-filter="berry">Berry Fellowship</button>
                         <button class="filter-btn btn btn-outline-pride-gold" data-filter="strong">Strong Fellowship</button>
                         <button class="filter-btn btn btn-outline-garnet" data-filter="baird">Baird Fellowship</button>
                         <button class="filter-btn btn btn-outline-palouse" data-filter="levine">Levine Fellowship</button>
+                        <button class="filter-btn btn btn-outline-dark" data-filter="student">Student</button>
+                        <button class="filter-btn btn btn-outline-dark" data-filter="faculty">Faculty</button>
                     </div>
 
                     <div class="input-group">
                         <label for="browseSearch" class="visually-hidden">Search fellows and projects</label>
                         <input type="text" class="form-control" id="browseSearch"
-                            placeholder="Search by name, project, or keyword..."
-                            aria-label="Search fellows and projects by name, project, or keyword">
+                            placeholder="Search by name, project, year, or keyword..."
+                            aria-label="Search fellows and projects by name, project, year, or keyword">
                         <button class="btn btn-pride-gold" type="button" id="searchBtn">Search</button>
-                        <button class="btn btn-outline-secondary" type="button" id="resetBtn">Reset</button>
+                        <button class="btn btn-outline-dark" type="button" id="resetBtn">Reset</button>
                     </div>
                     <div class="text-center mt-2">
                         <small class="text-muted" id="itemCount">Loading...</small>
@@ -249,7 +249,7 @@ custom-foot: js/fellowships-browse.html
             <div class="col-lg-4 col-md-6 mb-4 browse-item person-item" data-type="person"
                 data-fellowship="{{ fellowship_type }}"
                 data-person-type="{% if person.status contains 'student' or person.status contains 'Student' or person.status contains 'Graduate' or person.status contains 'Undergraduate' %}student{% else %}faculty{% endif %}"
-                data-search="{{ person.firstname | downcase }} {{ person.lastname | downcase }} {{ person.department | downcase }} {% for proj in person_projects %}{{ proj.project | downcase }} {{ proj.description | downcase }}{% endfor %}">
+                data-search="{{ person.firstname | downcase }} {{ person.lastname | downcase }} {{ person.department | downcase }} {% for proj in person_projects %}{{ proj.project | downcase }} {{ proj.description | downcase }} {{ proj.fellowship | downcase }} {{ proj.year }} {% endfor %}">
                 <div class="card h-100 shadow-sm browse-card" role="button" tabindex="0" data-bs-toggle="modal"
                     data-bs-target="#personModal{{ forloop.index }}" aria-label="View details for {{ person.firstname }} {{ person.lastname }}">
                     <div class="card-body">
@@ -266,7 +266,10 @@ custom-foot: js/fellowships-browse.html
                             {% endif %}
                             <div class="flex-grow-1">
                                 <h3 class="h6 card-title mb-1">{{ person.firstname }} {{ person.lastname }}</h3>
-                                <small class="text-muted">{{ person.status }} • {{ person.department }}</small>
+                                {% comment %}A fellow can return in a new role or department, so list each pairing on its own line{% endcomment %}
+                                {% capture person_roles_raw %}{% for proj in person_projects %}{{ proj.status }} • {{ proj.department }};{% endfor %}{% endcapture %}
+                                {% assign person_roles = person_roles_raw | split: ";" | uniq %}
+                                <small class="text-muted">{% for role in person_roles %}{{ role }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</small>
                             </div>
                             <div class="text-end">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill text-palouse" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
@@ -305,10 +308,12 @@ custom-foot: js/fellowships-browse.html
                 aria-labelledby="personModal{{ forloop.index }}Label" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="h5 modal-title" id="personModal{{ forloop.index }}Label">{{ person.firstname }} {{
+                        <div class="modal-header flex-column align-items-stretch">
+                            <div class="text-end">
+                                <button type="button" class="btn-close btn-close-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <h3 class="h5 modal-title my-0" id="personModal{{ forloop.index }}Label">{{ person.firstname }} {{
                                 person.lastname }}</h3>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -317,8 +322,10 @@ custom-foot: js/fellowships-browse.html
                                     <img data-src="{{ person.image_thumb }}" class="lazyload img-fluid rounded mb-3"
                                         alt="{{ person.firstname }} {{ person.lastname }}">
                                     {% endif %}
-                                    <h4 class="h6">{{ person.firstname }} {{ person.lastname }}</h4>
-                                    <p class="text-muted">{{ person.status }} in {{ person.department }}</p>
+                                    {% comment %}The name is already the modal title above{% endcomment %}
+                                    {% capture person_roles_raw %}{% for proj in person_projects %}{{ proj.status }} in {{ proj.department }};{% endfor %}{% endcapture %}
+                                    {% assign person_roles = person_roles_raw | split: ";" | uniq %}
+                                    <p class="text-muted">{% for role in person_roles %}{{ role }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</p>
                                     {% if person.professional %}
                                     <a href="{{ person.professional }}"
                                         class="btn btn-outline-secondary btn-sm">
@@ -328,6 +335,7 @@ custom-foot: js/fellowships-browse.html
                                 </div>
                                 <div class="col-md-8">
                                     <h4 class="h6">Fellowship Projects</h4>
+                                    {% assign person_index = forloop.index %}
                                     {% for proj in person_projects %}
                                     <div class="card mb-3">
                                         <div class="card-body">
@@ -340,14 +348,19 @@ custom-foot: js/fellowships-browse.html
                                                 style="max-height: 150px;" alt="{{ proj.project }}">
                                             {% endif %}
                                             <p class="card-text small">{{ proj.description }}</p>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <span class="border p-1 small border-dark rounded">{{ proj.fellowship }}</span>
-                                                {% if proj.site %}
-                                                <a href="{{ proj.site }}"
-                                                    class="btn btn-sm btn-outline-pride-gold">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg> View Project
-                                                </a>
-                                                {% endif %}
+                                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                {% include components/fellowship-badge-link.html fellowship=proj.fellowship %}
+                                                <div class="d-flex flex-wrap align-items-center gap-2">
+                                                    {% if proj.site %}
+                                                    <a href="{{ proj.site }}"
+                                                        class="btn btn-sm btn-outline-pride-gold">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg> View Project
+                                                    </a>
+                                                    {% endif %}
+                                                    {% capture blog_id %}Person{{ person_index }}-{{ forloop.index }}{% endcapture %}
+                                                    {% capture blog_name %}{{ person.firstname }} {{ person.lastname }}{% endcapture %}
+                                                    {% include components/fellowship-blog-links.html blog=proj.blog id=blog_id name=blog_name %}
+                                                </div>
                                             </div>
                                             {% if proj.students_impacted %}
                                             <div class="mt-2">
@@ -398,7 +411,7 @@ custom-foot: js/fellowships-browse.html
             <div class="col-lg-4 col-md-6 mb-4 browse-item project-item" data-type="project"
                 data-fellowship="{{ fellowship_type }}"
                 data-project-type="{% assign has_student = false %}{% assign has_faculty = false %}{% for person in project_people %}{% if person.status contains 'student' or person.status contains 'Student' or person.status contains 'Graduate' or person.status contains 'Undergraduate' %}{% assign has_student = true %}{% else %}{% assign has_faculty = true %}{% endif %}{% endfor %}{% if has_student and has_faculty %}mixed{% elsif has_student %}student{% else %}faculty{% endif %}"
-                data-search="{{ project.project | downcase }} {{ project.description | downcase }} {% for person in project_people %}{{ person.firstname | downcase }} {{ person.lastname | downcase }}{% endfor %}">
+                data-search="{{ project.project | downcase }} {{ project.description | downcase }} {{ project.fellowship | downcase }} {% for person in project_people %}{{ person.firstname | downcase }} {{ person.lastname | downcase }} {{ person.department | downcase }} {{ person.year }} {% endfor %}">
                 <div class="card h-100 shadow-sm browse-card" role="button" tabindex="0" data-bs-toggle="modal"
                     data-bs-target="#projectModal{{ forloop.index }}" aria-label="View details for {{ project.project }}">
                     <div class="card-body">
@@ -438,12 +451,6 @@ custom-foot: js/fellowships-browse.html
                             <small class="text-muted">{{ years | join: ", " }}</small>
                         </div>
 
-                        {% if project.site %}
-                        <div class="mt-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right text-palouse" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg>
-                            <small class="text-palouse">View Project</small>
-                        </div>
-                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -453,9 +460,22 @@ custom-foot: js/fellowships-browse.html
                 aria-labelledby="projectModal{{ forloop.index }}Label" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="h5 modal-title" id="projectModal{{ forloop.index }}Label">{{ project.project }}</h3>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-header flex-column align-items-stretch">
+                            <div class="text-end">
+                                <button type="button" class="btn-close btn-close-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <h3 class="h5 modal-title mt-0 mb-2" id="projectModal{{ forloop.index }}Label">{{ project.project }}</h3>
+                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                {% if project.site %}
+                                <a href="{{ project.site }}" class="btn btn-sm btn-outline-pride-gold">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg> View Project
+                                </a>
+                                {% endif %}
+                                {% comment %}Blog posts live on the person rows, so gather them across everyone on the project{% endcomment %}
+                                {% assign project_blogs = project_people | map: "blog" | compact | join: ";" %}
+                                {% capture blog_id %}Project{{ forloop.index }}{% endcapture %}
+                                {% include components/fellowship-blog-links.html blog=project_blogs id=blog_id name=project.project %}
+                            </div>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -475,11 +495,6 @@ custom-foot: js/fellowships-browse.html
                                     </div>
                                     {% endif %}
 
-                                    {% if project.site %}
-                                    <a href="{{ project.site }}" class="btn btn-pride-gold mb-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></svg> View Project
-                                    </a>
-                                    {% endif %}
                                 </div>
                                 <div class="col-md-4">
                                     <h4 class="h6">Project Contributors</h4>
@@ -515,6 +530,10 @@ custom-foot: js/fellowships-browse.html
                                     {% endfor %}
                                 </div>
                             </div>
+                            <div class="mt-3 pt-3 border-top">
+                                <small class="text-muted">Fellowship:</small>
+                                {% include components/fellowship-badge-link.html fellowship=project.fellowship %}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -528,7 +547,5 @@ custom-foot: js/fellowships-browse.html
         </div>
     </div>
 </section>
-
-</div>
 
 

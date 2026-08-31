@@ -6,7 +6,7 @@ layout: fellowship
 search: false
 description: This program funds one student to work with Latah Preservation Commission's map of historic sites to create interactive digital exhibits featuring current and historic images of the locations.
 keywords: fellowships
-show_past_projects: false
+show_past_projects: true
 ---
 
 *Questions?* Contact Dulce Kersting-Lark, Head of Special Collections and Archives, at [dulce@uidaho.edu](mailto:dulce@uidaho.edu).
