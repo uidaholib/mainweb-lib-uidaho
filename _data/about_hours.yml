@@ -86,9 +86,9 @@ hours:
       - title: Semester Hours
         hours: 
           - days: Monday, Wednesday, Friday
-            times: 9:00am - 1:00pm
+            times: 12:00pm - 4:00pm
           - days: Tuesday, Thursday
-            times: 12:00pm - 4:00pm      
+            times: 9:00pm - 1:00pm      
       - title: Summer Hours
         hours: 
           - days: Tuesday, Wednesday, Thursday

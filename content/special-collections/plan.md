@@ -55,11 +55,11 @@ Everyone is welcome to visit our Reading Room and view our materials!
           <tbody>
             <tr>
               <td>Monday, Wednesday, Friday</td>
-              <td>9:00am - 1:00pm</td>
+              <td>12:00pm - 4:00pm</td>
             </tr>
             <tr>
               <td>Tuesday, Thursday</td>
-              <td>12:00pm - 4:00pm</td>
+              <td>9:00am - 1:00pm</td>
             </tr>
             <tr>
               <td>Aug. 31-Sept. 6, 2026 - by appointment only</td>
