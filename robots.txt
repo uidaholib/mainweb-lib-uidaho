@@ -2,6 +2,9 @@ User-agent: *
 Disallow: /old/
 Disallow: /backup/
 Disallow: /secure/
+Disallow: /test/
+Disallow: /librarynews/
+Disallow: /cube/
 Disallow: /queered/
 Allow: /queered/index.html
 Allow: /queered/about.html
