@@ -21,9 +21,7 @@ Have questions? Stop by the [Data Hub]({{ '/datahub/' | relative_url }}) or cont
 
 ## Esri GIS Software
                             
-The University of Idaho participates in the [Education Institution License Program](https://community.esri.com/t5/higher-education-docs/esri-education-institution-agreement-overview-us-november-2020/ta-p/905191?attachment-id=60254) with [Environmental Systems Research Institute, Inc.](https://www.esri.com) (Esri). 
-Many products are available for teaching, research, and administrative uses; others are available only for teaching and research. 
-Commercial use of the software is not a [permitted use](https://community.esri.com/t5/higher-education-docs/esri-education-institution-agreement-permitted-uses-rubric/ta-p/915278?attachment-id=61449) under the License.
+The University of Idaho participates in the [Education Institution License Program](https://www.esri.com/en-us/industries/higher-education/licensing) with [Environmental Systems Research Institute, Inc.](https://www.esri.com) (Esri). Many products are available for teaching, research, and administrative uses; others are available only for teaching and research. Commercial use of the software is not a [permitted use](https://community.esri.com/t5/higher-education-docs/esri-education-institution-agreement-permitted-uses-rubric/ta-p/915278?attachment-id=61449) under the License.
 
 Along with software, U of I students, faculty, and staff have access to Esri no-cost, self-paced [online learning opportunities](https://www.esri.com/training/) (Sign in using your U of I account). 
 
