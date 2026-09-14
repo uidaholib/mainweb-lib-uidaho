@@ -1,6 +1,7 @@
 ---
 title: New Digital Collections Launched
 date: 2026-03-25
+archive: true
 ---
 
 The Library's Digital Collections Team is excited to share several new digital scholarship projects that make unique materials accessible on the web:

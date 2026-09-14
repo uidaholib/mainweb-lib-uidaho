@@ -1,6 +1,7 @@
 ---
 title: "University of Idaho Library Launches VERSO: A New System for Showcasing Research and Scholarship"
 date: 2024-09-06
+archive: true
 ---
 
 The University of Idaho Library is excited to announce the launch of [**VERSO (Vandal Expertise, Research, and Scholarship Online)**](http://verso.uidaho.edu), a cutting-edge research information management (RIM) system and institutional repository (IR) designed to preserve and promote the university's research and creative output. Built on the powerful Esploro platform by Clarivate, VERSO will serve as the go-to hub for showcasing the expertise of faculty, students, and staff at the University of Idaho.
