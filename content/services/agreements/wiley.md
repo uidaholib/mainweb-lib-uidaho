@@ -1,7 +1,7 @@
 ---
 title: Wiley Open Access Read and Publish Agreement
 section: Services
-permalink> /services/agreements/wiley.html
+permalink: /services/agreements/wiley.html
 layout: page
 search: false
 keywords: read and publish agreement; open access publishing; Wiley
