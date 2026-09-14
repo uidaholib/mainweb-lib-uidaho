@@ -1,10 +1,8 @@
 {% comment %}
 
-    Browse List include takes a data CSV and generates a basic filterable browse feature sized for the
-    narrow column of the standard "page" layout. Each record is one full width row of the list, so long
-    titles and descriptions stay readable where the card grid of "feature/browse-cards.html" would be cramped.
+    Browse List include takes a data CSV and generates a basic filterable browse feature sized for the narrow column of the standard "page" layout. Each record is one full width row of the list, so long titles and descriptions stay readable where the card grid of "feature/browse-cards.html" would be cramped.
 
-    The CSV can have the columns title,description,link,link-text,category,subjects,year,image-src,image-alt,hidden
+    The CSV can have the columns title,description,link,category,subjects,year,image-src,image-alt,hidden
     Only "title" is required. The rows are rendered in the order they appear in the CSV.
 
     Use like:
@@ -18,23 +16,16 @@
     - "search" = false to opt out of adding a search box.
     - "filter" = false to opt out of adding the category and subject filters.
     - "heading_level" = the heading element used for the item titles, "h2", "h3", etc (default "h2"), set for correct heading order on the page.
-    - "image_base" = a prefix added to plain image file names, for images kept on the media server rather than in the repo.
-      Give it with the trailing slash, and assign it in the page since an include option cannot take a filter, e.g.
+    - "image_base" = a prefix added to plain image file names, for images kept on the media server rather than in the repo. Give it with the trailing slash, and assign it in the page since an include option cannot take a filter, e.g.
       {% raw %}{% assign studio_media = site.lib-media | append: "/studio/" %}{% endraw %}
 
     The filters are built from the data, so a CSV without those columns simply gets fewer controls:
 
-    - "category" is one value per row, e.g. "tutorial". It becomes a row of filter buttons and a badge on each item.
-      The value is displayed as written in the CSV (styled uppercase), so use the wording you want patrons to read.
-    - "subjects" is one or more values per row separated by semicolons, e.g. "Citing sources;Evaluating sources".
-      It becomes a dropdown of every subject in the data, listed under each item.
+    - "category" is one value per row, e.g. "tutorial". It becomes a row of filter buttons and a badge on each item. The value is displayed as written in the CSV (styled uppercase), so use the wording you want patrons to read.
+    - "subjects" is one or more values per row separated by semicolons, e.g. "Citing sources;Evaluating sources". It becomes a dropdown of every subject in the data, listed under each item.
     - "hidden" set to "true" drops the row from the page, for tutorials that are retired or not ready yet.
 
-    The search and filter controls are added by JavaScript, so they are not displayed if it is unavailable,
-    leaving the full list in CSV order.
-
-    Note that every item title is a heading, so a page using this feature will likely want "search_headings: false"
-    in its front matter to keep each item from becoming its own site search result (see "docs/site_search_setup.md").
+    The search and filter controls are added by JavaScript, so they are not displayed if it is unavailable, leaving the full list in CSV order.
 
 {% endcomment %}
 {%- assign bl_rows = site.data[include.data] | where_exp: "r", "r.hidden != 'true'" -%}
@@ -160,7 +151,6 @@
     </ul>
 </div>
 <script>
-    // controls for the browse list feature, "_includes/feature/browse-list.html"
     // every item is in the page, this filters them by hiding the ones that do not match
     (function () {
         const root = document.getElementById("{{ bl_id }}");

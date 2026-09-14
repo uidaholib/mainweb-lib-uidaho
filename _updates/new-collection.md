@@ -1,5 +1,5 @@
 ---
-title: New Digital Collection Released
+title: New Sakaino Digital Collection Released
 date: 2026-09-10
 ---
 

@@ -104,6 +104,13 @@ Bicycles and scooters are not allowed inside the library. Patrons should secure 
 First floor group study rooms and third floor individual study rooms are <a href="{{ '/services/rooms.html' | relative_url }}">available for reservation</a>.
 Please see <a href="https://libcal.uidaho.edu/">LibCal Reservations page</a> for full room policies.
 
+- Rooms remain unlocked when not reserved, availability will be on a first come, first served basis.
+- Do not move furniture into or out of the rooms.
+- Leave the room in the condition in which it was found.
+- Group study rooms must be used by groups of two or more people.
+- Maintain a reasonable noise level that will not disturb other library users.
+- The Library reserves the right to insist on the immediate vacation of the room and withdrawal of privileges associated with the use of the rooms (or any other areas of the Library) should the behavior be considered inappropriate.
+
 ### Study Lockers and Carrels
 
 Study lockers are available to all U of I students on a first come, first served basis. The lockers are assigned for one semester only. The assignment may be renewed if there is no waiting list. A $3.00 key deposit is collected when a key is issued and refunded when the key is returned.
