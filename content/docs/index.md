@@ -39,20 +39,22 @@ We generate a custom Bootstrap theme using those colors, making the color variat
 
 ### Accessible Writing
 
+Text and headings:
+
+- Write in shorter blocks of text and include plenty of meaningful sub-headings. This helps users scan and understand the contents.
+- Headings must follow logical order on the page, increasing by one step (h1, h2, h3, etc) without skipping levels.
+- Don't put content in images or PDFs--the HTML text is the most accessible and useable form. See ["Think Before you create a PDF"](https://www.washington.edu/accessibility/2025/08/07/think-before-you-create-a-pdf/).
+
+Links:
+
+- Always put [links over descriptive meaningful text](https://www.nngroup.com/articles/writing-links/). Never use ["click here" style links](https://www.w3.org/QA/Tips/noClickHere)!
+- Don't use bare URLs in text.
+- Don't use short links. Third party link-shortening services add unnecessary privacy risks and preservation issues.
+
 Image alt text: 
 
 - All images must have descriptive alt text! 
 - Don't use images that have text or tables in them, the text should be in the HTML. 
-
-Headings:
-
-- Write in shorter blocks of text and include plenty of meaningful sub-headings. This helps users scan and understand the contents.
-- Headings must follow logical order on the page, increasing by one step (h1, h2, h3, etc) without skipping levels. 
-
-Links:
-
-- Don't use "click here" style links!
-- Always put links over descriptive meaningful text.
 
 ### Consistency 
 
