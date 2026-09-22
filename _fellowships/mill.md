@@ -3,11 +3,11 @@ title: Making, Innovating, and Learning Laboratory (MILL) Fellowship
 section: Fellowships
 permalink: /fellowships/mill.html
 layout: fellowship
+search: true
 contact_name: Jessica Fleener
 contact_email: jkfleener@uidaho.edu
-search: true
 description: This program provides funding for one student each year to collaborate with the staff at the University of Idaho Library's Making, Innovating, and Learning Laboratory (MILL) to support its operations. The MILL Fellowship is a semester-long initiative aimed at fostering technological innovation through the use of the MILL's maker space resources. 
-keywords: fellowships MILL makerspace
+keywords: fellowships; MILL; makerspace
 show_past_projects: true
 ---
 
@@ -15,6 +15,8 @@ show_past_projects: true
 ## Call for Applications
 
 The University of Idaho Library invites undergraduate and graduate students from any discipline at the University of Idaho to apply for the Making, Innovating, and Learning Laboratory (MILL) Fellowship. 
+
+The Making, Innovating, and Learning Laboratory (MILL) Fellowship is built around a central, hands-on project. Whether you select a suggested project or propose your own, your project serves as the foundation for all your fellowship activities—including workshop development, tutorial creation, and final presentation(s). Successful applications will feature a well-defined project with a realistic timeline and clear alignment with the MILL’s mission.
 
 The fellowship occurs during the Spring semester, with exact dates to be negotiated with the successful applicant. The fellow should plan to spend approximately 10-15 hours per week on the project. Eligible applicants must be enrolled in the spring semester.
 
