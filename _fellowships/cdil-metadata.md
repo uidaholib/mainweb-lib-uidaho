@@ -4,7 +4,7 @@ section: Fellowships
 permalink: /fellowships/cdil-metadata.html
 layout: fellowship
 search: false
-description: The CDIL Metadata Fellowship Program provides a stipend for a student currently enrolled in a university undergraduate or graduate program to work on developing descriptive metadata for a new or existing digital collection. The experience will offer a fellow first-hand experience with foundational skills in digital humanities, preparing them to engaging with self-directed projects in the future.
+description: The CDIL Metadata Fellowship Program provides a stipend for a student currently enrolled in a university undergraduate or graduate program to work on developing descriptive metadata for a new or existing digital collection. The experience will offer a fellow first-hand experience with foundational skills in digital humanities, preparing them to engage with self-directed projects in the future.
 keywords: fellowships
 show_past_projects: false
 ---
@@ -26,7 +26,7 @@ For more information about CDIL and their fellowship programs, visit [https://cd
 
 ### About Ben J. Plastino Papers
 
-The Ben J. Plastino papers span the years 1947-1998 and include nearly 1,000 political articles and opinion papers written by Plastino while he was Executive Editor and Political Editor of the Idaho Falls newspaper, *The Post Register*. Additionally, the collection includes letters from elected officials and other political leaders written to Plastino, photographs taken by Plastino, and copies of the books Coming of Age: Idaho Falls and the Idaho National Engineering Laboratory and The Eastern Idaho Flood Story. The articles and opinion pieces are being described in order to create a comprehensive digital collection that will allow users to explore the Plastino’s career and how Idaho’s political landscape changed over the latter-20th century. Learn more at [https://archiveswest.orbiscascade.org/ark:80444/xv470833](https://archiveswest.orbiscascade.org/ark:80444/xv470833). 
+The Ben J. Plastino papers span the years 1947-1998 and include nearly 1,000 political articles and opinion papers written by Plastino while he was Executive Editor and Political Editor of the Idaho Falls newspaper, *The Post Register*. Additionally, the collection includes letters from elected officials and other political leaders written to Plastino, photographs taken by Plastino, and copies of the books Coming of Age: Idaho Falls and the Idaho National Engineering Laboratory and The Eastern Idaho Flood Story. The articles and opinion pieces are being described in order to create a comprehensive digital collection that will allow users to explore Plastino’s career and how Idaho’s political landscape changed over the latter half of the 20th century. Learn more at [https://archiveswest.orbiscascade.org/ark:80444/xv470833](https://archiveswest.orbiscascade.org/ark:80444/xv470833). 
 
 ---
 

@@ -76,7 +76,7 @@ layout: page
     {% assign current_year = 'now' | date: "%Y" %}
     {% assign open_date_full = current_year | append: "-" | append: date-open %}
     {% assign closed_date_full = current_year | append: "-" | append: date-closed %}
-    {{ open_date_full | date: "%B %d" }} - {{ closed_date_full | date: "%B %d" }}
+    {{ open_date_full | date: "%B %-d" }} &ndash; {{ closed_date_full | date: "%B %-d" }}
 </dd>
                     {% endif %}
                 </dl>
@@ -133,7 +133,7 @@ layout: page
                     {% if first_recipient.project_image %}
                     <img src="{{ first_recipient.project_image }}" class="card-img-top" alt="{{ first_recipient.project }}" style="height: 200px; object-fit: cover;">
                     {% elsif first_recipient.image_thumb %}
-                    <img src="{{ first_recipient.image_thumb }}" class="card-img-top" alt="{{ first_recipient.full_name }}" style="height: 200px; object-fit: cover;">
+                    <img src="{{ first_recipient.image_thumb }}" class="card-img-top" alt="{{ first_recipient.full-name }}" style="height: 200px; object-fit: cover;">
                     {% endif %}
                     <div class="card-body d-flex flex-column">
                         {% if first_recipient.project %}
@@ -142,19 +142,26 @@ layout: page
                         <h3 class="h5 card-title">{{ first_recipient.full-name }}'s Project</h3>
                         {% endif %}
                         
-                        {% comment %} Display fellow(s) names {% endcomment %}
+                        {% comment %} Display fellow(s) names; uniq so someone with two rows on one project is listed once {% endcomment %}
+                        {% assign fellow_names = project_group.items | map: "full-name" | uniq %}
                         <div class="card-text">
-                            {% if project_group.items.size == 1 %}
-                                <strong>{{ first_recipient.full-name }}</strong>
-                            {% elsif project_group.items.size == 2 %}
-                                <strong>{{ project_group.items[0].full-name }} & {{ project_group.items[1].full-name }}</strong>
-                            {% else %}
-                                <strong>{{ project_group.items[0].full-name }}{% for item in project_group.items offset: 1 limit: 2 %}, {{ item.full-name }}{% endfor %}{% if project_group.items.size > 3 %}, and {{ project_group.items.size | minus: 3 }} others{% endif %}</strong>
-                            {% endif %}
+                            <strong>
+                            {%- if fellow_names.size == 1 -%}
+                                {{ fellow_names[0] }}
+                            {%- elsif fellow_names.size == 2 -%}
+                                {{ fellow_names[0] }} &amp; {{ fellow_names[1] }}
+                            {%- elsif fellow_names.size == 3 -%}
+                                {{ fellow_names[0] }}, {{ fellow_names[1] }}, and {{ fellow_names[2] }}
+                            {%- else -%}
+                                {% assign others = fellow_names.size | minus: 3 %}
+                                {{- fellow_names[0] }}, {{ fellow_names[1] }}, {{ fellow_names[2] }}, and {{ others }} {% if others == 1 %}other{% else %}others{% endif -%}
+                            {%- endif -%}
+                            </strong>
                         </div>
                         
-                        {% comment %} Show year and department from first recipient {% endcomment %}
-                        <p class="card-text"><small class="text-muted">{{ first_recipient.year }}{% if project_group.items.size > 1 and project_group.items[1].year != first_recipient.year %}-{{ project_group.items.last.year }}{% endif %} • {{ first_recipient.department }}</small></p>
+                        {% comment %} Show year range (earliest to latest) and department from most recent recipient {% endcomment %}
+                        {% assign project_years = project_group.items | map: "year" | uniq | sort %}
+                        <p class="card-text"><small class="text-muted">{{ project_years.first }}{% if project_years.size > 1 %}&ndash;{{ project_years.last }}{% endif %} • {{ first_recipient.department }}</small></p>
                         
                         {% if first_recipient.description %}
                         <p class="card-text flex-grow-1">{{ first_recipient.description | truncate: 150 }}</p>

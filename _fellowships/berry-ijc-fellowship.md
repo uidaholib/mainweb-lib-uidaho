@@ -19,7 +19,7 @@ Research should focus on the primary sources in the IJC, and applicants are enco
 
 The applicant may base their research on any [IJC collection](https://www.ijc.uidaho.edu/). 
 Not sure where to begin? 
-See the the abbreviated [list of collections](#coll) below for project ideas.
+See the abbreviated [list of collections](#coll) below for project ideas.
 
 The fellowship will conclude with an exhibition of the student's work at the Lionel Hampton Jazz Festival as part of the Library's International Jazz Collection exhibits. 
 
@@ -38,7 +38,6 @@ Applicants must submit:
 {:.text-center}
 [Submit an Application](https://uidaho.co1.qualtrics.com/jfe/form/SV_e98kkFZo4Qb2YoS){:.btn .btn-clearwater}
 
-**The next Berry IJC Fellowship period is currently pending**.
 
 ---
 

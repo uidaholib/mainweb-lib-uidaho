@@ -18,7 +18,7 @@ Plastino graduated from the University of Idaho in 1932 with a degree in journal
 
 The Ben J. Plastino Collection consists of more than 1,000 news articles and opinion columns he contributed to Idaho newspapers, several dozen letters written between Plastino and various figures in Idaho politics, as well as approximately 40 photographs he took while working as a journalist. A basic catalogue of the collection can be found at [https://archiveswest.orbiscascade.org/ark:80444/xv470833](https://archiveswest.orbiscascade.org/ark:80444/xv470833).  
 
-A digital collection of Plastino's writings, the [Ben J. Plastino Papers Collection](https://www.lib.uidaho.edu/digital/plastino/), launched in December 2025, making access easier to researchers throughout Idaho and beyond. To complement the articles and other materials, the Ben J. Plastino Collection Fellow will produce one or more essays to contextualize and highlight his contributions to Idaho's written history.  
+A digital collection of Plastino's writings, the [Ben J. Plastino Papers Collection](https://www.lib.uidaho.edu/digital/plastino/), launched in December 2025, making it easier for researchers throughout Idaho and beyond to access his work. To complement the articles and other materials, the Ben J. Plastino Collection Fellow will produce one or more essays to contextualize and highlight his contributions to Idaho's written history.  
 
 Applicants with an interest in political science, journalism, or the history of Idaho should propose a project that will serve to advise researchers on the collection's value. The exact parameters of the fellowship are flexible and intended to support the recipient's educational goals. Proposals that will illuminate the Ben J. Plastino Collection and define the scope and depth of the materials, for the benefit of future researchers and scholars, will be evaluated most favorably.      
 
@@ -27,7 +27,7 @@ Applicants with an interest in political science, journalism, or the history of 
 {:#potential}
 ### Potential Projects:
 
-Potential areas of focus might include, but are not limited to,  
+Potential areas of focus might include, but are not limited to:
 
 - Explore one or more specific topics on which Plastino reported extensively, such as tax policy, public school funding, higher education, or political philosophies in Idaho, and how ideas embedded in those topics endured or changed over time 
 
@@ -50,9 +50,9 @@ Potential areas of focus might include, but are not limited to,
 
 - Produce one or more essays for the Ben Plastino digital collection that enhance user understanding of materials within the collection; total word count of writings should be between 4,000 and 5,000 
 
-- Project will be completed between May 15 and August 15, 2026, under the direction of department head of Special Collections and Archives 
+- Project will be completed between May 15 and August 15, 2026, under the direction of the department head of Special Collections and Archives 
 
-- Work may be completed remotely, though some in-person work in Special Collections and Archives department may be required 
+- Work may be completed remotely, though some in-person work in the Special Collections and Archives department may be required 
 
 ---
 
@@ -82,7 +82,7 @@ Applicants must submit:
     <a href="https://forms.office.com/r/3UbunAida7 " class="btn btn-info my-2 mx-1">Submit an Application</a>
 </div>-->
 
-**Applications are due Friday, Friday, February 20th** by the end of the day and a decision will be announced within two weeks of the deadline.
+**Applications are due Friday, February 20th** by the end of the day and a decision will be announced within two weeks of the deadline.
 
 Interested students are strongly encouraged to discuss their proposals with the Head of Special Collections and Archives, Dulce Kersting-Lark, as they are developing their application materials. Dulce can be reached at [dulce@uidaho.edu](mailto:dulce@uidaho.edu).  
 

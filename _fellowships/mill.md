@@ -22,10 +22,10 @@ The fellowship occurs during the Spring semester, with exact dates to be negotia
 
 While the fellow's activities will primarily focus on executing their chosen project, they will also address inquiries about any new technology introduced during the fellowship and plan relevant workshops.
 
-**Potential Projects:**
+### Potential Projects:
 
-- Create an innovative projects that combine different technologies, such as Arduino and Raspberry Pi. 
-- Design an environmental monitoring station that uses sensors and laser-cut enclosure, created with Arduino and the Glowforge. 
+- Create innovative projects that combine different technologies, such as Arduino and Raspberry Pi. 
+- Design an environmental monitoring station that uses sensors and a laser-cut enclosure, created with Arduino and the Glowforge. 
 - Bring in a 3D-print waste shredder, pelletizer, and filament extruder. Create a localized plastic recycling system. This system reprocesses failed prints and old models into usable 3D printing filament.
 
 The deliverables from the fellowship project will be: 
@@ -45,9 +45,9 @@ Applicants must submit:
 
 1. A letter of no more than 300 words detailing interest in this fellowship and a potential project. Please detail previous experience, education, and/or training that prepare the applicant for the work of this project.  
 2. A current CV or resume
-3. (Required only if proposing a project not detailed below) If proposing a project not listed in “Potential Projects” below, please provide a summary of no more than 300 words detailing the proposed project and outlining how it could contribute to the MILL’s mission as part of the fellowship experience.  
+3. (Required only if proposing a project not detailed above) If proposing a project not listed in “Potential Projects” above, please provide a summary of no more than 300 words detailing the proposed project and outlining how it could contribute to the MILL’s mission as part of the fellowship experience.  
 
-[Application Form](https://uidaho.co1.qualtrics.com/jfe/form/SV_3eKC1sBFN3PvFNc){:.btn .btn-lg .btn-outline-pride-gold}
+[Application Form](https://uidaho.co1.qualtrics.com/jfe/form/SV_cXSnPwxt54y9VUq){:.btn .btn-lg .btn-outline-pride-gold}
 
 ---
 
@@ -61,4 +61,3 @@ Applications are evaluated based on:
 - The proposed project empowers students to take intellectual ownership and can be realistically completed within the specified timeframe. 
 - Feasibility of completion within the fellowship timeframe
 - Potential impact on the MILL.
-- Furthermore, the faculty member has provided a supportive recommendation. 

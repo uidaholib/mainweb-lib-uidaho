@@ -24,7 +24,7 @@ This fellowship offers **$1,500** to support faculty in developing their digital
 - **Open Publishing and OER** - Explore platforms, tools, and approaches to impact scholarship and learning
 - **Tool Training** - Hands-on experience with digital scholarship tools and platforms
 
-The Digital Scholarship Development Fellowship recipient will meet with CDIL staff for 3 to 5 training sessions and project development meetings throughout one semester. The specific content of these sessions will be tailored according to the fellow's research interests during an initial planning meeting with CDIL staff.
+The CDIL Faculty Development Fellowship recipient will meet with CDIL staff for 3 to 5 training sessions and project development meetings throughout one semester. The specific content of these sessions will be tailored according to the fellow's research interests during an initial planning meeting with CDIL staff.
 
 As a final outcome, development fellows will publish a (prototype) digital project, present a public session to share their work with the U of I community, or submit a formal project proposal following a grant application structure for CDIL staff to review.
 

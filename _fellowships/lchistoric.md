@@ -21,9 +21,9 @@ The [Latah Preservation Commission (LPC)](https://latahcountyid.gov/commissions/
 We invite students at U of I to apply for a $4,500 fellowship that will fund the translating of LPC’s physical map of local historic sites into a digital collection and interactive map. The fellow’s scope of work would include:
 
 1.	Take contemporary photos of each location listed on the historic sites map
-2.	Gather at least one historic image of each location from Spec holdings or from a local historical group
+2.	Gather at least one historic image of each location from Special Collections holdings or from a local historical group
 3.	Assemble metadata for the collection, drawing heavily on the written descriptions already created by LPC
-4.	Use metadata and digital images create a working map, using the CollectionBuilder framework
+4.	Use metadata and digital images to create a working map, using the CollectionBuilder framework
 5.	Present site to LPC   
 
 The fellow should plan to spend approximately 10-15 hours per week between September and December in order to accomplish the goals of the project. This award includes a $4,500 student fellowship given as a stipend and up to $500 in funds to help cover the cost of traveling to take pictures.
@@ -35,7 +35,7 @@ The fellow should plan to spend approximately 10-15 hours per week between Septe
 
 Applicants must submit:
 
-1.	A letter of no more than 500 words detailing their interest in this project, any related course work or experiences that would inform this project, and who the fellowship would supplement their educational experience at the University of Idaho.
+1.	A letter of no more than 500 words detailing their interest in this project, any related course work or experiences that would inform this project, and how the fellowship would supplement their educational experience at the University of Idaho.
 2.	A current resume or CV.
 3.	A letter of support from a U of I faculty member. (The faculty member may assist the student in preparing the application, but the application must be the student's own work.)
 
