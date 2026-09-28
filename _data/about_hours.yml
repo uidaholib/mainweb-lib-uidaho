@@ -111,6 +111,8 @@ hours:
         hours:
           - days: September 7 - Labor Day
             times: Closed
+          - days: October 2 - Football
+            times: 7:00am - 5:00pm
       - title: Fall Recess
         note: 2026
         hours: 
