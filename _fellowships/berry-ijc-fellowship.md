@@ -7,6 +7,8 @@ search: true
 description: This program funds one student each year to collaborate with the faculty and staff at the University of Idaho Library to increase the visibility and use of the International Jazz Collections (IJC) through work on a specific research project.
 keywords: fellowships
 show_past_projects: true
+contact_name: Andrew Weymouth
+contact_email: aweymouth@uidaho.edu
 ---
 
 {:#call}
