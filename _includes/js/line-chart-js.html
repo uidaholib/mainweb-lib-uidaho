@@ -1,0 +1,127 @@
+<script>
+/* Draws the line charts from "feature/line-chart.html" as SVG sized to their container, with a hover tooltip. Redraws when the container width changes. */
+(function () {
+    const NS = "http://www.w3.org/2000/svg";
+    const money = (v, digits) => "$" + v.toLocaleString("en-US", { minimumFractionDigits: digits, maximumFractionDigits: digits });
+    const formats = {
+        "dollars": { value: v => money(v, 2), tick: v => money(v, 0) },
+        "dollars-whole": {
+            value: v => money(v, 0),
+            tick: v => v >= 1e6 ? "$" + +(v / 1e6).toFixed(1) + "M" : v >= 1e3 ? "$" + Math.round(v / 1e3) + "K" : "$" + v
+        }
+    };
+
+    function niceStep(max, count) {
+        const raw = max / count;
+        const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+        const n = raw / mag;
+        return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * mag;
+    }
+
+    function add(parent, name, attrs, text) {
+        const node = document.createElementNS(NS, name);
+        for (const k in attrs) node.setAttribute(k, attrs[k]);
+        if (text !== undefined) node.textContent = text;
+        parent.appendChild(node);
+        return node;
+    }
+
+    function draw(plot) {
+        const labels = JSON.parse(plot.dataset.labels).map(l => l.trim());
+        const series = JSON.parse(plot.dataset.series);
+        const fmt = formats[plot.dataset.format] || formats.dollars;
+        const W = plot.clientWidth, H = plot.clientHeight;
+        if (!W) return;
+
+        const max = Math.max(...series.flatMap(s => s.values));
+        const step = niceStep(max, 4);
+        const top = Math.ceil(max / step) * step;
+        const ticks = [];
+        for (let v = 0; v <= top + step / 2; v += step) ticks.push(v);
+
+        // label line ends directly on wide screens, the legend covers narrow ones
+        const ends = series.map(s => s.values[s.values.length - 1]);
+        let direct = series.length > 1 && W >= 560;
+        const m = { top: 12, right: direct ? 136 : 16, bottom: 32, left: 16 + 8 * Math.max(...ticks.map(t => fmt.tick(t).length)) };
+        const plotW = W - m.left - m.right, plotH = H - m.top - m.bottom;
+        const x = i => m.left + (labels.length > 1 ? i * plotW / (labels.length - 1) : plotW / 2);
+        const y = v => m.top + (1 - v / top) * plotH;
+        if (direct) {
+            const ys = ends.map(y).sort((a, b) => a - b);
+            for (let i = 1; i < ys.length; i++) if (ys[i] - ys[i - 1] < 16) direct = false;
+        }
+
+        plot.textContent = "";
+        const svg = add(plot, "svg", { width: W, height: H, role: "img", "aria-label": plot.dataset.label });
+
+        ticks.forEach(t => {
+            add(svg, "line", { x1: m.left, x2: W - m.right, y1: y(t), y2: y(t), class: t === 0 ? "lc-baseline" : "lc-grid" });
+            add(svg, "text", { x: m.left - 8, y: y(t), "text-anchor": "end", "dominant-baseline": "middle", class: "lc-tick" }, fmt.tick(t));
+        });
+
+        // thin out x labels when crowded, always keeping the most recent year
+        const every = Math.ceil(labels.length / Math.max(2, Math.floor(plotW / 48)));
+        labels.forEach((l, i) => {
+            if ((labels.length - 1 - i) % every) return;
+            add(svg, "text", { x: x(i), y: H - 8, "text-anchor": "middle", class: "lc-tick" }, l);
+        });
+
+        const crosshair = add(svg, "line", { y1: m.top, y2: m.top + plotH, class: "lc-crosshair", visibility: "hidden" });
+
+        series.forEach((s, si) => {
+            const color = "var(--bs-" + s.color + ")";
+            add(svg, "path", { d: s.values.map((v, i) => (i ? "L" : "M") + x(i) + "," + y(v)).join(""), class: "lc-line", stroke: color });
+            s.values.forEach((v, i) => add(svg, "circle", { cx: x(i), cy: y(v), r: 4, class: "lc-dot", fill: color }));
+            if (direct) add(svg, "text", { x: x(labels.length - 1) + 10, y: y(ends[si]), "dominant-baseline": "middle", class: "lc-end" }, s.short);
+        });
+
+        const tip = document.createElement("div");
+        tip.className = "line-chart-tooltip";
+        tip.setAttribute("aria-hidden", "true");
+        tip.hidden = true;
+        plot.appendChild(tip);
+
+        const hit = add(svg, "rect", { x: m.left - 12, y: 0, width: plotW + 24, height: H, fill: "transparent" });
+        hit.addEventListener("pointermove", e => {
+            const px = e.clientX - svg.getBoundingClientRect().left;
+            const i = Math.max(0, Math.min(labels.length - 1, Math.round((px - m.left) / (plotW / Math.max(1, labels.length - 1)))));
+            crosshair.setAttribute("x1", x(i));
+            crosshair.setAttribute("x2", x(i));
+            crosshair.setAttribute("visibility", "visible");
+            tip.innerHTML = "";
+            const head = document.createElement("div");
+            head.className = "fw-bold";
+            head.textContent = labels[i];
+            tip.appendChild(head);
+            series.forEach(s => {
+                const row = document.createElement("div");
+                if (series.length > 1) {
+                    const key = document.createElement("span");
+                    key.className = "line-chart-key bg-" + s.color;
+                    row.appendChild(key);
+                    row.append(s.short + ": ");
+                }
+                row.append(fmt.value(s.values[i]));
+                tip.appendChild(row);
+            });
+            tip.hidden = false;
+            const left = x(i) + 12 + tip.offsetWidth > W ? x(i) - 12 - tip.offsetWidth : x(i) + 12;
+            tip.style.left = left + "px";
+            tip.style.top = m.top + "px";
+        });
+        hit.addEventListener("pointerleave", () => {
+            tip.hidden = true;
+            crosshair.setAttribute("visibility", "hidden");
+        });
+    }
+
+    document.querySelectorAll(".line-chart-plot").forEach(plot => {
+        let lastWidth = 0;
+        new ResizeObserver(() => {
+            if (plot.clientWidth === lastWidth) return;
+            lastWidth = plot.clientWidth;
+            draw(plot);
+        }).observe(plot);
+    });
+})();
+</script>
