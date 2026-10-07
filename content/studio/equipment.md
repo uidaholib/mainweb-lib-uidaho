@@ -22,4 +22,4 @@ For details about available software and important guidelines, visit our [FAQ pa
 
 {% assign studio_media = site.lib-media | append: "/studio/" %}
 
-{% include feature/browse-list.html data="studio_equipment" label="guides" image_base=studio_media label="equipment" %}
+{% include feature/browse-list.html data="studio_equipment" image_base=studio_media label="equipment" %}

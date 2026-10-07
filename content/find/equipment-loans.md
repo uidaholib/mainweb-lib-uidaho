@@ -11,29 +11,13 @@ page_nav:
     children:
 ---
 
-The library offers various equipment for students, faculty, and staff to use in or outside of the library building. To check out any piece of equipment, please bring your Vandal card to the Circulation Desk on the library’s first floor and sign the U of I Library Loanable Equipment Lending User Agreement form. Equipment is subject to [late fines and replacement fees]({{ '/services/borrow/#fines' | relative_url }}). You may also want to explore equipment available at [The Studio A/V Lab space]({{ '/studio/' | relative_url }})!
+The Library offers our [Loanable Equipment Collection](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01ALLIANCE_UID:UID&collectionId=81376160580001851&lang=en) for students, faculty, and staff to use in or outside of the library building. From small items you might have forgotten like a bike lock, calculator, or presentation remote, to larger tech like cameras, computers, or even sewing machines, the Library has you covered!
 
-{% assign items = site.data.find_equipment_loans %}
-{% assign categories = items | map: 'category' | uniq | sort %}
-<div class="mb-3 text-center">{% for c in categories %}<a href="#{{ c | slugify }}" class="btn btn-sm btn-outline-pride-gold m-2">{{ c }}</a> {% endfor %}</div>
+Some items can be reserved in advance using the listings in the [Reservable Tech Equipment Collection](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01ALLIANCE_UID:UID&collectionId=81376160560001851&lang=en).
+To check out any piece of equipment, please bring your Vandal card to the Circulation Desk on the library’s first floor.
+Equipment is subject to [late fines and replacement fees]({{ '/services/borrow/#fines' | relative_url }}). 
+You may also want to explore equipment available at [The Studio A/V Lab space]({{ '/studio/' | relative_url }})!
 
-{% for c in categories %}
-{% assign citems = items | where: 'category', c %}
-## {{ c }}
+Below is a partial list of our equipment, be sure to visit the [Catalog Listings](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/collectionDiscovery?vid=01ALLIANCE_UID:UID&collectionId=81376160580001851&lang=en) for full information and availability.
 
-{% for i in citems %}
-<div class="card card-body mb-3">
-<div class="row">
-  <div class="col-md-4 p-3">
-    <img src="{{ i.image }}" alt="{{ i.name }}" class="img-fluid rounded">
-  </div>
-  <div class="col-md-8 p-2">
-    <h3>{{ i.name }}</h3>
-    <p>{{ i.description }}</p>
-    {% if i.count or i.loan_period %}<p>{% if i.loan_period %}Loan period: {{ i.loan_period }}. {% endif %}{% if i.count %}{{ i.count }} available.{% endif %}</p>{% endif %}
-  </div>
-</div>
-</div>
-{% endfor %}
-
-{% endfor %}
+{% include feature/browse-list.html data="find_equipment_loans" label="equipment" %}
