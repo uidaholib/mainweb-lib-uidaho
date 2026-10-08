@@ -1,12 +1,15 @@
 ---
 title: Apply now for CDIL Student Fellowships!
-date: 2025-09-03
-archive: true
+date: 2026-10-07
+#archive: true
 ---
 
-Applications are currently open for two library fellowships:
+Applications are currently open for three library fellowships:
 
-- [Berry International Jazz Collections Fellowship](https://www.lib.uidaho.edu/fellowships/berry-ijc.html). This program funds one student each year to collaborate with the faculty and staff at the University of Idaho Library to increase the visibility and use of the International Jazz Collections (IJC) through work on a specific research project. Apply by Sept 15th.
-- [CDIL Metadata Fellowship](https://www.lib.uidaho.edu/fellowships/cdil-metadata.html). This program provides a stipend for a student currently enrolled in a university undergraduate or graduate program to work on developing descriptive metadata for a new or existing digital collection. The experience will offer a fellow first-hand experience with foundational skills in digital humanities, preparing them to engaging with self-directed projects in the future. Apply by Sept 5th.
+- [Making, Innovating, and Learning Laboratory (MILL) Fellowship](https://www.lib.uidaho.edu/fellowships/mill.html) - invites undergraduate and graduate students from any discipline to build a hands-on project in collaboration with the MILL. The MILL Fellowship is a semester-long initiative aimed at fostering technological innovation through the use of the MILL's maker space resources.
+- [Berry International Jazz Collections Fellowship](https://www.lib.uidaho.edu/fellowships/berry-ijc.html) - this program funds one student each year to collaborate with the faculty and staff at the University of Idaho Library to increase the visibility and use of the International Jazz Collections (IJC) through work on a specific research project.
+- [Julie and David Levine Data Hub Fellowship](https://www.lib.uidaho.edu/fellowships/levine.html) - this program funds one graduate student each year to work with the faculty and staff at the Library's Data Hub, a center for geospatial and data sciences support in areas such as geographic information systems, data sciences, quantitative data analysis and visualization, and research data management.
+
+**Apply by October 31st!**
 
 The Library regularly hosts student and faculty fellowships that foster experiential learning and impact, learn more about our [Fellowship Programs](https://www.lib.uidaho.edu/fellowships/).

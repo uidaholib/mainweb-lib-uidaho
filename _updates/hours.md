@@ -1,5 +1,5 @@
 ---
-title: New Library Hours in Fall 2026
+title: Library Hours in Fall 2026
 date: 2026-05-05
 ---
 

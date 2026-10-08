@@ -4,7 +4,7 @@ section: Fellowships
 permalink: /fellowships/levine.html
 layout: fellowship
 search: true
-description: This program funds one student each year to work with the faculty and staff at the Library to support the operations of the new University of Idaho Library's Data Hub, a center for geospatial and data sciences support in areas such as geographic information systems, data sciences, quantitative data analysis and visualization, and research data management.
+description: This program funds one student each year to work with the faculty and staff at the Library at the Library's Data Hub, a center for geospatial and data sciences support in areas such as geographic information systems, data sciences, quantitative data analysis and visualization, and research data management.
 keywords: fellowships
 show_past_projects: true
 ---
@@ -31,7 +31,7 @@ The deliverables from the fellowship project will be online resources such as di
 {:#process}
 ## How to Apply
 
-Applicants may select from projects listed above that they find interesting or may submit a proposal for a different project which forwards the goals of increasing the availability of collections or services in support of the U of I Library's Data Hub. The activities of the fellow will be focused primarily on accomplishing their project, but will also participate in the launch of the new Data Hub services, which may include assisting Data Hub staff with answering questions, preparing web content, or planning events.
+Applicants may select from projects listed above that they find interesting or may submit a proposal for a different project which forwards the goals of increasing the availability of collections or services in support of the U of I Library's Data Hub.
 
 Applicants must submit:
 

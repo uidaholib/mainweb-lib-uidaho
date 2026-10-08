@@ -1,6 +1,7 @@
 ---
-title: New Sakaino Digital Collection Released
-date: 2026-09-10
+title: College of Engineering Repository Released
+date: 2026-10-05
 ---
 
-A newly digitized diary offers a rare window into daily life inside concentration camps across the United States during World War II. The [Bunro Sakaino Concentration Camp Diary digital collection](https://www.lib.uidaho.edu/digital/sakaino/) provides new access to a historical record preserved in the University Library's Special Collections and Archives. Kept by Portland-based newspaper editor Bunro Sakaino, the diary offers an informative and sobering account of his daily life and its uncertainties during incarceration at several camps, beginning with Fort Missoula and ending with his release from the Santa Fe Internment Camp in February 1946. The digital collection includes a facsimile of the Japanese-language diary alongside English translations by Naoko Tanabe.
+Special Collections & Archives has collaborated with Engineering to launch the new [College of Engineering Repository](https://lib.uidaho.edu/digital/engrir/).
+This digital collection brings together materials that document the college’s work and its connections with the wider community. The collection includes student posters from the annual Engineering Design EXPO, programs from the Idaho Asphalt Conference, and departmental newsletters. These materials offer a lasting record of the college’s scholarship, public engagement, and student work–highlighting stories that can be hard to find in other sources.
