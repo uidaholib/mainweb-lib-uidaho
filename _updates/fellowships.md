@@ -4,7 +4,7 @@ date: 2026-10-07
 #archive: true
 ---
 
-Applications are currently open for three library fellowships:
+Applications are currently open for three funded library fellowships:
 
 - [Making, Innovating, and Learning Laboratory (MILL) Fellowship](https://www.lib.uidaho.edu/fellowships/mill.html) - invites undergraduate and graduate students from any discipline to build a hands-on project in collaboration with the MILL. The MILL Fellowship is a semester-long initiative aimed at fostering technological innovation through the use of the MILL's maker space resources.
 - [Berry International Jazz Collections Fellowship](https://www.lib.uidaho.edu/fellowships/berry-ijc.html) - this program funds one student each year to collaborate with the faculty and staff at the University of Idaho Library to increase the visibility and use of the International Jazz Collections (IJC) through work on a specific research project.
