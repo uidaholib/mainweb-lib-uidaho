@@ -16,7 +16,7 @@
     - "centered" = give "true" to add mx-auto class on the card to center it (don't use with float!)
 
 {%- endcomment -%}
-<div class="card mb-3{% if include.float %} feature-float-{{ include.float }}{% endif %}{% if include.width %} feature-w-{{ include.width }}{% endif %}{% if include.centered %} mx-auto{% endif %}">
+<div class="card mt-5 mb-3{% if include.float %} feature-float-{{ include.float }}{% endif %}{% if include.width %} feature-w-{{ include.width }}{% endif %}{% if include.centered %} mx-auto{% endif %}">
     {% if src %}<img class="card-img-top" src="{{ include.img }}" alt="{{ include.alt | default: 'card image' | escape }}">{%- endif -%}
     {% if include.header %}<{{ include.heading_level | default: 'h2' | strip }} class="card-header h3">{{ include.header }}</{{ include.heading_level | default: 'h2' | strip }}>{%- endif -%}
     <div class="card-body">
