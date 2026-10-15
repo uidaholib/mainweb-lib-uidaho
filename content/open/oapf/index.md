@@ -4,8 +4,8 @@ section: OAPF
 permalink: /open/oapf/
 layout: page
 search: true
-keywords: open access publishing fund; article processing charges; open access publishing
-description: "Introduces the University of Idaho Open Access Publishing Fund, which pays or reimburses article processing charges for open access journal articles by U of I authors."
+keywords: OAPF; open access publishing fund; article processing charges
+description: "The Open Access Publishing Fund pays article processing charges (APCs) for open access journal articles by U of I authors."
 page_nav:
     parent: /open/
     children:
