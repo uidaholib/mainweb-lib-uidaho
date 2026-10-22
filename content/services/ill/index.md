@@ -9,6 +9,11 @@ description: "Interlibrary Loan (ILL) is a service to request access to material
 page_nav:
     parent: /services/
     children:
+page_resources:
+    title: Resources
+    links:
+        - text: ILL Request Form
+          link: https://alliance-uidaho.primo.exlibrisgroup.com/discovery/blankIll?vid=01ALLIANCE_UID%3AUID
 ---
 
 The University of Idaho Library uses Rapido for resource sharing services. This allows U of I patrons to request materials that are not owned by the U of I Library. Resource sharing is free of charge to any currently-enrolled student, staff, or faculty member (current and emeritus) with a valid U of I account. 
@@ -19,7 +24,8 @@ If you have questions, please contact the ILL Office at <libill@uidaho.edu> or (
 
 ## Requesting Items 
 
-Once you are signed in to the [library’s catalog](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?vid=01ALLIANCE_UID:UID), items not owned by the U of I Library can be requested via the form available in relevant search results or the "ILL Request Form" available in the menu. 
+Once you are signed in to the [library’s catalog](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/search?vid=01ALLIANCE_UID:UID), items not owned by the U of I Library can be requested via the form available in search results or directly using the [ILL Request Form](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/blankIll?vid=01ALLIANCE_UID%3AUID).
+
 You can monitor the status of requests in your [library account](https://alliance-uidaho.primo.exlibrisgroup.com/discovery/account?vid=01ALLIANCE_UID:UID). 
 
 ## Lending Periods 
