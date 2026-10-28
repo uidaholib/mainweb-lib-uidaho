@@ -9,7 +9,7 @@ description: "Examples of AI tools already built or supported by the University 
 page_nav:
     parent: /datahub/ai-basics.html
     children:
-last_reviewed: 2026-08-11
+last_reviewed: 2026-10-28
 ---
 
 The U of I is already creating or providing access to a variety of AI tools.

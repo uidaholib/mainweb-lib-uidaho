@@ -14,7 +14,7 @@ page_nav:
         - /datahub/ai-examples.html
         - /datahub/citing-ai.html
         - /datahub/instructor-ai.html
-last_reviewed: 2026-08-11
+last_reviewed: 2026-10-28
 ---
 
 A short introduction to AI for University of Idaho community members who would like to know more before

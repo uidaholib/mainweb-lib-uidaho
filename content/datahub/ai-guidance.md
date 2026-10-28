@@ -9,7 +9,7 @@ description: "Links to the University's official AI guidance, data risk categori
 page_nav:
     parent: /datahub/ai-basics.html
     children:
-last_reviewed: 2026-08-11
+last_reviewed: 2026-10-28
 ---
 
 The University already publishes its own guidance on using AI at work.

@@ -9,7 +9,7 @@ description: "How to sign in to and use MindRouter and VandalChat, the Universit
 page_nav:
     parent: /datahub/ai-basics.html
     children:
-last_reviewed: 2026-08-11
+last_reviewed: 2026-10-28
 ---
 
 [MindRouter](https://mindrouter.uidaho.edu/) is the University of Idaho's own generative AI service. Anyone with a Vandal account can sign in. It runs on University hardware and is managed by Research Computing and Data Services, so no data is sent to non-campus entities.

@@ -8,7 +8,7 @@ keywords: artificial intelligence; ai literacy; teaching with ai; instructor res
 description: "Guidance, tutorials, and library guides to support instructors teaching with and about AI."
 page_nav:
     parent: /datahub/ai-basics.html
-last_reviewed: 2026-08-17
+last_reviewed: 2026-10-28
 ---
 
 ## Instructor guidance

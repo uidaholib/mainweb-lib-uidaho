@@ -8,7 +8,7 @@ keywords: artificial intelligence; ai citation; ai disclosure; citation styles; 
 description: "Guidance on when and how to cite or disclose AI use, including disclosure statement elements, disclosure tools, and citation style guidelines."
 page_nav:
     parent: /datahub/ai-basics.html
-last_reviewed: 2026-08-17
+last_reviewed: 2026-10-28
 ---
 
 As with many new technologies, the advancement and use of AI is outpacing the development of policies guiding its usage, including when to cite or disclose usage of AI. The guidance below is offered to provide some clarity but cannot resolve all uncertainty in this area.
