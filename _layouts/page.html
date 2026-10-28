@@ -12,9 +12,9 @@ layout: default
         <div class="row">
             <div class="col-md-7">
             {{ content }}
-            {% if page.gen_ai %}
-            {% include components/gen-ai-notice.html %}
-            {% endif %}
+            {% if page.last_reviewed or page.gen_ai %}<hr class="w-50 mt-5">{% endif %}
+            {% if page.last_reviewed %}<p><small>Last reviewed: {{ page.last_reviewed }}</small></p>{% endif %}
+            {% if page.gen_ai == true %}{% include components/gen-ai-notice.html %}{% endif %}
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4">

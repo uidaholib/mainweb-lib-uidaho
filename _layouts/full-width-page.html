@@ -12,10 +12,10 @@ layout: default
         {{ content }}
 
     </main>
-
-    {% if page.gen_ai %}
-    {% include components/gen-ai-notice.html %}
-    {% endif %}
+    
+    {% if page.last_reviewed or page.gen_ai %}<hr class="mt-5">{% endif %}
+    {% if page.last_reviewed %}<p><small>Last reviewed: {{ page.last_reviewed }}</small></p>{% endif %}
+    {% if page.gen_ai == true %}{% include components/gen-ai-notice.html %}{% endif %}
 
     {% include components/back-to-top.html %}
 </div>

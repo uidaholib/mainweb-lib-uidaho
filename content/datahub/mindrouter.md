@@ -10,6 +10,7 @@ page_nav:
     parent: /datahub/ai-basics.html
     children:
 last_reviewed: 2026-10-28
+gen_ai: true
 ---
 
 [MindRouter](https://mindrouter.uidaho.edu/) is the University of Idaho's own generative AI service. Anyone with a Vandal account can sign in. It runs on University hardware and is managed by Research Computing and Data Services, so no data is sent to non-campus entities.
@@ -62,5 +63,3 @@ walks through it with concrete examples.
 ## Who to ask
 
 For help getting started, or for thinking through where a tool like this fits your work, visit the [Data Hub]({{ '/datahub/' | relative_url }}) or contact Research Computing and Data Services at <rcds@uidaho.edu> directly.
-
-<p class="text-muted small">Last reviewed: {{ page.last_reviewed }}</p>

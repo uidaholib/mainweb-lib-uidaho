@@ -9,6 +9,7 @@ description: "Guidance on when and how to cite or disclose AI use, including dis
 page_nav:
     parent: /datahub/ai-basics.html
 last_reviewed: 2026-10-28
+gen_ai: true
 ---
 
 As with many new technologies, the advancement and use of AI is outpacing the development of policies guiding its usage, including when to cite or disclose usage of AI. The guidance below is offered to provide some clarity but cannot resolve all uncertainty in this area.
@@ -41,5 +42,3 @@ Any disclosure statement should include 1) which AI tool was used, 2) how the to
 - [IEEE](https://open.ieee.org/author-guidelines-for-artificial-intelligence-ai-generated-text/)
 - [CSE](https://www.csescienceeditor.org/article/cse-guidance-on-machine-learning-and-artificial-intelligence-tools/) - more on CSE: [Citing AI — Duke University Libraries](https://guides.library.duke.edu/cse/citingai)
 - [Quick-glance guide on MLA, APA, and Chicago](https://lib.guides.umd.edu/AI/citations) - University of Maryland Libraries
-
-<p class="text-muted small">Last reviewed: {{ page.last_reviewed }}</p>

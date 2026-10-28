@@ -15,6 +15,7 @@ page_nav:
         - /datahub/citing-ai.html
         - /datahub/instructor-ai.html
 last_reviewed: 2026-10-28
+gen_ai: true
 ---
 
 A short introduction to AI for University of Idaho community members who would like to know more before
@@ -29,7 +30,6 @@ The model is not consulting facts or databases as it writes, and has no understa
 
 <div class="card card-body my-3">
 <h3 class="h5">How a language model writes a sentence</h3>
-
 <div id="ai-nextword" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -69,7 +69,6 @@ The model is not consulting facts or databases as it writes, and has no understa
         </tbody>
       </table>
     </div>
-
     <div class="carousel-item">
       <table class="table table-sm table-striped caption-top mb-0">
         <caption>Step 2 — <span class="text-muted">you typed:</span> the cat sat + on</caption>
@@ -103,7 +102,6 @@ The model is not consulting facts or databases as it writes, and has no understa
         </tbody>
       </table>
     </div>
-
     <div class="carousel-item">
       <table class="table table-sm table-striped caption-top mb-0">
         <caption>Step 3 — <span class="text-muted">you typed:</span> the cat sat + on the</caption>
@@ -141,7 +139,6 @@ The model is not consulting facts or databases as it writes, and has no understa
         </tbody>
       </table>
     </div>
-
     <div class="carousel-item">
       <table class="table table-sm table-striped caption-top mb-0">
         <caption>Step 4 — <span class="text-muted">you typed:</span> the cat sat + on the mat</caption>
@@ -176,14 +173,11 @@ The model is not consulting facts or databases as it writes, and has no understa
       </table>
     </div>
   </div>
-
 </div>
-
 <div class="text-center my-3">
   <button class="btn btn-outline-pride-gold me-2" type="button" data-bs-target="#ai-nextword" data-bs-slide="prev">Previous step</button>
   <button class="btn btn-outline-pride-gold" type="button" data-bs-target="#ai-nextword" data-bs-slide="next">Next step</button>
 </div>
-
 <p class="text-muted small">The words and percentages above are made up to keep the
 example readable. A real model weighs tens of thousands of possible next words at
 every step, not five or six.</p>
@@ -239,5 +233,3 @@ costly, or when a human being could be held accountable for the AI's actions.
 - [AI Glossary](https://support.uidaho.edu/TDClient/40/Portal/KB/Article/3460/AI-Glossary) - OIT's plain-language definitions, for terms this page did not cover.
 
 To talk any of it through, contact or visit the [Data Hub]({{ '/datahub/' | relative_url }}).
-
-<p class="text-muted small">Last reviewed: {{ page.last_reviewed }}</p>

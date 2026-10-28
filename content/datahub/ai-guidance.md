@@ -10,6 +10,7 @@ page_nav:
     parent: /datahub/ai-basics.html
     children:
 last_reviewed: 2026-10-28
+gen_ai: true
 ---
 
 The University already publishes its own guidance on using AI at work.
@@ -39,5 +40,3 @@ For more advanced questions about how to build an AI tool, evaluate it, and how 
 - The [AI for Research Administration](https://ai4ra.uidaho.edu/contact/) team with inquiries about research administration.
 
 For questions about the University's data-sovereign AI platform, [MindRouter]({{ '/datahub/mindrouter.html' | relative_url }}), reach out to Research Computing and Data Services at <rcds@uidaho.edu>.
-
-<p class="text-muted small">Last reviewed: {{ page.last_reviewed }}</p>

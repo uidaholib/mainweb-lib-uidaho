@@ -45,5 +45,3 @@ by the University's policy. See
 [U of I AI Guidance]({{ '/datahub/ai-guidance.html' | relative_url }}) for which
 services are approved for which kinds of data. To talk through applying any of
 this to your own work, visit the [Data Hub]({{ '/datahub/' | relative_url }}).
-
-<p class="text-muted small">Last reviewed: {{ page.last_reviewed }}</p>

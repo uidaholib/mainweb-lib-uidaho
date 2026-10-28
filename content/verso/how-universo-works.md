@@ -10,6 +10,7 @@ page_nav:
     parent: /verso/universo.html
     children:
 gen_ai: true
+last_reviewed: 2026-10-28
 ---
 
 UniVERSO does not maintain its own research records — it is a search and summarization layer built entirely on top of [VERSO](/verso/) data. At a high level, a query moves through four stages.
@@ -44,7 +45,3 @@ The ranked researchers and publications are handed to a large language model (LL
 In addition to answering live queries, UniVERSO periodically generates a standing summary for each eligible researcher, built exclusively from that researcher's own VERSO-linked publications, abstracts, and profile fields (keywords, title, department) — the LLM is not drawing on outside knowledge about a researcher's reputation or work. These per-researcher summaries are what UniVERSO searches when it looks for a topical match to a researcher's overall body of work, separate from matching individual publications.
 
 Because these summaries are generated automatically from limited profile data, they may not capture every nuance of someone's research — see [Managing Your AI-Generated Summary](/verso/universo.html#managing-your-ai-generated-summary) for how to review, revise, or opt out of yours.
-
-------------------------------------------------------------------------
-
-*Last updated: October 2026*

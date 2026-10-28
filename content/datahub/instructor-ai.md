@@ -8,6 +8,7 @@ keywords: artificial intelligence; ai literacy; teaching with ai; instructor res
 description: "Guidance, tutorials, and library guides to support instructors teaching with and about AI."
 page_nav:
     parent: /datahub/ai-basics.html
+gen_ai: true
 last_reviewed: 2026-10-28
 ---
 
@@ -29,5 +30,3 @@ last_reviewed: 2026-10-28
 
 - [Miami University Libraries' Guide to AI](https://libguides.lib.miamioh.edu/ai/home) - includes information on citations and agentic AI
 - [University of Arizona Libraries' Generative AI Guide](https://libguides.library.arizona.edu/genAI) - includes a [student](https://libguides.library.arizona.edu/students-chatgpt/) and an [instructor guide](https://libguides.library.arizona.edu/ai-literacy-instructors)
-
-<p class="text-muted small">Last reviewed: {{ page.last_reviewed }}</p>
