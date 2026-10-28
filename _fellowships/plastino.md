@@ -84,7 +84,7 @@ Applicants must submit:
 
 **Applications are due Friday, February 20th** by the end of the day and a decision will be announced within two weeks of the deadline.
 
-Interested students are strongly encouraged to discuss their proposals with the Head of Special Collections and Archives, Dulce Kersting-Lark, as they are developing their application materials. Dulce can be reached at [dulce@uidaho.edu](mailto:dulce@uidaho.edu).  
+Interested students are strongly encouraged to discuss their proposals with the Head of Special Collections and Archives, Dulce Kersting-Lark, as they are developing their application materials. Dulce can be reached at <dulce@uidaho.edu>.  
 
 Link to application form: [Ben J. Plastino Fellowship - Fill out form](https://forms.office.com/r/RfLQi1UcHU)
 

@@ -19,7 +19,7 @@ Library Seed Grants support research and outreach projects in their nascent stag
 {:#process}
 ## How to Apply
 
-Please contact Dean Ben Hunter at [bhunter@uidaho.edu](mailto:bhunter@uidaho.edu) to inquire about a possible grant.
+Please contact Dean Ben Hunter at <bhunter@uidaho.edu> to inquire about a possible grant.
 
 ---
 

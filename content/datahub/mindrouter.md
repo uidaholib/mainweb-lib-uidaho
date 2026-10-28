@@ -61,6 +61,6 @@ walks through it with concrete examples.
 
 ## Who to ask
 
-For help getting started, or for thinking through where a tool like this fits your work, visit the [Data Hub]({{ '/datahub/' | relative_url }}) or contact [Research Computing and Data Services](mailto:rcds@uidaho.edu) directly.
+For help getting started, or for thinking through where a tool like this fits your work, visit the [Data Hub]({{ '/datahub/' | relative_url }}) or contact Research Computing and Data Services at <rcds@uidaho.edu> directly.
 
 <p class="text-muted small">Last reviewed: {{ page.last_reviewed }}</p>

@@ -23,4 +23,4 @@ VERSO is now live and available at [verso.uidaho.edu](https://verso.uidaho.edu/e
 To learn more about VERSO or to get started, visit [verso.uidaho.edu](https://verso.uidaho.edu/esploro/).
 
 Questions, please contact:  
-Devin Becker, [dbecker@uidaho.edu](mailto:dbecker@uidaho.edu)
+Devin Becker, <dbecker@uidaho.edu>

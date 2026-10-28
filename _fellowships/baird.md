@@ -21,7 +21,7 @@ This fellowship offers **$4,000** to support graduate students to engage with ar
 {:#process}
 ## How to Apply
 
-For application information and requirements, please contact the Special Collections department at [libspec@uidaho.edu](mailto:libspec@uidaho.edu). Applications are due in the spring semester.
+For application information and requirements, please contact the Special Collections department at <libspec@uidaho.edu>. Applications are due in the spring semester.
 
 ---
 

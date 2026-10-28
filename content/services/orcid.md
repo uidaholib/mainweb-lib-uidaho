@@ -49,4 +49,4 @@ Having connected the systems, we will able to update your ORCID and institutiona
 
 Starting in 2023, the federal government is requiring the use of researcher unique identifiers. This is intended to make research information management easier for agencies and for institutions. ORCID is the most likely tool to be used for this purpose. NSF and NIH have mechanisms for connecting your ORCID to their systems in order to facilitate SciENcv biosketch generation.
 
-For assistance, please contact Jeremy Kenyon ([jkenyon@uidaho.edu](mailto:jkenyon@uidaho.edu)) at the University of Idaho Library.  
+For assistance, please contact Jeremy Kenyon (<jkenyon@uidaho.edu>) at the University of Idaho Library.  

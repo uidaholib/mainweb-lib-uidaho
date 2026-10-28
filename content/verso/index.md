@@ -46,7 +46,7 @@ VERSO serves as both a research information management (RIM) system for the univ
 - As an IR, VERSO allows for the deposit and preservation of U of I materials and publications. 
 
 
-Questions? Email [lib-verso@uidaho.edu](mailto:lib-verso@uidaho.edu) or [fill out our form](https://forms.office.com/r/Kef7ziHzHy). 
+Questions? Email <lib-verso@uidaho.edu> or [fill out our form](https://forms.office.com/r/Kef7ziHzHy). 
 
 Have a lot of works to add to your profile? You can upload your CV through [the same form](https://forms.office.com/r/Kef7ziHzHy) and we'll batch-add the items for you, usually within one to three business days.
 

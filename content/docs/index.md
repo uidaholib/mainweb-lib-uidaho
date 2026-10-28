@@ -73,9 +73,10 @@ Names:
 Email:
 
 - Check that emails are updated and consistent across site.
+- Consider if it should be an email or a link to the person's profile page giving users more contact options.
+- Do not use email as mailto: link around text (fewer users have an email client so clicking hyperlink emails causes confusing behavior). e.g. do not use `[email the Dean](mailto:bhunter@uidaho.edu)`, instead use `email the Dean at <bhunter@uidaho.edu>`.
 - In markdown `<username@uidaho.edu>` will be converted into a email link.
 - In HTML should be `<a href="mailto:username@uidaho.edu">username@uidaho.edu</a>`
-- Consider if it should be an email link (which will open a email client for the user) or a link to the person's profile page giving users more contact options.
 
 Proper Use of "And":
 

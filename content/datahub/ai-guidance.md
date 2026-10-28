@@ -35,9 +35,9 @@ For questions about whether a particular AI software or tool is safe to use, or 
 
 For more advanced questions about how to build an AI tool, evaluate it, and how to ensure it complies with relevant policies and procedures, contact:
 
-- [OIT's AI Apps team](mailto:aiapps@uidaho.edu) with general inquiries.
+- OIT's AI Apps team at <aiapps@uidaho.edu> with general inquiries.
 - The [AI for Research Administration](https://ai4ra.uidaho.edu/contact/) team with inquiries about research administration.
 
-For questions about the University's data-sovereign AI platform, [MindRouter]({{ '/datahub/mindrouter.html' | relative_url }}), reach out to [Research Computing and Data Services](mailto:rcds@uidaho.edu).
+For questions about the University's data-sovereign AI platform, [MindRouter]({{ '/datahub/mindrouter.html' | relative_url }}), reach out to Research Computing and Data Services at <rcds@uidaho.edu>.
 
 <p class="text-muted small">Last reviewed: {{ page.last_reviewed }}</p>

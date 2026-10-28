@@ -69,4 +69,4 @@ Applications will be judged on the following criteria:
 - Idaho Geological Survey records
 - Paul Conditt's papers, longtime U of I Librarian
 
-Interested students are strongly encouraged to discuss their proposals with the Head of Special Collections and Archives, Dulce Kersting-Lark, as they are developing their application materials. Dulce can be reached at [dulce@uidaho.edu](mailto:dulce@uidaho.edu).
+Interested students are strongly encouraged to discuss their proposals with the Head of Special Collections and Archives, Dulce Kersting-Lark, as they are developing their application materials. Dulce can be reached at <dulce@uidaho.edu>.

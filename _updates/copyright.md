@@ -7,4 +7,4 @@ Visit our completely revised [U of I Library Copyright Guide](https://www.lib.ui
 Librarians have carefully edited, updated, and reorganized the content to improve usability.
 You will find updated links and resources, including challenging emerging topics such as Generative AI.
 
-You can always email the [Library Copyright team](mailto:lib-copyright@uidaho.edu) with questions!
+You can always email the Library Copyright team at <lib-copyright@uidaho.edu> with questions!

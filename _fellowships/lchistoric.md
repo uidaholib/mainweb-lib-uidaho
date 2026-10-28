@@ -9,7 +9,7 @@ keywords: fellowships
 show_past_projects: true
 ---
 
-*Questions?* Contact Dulce Kersting-Lark, Head of Special Collections and Archives, at [dulce@uidaho.edu](mailto:dulce@uidaho.edu).
+*Questions?* Contact Dulce Kersting-Lark, Head of Special Collections and Archives, at <dulce@uidaho.edu>.
 
 ---
 

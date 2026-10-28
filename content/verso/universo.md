@@ -33,7 +33,7 @@ gen_ai: true
 **UniVERSO** is an AI-powered research discovery tool built by the University of Idaho Library and the Institute for Interdisciplinary Data Sciences (IIDS). It lets anyone — students, faculty, staff, community partners, or the public — search for U of I researchers and expertise using plain-language questions instead of exact keywords, and it draws its answers from [VERSO](/verso/) profile and publication data.
 
 
-**UniVERSO is not a second version of VERSO.** VERSO is the system of record — it holds your profile and publications, and it's where you make edits. UniVERSO is a discovery layer on top of that record: you ask it a question in ordinary language and it points you to people and their work. You don't edit anything in UniVERSO. You edit in VERSO, and it flows through on the next refresh. Although, you are welcome to [contact us](mailto:lib-verso@uidaho.edu) to make edits on either. 
+**UniVERSO is not a second version of VERSO.** VERSO is the system of record — it holds your profile and publications, and it's where you make edits. UniVERSO is a discovery layer on top of that record: you ask it a question in ordinary language and it points you to people and their work. You don't edit anything in UniVERSO. You edit in VERSO, and it flows through on the next refresh. Although, you are welcome to contact us at <lib-verso@uidaho.edu> to make edits on either. 
 
 <nav aria-label="Jump to a section" class="p-3 mb-4 border">
     <span class="fw-bold text-uppercase small me-2">Jump to a section:</span>
