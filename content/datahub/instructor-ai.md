@@ -23,7 +23,7 @@ last_reviewed: 2026-08-17
 - [AI Basics]({{ '/datahub/ai-basics.html' | relative_url }}) - U of I Library's introduction to AI
 - [Generative AI tutorials](https://libguides.library.arizona.edu/genAI/tutorials) - from the University of Arizona Libraries
 - [How Large Language Models Actually Work](https://www.youtube.com/playlist?list=PLPA3GFqdHv_rzpz99mtKO6MRe6BYyEiPH) - short, informal video reels from Casey Fiesler of CU Boulder
-- [Generative AI (Code.org)](https://www.youtube.com/playlist?list=PLzdnOPI1iJNfJLo5nNGPHo0xCd9Xw5lSs) - very basic introductory videos by code.org (now Code AI)
+- [Generative AI (Code.org)](https://www.youtube.com/playlist?list=PLzdnOPI1iJNfJLo5nNGPHo0xCd9Xw5lSs) - very basic introductory videos by Code.org (now Code AI)
 
 ## Additional AI guides
 

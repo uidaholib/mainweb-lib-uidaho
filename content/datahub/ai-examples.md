@@ -20,6 +20,7 @@ The U of I is already creating or providing access to a variety of AI tools.
 - [VandalChat](https://chat.uidaho.edu/) - A no-code AI chat assistant. Helpful for drafting and editing writing, explaining concepts, summarizing and asking questions about your documents, working with data, writing code, brainstorming, and translating.
 - [Vandalizer](https://ai4ra.uidaho.edu/vandalizer/) - Allows users to pull structured information out of grant and contract documents, store it in a knowledge base, and use it to more quickly and efficiently complete research administration work.
 - [UniVERSO](https://universo.uidaho.edu/) - A research-discovery tool built by the Library and the Institute for Interdisciplinary Data Sciences. Describe a topic in ordinary language and it returns U of I researchers whose work matches, drawn from profiles in the VERSO research repository.
+- [Jane Vandal](https://www.uidaho.edu/explore/ai-assistant-jane-vandal) - Jane Vandal is an agent informed by the U of I's websites, catalog information, and institutional resources. It is designed to answer student--and potential student--questions about the U of I and is available in the bottom right of many public-facing pages.
 
 ## Other AI integrations
 
