@@ -13,5 +13,9 @@ layout: default
 
     </main>
 
+    {% if page.gen_ai %}
+    {% include components/gen-ai-notice.html %}
+    {% endif %}
+
     {% include components/back-to-top.html %}
 </div>

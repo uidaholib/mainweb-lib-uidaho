@@ -27,13 +27,13 @@ page_resources:
           link: https://universo.uidaho.edu/feedback?category=cv_submission
         - text: UniVERSO Feedback
           link: https://universo.uidaho.edu/feedback?category=general_feedback
+gen_ai: true
 ---
 
 **UniVERSO** is an AI-powered research discovery tool built by the University of Idaho Library and the Institute for Interdisciplinary Data Sciences (IIDS). It lets anyone — students, faculty, staff, community partners, or the public — search for U of I researchers and expertise using plain-language questions instead of exact keywords, and it draws its answers from [VERSO](/verso/) profile and publication data.
 
-UniVERSO is currently in **beta**. Data is still being ingested, ranking is still being tuned, and AI-generated answers may contain mistakes — always verify anything important against a researcher's VERSO profile directly.
 
-**UniVERSO is not a second version of VERSO.** VERSO is the system of record — it holds your profile and publications, and it's where you make edits. UniVERSO is a discovery layer on top of that record: you ask it a question in ordinary language and it points you to people and their work. You don't edit anything in UniVERSO. You edit in VERSO, and it flows through on the next refresh.
+**UniVERSO is not a second version of VERSO.** VERSO is the system of record — it holds your profile and publications, and it's where you make edits. UniVERSO is a discovery layer on top of that record: you ask it a question in ordinary language and it points you to people and their work. You don't edit anything in UniVERSO. You edit in VERSO, and it flows through on the next refresh. Although, you are welcome to [contact us](mailto:lib-verso@uidaho.edu) to make edits on either. 
 
 <nav aria-label="Jump to a section" class="p-3 mb-4 border">
     <span class="fw-bold text-uppercase small me-2">Jump to a section:</span>
@@ -69,17 +69,17 @@ The two highest-impact things you can do are **add more of your publications** a
 - **Add abstracts to your publications.** A title alone gives the system very little to match on. An abstract gives it a paragraph of your own subject matter, in your own terms. Where VERSO is missing an abstract, UniVERSO tries to backfill it from open scholarly databases, but your own abstract is always better than a backfilled one.
 - **Send us your CV and we'll do it in bulk.** If adding works one at a time isn't realistic, [submit your CV](https://universo.uidaho.edu/feedback?category=cv_submission) and we'll batch-add the items to your profile — usually within one to three business days, depending on what else is in the queue. This is the fastest way to go from a sparse profile to a full one.
 - **Add keywords to your VERSO profile.** Include both broad terms (e.g., "environmental science") and specific ones (e.g., "soil carbon sequestration"). Keywords directly inform both search matching and the AI summary.
-- **Write a bio and list research interests.** These fields feed directly into your AI-generated summary. If you write a full research overview, UniVERSO will use it in place of a generated summary — see [Managing Your AI-Generated Summary](#managing-your-ai-generated-summary).
+- **Write a bio and list research interests.** These fields feed directly into your AI-generated summary. If you write a full research overview, UniVERSO will use it in place of a generated summary — see [Managing Your Summary](#managing-your-research-summary).
 - **Connect your ORCID** so your publications are reliably attributed to you rather than left unlinked.
 - **Keep your profile current.** UniVERSO's picture of your work is only as recent as your VERSO profile and UniVERSO's last data refresh.
 
 Instructions for making these changes live on the [Editing Your Profile](/verso/profile.html) page.
 
-## Managing Your AI-Generated Summary
+## Managing Your Research Summary
 
-Your AI-generated summary is separate from your VERSO profile itself — it's a derived, algorithmically written overview that UniVERSO displays and searches. It is deliberately non-comprehensive: an overview of your main areas of work plus a few highlights, sourced from your own publications and profile data, not a CV.
+Your research summary appears on a dedicated page, along with your linked outputs. All data is drawn from VERSO. 
 
-Most faculty won't need to do anything here. The options, from least to most effort:
+Most faculty won't need to do anything here, but if you'd like a change to your summary or profile, here are your options, from least to most effort:
 
 **Nothing to do**
 
@@ -101,10 +101,9 @@ Hiding a work or field directly in VERSO (see the *Privacy* section of [Editing 
 
 ## Good to Know
 
-- **UniVERSO is in beta.** Answers and summaries are AI-generated and may contain mistakes; data ingestion and ranking are still being refined.
 - **Summaries are built only from your own material.** The model writing your summary is given your VERSO-linked publications, abstracts, and profile fields.
 - **Coverage is limited to VERSO.** If a researcher or publication doesn't appear, it may not yet be represented in VERSO.
-- **Match scores are query-specific.** The relevance percentage shown for a result reflects how closely it matches *your particular question* — the same publication can score differently for a different query.
+- **Match scores are query-specific.** The relevance percentage shown for a result reflects how closely it matches *your particular question's language* — the same publication can score differently for a different query.
 - **Data isn't live.** UniVERSO refreshes from VERSO on a regular schedule rather than syncing instantly, so very recent VERSO changes may take some time to appear.
 
 ## Questions or Feedback
@@ -126,4 +125,4 @@ Use the form that matches what you need — it routes your message to the right 
 
 ------------------------------------------------------------------------
 
-*Last updated: August 2026*
+*Last updated: October 2026*

@@ -48,7 +48,7 @@ The components are controlled by these front matter keys:
     - `children:` optional list of child pages, given as list of permalink values. If the page has children listed, they will appear in the page_nav feature. If the page does not have a parent, it will appear at the top. If the page has a parent, the parent will appear at the top.
 - `page_callout:` a card feature with an optional image, a heading, description text, and a link.
 - `page_resources:` a list of resource links in a grey card. These are generally external or deep links, supplementing than the standard page nav.
-
+- `gen_ai: true` adds a "Use of generative AI" notice at the bottom of the page, before the footer (`gen-ai-notice.html`). Works in the `page` and `full-width-page` layouts.
 
 Below is an example of all options:
 
@@ -59,6 +59,7 @@ section: Example
 permalink: /demo/
 layout: page
 search: true
+gen_ai: true
 keywords: Demos; Cats
 description: "A demo page with features"
 page_nav:

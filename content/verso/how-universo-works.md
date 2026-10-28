@@ -9,6 +9,7 @@ description: "A technical walkthrough of how UniVERSO ingests VERSO data, embeds
 page_nav:
     parent: /verso/universo.html
     children:
+gen_ai: true
 ---
 
 UniVERSO does not maintain its own research records — it is a search and summarization layer built entirely on top of [VERSO](/verso/) data. At a high level, a query moves through four stages.
@@ -40,10 +41,10 @@ The ranked researchers and publications are handed to a large language model (LL
 
 ## AI-generated researcher summaries
 
-In addition to answering live queries, UniVERSO periodically generates a standing summary for each eligible researcher, built exclusively from that researcher's own VERSO-linked publications, abstracts, and profile fields (keywords, title, department) — the LLM is not drawing on outside knowledge about a researcher's reputation or work. Each summary is produced in stages: main research themes, methods/approaches, broader impacts, primary areas of inquiry, a mentorship summary (for researchers who have advised theses or dissertations), and a final synthesis combining all of the above. These per-researcher summaries are what UniVERSO searches when it looks for a topical match to a researcher's overall body of work, separate from matching individual publications.
+In addition to answering live queries, UniVERSO periodically generates a standing summary for each eligible researcher, built exclusively from that researcher's own VERSO-linked publications, abstracts, and profile fields (keywords, title, department) — the LLM is not drawing on outside knowledge about a researcher's reputation or work. These per-researcher summaries are what UniVERSO searches when it looks for a topical match to a researcher's overall body of work, separate from matching individual publications.
 
 Because these summaries are generated automatically from limited profile data, they may not capture every nuance of someone's research — see [Managing Your AI-Generated Summary](/verso/universo.html#managing-your-ai-generated-summary) for how to review, revise, or opt out of yours.
 
 ------------------------------------------------------------------------
 
-*Last updated: August 2026*
+*Last updated: October 2026*
