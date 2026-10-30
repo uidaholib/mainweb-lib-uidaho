@@ -28,6 +28,7 @@ page_resources:
         - text: UniVERSO Feedback
           link: https://universo.uidaho.edu/feedback?category=general_feedback
 gen_ai: true
+last_reviewed: October 2026
 ---
 
 **UniVERSO** is an AI-powered research discovery tool built by the University of Idaho Library and the Institute for Interdisciplinary Data Sciences (IIDS). It lets anyone — students, faculty, staff, community partners, or the public — search for U of I researchers and expertise using plain-language questions instead of exact keywords, and it draws its answers from [VERSO](/verso/) profile and publication data.
@@ -122,7 +123,3 @@ Use the form that matches what you need — it routes your message to the right 
 - [Request a summary change](https://universo.uidaho.edu/feedback?category=profile_summary_change) — revise, replace, or add standing notes to your AI summary
 - [Request an opt-out](https://universo.uidaho.edu/feedback?category=profile_opt_out) — remove your AI summary, or remove yourself from UniVERSO
 - [Submit your CV](https://universo.uidaho.edu/feedback?category=cv_submission) — we'll batch-add your works to your VERSO profile
-
-------------------------------------------------------------------------
-
-*Last updated: October 2026*

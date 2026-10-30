@@ -9,6 +9,7 @@ description: "Checklist and quick format reference for preparing and submitting 
 page_nav:
     parent: /verso/
     children:
+last_reviewed: February 2026
 ---
 
 ## VERSO Deposit Format Quick Reference
@@ -128,9 +129,5 @@ If you're uncertain about format choices for your deposit:
 - [FAIR Data Principles](https://www.lib.uidaho.edu/services/data/data-management/guide/fair/)
 - [Data Documentation & Metadata](https://www.lib.uidaho.edu/services/data/data-management/guide/documenting/)
 - [Library of Congress Recommended Formats Statement](https://www.loc.gov/preservation/digital/formats/fdd/descriptions.shtml)
-
-------------------------------------------------------------------------
-
-*Last updated: February 2026*
 
 Questions? Contact <lib-verso@uidaho.edu>
