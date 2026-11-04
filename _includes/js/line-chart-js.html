@@ -1,3 +1,18 @@
+<style>
+/* line chart styles, kept here so the charts work wherever this include is loaded */
+.line-chart-plot { position: relative; height: 220px; }
+.line-chart-plot.line-chart-plot-lg { height: 320px; }
+.line-chart-plot svg { display: block; }
+.lc-grid { stroke: #e2e2e2; stroke-width: 1; }
+.lc-baseline { stroke: #919191; stroke-width: 1; }
+.lc-tick, .lc-end { font-size: .8125rem; font-variant-numeric: tabular-nums; fill: rgba(25, 25, 25, .75); }
+.lc-end { fill: #191919; }
+.lc-line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.lc-dot { stroke: #fff; stroke-width: 2; }
+.lc-crosshair { stroke: #191919; stroke-width: 1; }
+.line-chart-key { display: inline-block; width: 1rem; height: 3px; margin-right: .375rem; vertical-align: middle; }
+.line-chart-tooltip { position: absolute; z-index: 1; padding: .375rem .5rem; font-size: .875rem; font-variant-numeric: tabular-nums; white-space: nowrap; pointer-events: none; background-color: #fff; border: 1px solid #191919; }
+</style>
 <script>
 /* Draws the line charts from "feature/line-chart.html" as SVG sized to their container, with a hover tooltip. Redraws when the container width changes. */
 (function () {
