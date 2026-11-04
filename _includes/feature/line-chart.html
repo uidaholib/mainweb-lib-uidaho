@@ -1,0 +1,65 @@
+{% comment %}
+
+    Simple line chart, drawn as SVG by "js/line-chart-js.html" with a hover tooltip. The data is always available in a "Show data as a table" toggle below the chart, which is also what shows if JavaScript is off.
+    Add `custom-foot: js/line-chart-js.html` to the page front matter to use.
+
+    e.g. --> {% include feature/line-chart.html caption="Cost per use by fiscal year" labels="FY23,FY24,FY25" series="Cost per use|clearwater|14.70,23.31,44.08" %}
+
+    Options:
+    - "caption" = chart title, shown above the chart.
+    - "note" = optional, a short line of explanation shown under the caption.
+    - "labels" = x-axis labels, comma separated, e.g. "FY23,FY24,FY25".
+    - "series" = one or more lines, separated by semicolons. Each is "Name|color|values|short name", where color is a brand color name (e.g. clearwater, lupine, leather), values are comma separated numbers matching the labels, and short name is optional, used to label the end of the line on wide screens. A legend is added when there is more than one line.
+    - "format" = "dollars" (default, $14.70) or "dollars-whole" ($1,450,000, with axis ticks like $1.5M).
+    - "label_heading" = optional, the table heading for the labels column (default "Fiscal year").
+    - "size" = optional, "lg" for a taller chart.
+
+{%- endcomment -%}
+{%- assign lc_format = include.format | default: "dollars" -%}
+{%- assign lc_labels = include.labels | split: "," -%}
+{%- assign lc_series = include.series | split: ";" -%}
+{%- capture lc_json -%}[{%- for s in lc_series -%}{%- assign parts = s | split: "|" -%}{"name":{{ parts[0] | strip | jsonify }},"color":{{ parts[1] | strip | jsonify }},"values":[{{ parts[2] | strip }}],"short":{{ parts[3] | default: parts[0] | strip | jsonify }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]{%- endcapture -%}
+<figure class="line-chart mb-4">
+    <figcaption class="mb-2"><span class="fw-bold">{{ include.caption }}</span>{% if include.note %}<span class="d-block small">{{ include.note }}</span>{% endif %}</figcaption>
+    {%- if lc_series.size > 1 %}
+    <ul class="list-inline small mb-1">
+        {%- for s in lc_series -%}{%- assign parts = s | split: "|" %}
+        <li class="list-inline-item me-3"><span class="line-chart-key bg-{{ parts[1] | strip }}" aria-hidden="true"></span>{{ parts[0] | strip }}</li>
+        {%- endfor %}
+    </ul>
+    {%- endif %}
+    <div class="line-chart-plot{% if include.size == 'lg' %} line-chart-plot-lg{% endif %}" data-labels="{{ lc_labels | jsonify | escape }}" data-series="{{ lc_json | escape }}" data-format="{{ lc_format }}" data-label="{{ include.caption | escape }}. The same data is available as a table below the chart."></div>
+    <details class="small mt-2">
+        <summary>Show data as a table</summary>
+        <div class="table-responsive">
+            <table class="table table-sm mt-2 mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">{{ include.label_heading | default: "Fiscal year" }}</th>
+                        {%- for s in lc_series %}{%- assign parts = s | split: "|" %}
+                        <th scope="col" class="text-end">{{ parts[0] | strip }}</th>
+                        {%- endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {%- for label in lc_labels %}
+                    {%- assign i = forloop.index0 %}
+                    <tr>
+                        <th scope="row">{{ label | strip }}</th>
+                        {%- for s in lc_series %}
+                        {%- assign parts = s | split: "|" -%}
+                        {%- assign v = parts[2] | split: "," | slice: i | first | strip -%}
+                        {%- if lc_format == "dollars-whole" -%}
+                        {%- assign digits = v | split: "." | first | split: "" | reverse -%}
+                        {%- capture v -%}{%- for d in digits -%}{%- assign pos = forloop.index0 | modulo: 3 -%}{%- if pos == 0 and forloop.index0 > 0 -%},{%- endif -%}{{ d }}{%- endfor -%}{%- endcapture -%}
+                        {%- assign v = v | split: "" | reverse | join: "" -%}
+                        {%- endif %}
+                        <td class="text-end">${{ v }}</td>
+                        {%- endfor %}
+                    </tr>
+                    {%- endfor %}
+                </tbody>
+            </table>
+        </div>
+    </details>
+</figure>

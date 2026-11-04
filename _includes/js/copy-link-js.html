@@ -1,0 +1,23 @@
+<script>
+/* Copy-link buttons next to headings: <a class="copy-link" href="#heading-id">. Without JavaScript the link still jumps to the heading, so the address bar holds the direct link. */
+document.querySelectorAll("a.copy-link").forEach(link => {
+    const status = link.parentElement.querySelector(".copy-link-status");
+    let timer;
+    link.addEventListener("click", e => {
+        if (!navigator.clipboard) return;
+        e.preventDefault();
+        const url = location.origin + location.pathname + link.hash;
+        history.replaceState(null, "", link.hash);
+        const show = (text, ms) => {
+            if (!status) return;
+            status.textContent = text;
+            clearTimeout(timer);
+            timer = setTimeout(() => { status.textContent = ""; }, ms);
+        };
+        navigator.clipboard.writeText(url).then(
+            () => show("Link copied", 2500),
+            () => show("Couldn't copy. Copy the link from the address bar.", 6000)
+        );
+    });
+});
+</script>
