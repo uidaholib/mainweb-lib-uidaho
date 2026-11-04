@@ -33,7 +33,7 @@
         const W = plot.clientWidth, H = plot.clientHeight;
         if (!W) return;
 
-        const max = Math.max(...series.flatMap(s => s.values));
+        const max = Math.max(...series.flatMap(s => s.values)) || 1; // all-zero data still gets an axis
         const step = niceStep(max, 4);
         const top = Math.ceil(max / step) * step;
         const ticks = [];
@@ -82,7 +82,15 @@
         plot.appendChild(tip);
 
         const hit = add(svg, "rect", { x: m.left - 12, y: 0, width: plotW + 24, height: H, fill: "transparent" });
+        // Escape hides the tooltip until the pointer leaves the chart (WCAG 1.4.13)
+        let dismissed = false;
+        const hide = () => {
+            tip.hidden = true;
+            crosshair.setAttribute("visibility", "hidden");
+        };
+        plot.lcEscape = e => { if (e.key === "Escape" && !tip.hidden) { dismissed = true; hide(); } };
         hit.addEventListener("pointermove", e => {
+            if (dismissed) return;
             const px = e.clientX - svg.getBoundingClientRect().left;
             const i = Math.max(0, Math.min(labels.length - 1, Math.round((px - m.left) / (plotW / Math.max(1, labels.length - 1)))));
             crosshair.setAttribute("x1", x(i));
@@ -110,10 +118,14 @@
             tip.style.top = m.top + "px";
         });
         hit.addEventListener("pointerleave", () => {
-            tip.hidden = true;
-            crosshair.setAttribute("visibility", "hidden");
+            dismissed = false;
+            hide();
         });
     }
+
+    document.addEventListener("keydown", e => {
+        document.querySelectorAll(".line-chart-plot").forEach(plot => plot.lcEscape && plot.lcEscape(e));
+    });
 
     document.querySelectorAll(".line-chart-plot").forEach(plot => {
         let lastWidth = 0;

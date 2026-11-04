@@ -28,7 +28,7 @@
         {%- endfor %}
     </ul>
     {%- endif %}
-    <div class="line-chart-plot{% if include.size == 'lg' %} line-chart-plot-lg{% endif %}" data-labels='{{ lc_labels | jsonify }}' data-series='{{ lc_json | replace: "'", "&#39;" }}' data-format="{{ lc_format }}" data-label="{{ include.caption }}. The same data is available as a table below the chart."></div>
+    <div class="line-chart-plot{% if include.size == 'lg' %} line-chart-plot-lg{% endif %}" data-labels="{{ lc_labels | jsonify | escape }}" data-series="{{ lc_json | escape }}" data-format="{{ lc_format }}" data-label="{{ include.caption | escape }}. The same data is available as a table below the chart."></div>
     <details class="small mt-2">
         <summary>Show data as a table</summary>
         <div class="table-responsive">

@@ -8,12 +8,16 @@ document.querySelectorAll("a.copy-link").forEach(link => {
         e.preventDefault();
         const url = location.origin + location.pathname + link.hash;
         history.replaceState(null, "", link.hash);
-        navigator.clipboard.writeText(url).then(() => {
+        const show = (text, ms) => {
             if (!status) return;
-            status.textContent = "Link copied";
+            status.textContent = text;
             clearTimeout(timer);
-            timer = setTimeout(() => { status.textContent = ""; }, 2500);
-        });
+            timer = setTimeout(() => { status.textContent = ""; }, ms);
+        };
+        navigator.clipboard.writeText(url).then(
+            () => show("Link copied", 2500),
+            () => show("Couldn't copy. Copy the link from the address bar.", 6000)
+        );
     });
 });
 </script>
