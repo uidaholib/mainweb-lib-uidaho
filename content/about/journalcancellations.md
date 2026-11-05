@@ -1,5 +1,5 @@
 ---
-title: Journal Cancellations
+title: Journal Cancellations — FY27
 section: About
 permalink: /about/journalcancellations.html
 layout: page
@@ -34,8 +34,10 @@ gen_ai: true
 {%- endcomment -%}
 
 The Library's Collections Team, working with our subject liaison librarians, reviews every journal package and database before it comes up for renewal.
-One to two months ahead of each deadline, the team examines standardized usage reports from the publisher, calculates the resource's cost per use, compares it with similar resources we subscribe to, and gathers feedback from liaisons and the departments they serve.
+Several months ahead of each deadline, the team compiles standardized usage reports from the publisher, calculates the resource's cost per use, compares it with similar resources we subscribe to, examines the resource's relationship to university strategic priorities, and gathers feedback from liaisons and the departments they serve.
 The team then makes a recommendation to the Dean before every renewal deadline.
+
+## Budget
 
 {% assign budget = site.data.about_collections_budget -%}
 {%- assign base_index = budget.first.cpi_index | plus: 0.0 -%}
@@ -54,7 +56,7 @@ The team then makes a recommendation to the Dean before every renewal deadline.
 {%- endfor -%}
 {%- assign chart_labels = budget | map: "fiscal_year" | join: "," -%}
 {%- assign chart_caption = "Subscriptions spending, " | append: budget.first.fiscal_year | append: "–" | append: budget.last.fiscal_year -%}
-{%- capture chart_note -%}Adjusted lines show what each year's spending could buy in {{ budget.first.fiscal_year }} dollars. The FY20 drop reflects pandemic-era budget cuts.{%- endcapture -%}
+{%- capture chart_note -%}Adjusted lines show what each year's spending could buy in {{ budget.first.fiscal_year }} dollars. The FY20 drop reflects university-wide budget cuts.{%- endcapture -%}
 {%- capture budget_series -%}
 Actual spending|clearwater|{{ actual | join: "," }}|Actual;Adjusted for inflation (CPI-U)|lupine|{{ cpi | join: "," }}|Inflation-adjusted;Adjusted for journal price increases|leather|{{ journal | join: "," }}|Journal-adjusted
 {%- endcapture %}
@@ -62,12 +64,11 @@ Actual spending|clearwater|{{ actual | join: "," }}|Actual;Adjusted for inflatio
 <p class="small text-muted">Inflation: Consumer Price Index (CPI-U), averaged over each July–June fiscal year. Journal price increases: average yearly increases for college and university libraries.</p>
 
 Our goal is to make the University's investment in the Library go as far as it can.
-When a resource is underused, we first try to raise awareness of it through liaisons and the Library newsletter.
-Meanwhile, journal subscription prices rise every year, typically by 4 to 6 percent, so a budget that stays flat buys less each year.
-And budgets are tight across campus: between a $30,000 reduction to our budget and $110,000 in subscription price increases, the Library must cut $140,000 from its subscriptions in FY27.
-The resources below are the ones that, by these measures, deliver the least use for their cost.
+When a resource is underused, we first try to raise awareness of it through our subject liaisons and Library communication channels.
+However, with industry-standard library resource increases of between four and six percent per year, our spending power decreases every year, and a flat budget functions as a budget cut.
+Thus, we are in a position where we must cut resources every year, and sometimes even frequently-used resources get cut.
 
-<p class="bg-light p-3 mb-4"><strong>Cost per use</strong> is a resource's annual price divided by the number of times its articles were downloaded or viewed in full. A lower cost per use means more value for each dollar spent.</p>
+The resources below are the ones that, by the measures detailed above, deliver the least value for their cost.
 
 {% for year in years %}
 {%- assign year_items = cancellations | where: "fiscal_year", year -%}
@@ -115,10 +116,11 @@ The resources below are the ones that, by these measures, deliver the least use 
 {% endfor %}
 {% endfor %}
 
+<p class="bg-light p-3 mb-4"><strong>Cost per use</strong> is a resource's annual price divided by the number of times its articles were downloaded or viewed in full. A lower cost per use means more value for each dollar spent.</p>
+
 <h2 id="still-need-access" class="mt-5">Still need access?</h2>
 
-Any journals that are cancelled will remain available via [Interlibrary Loan]({{ '/services/ill/' | relative_url }}).
-If we have cancelled something that you would like us to keep or if you have suggestions for new titles, suggestions for journals will be rated highly in future discussions as funding becomes available.
+If one of these resources supports coursework or research you depend on, you can often reach the same content through **[Interlibrary Loan]({{ '/services/ill/' | relative_url }})** or a subscription at another institution.
 
 Please fill out the form below with any requests or suggestions that you have.
 
