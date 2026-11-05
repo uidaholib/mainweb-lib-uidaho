@@ -120,7 +120,7 @@ The resources below are the ones that, by the measures detailed above, deliver t
 
 <h2 id="still-need-access" class="mt-5">Still need access?</h2>
 
-If one of these resources supports coursework or research you depend on, you can often reach the same content through **[Interlibrary Loan]({{ '/services/ill/' | relative_url }})** or a subscription at another institution.
+If one of these resources supports coursework or research you depend on, you can often reach the same content through **[Interlibrary Loan]({{ '/services/ill/' | relative_url }})**.
 
 Please fill out the form below with any requests or suggestions that you have.
 
