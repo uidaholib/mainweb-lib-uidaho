@@ -55,7 +55,7 @@ Please contact us with questions or when you are ready to schedule a consultatio
 Focus on materials that document your contributions to the university as an institution and your role in shaping its policies, programs, and community rather than routine activities. Consider what would help future researchers understand how the university functioned, made decisions, and evolved during your time here. When in doubt about correspondence, prioritize letters that involve substantive discussions about institutional matters, policy development, or significant university issues. For research materials related to the University of Idaho's strengths or to Idaho itself, include enough documentation that someone could understand your methods and approach. Materials that document the process, context, and unique observational record of research are valuable, while materials that duplicate the published scholarly record are not. Similarly, materials offering unique documentation of Idaho, like original observations, data, perspectives, or records not available elsewhere, are most valuable for our role as a state historical repository.
 
 {:#institution}
-##### Instructional History Collecting Guidance: 
+##### Institutional History Collecting Guidance: 
 
 <table class="table table-bordered">
   <thead>
@@ -166,6 +166,85 @@ Focus on materials that document your contributions to the university as an inst
 
 {:#internal}
 ## Internal Transfers
+
+### Guidance for University Records Transfers to Library Special Collections and Archives
+
+A primary function of the University Library's Special Collections and Archives is curation and preservation of a permanent record of institutional history and accomplishments. The Library's archival department has, for decades, collected the written and photographic evidence of how the university operates, what students and staff experience during their time here, and how the work of the university has extended beyond the bounds of campus. The archival record is not meant to be exhaustive, but rather a representative sample of materials produced by and about University of Idaho. Storage limitations and staff capacity require that all possible additions to the University Archive be carefully evaluated for enduring value and institutional significance.  
+
+[FSH 1470](https://www.uidaho.edu/policies/fsh/1/1470) outlines the general purpose of the University Archive. "It is the university's policy that all records of significant value for understanding the university's history and the history of its subunits are permanently retained, appropriately stored, and made accessible. Such records may be on paper or in some sort of digital format. They include, but are no means limited to: all official publications of the university or unit (these documents are also subject to the State of Idaho's state depository law), pictures documenting the people or activities of the university or unit, records documenting significant changes in people or activities of the university or unit. These documents provide primary source material relating to the administrative, academic, legal, fiscal, social, and cultural interaction of individuals, departments, and programs of the university since its inception." It further outlines that the University Library's Special Collections and Archives is the "unit designated as the custodian of archival material," except when the originating unit maintains its own archive.   
+
+[APM 65.02](https://www.uidaho.edu/policies/apm/65/02) further defines an archival record as an "Inactive Record that has permanent or historic value and is not required to be retained in the office in which it was originally generated... Each Office of Record shall transfer inactive records of permanent or historical value to the University Library's Special Collections and Archives."  
+
+Archivists in the University Library acknowledge that what constitutes "historical value" is subjective and difficult to define. To help campus units and individual faculty or staff determine the relative need to preserve materials, we provide guidelines on the following rubric.  
+
+Personnel records, particularly those of a sensitive nature, should not be transferred to the University Archive. It is the responsibility of originating units to adhere to all required records retention and destruction schedules.  
+
+{:#institution}
+##### Institutional History Collecting Guidance: 
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="background-color: #F1B300;">More Valuable</th>
+      <th style="background-color: #FBE8A6;">Less Valuable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Materials documenting institutional service, governance, and decision-making</td>
+      <td>Routine administrative paperwork like meeting agendas without your annotations</td>
+    </tr>
+    <tr>
+      <td>Correspondence about university policies or procedures</td>
+      <td>Duplicates of widely available publications</td>
+    </tr>
+    <tr>
+      <td>Administrative records for programs or departments, particularly from leadership</td>
+      <td>Routine office files like supply catalogs, mass mailings or promotional materials</td>
+    </tr>
+    <tr>
+      <td>Materials showing institutional change or disputes</td>
+      <td>Personal materials like financial records or correspondence unrelated to work</td>
+    </tr>
+  </tbody>
+</table>
+
+{:#research}
+##### Discipline-Specific Scholarship Collecting Guidance:
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="background-color: #808080; color: white;">More Valuable</th>
+      <th style="background-color: #D9D9D9;">Less Valuable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Original scholarly, literary, or artistic work of national or international significance</td>
+      <td>Published books and articles already available through the library</td>
+    </tr>
+    <tr>
+      <td>Teaching materials that represent innovative approaches, curriculum development, or course materials that document pedagogical evolution over time</td>
+      <td>Routine course materials such as standard syllabi, routine assignments and exams, and student work</td>
+    </tr>
+    <tr>
+      <td>Correspondence between peers about news or issues within the discipline</td>
+      <td>Correspondence about routine manuscript preparation</td>
+    </tr>
+    <tr>
+      <td>Documentation of particular research methods and approach</td>
+      <td>Subject files of copied sources</td>
+    </tr>
+    <tr>
+      <td>Field notebooks and research journals, or a sampling of photographs related to field research</td>
+    </tr>
+    <tr>
+      <td>Original data, measurements, and observations</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ### Transfer of Records to Special Collections and Archives from University of Idaho partners
 
