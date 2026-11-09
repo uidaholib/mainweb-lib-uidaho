@@ -1,7 +1,7 @@
 ---
 title: Apply now for Student Fellowships!
 date: 2026-10-07
-#archive: true
+archive: true
 ---
 
 Applications are currently open for three funded library fellowships:
