@@ -17,6 +17,9 @@ To build consistency across the pages, the library website has a variety of reus
 They are based on the main U of I design, our needs, and [Bootstrap features](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
 Brand colors are added to a [customized version of Bootstrap](https://github.com/thecdil/bootstrap-sass-template/tree/uidaho).
 
+It is important to use the existing BS theme classes (rather than inline styles or custom css) as much as possible for consistency and maintainability.
+Using the existing classes allows us to update all styles in one place so all enhancements will cascade into the content without needing to fix customized variations across the site.
+
 ## Components
 
 ### Button Colors
