@@ -13,6 +13,7 @@ page_nav:
 
 <div class="text-center mb-2 pt-3">
     <a href="#donations" class="btn btn-secondary btn-sm my-2 mx-1">Donations</a>
+    <a href="#faculty" class="btn btn-secondary btn-sm my-2 mx-1">Faculty Papers</a>
     <a href="#internal" class="btn btn-secondary btn-sm my-2 mx-1">Internal Transfers</a>
     <a href="#monetary" class="btn btn-secondary btn-sm my-2 mx-1">Monetary Support</a>
 </div>
@@ -26,6 +27,9 @@ Any potential donation of historical materials should be discussed with the depa
 
 Please call (208) 885-0845 or email <libspec@uidaho.edu> to discuss any potential donations of archives, personal papers, photographs, and/or select publications to Special Collections in the University of Idaho Library.
 
+-------------
+
+{:#faculty}
 ### Faculty Papers Donation Guidelines
 
 - [Faculty Papers Donation Guidelines PDF]({{ site.lib-media }}/spec/Faculty_Paper_Guidelines.pdf).
@@ -36,18 +40,14 @@ We are also interested in discipline-specific scholarly materials when they alig
 
 The guidelines below will help you identify which materials from your career best align with the collecting interests of the university archive. We ask all prospective donors to schedule a consultation with an archivist in advance of transferring any materials. This helps both parties identify the most appropriate materials for acquisition by the archives. 
 
-Please contact us with questions or when you are ready to schedule a consultation with a Library archivist. 
+Please contact us with questions or when you are ready to schedule a consultation with a Library archivist at <libspec@uidaho.edu> or 208.885.0845.
 
-**University of Idaho Library, Special Collections and Archives**
-<libspec@uidaho.edu>
-**208.885.0845**
-
-#### Top Priorities
+#### Collecting Priorities
 
 <div class="text-center mb-2">
-    <a href="#institution" class="btn my-2 mx-1" style="background-color: #F1B300; border-color: #F1B300; color: black;">University of Idaho Institutional History</a>
-    <a href="#research" class="btn my-2 mx-1" style="background-color: #808080; border-color: #808080; color: white;">Scholarship Related to Major U of I Research Strengths</a>
-    <a href="#idaho" class="btn my-2 mx-1" style="background-color: #008080; border-color: #008080; color: white;">Scholarship Related to History of Idaho</a>
+    <a href="#institution" class="btn btn-sm btn-pride-gold my-2 mx-1">University of Idaho Institutional History</a>
+    <a href="#research" class="btn btn-sm btn-bark my-2 mx-1">Scholarship Related to Major U of I Research Strengths</a>
+    <a href="#idaho" class="btn btn-sm btn-clearwater my-2 mx-1">Scholarship Related to History of Idaho</a>
 </div>
 
 ##### General Guidance: 
@@ -60,8 +60,8 @@ Focus on materials that document your contributions to the university as an inst
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th style="background-color: #F1B300;">More Valuable</th>
-      <th style="background-color: #FBE8A6;">Less Valuable</th>
+      <th scope="col" class="text-bg-pride-gold">More Valuable</th>
+      <th scope="col" class="text-bg-pride-gold bg-opacity-25">Less Valuable</th>
     </tr>
   </thead>
   <tbody>
@@ -90,8 +90,8 @@ Focus on materials that document your contributions to the university as an inst
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th style="background-color: #808080; color: white;">More Valuable</th>
-      <th style="background-color: #D9D9D9;">Less Valuable</th>
+      <th scope="col" class="text-bg-bark">More Valuable</th>
+      <th scope="col" class="bg-bark bg-opacity-25 text-dark">Less Valuable</th>
     </tr>
   </thead>
   <tbody>
@@ -113,9 +113,11 @@ Focus on materials that document your contributions to the university as an inst
     </tr>
     <tr>
       <td>Field notebooks and research journals, or a sampling of photographs related to field research</td>
+      <td></td>
     </tr>
     <tr>
       <td>Original data, measurements, and observations</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
@@ -126,8 +128,8 @@ Focus on materials that document your contributions to the university as an inst
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th style="background-color: #008080; color: white;">More Valuable</th>
-      <th style="background-color: #B3D9D9;">Less Valuable</th>
+      <th scope="col" class="text-bg-clearwater">More Valuable</th>
+      <th scope="col" class="text-bg-clearwater bg-opacity-25 text-dark">Less Valuable</th>
     </tr>
   </thead>
   <tbody>
@@ -149,15 +151,19 @@ Focus on materials that document your contributions to the university as an inst
     </tr>
     <tr>
       <td>Correspondence with Idaho residents, organizations, or institutions related to the research</td>
+      <td></td>
     </tr>
     <tr>
       <td>Oral history recordings or transcripts with Idaho subjects</td>
+      <td></td>
     </tr>
     <tr>
       <td>Materials documenting Idaho-specific events, policies, or controversies not widely available to the public</td>
+      <td></td>
     </tr>
     <tr>
       <td>Maps, charts, or visual materials depicting Idaho geography, demographics, or other data not widely available to the public</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
@@ -165,9 +171,9 @@ Focus on materials that document your contributions to the university as an inst
 --------
 
 {:#internal}
-## Internal Transfers
+### Internal Transfers
 
-### Guidance for University Records Transfers to Library Special Collections and Archives
+#### Guidance for University Records Transfers to Special Collections and Archives
 
 A primary function of the University Library's Special Collections and Archives is curation and preservation of a permanent record of institutional history and accomplishments. The Library's archival department has, for decades, collected the written and photographic evidence of how the university operates, what students and staff experience during their time here, and how the work of the university has extended beyond the bounds of campus. The archival record is not meant to be exhaustive, but rather a representative sample of materials produced by and about University of Idaho. Storage limitations and staff capacity require that all possible additions to the University Archive be carefully evaluated for enduring value and institutional significance.  
 
@@ -179,14 +185,13 @@ Archivists in the University Library acknowledge that what constitutes "historic
 
 Personnel records, particularly those of a sensitive nature, should not be transferred to the University Archive. It is the responsibility of originating units to adhere to all required records retention and destruction schedules.  
 
-{:#institution}
 ##### Institutional History Collecting Guidance: 
 
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th style="background-color: #F1B300;">More Valuable</th>
-      <th style="background-color: #FBE8A6;">Less Valuable</th>
+      <th scope="col" class="text-bg-pride-gold">More Valuable</th>
+      <th scope="col" class="text-bg-pride-gold bg-opacity-25">Less Valuable</th>
     </tr>
   </thead>
   <tbody>
@@ -215,8 +220,8 @@ Personnel records, particularly those of a sensitive nature, should not be trans
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th style="background-color: #808080; color: white;">More Valuable</th>
-      <th style="background-color: #D9D9D9;">Less Valuable</th>
+      <th scope="col" class="text-bg-bark">More Valuable</th>
+      <th scope="col" class="bg-bark bg-opacity-25 text-dark">Less Valuable</th>
     </tr>
   </thead>
   <tbody>
@@ -238,15 +243,17 @@ Personnel records, particularly those of a sensitive nature, should not be trans
     </tr>
     <tr>
       <td>Field notebooks and research journals, or a sampling of photographs related to field research</td>
+      <td></td>
     </tr>
     <tr>
       <td>Original data, measurements, and observations</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
 
 
-### Transfer of Records to Special Collections and Archives from University of Idaho partners
+#### Transfer of Records to Special Collections and Archives from University of Idaho partners
 
 The following requirements shall be met before any transfer of University of Idaho records to the Library Special Collections and Archives department:
 
