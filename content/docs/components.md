@@ -8,17 +8,9 @@ keywords: website components; documentation; design patterns
 description: "Documentation for reusable website components used across the University of Idaho Library site."
 page_nav:
     parent: /docs/
-page_callout: 
-    title: Digital Collections
-    text: Digital Collections is a continually growing, searchable database that provides access to rare and unique collections to enhance and support research and education at the University of Idaho.
-    link: https://www.lib.uidaho.edu/digital/
-    link-text: Visit
-    image: https://www.lib.uidaho.edu/media/collections/fatmen.jpg
-    image-alt: Two men race down main street in historic photograph
-    color: palouse
 noindex: true
 ---
-
+<style> code { color:#000; }</style>
 {% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black;brand-gray" | split: ";" %}
 
 To build consistency across the pages, the library website has a variety of reusable template components that add features to the content.
@@ -30,31 +22,42 @@ Brand colors are added to a [customized version of Bootstrap](https://github.com
 ### Button Colors
 
 {% for c in colors %}
-[{{ c }}](https://www.lib.uidaho.edu/){:.btn .btn-{{ c }}}
+[{{ c }}](https://www.lib.uidaho.edu/){:.btn .btn-{{ c }} .me-3} `btn-{{ c }}`
 
 {% endfor %}
 
 ### Outline Buttons
 
-{% for c in colors %}
-[{{ c }}](https://www.lib.uidaho.edu/){:.btn .btn-outline-{{ c }}}
+{% for c in colors %}{% unless c == "brand-gray" %}
+[{{ c }}](https://www.lib.uidaho.edu/){:.btn .btn-outline-{{ c }} .me-3} `btn-outline-{{ c }}`
 
+{% endunless %}{% endfor %}
+
+### Background
+
+Background `bg-` classes can be used for any of the theme colors.
+To use text with automatically selected contrasting color, use the `text-bg-` version of the class.
+
+{% for c in colors %}
+<div class="text-bg-{{ c }} p-5 mt-3">{{ c }}</div>
+`bg-{{ c }}` or `text-bg-{{ c }}`
+{% endfor %}
+
+### Border
+
+Borders can be added to div using the class `border` plus a `border-` color class. 
+
+{% for c in colors %}
+<div class="p-4 border border-5 border-{{ c }} mt-3">{{ c }} at border-5</div>
+`border-{{ c }}`
 {% endfor %}
 
 ### Text
+
+Most of these text classes are not accessible! Use rarely with caution.
 
 {% for c in colors %}
 {{ c }} text.
 {:.text-{{ c }}}
 
 {% endfor %}
-
-### Background
-
-{% for c in colors %}
-<div class="bg-{{ c }} p-4 m-3"><span class="text-white">{{ c }}</span></div>{% endfor %}
-
-### Border
-
-{% for c in colors %}
-<div class="p-4 border border-5 border-{{ c }} m-3">{{ c }} at border-5</div>{% endfor %}

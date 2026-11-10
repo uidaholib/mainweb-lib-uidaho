@@ -25,17 +25,19 @@ noindex: true
 
 {% assign colors = "pride-gold;clearwater;raspberry;garnet;lupine;huckleberry;palouse;leather;bark;brand-black" | split: ";" %}
 
-The Library website follows some basic design guidelines and constraints in order to mirror the main University website and accessibility best practices. 
+The Library website follows some basic design guidelines and constraints in order to mirror the main University website and accessibility best practices.
+Below is an outline of our "style guide" with tips about how to keep things consistent and accessible for our users.
 
-## Brand Colors
+## Library Web Style Guide
 
-U of I's official brand includes these theme colors: {{ colors | join: ", " }}.
-We generate a custom Bootstrap theme using those colors, making the color variations available for all standard Bootstrap components.
+### Brand Colors
+
+We generate a custom Bootstrap theme using U of I's official brand colors. 
+This makes the theme colors available for standard Bootstrap components (see [Website Components](/docs/components.html) for more info).
+Following the main U of I website, the Library uses primarily pride-gold and clearwater.
 
 {% for c in colors %}
-[{{ c }}](https://www.lib.uidaho.edu/){:.btn .btn-lg .btn-{{ c }} .m-2}{% endfor %}
-
-## Style Guide
+[{{ c }}](https://www.lib.uidaho.edu/){:.btn .btn-{{ c }} .m-2}{% endfor %}
 
 ### Accessible Writing
 
@@ -47,8 +49,9 @@ Text and headings:
 
 Links:
 
+- Users scan content based on links in the text, so hyperlinks should be used carefully to help navigation and understanding.
 - Always put [links over descriptive meaningful text](https://www.nngroup.com/articles/writing-links/). Never use ["click here" style links](https://www.w3.org/QA/Tips/noClickHere)!
-- Don't use bare URLs in text.
+- Don't use bare URLs in text. These must be read out loud to on screen readers and are distracting from reading. Use descriptive text instead, which provides more meaningful context for users.
 - Don't use short links. Third party link-shortening services add unnecessary privacy risks and preservation issues.
 
 Image alt text: 
@@ -57,6 +60,10 @@ Image alt text:
 - Don't use images that have text or tables in them, the text should be in the HTML. 
 
 ### Consistency 
+
+U of I:
+
+- Always use "U of I" (not "UI" or "UIdaho"). This is a requirement of the brand style guide standard.
 
 Phone Numbers:
 
@@ -81,8 +88,3 @@ Email:
 Proper Use of "And":
 
 - Avoid using "&", always use “and” instead inside of content.
-
-### U of I 
-
-- Always use "U of I" (not "UI" or "UIdaho")
-
