@@ -22,15 +22,13 @@ We have several policies guiding the access and use of our materials.
 
 ----------------------
 
-## Reproduction Requests 
+## Research and Reproduction Requests 
 
-Patrons may request physical or digital copies of materials held by Special Collections and Archives. Generally, copies are provided free of charge, within reason. Reproduction requests that total less than 25 pages, require a low resolution for scanning, are easily handled in a flatbed scanner, and are in stable condition should be provided at no charge. Items that are bound may require equipment not immediately available in Special Collections and Archives and may delay fulfillment of a request. 
-
-When a reproduction request exceeds the parameters listed above, it may be appropriate to assess a reproduction fee of $25 for each additional half-hour increment. Examples of reproduction requests that may necessitate a fee include scanning very large or fragile items, duplicating audio or video materials, or scanning numerous photograph negatives.  
-
-An estimate of probable reproduction fees will be provided to a patron in advance of any work being completed. In general, if the time needed to complete a request exceeds the estimate, Special Collections and Archives representatives should not assess any additional fee. Consultation will be done with the Head of the department.
-
-Special Collections and Archives representatives retain the right to refuse any individual research or reproduction request that interferes with their normal duties. While customer service is of great concern to the department, it is not a research firm and cannot accommodate all requests due to staffing limitations.
+Special Collections and Archives employees can provide up to 30 minutes of reference assistance free of charge. When necessary, a fee of $25 per each additional 30-minute increment is assessed. Due to time and capacity constraints, department staff may be unable to offer additional assistance beyond the initial 30 minutes.
+ 
+Patrons may request physical or digital copies of materials held by Special Collections and Archives. Reproduction requests are subject to the same 30-minute courtesy service, with additional fees assessed for jobs that require more time. Most requests can be filled in 7-10 business days; however, some records (including bound manuscripts or rare books, audio or visual recordings, etc.) require specialized digitization equipment and may take longer to deliver. Digitized records are generally delivered through an online file sharing program.
+ 
+An estimate of probable research or reproduction fees will be provided to a patron in advance of any work being completed. Patrons are reminded that Special Collections and Archives is not intended to act as a research firm, and therefore cannot accommodate all requests. Researchers are encouraged to visit the archives in person whenever possible; alternatively, patrons may hire an independent research assistant. 
 
 ----------------------
 
