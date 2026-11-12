@@ -181,7 +181,7 @@ A primary function of the University Library's Special Collections and Archives 
 
 [APM 65.02](https://www.uidaho.edu/policies/apm/65/02) further defines an archival record as an "Inactive Record that has permanent or historic value and is not required to be retained in the office in which it was originally generated... Each Office of Record shall transfer inactive records of permanent or historical value to the University Library's Special Collections and Archives." 
 
-Records management guidance for Idaho public institutions of higher education can be found in the *State Board of Education - Higher Education Records Retention Schedule of the Records Management Guide*: [https://history.idaho.gov/wp-content/uploads/2018/08/Education_Higher_Ed_Records_Book_0.pdf](https://history.idaho.gov/wp-content/uploads/2018/08/Education_Higher_Ed_Records_Book_0.pdf).
+Records management guidance for Idaho public institutions of higher education can be found in the [State Board of Education - Higher Education Records Retention Schedule of the Records Management Guide](https://history.idaho.gov/wp-content/uploads/2018/08/Education_Higher_Ed_Records_Book_0.pdf).
 
 Archivists in the University Library acknowledge that what constitutes "historical value" is subjective and difficult to define. To help campus units and individual faculty or staff determine the relative need to preserve materials, we provide guidelines on the following rubric.  
 
