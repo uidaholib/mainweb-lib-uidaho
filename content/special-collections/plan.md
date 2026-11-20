@@ -50,8 +50,8 @@ Everyone is welcome to visit our Reading Room and view our materials!
   <div class="col">
     <div class="card h-100">
       <div class="card-body">
-        <h3>Regular Semester Room Hours</h3>
-        <table class="table table-hover">
+        <h3>Regular Semester Reading Room Hours</h3>
+        <table class="table">
           <tbody>
             <tr>
               <td>Monday, Wednesday, Friday</td>
@@ -61,9 +61,31 @@ Everyone is welcome to visit our Reading Room and view our materials!
               <td>Tuesday, Thursday</td>
               <td>9:00am - 1:00pm</td>
             </tr>
+          </tbody>
+        </table>  
+        <h3>Special Hours</h3>
+        <table class="table">
+          <tbody>
             <tr>
-              <td>Aug. 31-Sept. 6, 2026 - by appointment only</td>
-            </tr>  
+              <td>Nov. 23-24</td>
+              <td>By appointment only</td>
+            </tr>
+            <tr>
+              <td>Nov. 25-27</td>
+              <td>Closed</td>
+            </tr>
+            <tr>
+              <td>Dec. 14-23</td>
+              <td>By appointment only</td>
+            </tr>
+            <tr>
+              <td>Dec. 24-Jan. 1</td>
+              <td>Closed</td>  
+            </tr>
+            <tr>
+              <td>Jan. 4-15</td>
+              <td>By appointment only</td>
+            </tr>
           </tbody>
         </table>
       </div>
